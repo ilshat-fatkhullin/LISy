@@ -8,5 +8,6 @@ namespace LISy.Managers
 {
     interface IPatronDataManager
     {
+        
     }
 }
