@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
-    interface IDocument
+    /// <summary>
+    /// Interface of "Document" entity
+    /// </summary>
+    public interface IDocument
     {
         string Title { get; set; }
 

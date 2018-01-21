@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace LISy.Managers
 {
-    interface ILibrarianDataManager
+    public interface ILibrarianDataManager
     {
-        void AddDocument(Document document);
+        void AddDocument(IDocument document);
 
-        void DeleteDocument(Document document);
+        void DeleteDocument(IDocument document);
 
-        void EditDocument(Document document, Document newDocument);
+        void EditDocument(IDocument document, IDocument newDocument);
 
         void AddPatron(Patron patron);
 

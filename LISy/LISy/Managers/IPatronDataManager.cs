@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LISy.Managers
 {
-    interface IPatronDataManager
+    public interface IPatronDataManager
     {
         
     }

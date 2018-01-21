@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
+    /// <summary>
+    /// Shouldn't be declared somewhere
+    /// It is just an implementation of interface <code>IUser</code>
+    /// </summary>
     public class User: IUser
     {
         public string Name { get; set; }

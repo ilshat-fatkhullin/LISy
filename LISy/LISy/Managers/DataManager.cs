@@ -8,24 +8,28 @@ using System.Threading.Tasks;
 
 namespace LISy.Managers
 {
+    /// <summary>
+    /// Shouldn't be declared somewhere
+    /// It is just an implementation of interfaces <code>ILibrarianDataManager</code> and <code>IPatronDataManager</code>
+    /// </summary>
     public class DataManager: ILibrarianDataManager, IPatronDataManager
     {
         public DataManager()
         {
-
+            throw new NotImplementedException();
         }
 
-        public void AddDocument(Document document)
+        public void AddDocument(IDocument document)
+        {            
+            throw new NotImplementedException();
+        }
+
+        public void DeleteDocument(IDocument document)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteDocument(Document document)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void EditDocument(Document document, Document newDocument)
+        public void EditDocument(IDocument document, IDocument newDocument)
         {
             throw new NotImplementedException();
         }
