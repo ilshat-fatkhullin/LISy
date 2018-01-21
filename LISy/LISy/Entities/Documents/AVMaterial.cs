@@ -8,5 +8,6 @@ namespace LISy.Entities.Documents
 {
     public class AVMaterial
     {
+
     }
 }
