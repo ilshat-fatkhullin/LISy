@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
-    public class User
+    public class User: IUser
     {
         public string Name { get; set; }
 

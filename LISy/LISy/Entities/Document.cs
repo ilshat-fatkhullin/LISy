@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
-    public class Document
+    public class Document: IDocument
     {
         public string Title { get; set; }
 
