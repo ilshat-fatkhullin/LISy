@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
-    class Image
+    public class Image
     {
     }
 }

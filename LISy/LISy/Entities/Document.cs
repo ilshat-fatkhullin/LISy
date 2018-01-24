@@ -19,7 +19,7 @@ namespace LISy.Entities
         public int Room { get; protected set; }
         public int Level { get; protected set; }
         // Additional
-        public Image Pic{ get; protected set; }
+        public Image Picture { get; protected set; }
 
         public Document(string[] authors, string title, string[] keys, int room, int level, Image image)
         {
@@ -29,7 +29,7 @@ namespace LISy.Entities
                 Keywords.AddLast(keys[i]);
             Room = room;
             Level = level;
-            Pic = image;
+            Picture = image;
         }
 
         public void ChangePlace(int room, int level)

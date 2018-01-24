@@ -18,14 +18,14 @@ namespace LISy.Entities
         int Room { get; }
         int Level { get; }
         // Additional
-        string Image { get; }
+        Image Picture { get; }
 
-        void changePlace(int room, int level);
+        void ChangePlace(int room, int level);
 
-        void addKeyword(string word);
+        void AddKeyword(string word);
 
-        void removeKeyword(string word);
+        void RemoveKeyword(string word);
 
-        void changeKeyword(string old, string newone);
+        void ChangeKeyword(string old, string newone);
     }
 }

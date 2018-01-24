@@ -91,6 +91,7 @@
     <Compile Include="Entities\Documents\Book.cs" />
     <Compile Include="Entities\Documents\JournalArticle.cs" />
     <Compile Include="Entities\IDocument.cs" />
+    <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\IUser.cs" />
     <Compile Include="Entities\Users\Librarian.cs" />
     <Compile Include="Entities\Users\Patron.cs" />
