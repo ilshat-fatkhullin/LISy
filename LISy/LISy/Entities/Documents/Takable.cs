@@ -28,9 +28,10 @@ namespace LISy.Entities.Documents
 
         public void CheckOutCopy(Patron patron)
         {
+            if (patron == null) throw new ArgumentNullException();
             if (!IsAvailable())
             {
-                return;
+                return; // which exception?
             }
             foreach (Copy temp in Copies)
             {
@@ -48,15 +49,9 @@ namespace LISy.Entities.Documents
             ++Amount;
         }
 
-        public void AddCopy()
-        {
-            Copies.AddLast(new Copy(this));
-            ++Amount;
-        }
-
         public void AddCopies(int n)
         {
-            if (n < 2) return;
+            if (n < 1) throw new ArgumentException();
             for (int i = 1; i <= n; ++i)
                 Copies.AddLast(new Copy(this));
             Amount += n;
@@ -64,12 +59,12 @@ namespace LISy.Entities.Documents
 
         public void RemoveCopy()
         {
-            if (!IsAvailable()) return;
+            if (!IsAvailable()) return; // which exception?
             foreach (Copy temp in Copies)
             {
                 if (temp.IsAvailable())
                 {
-                    Copies.Remove(temp);
+                    Copies.Remove(temp); // is it right?
                     break;
                 }
             }
