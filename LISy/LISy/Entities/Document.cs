@@ -25,8 +25,7 @@ namespace LISy.Entities
         {
             Authors = authors;
             Title = title;
-            for (int i = 0; i < keys.Length; ++i)
-                Keywords.AddLast(keys[i]);
+            LinkedList<string> Keywords = new LinkedList<string>(keys);
             Room = room;
             Level = level;
             Picture = image;
@@ -41,7 +40,7 @@ namespace LISy.Entities
 
         public void AddKeyword(string word)
         {
-            if (word == null || Keywords.Find(word) != null) return;
+            if (word == null || Keywords.Contains(word)) return;
             Keywords.AddLast(word);
         }
 
@@ -56,28 +55,5 @@ namespace LISy.Entities
             RemoveKeyword(old);
             AddKeyword(newone);
         }
-
-        /*
-        public void addCopy()
-        {
-
-        }
-
-        public void addCopies(int n)
-        {   
-            // check n > 1
-            for(int i = 1; i <= n; ++i) addCopy();
-        }
-
-        public void removeCopy()
-        {
-            // check if Copies.amount > 0. If yes, check if there are some untaken copies.
-        }
-
-        public void removeCopies(int n)
-        {
-            // check n > 1
-            for (int i = 1; i <= n; ++i) removeCopy();
-        }*/
     }
 }
