@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LISy.Entities.Users;
 
 namespace LISy.Entities.Documents
 {
@@ -25,7 +26,7 @@ namespace LISy.Entities.Documents
             return Amount > 0;
         }
 
-        public void CheckOutCopy(User patron)
+        public void CheckOutCopy(Patron patron)
         {
             if (!IsAvailable())
             {
@@ -42,17 +43,9 @@ namespace LISy.Entities.Documents
             --Amount;
         }
 
-        public void ReturnCopy(User patron)
+        public void ReturnCopy()
         {
-            foreach (Copy temp in Copies)
-            {
-                if (temp.IsAvailable())
-                {
-                    temp.CkeckOut(patron);
-                    break;
-                }
-            }
-            --Amount;
+            ++Amount;
         }
 
         public void AddCopy()
