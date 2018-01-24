@@ -12,48 +12,100 @@ namespace LISy.Entities
     /// </summary>
     public abstract class Document : IDocument
     {
-        // Main Info
-        public string[] Authors { get; protected set; }
-        public string Title { get; protected set; }
-        public LinkedList<string> Keywords { get; protected set; }
-        public int Room { get; protected set; }
-        public int Level { get; protected set; }
-        // Additional
-        public Image Picture { get; protected set; }
+        #region MAIN_INFO
 
-        public Document(string[] authors, string title, string[] keys, int room, int level, Image image)
+        public string[] Authors { get; private set; }
+
+        public string Title { get; private set; }
+
+        public List<string> Keywords { get; private set; }
+
+        public int Room { get; private set; }
+
+        public int Level { get; private set; }
+
+        #endregion
+
+        #region ADDITIONAL
+
+        public string CoverURL { get; private set; }
+
+        #endregion
+
+        public Document(string[] authors, string title, string[] keys, int room, int level, string coverURL)
         {
             Authors = authors;
             Title = title;
-            LinkedList<string> Keywords = new LinkedList<string>(keys);
+
+            foreach (string key in keys)
+                Keywords.Add(key);
+
             Room = room;
             Level = level;
-            Picture = image;
+            CoverURL = coverURL;
         }
 
         public void ChangePlace(int room, int level)
         {
-            if (room <= 0 || level <= 0) return;
+            if (room <= 0 || level <= 0)
+            {
+                throw new ArgumentException();
+            }
             Room = room;
             Level = level;
         }
 
         public void AddKeyword(string word)
         {
-            if (word == null || Keywords.Contains(word)) return;
-            Keywords.AddLast(word);
+            if (word == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (Keywords.Contains(word))
+                return;
+            Keywords.Add(word);
         }
 
-        public void RemoveKeyword(string word)
+        public void RemoveKeyword(string keyword)
         {
-            if (word == null) return;
-            Keywords.Remove(word);
+            if (keyword == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (!Keywords.Contains(keyword))
+            {
+                throw new ArgumentException();
+            }
+            Keywords.Remove(keyword);
         }
 
-        public void ChangeKeyword(string old, string newone)
+        public void ChangeKeyword(string keyword, string newKeyword)
         {
-            RemoveKeyword(old);
-            AddKeyword(newone);
+            RemoveKeyword(keyword);
+            AddKeyword(newKeyword);
         }
+
+        /*
+        public void addCopy()
+        {
+
+        }
+
+        public void addCopies(int n)
+        {   
+            // check n > 1
+            for(int i = 1; i <= n; ++i) addCopy();
+        }
+
+        public void removeCopy()
+        {
+            // check if Copies.amount > 0. If yes, check if there are some untaken copies.
+        }
+
+        public void removeCopies(int n)
+        {
+            // check n > 1
+            for (int i = 1; i <= n; ++i) removeCopy();
+        }*/
     }
 }
