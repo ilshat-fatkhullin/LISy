@@ -84,28 +84,5 @@ namespace LISy.Entities
             RemoveKeyword(keyword);
             AddKeyword(newKeyword);
         }
-
-        /*
-        public void addCopy()
-        {
-
-        }
-
-        public void addCopies(int n)
-        {   
-            // check n > 1
-            for(int i = 1; i <= n; ++i) addCopy();
-        }
-
-        public void removeCopy()
-        {
-            // check if Copies.amount > 0. If yes, check if there are some untaken copies.
-        }
-
-        public void removeCopies(int n)
-        {
-            // check n > 1
-            for (int i = 1; i <= n; ++i) removeCopy();
-        }*/
     }
 }

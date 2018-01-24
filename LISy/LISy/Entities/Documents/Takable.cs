@@ -13,7 +13,7 @@ namespace LISy.Entities.Documents
         public int Amount { get; protected set; }
         public LinkedList<Copy> Copies { get; protected set; }
 
-        public Takable(string[] authors, string title, string[] keys, int room, int level, Image image, int price, int amount) : base(authors, title, keys, room, level, image)
+        public Takable(string[] authors, string title, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image)
         {
             Price = price;
             Amount = amount;
