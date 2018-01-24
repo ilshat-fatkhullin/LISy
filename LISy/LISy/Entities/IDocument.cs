@@ -11,12 +11,21 @@ namespace LISy.Entities
     /// </summary>
     public interface IDocument
     {
-        string Title { get; set; }
+        // Main info
+        string Title { get; }
+        string[] Authors { get; }
+        LinkedList<string> Keywords { get; }
+        string Room { get; }
+        int Level { get; }
+        // Additional
+        string Image { get; }
 
-        string Author { get; set; }
+        void changePlace(string room, int level);
 
-        int Room { get; set; }
+        void addKeyword(string word);
 
-        int Level { get; set; }
+        void removeKeyword(string word);
+
+        void changeKeyword(string old, string newone);
     }
 }

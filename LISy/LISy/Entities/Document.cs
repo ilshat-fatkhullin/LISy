@@ -10,26 +10,49 @@ namespace LISy.Entities
     /// Shouldn't be declared somewhere
     /// It is just an implementation of interface <code>IDocument</code>
     /// </summary>
-    public class Document//: IDocument // I'm not sure if there are abstract classes in C#, but if yes, Documents should be such one.
+    public abstract class Document : IDocument
     {
-        private string[] Authors { get; } // we should discuss setters, getters, publicity.
+        public string[] Authors { get; protected set; }
+        public string Title { get; protected set; }
+        public LinkedList<string> Keywords { get; protected set; }
+        public string Room { get; protected set; }
+        public int Level { get; protected set; }
+        // Additional
+        public string Image { get; protected set; }
 
-        private string Title { get; }
-
-        private int Price { get; }
-
-        private string[] Keywords { get; }
-
-        //private LinkedList<Copy> Copies { get; }
-
-        public Document(string[] authors, string title, int price, string[] keys, int copy_amount)
+        public Document(string[] authors, string title, string[] keys)
         {
             Authors = authors;
             Title = title;
-            Price = price;
-            Keywords = keys;
+            for (int i = 0; i < keys.Length; ++i)
+                Keywords.AddLast(keys[i]);
         }
 
+        public void changePlace(string room, int level)
+        {
+            if (room == null || level <= 0) return;
+            Room = room;
+            Level = level;
+        }
+
+        public void addKeyword(string word)
+        {
+            if (word == null || Keywords.Find(word) != null) return;
+            Keywords.AddLast(word);
+        }
+
+        public void removeKeyword(string word)
+        {
+            Keywords.Remove(word);
+        }
+
+        public void changeKeyword(string old, string newone)
+        {
+            removeKeyword(old);
+            addKeyword(newone);
+        }
+
+        /*
         public void addCopy()
         {
 
@@ -50,24 +73,6 @@ namespace LISy.Entities
         {
             // check n > 1
             for (int i = 1; i <= n; ++i) removeCopy();
-        }
-
-        // Reserved, not mine. (c)Svyat
-
-        /* public string Title { get; set; }
-
-        public string Author { get; set; }
-
-        public int Room { get; set; }
-
-        public int Level { get; set; }
-
-        public Document(string title, string author, int room, int level)
-        {
-            Title = title;
-            Author = author;
-            Room = room;
-            Level = level;
         }*/
     }
 }
