@@ -11,14 +11,14 @@ namespace LISy.Entities.Documents
     {
         public int Price { get; protected set; }
         public int Amount { get; protected set; }
-        public LinkedList<Copy> Copies { get; protected set; }
+        public List<Copy> Copies { get; protected set; }
 
         public Takable(string[] authors, string title, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image)
         {
             Price = price;
             Amount = amount;
             for (int i = 1; i <= amount; ++i)
-                Copies.AddLast(new Copy(this));
+                Copies.Add(new Copy(this));
         }
 
         public bool IsAvailable()
@@ -53,7 +53,7 @@ namespace LISy.Entities.Documents
         {
             if (n < 1) throw new ArgumentException();
             for (int i = 1; i <= n; ++i)
-                Copies.AddLast(new Copy(this));
+                Copies.Add(new Copy(this));
             Amount += n;
         }
 
