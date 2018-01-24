@@ -12,44 +12,49 @@ namespace LISy.Entities
     /// </summary>
     public abstract class Document : IDocument
     {
+        // Main Info
         public string[] Authors { get; protected set; }
         public string Title { get; protected set; }
         public LinkedList<string> Keywords { get; protected set; }
-        public string Room { get; protected set; }
+        public int Room { get; protected set; }
         public int Level { get; protected set; }
         // Additional
-        public string Image { get; protected set; }
+        public Image Pic{ get; protected set; }
 
-        public Document(string[] authors, string title, string[] keys)
+        public Document(string[] authors, string title, string[] keys, int room, int level, Image image)
         {
             Authors = authors;
             Title = title;
             for (int i = 0; i < keys.Length; ++i)
                 Keywords.AddLast(keys[i]);
+            Room = room;
+            Level = level;
+            Pic = image;
         }
 
-        public void changePlace(string room, int level)
+        public void ChangePlace(int room, int level)
         {
-            if (room == null || level <= 0) return;
+            if (room <= 0 || level <= 0) return;
             Room = room;
             Level = level;
         }
 
-        public void addKeyword(string word)
+        public void AddKeyword(string word)
         {
             if (word == null || Keywords.Find(word) != null) return;
             Keywords.AddLast(word);
         }
 
-        public void removeKeyword(string word)
+        public void RemoveKeyword(string word)
         {
+            if (word == null) return;
             Keywords.Remove(word);
         }
 
-        public void changeKeyword(string old, string newone)
+        public void ChangeKeyword(string old, string newone)
         {
-            removeKeyword(old);
-            addKeyword(newone);
+            RemoveKeyword(old);
+            AddKeyword(newone);
         }
 
         /*

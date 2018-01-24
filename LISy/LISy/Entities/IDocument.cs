@@ -15,12 +15,12 @@ namespace LISy.Entities
         string Title { get; }
         string[] Authors { get; }
         LinkedList<string> Keywords { get; }
-        string Room { get; }
+        int Room { get; }
         int Level { get; }
         // Additional
         string Image { get; }
 
-        void changePlace(string room, int level);
+        void changePlace(int room, int level);
 
         void addKeyword(string word);
 
