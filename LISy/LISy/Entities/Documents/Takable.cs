@@ -15,6 +15,7 @@ namespace LISy.Entities.Documents
 
         public Takable(string[] authors, string title, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image)
         {
+            if (amount <= 0) throw new ArgumentException("Amount of copies cannot be nonpositive!");
             Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
             Copies = new List<Copy>();
             for (int i = 1; i <= amount; ++i)
