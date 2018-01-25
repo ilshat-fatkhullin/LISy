@@ -15,8 +15,8 @@ namespace LISy.Entities.Documents
 
         public Book(string[] authors, string title, string publisher, string edition, int year, bool bestseller, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image, price, amount)
         {
-            Publisher = publisher;
-            Edition = edition;
+            Publisher = publisher ?? throw new ArgumentNullException("Book should have publisher!");
+            Edition = edition ?? throw new ArgumentNullException("Book should have publisher!");
             Year = year;
             Bestseller = bestseller;
         }

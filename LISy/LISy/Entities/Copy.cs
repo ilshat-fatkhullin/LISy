@@ -15,7 +15,7 @@ namespace LISy.Entities
 
         public Copy(Takable doc)
         {
-            Doc = doc;
+            Doc = doc ?? throw new ArgumentNullException("Copy should refer to a document!");
             Patron = null;
         }
 
@@ -26,14 +26,13 @@ namespace LISy.Entities
 
         public void CkeckOut(Patron patron)
         {
-            Patron = patron;
-            // Patron.Books.AddLast(this)
+            Patron = patron ?? throw new ArgumentNullException("Copy should be checkout to a patron!");
+            // Patron.Books.Add(this)
         }
 
         public void Return()
         {
             Patron = null;
-            Doc.ReturnCopy();
         }
     }
 }

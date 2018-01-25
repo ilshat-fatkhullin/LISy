@@ -34,38 +34,32 @@ namespace LISy.Entities
 
         public Document(string[] authors, string title, string[] keys, int room, int level, string coverURL)
         {
-            Authors = authors;
-            Title = title;
-
-            foreach (string key in keys)
-                Keywords.Add(key);
-
-            Room = room;
-            Level = level;
+            if (keys == null) throw new ArgumentNullException("Document should have keywords!");
+            Authors = authors ?? throw new ArgumentNullException("Document should have authors!");
+            Title = title ?? throw new ArgumentNullException("Document should have title!");
+            Keywords = new List<string>(keys);
+            Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
+            Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
             CoverURL = coverURL;
         }
 
         public void ChangePlace(int room, int level)
         {
-            if (room <= 0 || level <= 0)
-            {
-                throw new ArgumentException();
-            }
-            Room = room;
-            Level = level;
+            Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
+            Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }
 
         public void AddKeyword(string word)
         {
-            if (word == null) throw new ArgumentNullException();
+            if (word == null) throw new ArgumentNullException("Invalid keyword!");
             if (Keywords.Contains(word)) return;
             Keywords.Add(word);
         }
 
         public void RemoveKeyword(string keyword)
         {
-            if (keyword == null) throw new ArgumentNullException();
-            if (!Keywords.Contains(keyword)) throw new ArgumentException();
+            if (keyword == null) throw new ArgumentNullException("Invalid keyword!");
+            if (!Keywords.Contains(keyword)) throw new ArgumentException("Document has not such keyword!");
             Keywords.Remove(keyword);
         }
 

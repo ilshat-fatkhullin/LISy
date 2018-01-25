@@ -10,65 +10,53 @@ namespace LISy.Entities.Documents
     public abstract class Takable : Document
     {
         public int Price { get; protected set; }
-        public int Amount { get; protected set; }
         public List<Copy> Copies { get; protected set; }
+        private Copy LastAvailableCopy;
 
         public Takable(string[] authors, string title, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image)
         {
-            Price = price;
-            Amount = amount;
+            Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
+            Copies = new List<Copy>();
             for (int i = 1; i <= amount; ++i)
                 Copies.Add(new Copy(this));
+            LastAvailableCopy = Copies[0];
         }
 
         public bool IsAvailable()
         {
-            return Amount > 0;
-        }
-
-        public void CheckOutCopy(Patron patron)
-        {
-            if (patron == null) throw new ArgumentNullException();
-            if (!IsAvailable())
-            {
-                return; // which exception?
-            }
+            if (LastAvailableCopy.IsAvailable()) return true;
             foreach (Copy temp in Copies)
             {
                 if (temp.IsAvailable())
                 {
-                    temp.CkeckOut(patron);
-                    break;
+                    LastAvailableCopy = temp;
+                    return true;
                 }
             }
-            --Amount;
+            return false;
         }
 
-        public void ReturnCopy()
+        public void CheckOutCopy(Patron patron)
         {
-            ++Amount;
+            if (patron == null) throw new ArgumentNullException("Copy should be checkout to a patron!");
+            if (!IsAvailable())
+            {
+                return; // which exception?
+            }
+            LastAvailableCopy.CkeckOut(patron);
         }
 
         public void AddCopies(int n)
         {
-            if (n < 1) throw new ArgumentException();
+            if (n < 1) throw new ArgumentException("Ivalid amount!");
             for (int i = 1; i <= n; ++i)
                 Copies.Add(new Copy(this));
-            Amount += n;
         }
 
         public void RemoveCopy()
         {
             if (!IsAvailable()) return; // which exception?
-            foreach (Copy temp in Copies)
-            {
-                if (temp.IsAvailable())
-                {
-                    Copies.Remove(temp); // is it right?
-                    break;
-                }
-            }
-            --Amount;
+            Copies.Remove(LastAvailableCopy);
         }
     }
 }
