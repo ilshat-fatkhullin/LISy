@@ -22,6 +22,16 @@ namespace LISy.Entities.Documents
             LastAvailableCopy = Copies[0];
         }
 
+        public int AvailableCopiesAmount()
+        {
+            int amount = 0;
+            foreach (Copy temp in Copies)
+            {
+                if (temp.IsAvailable()) ++amount;
+            }
+            return amount;
+        }
+
         public bool IsAvailable()
         {
             if (LastAvailableCopy.IsAvailable()) return true;
