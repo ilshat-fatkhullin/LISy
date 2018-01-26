@@ -17,7 +17,7 @@ namespace LISy.Entities.Documents
         {
             Publisher = publisher ?? throw new ArgumentNullException("Journal should have publisher!");
             Issue = issue ?? throw new ArgumentNullException("Journal should have issue!");
-            Articles = art_amount > 0 ? new JournalArticle[art_amount] : throw new ArgumentException("Journal should contain articles!"); ;
+            Articles = art_amount > 0 ? new JournalArticle[art_amount] : throw new ArgumentException("Journal should contain articles!");
             for (int i = 0; i < art_amount; ++i)
                 Articles[i] = new JournalArticle(art_authors[i], art_titles[i], art_keys[i], this);
         }

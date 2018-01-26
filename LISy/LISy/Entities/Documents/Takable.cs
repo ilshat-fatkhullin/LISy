@@ -35,7 +35,6 @@ namespace LISy.Entities.Documents
 
         public bool IsAvailable()
         {
-            if (LastAvailableCopy.IsAvailable()) return true;
             foreach (Copy temp in Copies)
             {
                 if (temp.IsAvailable())
@@ -50,10 +49,7 @@ namespace LISy.Entities.Documents
         public void CheckOutCopy(Patron patron)
         {
             if (patron == null) throw new ArgumentNullException("Copy should be checkout to a patron!");
-            if (!IsAvailable())
-            {
-                return; // which exception?
-            }
+            if (!IsAvailable()) throw new Exception("No availbale copies!");
             LastAvailableCopy.CkeckOut(patron);
         }
 
@@ -66,7 +62,7 @@ namespace LISy.Entities.Documents
 
         public void RemoveCopy()
         {
-            if (!IsAvailable()) return; // which exception?
+            if (!IsAvailable()) throw new Exception("No availbale copies!");
             Copies.Remove(LastAvailableCopy);
         }
     }
