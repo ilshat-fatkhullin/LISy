@@ -5,14 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="LISy" Height="466" Width="699"
-        Icon="DesignResource/icon_logo100x100.ico"  
-        FontSize="16">
-    <Window.Background>
-        <ImageBrush ImageSource="DesignResource/books_shelf_back.jpg"/>
-    </Window.Background>
+        Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Image x:Name="image_title_home_page" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="671" Source="DesignResource/image_title.png"/>
-
+        
     </Grid>
 </Window>
