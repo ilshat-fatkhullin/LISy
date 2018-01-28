@@ -12,7 +12,7 @@
         <ImageBrush ImageSource="DesignResource/books_shelf_back.jpg"/>
     </Window.Background>
     <Grid>
-        <Image x:Name="image_title_home_page" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="671" Source="DesignResource/image_title_white.png"/>
+        <Image x:Name="image_title_home_page" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="671" Source="DesignResource/image_title.png"/>
 
     </Grid>
 </Window>
