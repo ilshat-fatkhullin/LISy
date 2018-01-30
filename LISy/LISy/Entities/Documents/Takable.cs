@@ -35,6 +35,7 @@ namespace LISy.Entities.Documents
 
         public bool IsAvailable()
         {
+            if (LastAvailableCopy != null && LastAvailableCopy.IsAvailable()) return true;
             foreach (Copy temp in Copies)
             {
                 if (temp.IsAvailable())
@@ -64,6 +65,7 @@ namespace LISy.Entities.Documents
         {
             if (!IsAvailable()) throw new Exception("No availbale copies!");
             Copies.Remove(LastAvailableCopy);
+            LastAvailableCopy = null;
         }
     }
 }
