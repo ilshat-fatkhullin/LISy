@@ -16,10 +16,10 @@ namespace LISy.Managers
 
         void EditDocument(IDocument document, IDocument newDocument);
 
-        void AddPatron(Patron patron);
+        void AddPatron(IPatron patron);
 
-        void DeletePatron(Patron patron);
+        void DeletePatron(IPatron patron);
 
-        void EditPatron(Patron patron, Patron newPatron);           
+        void EditPatron(IPatron patron, IPatron newPatron);           
     }
 }

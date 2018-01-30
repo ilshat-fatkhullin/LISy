@@ -43,6 +43,8 @@ namespace LISy.Entities
             CoverURL = coverURL;
         }
 
+        #region SETTER_FUNCTIONS
+
         public void ChangePlace(int room, int level)
         {
             Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
@@ -68,5 +70,7 @@ namespace LISy.Entities
             RemoveKeyword(keyword);
             AddKeyword(newKeyword);
         }
+
+        #endregion
     }
 }
