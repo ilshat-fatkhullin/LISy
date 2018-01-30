@@ -27,5 +27,12 @@ namespace LISy
                 MessageBox.Show("dcscsc");
             }
         }
+
+        private void button_register_Click(object sender, RoutedEventArgs e)
+        {
+            WorkWindow work = new WorkWindow();
+            work.Show();
+            this.Close();
+        }
     }
 }

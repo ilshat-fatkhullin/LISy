@@ -32,6 +32,6 @@
             <PasswordBox x:Name="passwordBox_registration" HorizontalAlignment="Left" Margin="10,365,0,23" RenderTransformOrigin="0.567,0.5" Width="197" Background="#CC000000" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16"/>
             <CheckBox x:Name="checkBox" Content="Faculty" Margin="10,400,10,2" FontSize="12" Foreground="White"/>
         </Grid>
-        <Button x:Name="button_register" Content="Sign Up" Margin="50,475,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button x:Name="button_register" Content="Sign Up" Margin="50,475,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_register_Click"/>
     </Grid>
 </Window>
