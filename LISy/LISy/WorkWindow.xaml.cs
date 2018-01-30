@@ -49,5 +49,25 @@ namespace LISy
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private void buttonSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void checkBox_AV_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void checkBox_JA_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void checkBox_books_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

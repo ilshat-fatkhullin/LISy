@@ -5,26 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="479" Width="900" WindowStartupLocation="CenterScreen">
+        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="479" Width="785" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="Design/books.jpg"/>
     </Window.Background>
-    <Grid>
+    <Grid x:Name="grid_main" Margin="0,0,-8,-2">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="0"/>
                 <GradientStop Color="#66FFFFFF" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Image x:Name="image_title" Margin="10,10,0,0" Source="Design/image_title_white.png" Height="100" VerticalAlignment="Top" Stretch="Fill" HorizontalAlignment="Left" Width="672"/>
-        <ListView ItemsSource="{Binding View}" IsSynchronizedWithCurrentItem="False" Margin="160,70,227,339"/>
-        <TextBox Text="{Binding TxtSearch, UpdateSourceTrigger=PropertyChanged}" Margin="160,70,227,339" FontSize="16"/>
-        <Menu x:Name="menu" HorizontalAlignment="Left" Height="309" Margin="10,130,0,0" VerticalAlignment="Top" Width="145" Background="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}"/>
-        <RadioButton x:Name="radioButton" Content="RadioButton" HorizontalAlignment="Left" Margin="160,110,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioButton1" Content="RadioButton" HorizontalAlignment="Left" Margin="247,110,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioButton2" Content="RadioButton" HorizontalAlignment="Left" Margin="334,110,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radioButton3" Content="RadioButton" HorizontalAlignment="Left" Margin="421,110,0,0" VerticalAlignment="Top"/>
-        <Calendar HorizontalAlignment="Left" Margin="670,10,0,0" VerticalAlignment="Top" Height="185" Width="212"/>
+        <ListView ItemsSource="{Binding View}" IsSynchronizedWithCurrentItem="False" Margin="160,70,0,358" HorizontalAlignment="Left" Width="530"/>
+        <TextBox Margin="160,70,0,0" HorizontalAlignment="Left" Width="530" Height="25" VerticalAlignment="Top" FontSize="14">
+            <TextBox.BorderBrush>
+                <ImageBrush/>
+            </TextBox.BorderBrush>
+            <TextBox.SelectionBrush>
+                <ImageBrush/>
+            </TextBox.SelectionBrush>
+        </TextBox>
+        <CheckBox x:Name="checkBox_books" Content="Books" HorizontalAlignment="Left" Margin="160,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" Checked="checkBox_books_Checked">
+            <CheckBox.BorderBrush>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </CheckBox.BorderBrush>
+            <CheckBox.Background>
+                <ImageBrush/>
+            </CheckBox.Background>
+        </CheckBox>
+        <CheckBox x:Name="checkBox_JA" Content="Journal Articles" HorizontalAlignment="Left" Margin="230,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" Checked="checkBox_JA_Checked">
+            <CheckBox.BorderBrush>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </CheckBox.BorderBrush>
+            <CheckBox.Background>
+                <ImageBrush/>
+            </CheckBox.Background>
+        </CheckBox>
+        <CheckBox x:Name="checkBox_AV" Content="AV matireals" HorizontalAlignment="Left" Margin="372,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" Checked="checkBox_AV_Checked">
+            <CheckBox.BorderBrush>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </CheckBox.BorderBrush>
+            <CheckBox.Background>
+                <ImageBrush/>
+            </CheckBox.Background>
+        </CheckBox>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="135" VerticalAlignment="Top" Width="155" Source="Design/White_logo.png" Margin="15,6,0,0"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="55" Margin="160,10,0,0" VerticalAlignment="Top" Width="597" Source="Design/title_white.png"/>
+        <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="695,70,0,0" VerticalAlignment="Top" Width="62" Height="25" Foreground="White" Click="buttonSearch_Click">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Label x:Name="label_id" Content="Id:" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White"/>
+        <Label x:Name="label_id_present" Content="" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White"/>
+        <Label x:Name="label" Content="Name:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White"/>
+        <Label x:Name="label_name_present" Content="" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="160" FontSize="18"/>
 
     </Grid>
 </Window>
