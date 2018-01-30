@@ -23,6 +23,58 @@ namespace LISy
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+        private void button_sign_in_Click(object sender, RoutedEventArgs e)
+        {
+            //данные функции возвращают строку с веденными данными в их текстБоксы
+            SentIDFromTextBox(textBox_login);
+            SentPasswordFromTextBox(passwordBox_enter);
+            // здесь нужно будет проверить что такой логи и пароль существуют в бд это нужно сделать в отдельной фукции которая будет проверять это  
+        }
+
+        private void button_sign_up_Click(object sender, RoutedEventArgs e)
+        {
+            //нужноо проверить что бы окно входа было закрытым
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
+            fileExitMainWindow_Click(registerWindow);
+        }
+        void fileExitMainWindow_Click(RegisterWindow window)
+        {
+            // Close this(MainWindow) window
+            this.Close();
+        }
+
+        private void textBox_login_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox_login.Text, "^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("This textbox accepts only English characters");
+                textBox_login.Clear();
+            }
+
+        }
+
+        private static String SentIDFromTextBox(TextBox textBox)
+        {
+            String id = "";
+            if (textBox.Text != null)
+            {
+                id = textBox.Text;
+            }
+
+            return id;
+        }
+        private static String SentPasswordFromTextBox(PasswordBox passwordBox)
+        {
+            String password = "";
+            if (passwordBox.Password != null)
+            {
+                password = passwordBox.Password;
+            }
+
+            return password;
         }
     }
 }

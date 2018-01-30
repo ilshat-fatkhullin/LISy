@@ -1,0 +1,37 @@
+﻿<Window x:Class="LISy.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISy"
+        mc:Ignorable="d"
+       Title="Registration" Height="560" Width="325"
+        Icon="Design\icon_logo100x100.ico" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" >
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Design\sing_up_window_back.jpg"/>
+        </Grid.Background>
+        <Label x:Name="label_title_registration" Content="Registration in the system" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="297" Foreground="White" HorizontalContentAlignment="Center" FontSize="20"/>
+        <Grid Margin="50,52,50,0" Background="#19000000" Height="418" VerticalAlignment="Top">
+            <Label x:Name="label_name" Content="Name*" Margin="10,10,10,0" Height="25" VerticalAlignment="Top" Foreground="White"/>
+            <TextBox x:Name="textBox_name" Margin="10,35,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16"/>
+            <Label x:Name="label_Address_town" Content="Address (Town)*" Margin="10,65,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address" Margin="10,90,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="18"/>
+            <Label x:Name="label_Address_street" Content="Address (Street)*" Margin="10,120,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address_street" Margin="10,145,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16"/>
+            <Label x:Name="label_Address_street_building" Content="Address (Building №)*" Margin="10,175,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address_building" Margin="10,200,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16"/>
+            <Label x:Name="label_Address_street_flat" Content="Address (Flat №)" Margin="10,230,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address_flat" Margin="10,255,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16"/>
+            <Label x:Name="label_phone_number" Content="Phone number*" Margin="10,285,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_phone_number" Margin="10,310,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16"/>
+            <Label x:Name="label_passwors_register" Content="Password*" Margin="10,340,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <PasswordBox x:Name="passwordBox_registration" HorizontalAlignment="Left" Margin="10,365,0,23" RenderTransformOrigin="0.567,0.5" Width="197" Background="#CC000000" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16"/>
+            <CheckBox x:Name="checkBox" Content="Faculty" Margin="10,400,10,2" FontSize="12" Foreground="White"/>
+        </Grid>
+        <Button x:Name="button_register" Content="Sign Up" Margin="50,475,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White"/>
+    </Grid>
+</Window>

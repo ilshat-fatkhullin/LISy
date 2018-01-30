@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Enter" Height="374" Width="572" Icon ="Design\icon_logo100x100.ico" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" >
+    <Window.BorderBrush>
+        <ImageBrush/>
+    </Window.BorderBrush>
+    <Window.Background>
+        <ImageBrush ImageSource="Design\books_shelf_back.jpg"/>
+    </Window.Background>
+    <Grid x:Name="grid_enter">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="image_background" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="544" Source="Design\image_title_white.png" Grid.ColumnSpan="2"/>
+        <Button x:Name="button_sign_in" Content="Sign In" Margin="200,257,186,0" Height="30" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Click="button_sign_in_Click">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+        </Button>
+        <Button x:Name="button_sign_up" Content="Sing Up" Margin="200,292,186,0" Height="27" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" Click="button_sign_up_Click">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+        </Button>
+        <Grid x:Name="enter_field" Height="137" Margin="200,115,186,0" VerticalAlignment="Top" Background="#66000000">
+            <Label x:Name="label_login" Content="Login" Margin="10,10,10,101" FontSize="12" Foreground="White"/>
+            <TextBox x:Name="textBox_login" Height="30" Margin="10,36,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Background="#99000000" SpellCheck.IsEnabled="True" SelectionOpacity="0.3" Cursor="None" UndoLimit="16" TextChanged="textBox_login_TextChanged">
+                <TextBox.SelectionBrush>
+                    <ImageBrush/>
+                </TextBox.SelectionBrush>
+                <TextBox.BorderBrush>
+                    <ImageBrush/>
+                </TextBox.BorderBrush>
+            </TextBox>
+            <Label x:Name="label_password" Content="Password" Margin="10,71,10,0" VerticalAlignment="Top" Foreground="White" FontSize="12"/>
+            <PasswordBox x:Name="passwordBox_enter" Margin="10,97,10,0" VerticalAlignment="Top" Height="30" Background="#99000000" Foreground="White">
+                <PasswordBox.SelectionBrush>
+                    <ImageBrush/>
+                </PasswordBox.SelectionBrush>
+                <PasswordBox.BorderBrush>
+                    <ImageBrush/>
+                </PasswordBox.BorderBrush>
+            </PasswordBox>
+        </Grid>
+
     </Grid>
 </Window>
