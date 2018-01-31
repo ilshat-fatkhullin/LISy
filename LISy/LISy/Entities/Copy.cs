@@ -10,12 +10,13 @@ namespace LISy.Entities
 {
     public class Copy
     {
-        public Takable Doc { get; private set; }
+        public Takable Document { get; private set; }
+
         public Patron Patron { get; private set; }
 
-        public Copy(Takable doc)
+        public Copy(Takable document)
         {
-            Doc = doc ?? throw new ArgumentNullException("Copy should refer to a document!");
+            Document = document ?? throw new ArgumentNullException("Copy should refer to a document!");
             Patron = null;
         }
 

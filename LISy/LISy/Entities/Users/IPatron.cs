@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LISy.Managers
+namespace LISy.Entities.Users
 {
-    public interface IPatronDataManager
+    public interface IPatron: IUser
     {
-        
+
     }
 }

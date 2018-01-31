@@ -29,6 +29,10 @@ namespace LISy.Entities
 
         string CoverURL { get; }
 
+        #endregion
+
+        #region SETTER_FUNCTIONS
+
         void ChangePlace(int room, int level);
 
         void AddKeyword(string keyword);
