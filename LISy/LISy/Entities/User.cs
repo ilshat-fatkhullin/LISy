@@ -22,10 +22,10 @@ namespace LISy.Entities
 
         public User(string name, long cardNumber, string phone, string address)
         {
-            Name = name;
-            CardNumber = cardNumber;
-            Phone = phone;
-            Address = address;
+            Name = name ?? throw new ArgumentNullException("User must have a name!");
+            CardNumber = cardNumber >= 0 ? cardNumber : throw new ArgumentException("Invalid card number!");
+            Phone = phone ?? throw new ArgumentNullException("User must have a phone number!");
+            Address = address ?? throw new ArgumentNullException("User must have an address!");
         }
     }
 }

@@ -34,9 +34,9 @@ namespace LISy.Entities
 
         public Document(string[] authors, string title, string[] keys, int room, int level, string coverURL)
         {
-            if (keys == null) throw new ArgumentNullException("Document should have keywords!");
-            Authors = authors ?? throw new ArgumentNullException("Document should have authors!");
-            Title = title ?? throw new ArgumentNullException("Document should have title!");
+            if (keys == null) throw new ArgumentNullException("Document must have keywords!");
+            Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
+            Title = title ?? throw new ArgumentNullException("Document must have a title!");
             Keywords = new List<string>(keys);
             Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
             Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");

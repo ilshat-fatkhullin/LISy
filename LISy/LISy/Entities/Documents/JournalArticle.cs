@@ -12,7 +12,7 @@ namespace LISy.Entities.Documents
 
         public JournalArticle(string[] authors, string title, string[] keys, Journal journal) : base(authors, title, keys, journal.Room, journal.Level, null)
         {
-            Journal = journal ?? throw new ArgumentNullException("Article should refer to a journal!");
+            Journal = journal ?? throw new ArgumentNullException("Article must refer to a journal!");
         }
     }
 }

@@ -49,7 +49,7 @@ namespace LISy.Entities.Documents
 
         public Copy CheckOutCopy(Patron patron)
         {
-            if (patron == null) throw new ArgumentNullException("Copy should be checkout to a patron!");
+            if (patron == null) throw new ArgumentNullException("Copy must be checkouted to a patron!");
             if (!IsAvailable()) throw new Exception("No availbale copies!");
             LastAvailableCopy.CkeckOut(patron);
             return LastAvailableCopy;
@@ -57,7 +57,7 @@ namespace LISy.Entities.Documents
 
         public void AddCopies(int n)
         {
-            if (n < 1) throw new ArgumentException("Ivalid amount!");
+            if (n < 1) throw new ArgumentException("Ivalid amount of new copies!");
             for (int i = 1; i <= n; ++i)
                 Copies.Add(new Copy(this));
         }
