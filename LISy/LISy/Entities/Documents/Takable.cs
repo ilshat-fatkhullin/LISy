@@ -47,11 +47,12 @@ namespace LISy.Entities.Documents
             return false;
         }
 
-        public void CheckOutCopy(Patron patron)
+        public Copy CheckOutCopy(Patron patron)
         {
             if (patron == null) throw new ArgumentNullException("Copy should be checkout to a patron!");
             if (!IsAvailable()) throw new Exception("No availbale copies!");
             LastAvailableCopy.CkeckOut(patron);
+            return LastAvailableCopy;
         }
 
         public void AddCopies(int n)
