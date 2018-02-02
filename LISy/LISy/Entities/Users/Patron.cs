@@ -3,14 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LISy.Entities.Documents;
 
 namespace LISy.Entities.Users
-{    
-    public class Patron: User, IPatron
+{
+    public abstract class Patron : User, IPatron
     {
+<<<<<<< HEAD
         public Patron(string firstName, string secondName, long cardNumber, string phone, string address): base(firstName, secondName, cardNumber, phone, address)
-        {
+=======
+        public List<Copy> TakenCopies { get; protected set; }
+        private Copy LastFoundCopy = null;
 
+        public Patron(string name, long cardNumber, string phone, string address) : base(name, cardNumber, phone, address)
+>>>>>>> origin/master
+        {
+            TakenCopies = new List<Copy>();
+        }
+
+        public bool FindCopyOfDocument(Takable document)
+        {
+            foreach (Copy temp in TakenCopies)
+                if (temp.Document.Equals(document))
+                {
+                    LastFoundCopy = temp;
+                    return true;
+                }
+            return false;
+        }
+
+        public void CheckOutDocument(Takable document)
+        {
+            if (FindCopyOfDocument(document)) throw new ArgumentException("Such document has already been borrowed!");
+            TakenCopies.Add(document.CheckOutCopy(this));
+        }
+
+        public void ReturnDocument(Takable document)
+        {
+            if (!FindCopyOfDocument(document)) throw new ArgumentException("Such document has not been borrowed!");
+            TakenCopies.Remove(LastFoundCopy);
+            LastFoundCopy.Return();
         }
     }
 }
