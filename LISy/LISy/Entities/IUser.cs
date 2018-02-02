@@ -11,7 +11,9 @@ namespace LISy.Entities
     /// </summary>
     public interface IUser
     {
-        string Name { get; set; }
+        string FirstName { get; set; }
+
+        string SecondName { get; set; }
 
         long CardNumber { get; set; }
 

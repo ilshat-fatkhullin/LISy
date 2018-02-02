@@ -13,5 +13,6 @@ namespace LISy
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

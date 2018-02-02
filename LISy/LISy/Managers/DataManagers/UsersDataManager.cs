@@ -1,9 +1,11 @@
 ﻿using LISy.Entities.Users;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace LISy.Managers.DataManagers
 {
@@ -25,7 +27,10 @@ namespace LISy.Managers.DataManagers
                 throw new ArgumentNullException();
             }
 
-            throw new NotImplementedException();
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address", patron);
+            }
         }
 
         /// <summary>
@@ -39,7 +44,10 @@ namespace LISy.Managers.DataManagers
                 throw new ArgumentNullException();
             }
 
-            throw new NotImplementedException();
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                connection.Execute("dbo.spUsers_DeleteUser @CardNumber", patron);
+            }
         }
 
         /// <summary>
@@ -54,7 +62,11 @@ namespace LISy.Managers.DataManagers
                 throw new ArgumentNullException();
             }
 
-            throw new NotImplementedException();
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                connection.Execute("dbo.spUsers_UpdateUser @CardNumber, @FirstName, @SecondName, @Phone, @Address", new { CardNumber = patron.CardNumber, FirstName = newPatron.FirstName,
+                    SecondName = newPatron.SecondName, Phone = newPatron.Phone, Address = newPatron.Address });
+            }
         }
     }
 }

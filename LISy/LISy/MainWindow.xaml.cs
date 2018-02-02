@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LISy.Entities.Users;
+using LISy.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +25,12 @@ namespace LISy
         public MainWindow()
         {
             InitializeComponent();
-
+            ILibrarianDataManager manager = new DataManager();
+            IPatron patron1 = new Patron("Ilshat", "Fatkhullin", 4, "+79046640818", "Innopolis, University St., Dorm 1, Room 401");
+            IPatron patron2 = new Patron("Rim", "Fatkuhllin", 1, "+79518975651", "Innopolis, University St., Dorm 1, Room 401");
+            //manager.AddPatron(patron);
+            //manager.EditPatron(patron1, patron2);
+            manager.DeletePatron(patron1);
         }
         private void button_sign_in_Click(object sender, RoutedEventArgs e)
         {

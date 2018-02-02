@@ -10,12 +10,13 @@ namespace LISyTest.Entities
         [TestMethod]
         public void User_Constructor()
         {
-            string name = "Example name", phone = "1234567", address = "Example address";
+            string firstName = "Example first name", secondName = "Example second name", phone = "1234567", address = "Example address";
             long cardNumber = 1;
 
-            User user = new User(name, cardNumber, phone, address);
+            User user = new User(firstName, secondName, cardNumber, phone, address);
 
-            Assert.AreEqual(user.Name, name);
+            Assert.AreEqual(user.FirstName, firstName);
+            Assert.AreEqual(user.SecondName, secondName);
             Assert.AreEqual(user.CardNumber, cardNumber);
             Assert.AreEqual(user.Phone, phone);
             Assert.AreEqual(user.Address, address);

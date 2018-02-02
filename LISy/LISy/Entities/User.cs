@@ -11,8 +11,10 @@ namespace LISy.Entities
     /// It is just an implementation of interface <code>IUser</code>
     /// </summary>
     public class User: IUser
-    {
-        public string Name { get; set; }
+    {   
+        public string FirstName { get; set; }
+
+        public string SecondName { get; set; }
 
         public long CardNumber { get; set; }
 
@@ -20,9 +22,10 @@ namespace LISy.Entities
 
         public string Address { get; set; }
 
-        public User(string name, long cardNumber, string phone, string address)
+        public User(string firstName, string secondName, long cardNumber, string phone, string address)
         {
-            Name = name;
+            FirstName = firstName;
+            SecondName = secondName;
             CardNumber = cardNumber;
             Phone = phone;
             Address = address;

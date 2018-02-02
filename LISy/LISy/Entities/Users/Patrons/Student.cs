@@ -8,7 +8,7 @@ namespace LISy.Entities.Users.Patrons
 {
     public class Student: Patron
     {
-        public Student(string name, long cardNumber, string phone, string address): base(name, cardNumber, phone, address)
+        public Student(string firstName, string secondName, long cardNumber, string phone, string address): base(firstName, secondName, cardNumber, phone, address)
         {
 
         }
