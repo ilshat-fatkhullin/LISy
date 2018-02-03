@@ -9,7 +9,7 @@
     <Window.Background>
         <ImageBrush ImageSource="Design/books.jpg"/>
     </Window.Background>
-    <Grid x:Name="grid_main" Margin="0,0,-8,-2">
+    <Grid x:Name="grid_main" Margin="0,0,-8,-1">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="0"/>
@@ -68,10 +68,13 @@
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Label x:Name="label_id" Content="Id:" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White"/>
-        <Label x:Name="label_id_present" Content="" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White"/>
-        <Label x:Name="label" Content="Name:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Foreground="White"/>
-        <Label x:Name="label_name_present" Content="" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="160" FontSize="18"/>
+        <Button x:Name="button_Profile" Content="My Profile" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="145" Height="30"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Profile_Click"/>
+        <Button x:Name="button_Booking" Content="Booking Story" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Booking_Click"/>
+        <Button x:Name="button_Info" Content="Info" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Info_Click"/>
+        <Grid HorizontalAlignment="Left" Margin="160,129,0,10" Width="530">
+            <Label x:Name="label" Content="&quot;Introduction to Linear Algebra&quot; Gilbert Strang 4th edition (WELLESLEY - CAMBRIDGE PRESS)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="430" Foreground="White"/>
+            <Button x:Name="button_open" Content="Open" HorizontalAlignment="Left" Margin="445,10,0,0" VerticalAlignment="Top" Width="75" Height="26" FontSize="14" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_open_Click"/>
+        </Grid>
 
     </Grid>
 </Window>

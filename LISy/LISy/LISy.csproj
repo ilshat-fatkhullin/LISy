@@ -82,6 +82,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BookingInfoWindow.xaml.cs">
+      <DependentUpon>BookingInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Users\ILibrarian.cs" />
     <Compile Include="Entities\Users\IPatron.cs" />
     <Compile Include="Helper.cs" />
@@ -93,6 +96,10 @@
     <Compile Include="WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="BookingInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -187,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Design\search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\bookss.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\Strang.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

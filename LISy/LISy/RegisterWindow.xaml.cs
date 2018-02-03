@@ -24,7 +24,7 @@ namespace LISy
             InitializeComponent();
 
         }
-        private static String ReturnFromTextBox(TextBox textBox)
+        public string ReturnFromTextBox(TextBox textBox)
         {
             String input = "";
             if (textBox.Text != null)
@@ -34,31 +34,58 @@ namespace LISy
 
             return input;
         }
+        public string ReturnFromTextBoxPhone(TextBox textBox)
+        {
+            String input = "";
+            if (textBox.Text != null && textBox.Text.Count() >= 11)
+            {
+                input = textBox.Text;
+            }
+
+            return input;
+        }
+       
+       public string Return_id() {
+            String id = "";
+            ReturnFromTextBox(textBox_name);
+            ReturnFromTextBoxPhone(textBox_phone_number);
+            ReturnFromTextBox(textBox_Address_town);
+            ReturnFromTextBox(textBox_Address_street);
+            ReturnFromTextBox(textBox_Address_building);
+            ReturnFromTextBox(textBox_Address_flat);
+            ReturnPasswordFromTextBox(passwordBox_registration);
+
+            id = id + ReturnFromTextBox(textBox_name).ToString() + ReturnFromTextBox(textBox_Address_town).ToString() + ReturnFromTextBox(textBox_Address_street).ToString() ;
+            if (checkBox_faculty.IsChecked == true)
+            {
+                //таким образом все пользователи Факульти будут отличаться наличием последнего симовала которой будет буква, у обычных там цифра а у Факульти буква
+                id = id + "F";
+            }
+            return id;
+        }
         private void button_register_Click(object sender, RoutedEventArgs e)
         {
             WorkWindow work = new WorkWindow();
              
-            String id = "";
+            
             if (textBox_name.Text != null && textBox_phone_number.Text != null && textBox_Address_town.Text != null && textBox_Address_street.Text != null && textBox_Address_building.Text != null && textBox_Address_flat.Text != null && passwordBox_registration.Password != null) {
                 ReturnFromTextBox(textBox_name);
-                ReturnFromTextBox(textBox_phone_number);
+                ReturnFromTextBoxPhone(textBox_phone_number);
                 ReturnFromTextBox(textBox_Address_town);
                 ReturnFromTextBox(textBox_Address_street);
                 ReturnFromTextBox(textBox_Address_building);
                 ReturnFromTextBox(textBox_Address_flat);
                 ReturnPasswordFromTextBox(passwordBox_registration);
-                id=id+ReturnFromTextBox(textBox_name).Substring(0,1) + ReturnFromTextBox(textBox_Address_town).Substring(0,1) + ReturnFromTextBox(textBox_Address_street).Substring(0,1) + ReturnFromTextBox(textBox_Address_building) + ReturnFromTextBox(textBox_Address_flat);
+
+               
                 //метод проверить что такого пользователя с такими данными есть ли в базе если есть то выводим что есть если нет то регаем его 
-                if (checkBox_faculty.IsChecked == true)
-                {
-                    //таким образом все пользователи Факульти будут отличаться наличием последнего симовала которой будет буква, у обычных там цифра а у Факульти буква
-                    id = id + "F";                
-                }
+                
                 //if all checks good so open window
                 if (true && AlertPassword(passwordBox_registration) == true) {
                     //переходим к окну работы мы зарегались
                     // нужно будет перенести id b name пользователя отсюда в окно работы в label_name and label_id
-
+                    MessageBox.Show(Return_id()+" "+ ReturnFromTextBox(textBox_name));
+                    
                     GoToWork(work);
                 }
             }        
@@ -67,11 +94,12 @@ namespace LISy
         //close regestration window open workWindow
         private void GoToWork(WorkWindow work)
         {
+            
             work.Show();
             this.Close();
         }
         //return password from passwordBox
-        private static String ReturnPasswordFromTextBox(PasswordBox passwordBox)
+        private static string ReturnPasswordFromTextBox(PasswordBox passwordBox)
         {
             String password = "";
             if (passwordBox.Password != null)

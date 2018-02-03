@@ -26,24 +26,35 @@ namespace LISy
         {
             InitializeComponent();
         }
-        
+        ///<summary>
+        ///when users input all data to textBoxes clicked on this button user go to workWindow but before system will checked all data in textBoxes and checked if this user exist
+        ///<summary>
         private void button_sign_in_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+            // here you will need to check that a username and password exist in dB it should be done in a separate function which will check it
+            //a function that checks if there is a user with such data entered in the fields
             // здесь нужно будет проверить что такой логи и пароль существуют в бд это нужно сделать в отдельной фукции которая будет проверять это  
             //функция которая проверяет если есть такой пользователь с такими данными введенными в поля
             if (AlertPassword(passwordBox_enter) == true)
             {
+                //these functions return a string with the maintained data in their textbooks
                 //данные функции возвращают строку с веденными данными в их текстБоксы
                 ReturnIDFromTextBox(textBox_login);
                 ReturnPasswordFromTextBox(passwordBox_enter);
-                
 
+                //if all is OK, so we go to the Work window
                 WorkWindow work = new WorkWindow();
                 GoToWork(work);
+            }
+            else {
+                MessageBox.Show("Such user doesn't exist");
             }
 
         }
         //переходим к рабочему окну
+        ///<summary>
+        ///method that goes to another window
+        ///<summary>
         private void GoToWork(WorkWindow work)
         {
             work.Show();
