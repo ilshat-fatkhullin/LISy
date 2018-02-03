@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using LISy.Managers;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
+using System.IO;
 
 namespace LISy
 {
@@ -25,19 +26,16 @@ namespace LISy
         public RegisterWindow()
         {
             InitializeComponent();
-
         }
 
         private void button_register_Click(object sender, RoutedEventArgs e)
         {
-            WorkWindow work = new WorkWindow();
-
             if (textBox_name.Text != null &&
                 textBox_phone_number.Text != null &&
                 textBox_Address_town.Text != null &&
                 textBox_Address_street.Text != null &&
                 textBox_Address_building.Text != null &&
-                textBox_Address_flat.Text != null &&                
+                textBox_Address_flat.Text != null &&
                 InputFieldsManager.CheckPasswordValidity(passwordBox_registration))
             {
 
@@ -67,6 +65,11 @@ namespace LISy
                 //if all checks good so open window                
                 if (librarianDataManager.AddPatron(patron, login, password))
                 {
+                    using (StreamWriter writer = new StreamWriter("login.txt"))
+                    {
+                        writer.Write(login);
+                    }
+
                     WorkWindow workWindow = new WorkWindow();
                     GoToWork(workWindow);
                 }
@@ -74,6 +77,10 @@ namespace LISy
                 {
                     MessageBox.Show("Error! Can not create an account.");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Error! Invalid fields.");
             }
         }
                               
@@ -86,32 +93,32 @@ namespace LISy
         //return name from textBox_name
         private void textBox_name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.AlertText(textBox_name);
+            InputFieldsManager.CheckLiteralValidity(textBox_name);
         }                                 
 
         private void textBox_Address_town_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.AlertText(textBox_Address_town);
+            InputFieldsManager.CheckLiteralValidity(textBox_Address_town);
         }
 
         private void textBox_Address_street_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.AlertText(textBox_Address_street);
+            InputFieldsManager.CheckLiteralValidity(textBox_Address_street);
         }
 
         private void textBox_Address_building_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.AlertNumbers(textBox_Address_building);
+            InputFieldsManager.CheckNumericValidity(textBox_Address_building);
         }
 
         private void textBox_Address_flat_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.AlertNumbers(textBox_Address_flat);
+            InputFieldsManager.CheckNumericValidity(textBox_Address_flat);
         }
 
         private void textBox_phone_number_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.AlertNumbers(textBox_phone_number);
+            InputFieldsManager.CheckNumericValidity(textBox_phone_number);
         }
     }
 }

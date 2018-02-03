@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -21,21 +8,24 @@ namespace LISy
     /// </summary>
     public partial class WorkWindow : Window
     {
-        private static RegisterWindow registerWindow = new RegisterWindow();
+        private string login;
+
         public WorkWindow()
         {
             InitializeComponent();
-            ///<summary>
-            ///here we get id and users name for make Profile page
-            ///<summary>
-            //string id = registerWindow.Return_id().ToString();
-            string name = registerWindow.textBox_name.Text.ToString();       
+
+            using (StreamReader reader = new StreamReader("login.txt"))
+            {
+                login = reader.ReadLine();
+            }
         }
+
         ///<summary>
         ///this button will be an action to begin search document in DB
         ///<summary>
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
+
 
         }
         ///<summary>
@@ -55,6 +45,7 @@ namespace LISy
         {
 
         }
+
         ///<summary>
         ///when we find document we click button to read about this document and book it
         ///<summary>
