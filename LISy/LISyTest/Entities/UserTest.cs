@@ -15,7 +15,7 @@ namespace LISyTest.Entities
             string firstName = "Example first name", secondName = "Example second name", phone = "1234567", address = "Example address";
             long cardNumber = 1;
 
-            User user = new Faculty(firstName, secondName, cardNumber, phone, address);
+            User user = new Faculty(firstName, secondName, phone, address);
 
             Assert.AreEqual(user.FirstName, firstName);
             Assert.AreEqual(user.SecondName, secondName);

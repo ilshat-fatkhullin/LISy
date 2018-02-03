@@ -20,13 +20,9 @@ namespace LISy.Entities.Users
         /// <param name="cardNumber">Card number of the worker.</param>
         /// <param name="phone">Phone number of the worker.</param>
         /// <param name="address">Address of the worker.</param>
-        public Librarian(string firstName, string secondName, long cardNumber, string phone, string address) : base(firstName, secondName, cardNumber, phone, address)
+        public Librarian(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
         {
-<<<<<<< HEAD
             Type = "Librarian";
-=======
-
->>>>>>> 1d1e82005e3385d129df80e12d13861de0bd7293
         }
     }
 }

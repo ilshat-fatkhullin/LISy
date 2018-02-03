@@ -28,7 +28,7 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<bool>("dbo.spUsers_GetNumberByData @FirstName, @SecondName, @Phone", 
+                var output = connection.Query<bool>("dbo.spUsers_IsUserInTable @FirstName, @SecondName, @Phone", 
                     new { FirstName = patron.FirstName, SecondName = patron.SecondName, Phone = patron.Phone}).ToList();
                 if (!output[0])
                 {
@@ -44,7 +44,6 @@ namespace LISy.Managers.DataManagers
                 }
             }
 
-            //TODO: Рим, верни true - если добавился, false - если такой уже существует.
         }
 
         /// <summary>
@@ -53,12 +52,13 @@ namespace LISy.Managers.DataManagers
         /// <param name="patron">Patron, which is going to be deleted.</param>
         public void DeletePatron(IPatron patron)
         {
-            CredentialsManager.DeleteUserCredentials(patron.CardNumber);
 
             if (patron == null)
             {
                 throw new ArgumentNullException();
             }
+
+            CredentialsManager.DeleteUserCredentials(patron.CardNumber);
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {

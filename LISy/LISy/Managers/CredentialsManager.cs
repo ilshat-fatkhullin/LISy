@@ -71,11 +71,12 @@ namespace LISy.Managers
         /// Modify current credentials
         /// </summary>
         /// <param name="cardNumber">Account's card number</param>        
-        public static void ModifyUserCredentials(long cardNumber)
+        public static void ModifyUserCredentials(long cardNumber, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spCredentials_DeleteCredential @CardNumber", new { CardNumber = cardNumber });
+                connection.Execute("dbo.spCredentials_ModifyCredential @CardNumber, @Password",
+                    new { CardNumber = cardNumber, Password = password });
             }
         }
     }
