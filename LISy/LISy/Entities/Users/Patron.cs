@@ -9,14 +9,10 @@ namespace LISy.Entities.Users
 {
     public abstract class Patron : User, IPatron
     {
-<<<<<<< HEAD
-        public Patron(string firstName, string secondName, long cardNumber, string phone, string address): base(firstName, secondName, cardNumber, phone, address)
-=======
         public List<Copy> TakenCopies { get; protected set; }
         private Copy LastFoundCopy = null;
 
-        public Patron(string name, long cardNumber, string phone, string address) : base(name, cardNumber, phone, address)
->>>>>>> origin/master
+        public Patron(string firstName, string secondName, long cardNumber, string phone, string address) : base(firstName, secondName, cardNumber, phone, address)
         {
             TakenCopies = new List<Copy>();
         }
