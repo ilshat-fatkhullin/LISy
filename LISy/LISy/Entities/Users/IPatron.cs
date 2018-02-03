@@ -8,6 +8,6 @@ namespace LISy.Entities.Users
 {
     public interface IPatron: IUser
     {
-
+        
     }
 }

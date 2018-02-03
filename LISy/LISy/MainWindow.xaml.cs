@@ -102,6 +102,13 @@ namespace LISy
                 MessageBox.Show("Such char not available");
                 passwordBox.Clear();
             }
+
+            //If there are no user with current login and password
+            if (!CredentialsManager.Authorize(textBox_login.Text, passwordBox.Password))
+            {
+                flag = true;
+            }
+
             return flag;
         }
         //return password from passwordBox

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LISy.Managers;
 
 namespace LISy
 {
@@ -24,63 +25,46 @@ namespace LISy
             InitializeComponent();
 
         }
-        private static String ReturnFromTextBox(TextBox textBox)
-        {
-            String input = "";
-            if (textBox.Text != null)
-            {
-                input = textBox.Text;
-            }
-
-            return input;
-        }
+        
         private void button_register_Click(object sender, RoutedEventArgs e)
         {
             WorkWindow work = new WorkWindow();
-             
-            String id = "";
+                         
             if (textBox_name.Text != null && textBox_phone_number.Text != null && textBox_Address_town.Text != null && textBox_Address_street.Text != null && textBox_Address_building.Text != null && textBox_Address_flat.Text != null && passwordBox_registration.Password != null) {
-                ReturnFromTextBox(textBox_name);
-                ReturnFromTextBox(textBox_phone_number);
-                ReturnFromTextBox(textBox_Address_town);
-                ReturnFromTextBox(textBox_Address_street);
-                ReturnFromTextBox(textBox_Address_building);
-                ReturnFromTextBox(textBox_Address_flat);
-                ReturnPasswordFromTextBox(passwordBox_registration);
-                id=id+ReturnFromTextBox(textBox_name).Substring(0,1) + ReturnFromTextBox(textBox_Address_town).Substring(0,1) + ReturnFromTextBox(textBox_Address_street).Substring(0,1) + ReturnFromTextBox(textBox_Address_building) + ReturnFromTextBox(textBox_Address_flat);
+
+                InputFieldsManager.ReturnFromTextBox(textBox_name);
+                InputFieldsManager.ReturnFromTextBox(textBox_phone_number);
+                InputFieldsManager.ReturnFromTextBox(textBox_Address_town);
+                InputFieldsManager.ReturnFromTextBox(textBox_Address_street);
+                InputFieldsManager.ReturnFromTextBox(textBox_Address_building);
+                InputFieldsManager.ReturnFromTextBox(textBox_Address_flat);
+                InputFieldsManager.ReturnPasswordFromTextBox(passwordBox_registration);
+                
                 //метод проверить что такого пользователя с такими данными есть ли в базе если есть то выводим что есть если нет то регаем его 
                 if (checkBox_faculty.IsChecked == true)
                 {
                     //таким образом все пользователи Факульти будут отличаться наличием последнего симовала которой будет буква, у обычных там цифра а у Факульти буква
                     id = id + "F";                
                 }
-                //if all checks good so open window
-                if (true && AlertPassword(passwordBox_registration) == true) {
+                //if all checks good so open window                
+                if (InputFieldsManager.CheckPasswordValidity(passwordBox_registration) &&
+                    CredentialsManager.Authorize(textBox))
+                {
                     //переходим к окну работы мы зарегались
                     // нужно будет перенести id b name пользователя отсюда в окно работы в label_name and label_id
 
                     GoToWork(work);
                 }
-            }        
+            }
         }
-        
+
         //close regestration window open workWindow
         private void GoToWork(WorkWindow work)
         {
             work.Show();
             this.Close();
         }
-        //return password from passwordBox
-        private static String ReturnPasswordFromTextBox(PasswordBox passwordBox)
-        {
-            String password = "";
-            if (passwordBox.Password != null)
-            {
-                password = passwordBox.Password;
-            }
-
-            return password;
-        }
+        
         //return name from textBox_name
         private void textBox_name_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -113,22 +97,8 @@ namespace LISy
             
                
             
-        }
-        //give for user message about not correct input to  with password
-        private bool AlertPassword(PasswordBox passwordBox)
-        {
-            bool flag = false;
-            if (!System.Text.RegularExpressions.Regex.IsMatch(passwordBox.Password, "[a-zA-Z]+$"))
-            {
+        }        
 
-                flag = true;
-            }
-            else {
-                MessageBox.Show("Such char not available");
-                passwordBox.Clear();
-            }
-            return flag;
-        }
         private void textBox_Address_town_TextChanged(object sender, TextChangedEventArgs e)
         {
             AlertText(textBox_Address_town);

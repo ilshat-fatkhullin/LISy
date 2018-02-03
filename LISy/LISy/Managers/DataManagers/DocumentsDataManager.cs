@@ -1,9 +1,6 @@
 ﻿using LISy.Entities;
+using LISy.Entities.Users;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LISy.Managers.DataManagers
 {
@@ -41,6 +38,11 @@ namespace LISy.Managers.DataManagers
         public void EditDocument(IDocument document, IDocument newDocument)
         {
             throw new NotImplementedException();
+        }
+
+        public void CheckOutDocument(IDocument document, IPatron patron)
+        {
+            throw new NotImplementedException();            
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LISy.Entities
     /// Interface of "User" entity
     /// </summary>
     public interface IUser
-    {
+    {        
         string FirstName { get; set; }
 
         string SecondName { get; set; }

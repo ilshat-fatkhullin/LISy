@@ -1,11 +1,6 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Users;
 using LISy.Managers.DataManagers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LISy.Managers
 {
@@ -15,13 +10,13 @@ namespace LISy.Managers
     /// The main data manager class.
     /// Contains of two classes <code>DocumentsDataManager</code> and <code>UsersDataManager</code>, which implement data managment functions.
     /// </summary>
-    public class DataManager: ILibrarianDataManager, IUsersDataManager
+    public class DataManager: ILibrarianDataManager, IPatronDataManager
     {
         private DocumentsDataManager documentsDataManager;
         private UsersDataManager usersDataManager;
 
         public DataManager()
-        {
+        {            
             documentsDataManager = new DocumentsDataManager();
             usersDataManager = new UsersDataManager();
         }
@@ -58,9 +53,10 @@ namespace LISy.Managers
         /// Adds new patron to the database.        
         /// </summary>
         /// <param name="patron">Patron, which is going to be added.</param>
-        public void AddPatron(IPatron patron)
+        /// <param name="password">Patron's account password</param>
+        public void AddPatron(IPatron patron, string login, string password)
         {
-            usersDataManager.AddPatron(patron);
+            usersDataManager.AddPatron(patron, login, password);
         }
 
         /// <summary>
@@ -80,6 +76,12 @@ namespace LISy.Managers
         public void EditPatron(IPatron patron, IPatron newPatron)
         {
             usersDataManager.EditPatron(patron, newPatron);
+        }
+
+                
+        public void CheckOutDocument(IDocument document, IPatron patron)
+        {
+            documentsDataManager.CheckOutDocument(document, patron);
         }
     }
 }

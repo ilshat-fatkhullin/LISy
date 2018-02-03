@@ -1,11 +1,7 @@
-﻿using LISy.Entities.Users;
+﻿using Dapper;
+using LISy.Entities.Users;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
 
 namespace LISy.Managers.DataManagers
 {
@@ -20,8 +16,10 @@ namespace LISy.Managers.DataManagers
         /// Adds new patron to the database.        
         /// </summary>
         /// <param name="patron">Patron, which is going to be added.</param>
-        public void AddPatron(IPatron patron)
+        public void AddPatron(IPatron patron, string login, string password)
         {
+            CredentialsManager.AddUserCredentials(login, password, patron.CardNumber);
+
             if (patron == null)
             {
                 throw new ArgumentNullException();
@@ -39,6 +37,8 @@ namespace LISy.Managers.DataManagers
         /// <param name="patron">Patron, which is going to be deleted.</param>
         public void DeletePatron(IPatron patron)
         {
+            CredentialsManager.DeleteUserCredentials(patron.CardNumber);
+
             if (patron == null)
             {
                 throw new ArgumentNullException();

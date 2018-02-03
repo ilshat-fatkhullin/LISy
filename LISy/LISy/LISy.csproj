@@ -85,8 +85,10 @@
     <Compile Include="Entities\Users\ILibrarian.cs" />
     <Compile Include="Entities\Users\IPatron.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Managers\CredentialsManager.cs" />
     <Compile Include="Managers\DataManagers\DocumentsDataManager.cs" />
     <Compile Include="Managers\DataManagers\UsersDataManager.cs" />
+    <Compile Include="Managers\InputFieldsManager.cs" />
     <Compile Include="RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
@@ -132,7 +134,7 @@
   <ItemGroup>
     <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Managers\ILibrarianDataManager.cs" />
-    <Compile Include="Managers\IUsersDataManager.cs" />
+    <Compile Include="Managers\IPatronDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
