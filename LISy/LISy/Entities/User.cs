@@ -7,23 +7,30 @@ using System.Threading.Tasks;
 namespace LISy.Entities
 {
     /// <summary>
-    /// Shouldn't be declared somewhere
-    /// It is just an implementation of interface <code>IUser</code>
+    /// Represents the implementation of common properties of library users.
     /// </summary>
     public abstract class User : IUser
     {
-        public string FirstName { get; set; }
+        public string FirstName { get; protected set; }
 
-        public string SecondName { get; set; }
+        public string SecondName { get; protected set; }
 
         public long CardNumber { get; set; }
 
-        public string Phone { get; set; }
+        public string Phone { get; protected set; }
 
-        public string Address { get; set; }
+        public string Address { get; protected set; }
 
-        public string Type { get; set; }
+        public string Type { get; protected set; }
 
+        /// <summary>
+        /// Initializes a new instance of library user.
+        /// </summary>
+        /// <param name="firstName">First name of the user.</param>
+        /// <param name="secondName">Second name of the user.</param>
+        /// <param name="cardNumber">Card number of the user.</param>
+        /// <param name="phone">Phone number of the user.</param>
+        /// <param name="address">Address of the user.</param>
         public User(string firstName, string secondName, long cardNumber, string phone, string address)
         {
             FirstName = firstName ?? throw new ArgumentNullException("User must have a first name!");

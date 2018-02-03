@@ -1,20 +1,10 @@
-﻿using LISy.Entities.Users;
+
+using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -57,6 +47,10 @@ namespace LISy
                 //if all is OK, so we go to the Work window
                 if (CredentialsManager.Authorize(login, password) != -1)
                 {
+                    using (StreamWriter writer = new StreamWriter("login.txt"))
+                    {
+                        writer.Write(login);
+                    }
                     WorkWindow work = new WorkWindow();
                     GoToWork(work);
                 }
@@ -98,7 +92,7 @@ namespace LISy
         //предупреждает о неправильных изменениях в TextBox 
         private void textBox_login_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.AlertText(textBox_login);
+            InputFieldsManager.CheckLiteralValidity(textBox_login);
         }               
     }
 }

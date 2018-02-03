@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace LISy.Entities
 {
     /// <summary>
-    /// Interface of "User" entity
+    /// Represents common properties of library users.
     /// </summary>
     public interface IUser
-    {        
-        string FirstName { get; set; }
+    {
+        string FirstName { get; }
 
-        string SecondName { get; set; }
+        string SecondName { get; }
 
         long CardNumber { get; set; }
 
-        string Phone { get; set; }
+        string Phone { get; }
 
-        string Address { get; set; }
+        string Address { get; }
 
-        string Type { get; set; }
+        string Type { get; }
     }
 }

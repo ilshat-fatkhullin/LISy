@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LISy.Entities
 {
     /// <summary>
-    /// Interface of "Document" entity
+    /// Represents common properties of library documents.
     /// </summary>
     public interface IDocument
     {

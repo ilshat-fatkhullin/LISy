@@ -6,12 +6,32 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities.Documents
 {
+    /// <summary>
+    /// Represents a journal entity in the library.
+    /// </summary>
     public class Journal : Takable
     {
         public string Publisher { get; private set; }
         public string Issue { get; private set; }
         public JournalArticle[] Articles { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of a journal.
+        /// </summary>
+        /// <param name="authors">Editors of the journal.</param>
+        /// <param name="title">Title of the journal.</param>
+        /// <param name="publisher">Publisher of the journal.</param>
+        /// <param name="issue">Issue of the journal.</param>
+        /// <param name="keys">Keywords using which the journal can be found.</param>
+        /// <param name="room">Room where the journal is stored.</param>
+        /// <param name="level">Level of the room of the journal.</param>
+        /// <param name="image">Cover of the journal.</param>
+        /// <param name="price">Price of the journal.</param>
+        /// <param name="amount">Amount of copies of the journal.</param>
+        /// <param name="art_amount">Amount of articles in the journal.</param>
+        /// <param name="art_authors">Authors of journal's atricles.</param>
+        /// <param name="art_titles">Titles of journal's atricles.</param>
+        /// <param name="art_keys">Keywords using which every journal's atricle can be found.</param>
         public Journal(string[] authors, string title, string publisher, string issue, string[] keys, int room, int level, string image, int price, int amount,
             int art_amount, string[][] art_authors, string[] art_titles, string[][] art_keys) : base(authors, title, keys, room, level, image, price, amount)
         {
@@ -26,6 +46,17 @@ namespace LISy.Entities.Documents
             if (art_amount != art_keys.Length) throw new ArgumentException("Invalid amount of collections of articles' keywords!");
             for (int i = 0; i < art_amount; ++i)
                 Articles[i] = new JournalArticle(art_authors[i], art_titles[i], art_keys[i], this);
+        }
+
+        /// <summary>
+        /// Moves journal and to new place in the library.
+        /// </summary>
+        /// <param name="room">Room where the journal wiil be moved.</param>
+        /// <param name="level">Level of new room of the journal.</param>
+        public override void ChangePlace(int room, int level)
+        {
+            base.ChangePlace(room, level);
+            foreach (JournalArticle art in Articles) art.ChangePlace(room, level);
         }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities.Documents
 {
+    /// <summary>
+    /// Represents a book entity in the library.
+    /// </summary>
     public class Book : Takable
     {
         public string Publisher { get; private set; }
@@ -13,6 +16,21 @@ namespace LISy.Entities.Documents
         public int Year { get; private set; }
         public bool Bestseller { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of a book.
+        /// </summary>
+        /// <param name="authors">Authors of the book.</param>
+        /// <param name="title">Title of the book.</param>
+        /// <param name="publisher">Publixher of the book.</param>
+        /// <param name="edition">Edition of the book.</param>
+        /// <param name="year">Year in with this edition was published.</param>
+        /// <param name="bestseller">Is the book a bestseller or not.</param>
+        /// <param name="keys">Keywords using which the book can be found.</param>
+        /// <param name="room">Room where the book is stored.</param>
+        /// <param name="level">Level of the room of the book.</param>
+        /// <param name="image">Cover of the book.</param>
+        /// <param name="price">Price of the book.</param>
+        /// <param name="amount">Amount of copies of the book.</param>
         public Book(string[] authors, string title, string publisher, string edition, int year, bool bestseller, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image, price, amount)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Book must have a publisher!");
@@ -21,6 +39,10 @@ namespace LISy.Entities.Documents
             Bestseller = bestseller;
         }
 
+        /// <summary>
+        /// Changes flag "Bestseller" of the book.
+        /// </summary>
+        /// <returns>true if the book is a bestseller, false otherwise.</returns>
         public bool ChangeBestseller()
         {
             Bestseller = !Bestseller;

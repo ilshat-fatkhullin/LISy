@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities.Users.Patrons
 {
-    public class Student: Patron
+    /// <summary>
+    /// Represents students of the university.
+    /// </summary>
+    public class Student : Patron
     {
-        public Student(string firstName, string secondName, long cardNumber, string phone, string address): base(firstName, secondName, cardNumber, phone, address)
+        /// <summary>
+        /// Initializes a new instance of a student.
+        /// </summary>
+        /// <param name="firstName">First name of the student.</param>
+        /// <param name="secondName">Second name of the student.</param>
+        /// <param name="cardNumber">Card number of the student.</param>
+        /// <param name="phone">Phone number of the student.</param>
+        /// <param name="address">Address of the student.</param>
+        public Student(string firstName, string secondName, long cardNumber, string phone, string address) : base(firstName, secondName, cardNumber, phone, address)
         {
             Type = "Student";
         }
