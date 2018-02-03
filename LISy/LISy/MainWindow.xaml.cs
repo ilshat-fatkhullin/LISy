@@ -1,4 +1,5 @@
 ﻿using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
 using LISy.Managers;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,17 @@ namespace LISy
     {
         public MainWindow()
         {
+            ILibrarianDataManager manager = new DataManager();
+
+            IPatron patron1 = new Student("Ilshat", "Fatkhullin", 4, "+79046640818", "Innopolis, University St., Dorm 1, Room 401");
+
+            IPatron patron2 = new Faculty("Rim", "Fatkuhllin", 1, "+79518975651", "Innopolis, University St., Dorm 1, Room 401");
+
+            manager.AddPatron(patron1, "r.rahimov", "1245141");
+
+            //manager.EditPatron(patron1, patron2);
+
+            //manager.DeletePatron(patron1);
             InitializeComponent();
         }
         ///<summary>
@@ -43,7 +55,7 @@ namespace LISy
                        password = InputFieldsManager.ReturnPasswordFromTextBox(passwordBox_enter);
 
                 //if all is OK, so we go to the Work window
-                if (CredentialsManager.Authorize(login, password))
+                if (CredentialsManager.Authorize(login, password) != -1)
                 {
                     WorkWindow work = new WorkWindow();
                     GoToWork(work);

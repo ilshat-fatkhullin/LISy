@@ -10,7 +10,7 @@ namespace LISy.Entities.Users
     {
         public Librarian(string firstName, string secondName, long cardNumber, string phone, string address): base(firstName, secondName, cardNumber, phone, address)
         {
-            
+            Type = "Librarian";
         }
     }
 }

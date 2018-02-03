@@ -2,6 +2,8 @@
 using LISy.Entities.Users;
 using System;
 using System.Data;
+using System.Linq;
+using System.Windows;
 
 namespace LISy.Managers.DataManagers
 {
@@ -18,7 +20,6 @@ namespace LISy.Managers.DataManagers
         /// <param name="patron">Patron, which is going to be added.</param>
         public bool AddPatron(IPatron patron, string login, string password)
         {
-            CredentialsManager.AddUserCredentials(login, password, patron.CardNumber);
 
             if (patron == null)
             {
@@ -27,11 +28,23 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address", patron);
+                var output = connection.Query<bool>("dbo.spUsers_GetNumberByData @FirstName, @SecondName, @Phone", 
+                    new { FirstName = patron.FirstName, SecondName = patron.SecondName, Phone = patron.Phone}).ToList();
+                if (!output[0])
+                {
+                    long cardNumber = CredentialsManager.AddUserCredentials(login, password);
+
+                    patron.CardNumber = cardNumber;
+                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type", patron);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
             //TODO: Рим, верни true - если добавился, false - если такой уже существует.
-            return true;
         }
 
         /// <summary>
@@ -67,8 +80,9 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spUsers_UpdateUser @CardNumber, @FirstName, @SecondName, @Phone, @Address", new { CardNumber = patron.CardNumber, FirstName = newPatron.FirstName,
-                    SecondName = newPatron.SecondName, Phone = newPatron.Phone, Address = newPatron.Address });
+                connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address", 
+                    new { CardNumber = patron.CardNumber, FirstName = newPatron.FirstName,
+                        SecondName = newPatron.SecondName, Phone = newPatron.Phone, Address = newPatron.Address });
             }
         }
     }

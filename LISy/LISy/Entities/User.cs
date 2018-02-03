@@ -22,6 +22,8 @@ namespace LISy.Entities
 
         public string Address { get; set; }
 
+        public string Type { get; set; }
+
         public User(string firstName, string secondName, long cardNumber, string phone, string address)
         {
             FirstName = firstName ?? throw new ArgumentNullException("User must have a first name!");
