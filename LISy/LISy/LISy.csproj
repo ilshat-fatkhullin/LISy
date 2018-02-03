@@ -85,8 +85,6 @@
     <Compile Include="BookingInfoWindow.xaml.cs">
       <DependentUpon>BookingInfoWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Users\ILibrarian.cs" />
-    <Compile Include="Entities\Users\IPatron.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Managers\CredentialsManager.cs" />
     <Compile Include="Managers\DataManagers\DocumentsDataManager.cs" />

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
-
+    /// <summary>
+    /// Represents common properties of library users.
+    /// </summary>
     public interface IUser
     {
         string FirstName { get; }
