@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace LISy.Entities
 {
     /// <summary>
-    /// Shouldn't be declared somewhere
-    /// It is just an implementation of interface <code>IDocument</code>
+    /// Represents the implementatin of common properties of library documents.
     /// </summary>
     public abstract class Document : IDocument
     {
@@ -32,6 +31,15 @@ namespace LISy.Entities
 
         #endregion
 
+        /// <summary>
+        /// Initializes a new instance of library document with common properties.
+        /// </summary>
+        /// <param name="authors">Authors or editors of the document.</param>
+        /// <param name="title">Title of the document.</param>
+        /// <param name="keys">Keywords using which the document can be found.</param>
+        /// <param name="room">Room where the document is stored.</param>
+        /// <param name="level">Level of the room of the document.</param>
+        /// <param name="coverURL">Cover of the document.</param>
         public Document(string[] authors, string title, string[] keys, int room, int level, string coverURL)
         {
             if (keys == null) throw new ArgumentNullException("Document must have keywords!");
@@ -45,12 +53,21 @@ namespace LISy.Entities
 
         #region SETTER_FUNCTIONS
 
-        public void ChangePlace(int room, int level)
+        /// <summary>
+        /// Moves the document to new place in the library.
+        /// </summary>
+        /// <param name="room">Room where the document will be moved.</param>
+        /// <param name="level">Level of new room of the document.</param>
+        public virtual void ChangePlace(int room, int level)
         {
             Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
             Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }
 
+        /// <summary>
+        /// Adds a keyword to the list of document's keywords.
+        /// </summary>
+        /// <param name="word">Keyword that will be added.</param>
         public void AddKeyword(string word)
         {
             if (word == null) throw new ArgumentNullException("Invalid keyword!");
@@ -58,6 +75,10 @@ namespace LISy.Entities
             Keywords.Add(word);
         }
 
+        /// <summary>
+        /// Removes a keyword from the list of document's keywords.
+        /// </summary>
+        /// <param name="keyword">Keyword that will be removed.</param>
         public void RemoveKeyword(string keyword)
         {
             if (keyword == null) throw new ArgumentNullException("Invalid keyword!");
@@ -65,10 +86,15 @@ namespace LISy.Entities
             Keywords.Remove(keyword);
         }
 
-        public void ChangeKeyword(string keyword, string newKeyword)
+        /// <summary>
+        /// Changes a keyword to new one in the list of document's keywords.
+        /// </summary>
+        /// <param name="oldkeyword">Keyword that will be changed by new one.</param>
+        /// <param name="newkeyword">Kayword that will replace old one.</param>
+        public void ChangeKeyword(string oldkeyword, string newkeyword)
         {
-            RemoveKeyword(keyword);
-            AddKeyword(newKeyword);
+            RemoveKeyword(oldkeyword);
+            AddKeyword(newkeyword);
         }
 
         #endregion
