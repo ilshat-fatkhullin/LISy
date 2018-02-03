@@ -19,7 +19,7 @@ namespace LISy.Entities.Users.Patrons
         /// <param name="cardNumber">Card number of the teacher.</param>
         /// <param name="phone">Phone number of the teacher.</param>
         /// <param name="address">Address of the teacher.</param>
-        public Faculty(string firstName, string secondName, long cardNumber, string phone, string address) : base(firstName, secondName, cardNumber, phone, address)
+        public Faculty(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
         {
             Type = "Faculty";
         }

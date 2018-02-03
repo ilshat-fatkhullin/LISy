@@ -21,7 +21,7 @@ namespace LISy.Entities.Users
         /// <param name="cardNumber">Card number of the patron.</param>
         /// <param name="phone">Phone number of the patron.</param>
         /// <param name="address">Address of the patron.</param>
-        public Patron(string firstName, string secondName, long cardNumber, string phone, string address) : base(firstName, secondName, cardNumber, phone, address)
+        public Patron(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
         {
             TakenCopies = new List<Copy>();
         }

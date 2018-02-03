@@ -31,11 +31,10 @@ namespace LISy.Entities
         /// <param name="cardNumber">Card number of the user.</param>
         /// <param name="phone">Phone number of the user.</param>
         /// <param name="address">Address of the user.</param>
-        public User(string firstName, string secondName, long cardNumber, string phone, string address)
+        public User(string firstName, string secondName, string phone, string address)
         {
             FirstName = firstName ?? throw new ArgumentNullException("User must have a first name!");
-            SecondName = secondName ?? throw new ArgumentNullException("User must have a second name!");
-            CardNumber = cardNumber >= 0 ? cardNumber : throw new ArgumentException("Invalid card number!");
+            SecondName = secondName ?? throw new ArgumentNullException("User must have a second name!");            
             Phone = phone ?? throw new ArgumentNullException("User must have a phone number!");
             Address = address ?? throw new ArgumentNullException("User must have an address!");
         }
