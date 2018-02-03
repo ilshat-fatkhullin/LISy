@@ -21,40 +21,26 @@ namespace LISy
     /// </summary>
     public partial class WorkWindow : Window
     {
+        private static RegisterWindow registerWindow = new RegisterWindow();
         public WorkWindow()
         {
             InitializeComponent();
-            View = CollectionViewSource.GetDefaultView(DataT);
-            View.Filter = o => TxtSearch == null || ((string)o).Contains(TxtSearch);
+            ///<summary>
+            ///here we get id and users name for make Profile page
+            ///<summary>
+            //string id = registerWindow.Return_id().ToString();
+            string name = registerWindow.textBox_name.Text.ToString();       
         }
-        private IEnumerable<string> DataT = new String[] { "111", "222", "333", "444", "555", "123", "456" };
-        public ICollectionView View { get; set; }
-      
-        private string _txtSearch;
-        public string TxtSearch
-        {
-            get { return _txtSearch; }
-            set
-            {
-                _txtSearch = value;
-                OnPropertyChanged();
-                View.Refresh();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        ///<summary>
+        ///this button will be an action to begin search document in DB
+        ///<summary>
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
+        ///<summary>
+        ///every checked checkBox will be like a filter for seaching 
+        ///<summary>
         private void checkBox_AV_Checked(object sender, RoutedEventArgs e)
         {
 
@@ -66,6 +52,31 @@ namespace LISy
         }
 
         private void checkBox_books_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        ///<summary>
+        ///when we find document we click button to read about this document and book it
+        ///<summary>
+        private void button_open_Click(object sender, RoutedEventArgs e)
+        {
+            BookingInfoWindow bookingInfo = new BookingInfoWindow();
+            bookingInfo.Owner = this;
+            bookingInfo.Show();
+            
+        }
+
+        private void button_Profile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button_Booking_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button_Info_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -16,7 +16,7 @@ namespace LISy.Managers.DataManagers
         /// Adds new patron to the database.        
         /// </summary>
         /// <param name="patron">Patron, which is going to be added.</param>
-        public void AddPatron(IPatron patron, string login, string password)
+        public bool AddPatron(IPatron patron, string login, string password)
         {
             CredentialsManager.AddUserCredentials(login, password, patron.CardNumber);
 
@@ -29,6 +29,9 @@ namespace LISy.Managers.DataManagers
             {
                 connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address", patron);
             }
+
+            //TODO: Рим, верни true - если добавился, false - если такой уже существует.
+            return true;
         }
 
         /// <summary>

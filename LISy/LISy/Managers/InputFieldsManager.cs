@@ -25,7 +25,7 @@ namespace LISy.Managers
             return flag;
         }
 
-        public static string ReturnFromTextBox(TextBox textBox)
+        public static string ReturnStringFromTextBox(TextBox textBox)
         {
             string input = "";
             if (textBox.Text != null)
@@ -43,6 +43,32 @@ namespace LISy.Managers
                 password = passwordBox.Password;
             }
             return password;
+        }
+
+        public static void AlertNumbers(TextBox textBox)
+        {
+            //тут нужен эксепшен на буквы а то программа вылетает
+            byte result;
+            char[] element = textBox.Text.ToCharArray();
+            foreach (char n in element)
+            {
+                result = Convert.ToByte(n);
+                if (result <= 47 && result >= 58)
+                {
+                    MessageBox.Show("This textbox accepts only numbers");
+                    textBox.Clear();
+                    break;
+                }
+            }
+        }
+
+        public static void AlertText(TextBox textBox)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox.Text, "^[a-zA-Z]"))
+            {
+                MessageBox.Show("This textbox accepts only English characters");
+                textBox.Clear();
+            }
         }
     }
 }

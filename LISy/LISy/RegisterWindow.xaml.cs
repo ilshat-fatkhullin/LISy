@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LISy.Managers;
+using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
 
 namespace LISy
 {
@@ -25,103 +27,91 @@ namespace LISy
             InitializeComponent();
 
         }
-        
+
         private void button_register_Click(object sender, RoutedEventArgs e)
         {
             WorkWindow work = new WorkWindow();
-                         
-            if (textBox_name.Text != null && textBox_phone_number.Text != null && textBox_Address_town.Text != null && textBox_Address_street.Text != null && textBox_Address_building.Text != null && textBox_Address_flat.Text != null && passwordBox_registration.Password != null) {
 
-                InputFieldsManager.ReturnFromTextBox(textBox_name);
-                InputFieldsManager.ReturnFromTextBox(textBox_phone_number);
-                InputFieldsManager.ReturnFromTextBox(textBox_Address_town);
-                InputFieldsManager.ReturnFromTextBox(textBox_Address_street);
-                InputFieldsManager.ReturnFromTextBox(textBox_Address_building);
-                InputFieldsManager.ReturnFromTextBox(textBox_Address_flat);
-                InputFieldsManager.ReturnPasswordFromTextBox(passwordBox_registration);
-                
-                //метод проверить что такого пользователя с такими данными есть ли в базе если есть то выводим что есть если нет то регаем его 
+            if (textBox_name.Text != null &&
+                textBox_phone_number.Text != null &&
+                textBox_Address_town.Text != null &&
+                textBox_Address_street.Text != null &&
+                textBox_Address_building.Text != null &&
+                textBox_Address_flat.Text != null &&                
+                InputFieldsManager.CheckPasswordValidity(passwordBox_registration))
+            {
+
+                string firstName = InputFieldsManager.ReturnStringFromTextBox(textBox_name),
+                //TODO: Айдар, сделай поле для secondName и замени тут на него
+                       secondName = InputFieldsManager.ReturnStringFromTextBox(textBox_name),
+                       phone = InputFieldsManager.ReturnStringFromTextBox(textBox_phone_number),
+                       address = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_town) + ' ' +
+                                 InputFieldsManager.ReturnStringFromTextBox(textBox_Address_street) + ' ' +
+                                 InputFieldsManager.ReturnStringFromTextBox(textBox_Address_building) + ' ' +
+                                 InputFieldsManager.ReturnStringFromTextBox(textBox_Address_flat) + ' ';
+                string password = InputFieldsManager.ReturnPasswordFromTextBox(passwordBox_registration);
+                string login = firstName.Substring(0, 1) + '.' + secondName;
+
+                IPatron patron = null;
                 if (checkBox_faculty.IsChecked == true)
                 {
-                    //таким образом все пользователи Факульти будут отличаться наличием последнего симовала которой будет буква, у обычных там цифра а у Факульти буква
-                    id = id + "F";                
+                    patron = new Faculty(firstName, secondName, 1, phone, address);
                 }
-                //if all checks good so open window                
-                if (InputFieldsManager.CheckPasswordValidity(passwordBox_registration) &&
-                    CredentialsManager.Authorize(textBox))
+                else
                 {
-                    //переходим к окну работы мы зарегались
-                    // нужно будет перенести id b name пользователя отсюда в окно работы в label_name and label_id
+                    patron = new Student(firstName, secondName, 1, phone, address);
+                }
 
-                    GoToWork(work);
+                ILibrarianDataManager librarianDataManager = new DataManager();
+
+                //if all checks good so open window                
+                if (librarianDataManager.AddPatron(patron, login, password))
+                {
+                    WorkWindow workWindow = new WorkWindow();
+                    GoToWork(workWindow);
+                }
+                else
+                {
+                    MessageBox.Show("Error! Can not create an account.");
                 }
             }
         }
-
-        //close regestration window open workWindow
+                              
         private void GoToWork(WorkWindow work)
-        {
+        {            
             work.Show();
             this.Close();
-        }
-        
+        }        
+
         //return name from textBox_name
         private void textBox_name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            AlertText(textBox_name);
-        }
-        //give for user message about not correct input to  with strings
-        private void AlertText(TextBox textBox) {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(textBox.Text, "^[a-zA-Z]"))
-            {
-                MessageBox.Show("This textbox accepts only English characters");
-                textBox.Clear();
-            }
-        }
-        //give for user message about not correct input to  with numbers
-        private void AlertNumbers(TextBox textBox)
-        {
-            //тут нужен эксепшен на буквы а то программа вылетает
-            byte result;
-            char[] element = textBox.Text.ToCharArray();
-            foreach (char n in element) {
-                result = Convert.ToByte(n);
-                if (result <= 47 && result >= 58)
-                {
-                    MessageBox.Show("This textbox accepts only numbers");
-                    textBox.Clear();
-                    break;
-                }
-              
-            }
-            
-               
-            
-        }        
+            InputFieldsManager.AlertText(textBox_name);
+        }                                 
 
         private void textBox_Address_town_TextChanged(object sender, TextChangedEventArgs e)
         {
-            AlertText(textBox_Address_town);
+            InputFieldsManager.AlertText(textBox_Address_town);
         }
 
         private void textBox_Address_street_TextChanged(object sender, TextChangedEventArgs e)
         {
-            AlertText(textBox_Address_street);
+            InputFieldsManager.AlertText(textBox_Address_street);
         }
 
         private void textBox_Address_building_TextChanged(object sender, TextChangedEventArgs e)
         {
-            AlertNumbers(textBox_Address_building);
+            InputFieldsManager.AlertNumbers(textBox_Address_building);
         }
 
         private void textBox_Address_flat_TextChanged(object sender, TextChangedEventArgs e)
         {
-            AlertNumbers(textBox_Address_flat);
+            InputFieldsManager.AlertNumbers(textBox_Address_flat);
         }
 
         private void textBox_phone_number_TextChanged(object sender, TextChangedEventArgs e)
         {
-            AlertNumbers(textBox_phone_number);
+            InputFieldsManager.AlertNumbers(textBox_phone_number);
         }
     }
 }

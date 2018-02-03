@@ -54,9 +54,9 @@ namespace LISy.Managers
         /// </summary>
         /// <param name="patron">Patron, which is going to be added.</param>
         /// <param name="password">Patron's account password</param>
-        public void AddPatron(IPatron patron, string login, string password)
+        public bool AddPatron(IPatron patron, string login, string password)
         {
-            usersDataManager.AddPatron(patron, login, password);
+            return usersDataManager.AddPatron(patron, login, password);
         }
 
         /// <summary>
