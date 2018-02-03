@@ -10,7 +10,7 @@ namespace LISy.Entities.Users
     /// <summary>
     /// Represents library clients.
     /// </summary>
-    public abstract class Patron : User
+    public abstract class Patron : User, IPatron
     {
         public List<Copy> TakenCopies { get; protected set; }
 
