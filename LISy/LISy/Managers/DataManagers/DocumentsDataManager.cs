@@ -4,19 +4,13 @@ using System;
 
 namespace LISy.Managers.DataManagers
 {
-    public class DocumentsDataManager
+    static class DocumentsDataManager
     {
-
-        public DocumentsDataManager()
-        {
-
-        }
-
         /// <summary>
         /// Adds new document to the database.
         /// </summary>
         /// <param name="document">Document, which is going to be added.</param>
-        public void AddDocument(IDocument document)
+        public static void AddDocument(IDocument document)
         {
             throw new NotImplementedException();
         }
@@ -25,7 +19,7 @@ namespace LISy.Managers.DataManagers
         /// Deletes a document from the database.
         /// </summary>
         /// <param name="document">Document, which is going to be deleted.</param>
-        public void DeleteDocument(IDocument document)
+        public static void DeleteDocument(IDocument document)
         {
             throw new NotImplementedException();
         }
@@ -35,12 +29,12 @@ namespace LISy.Managers.DataManagers
         /// </summary>
         /// <param name="document">Document, which is going to be replaced.</param>
         /// <param name="newDocument">Document, which is going to be instead of <code>document</code>.</param>
-        public void EditDocument(IDocument document, IDocument newDocument)
+        public static void EditDocument(IDocument document, IDocument newDocument)
         {
             throw new NotImplementedException();
         }
 
-        public void CheckOutDocument(IDocument document, IPatron patron)
+        public static void CheckOutDocument(IDocument document, IPatron patron)
         {
             throw new NotImplementedException();            
         }

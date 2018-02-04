@@ -9,7 +9,6 @@ namespace LISy.Managers
 {
     public static class CredentialsManager
     {
-
         /// <summary>
         /// Checks is user with current login and password exist in the database.
         /// </summary>
@@ -17,16 +16,16 @@ namespace LISy.Managers
         /// <param name="password">User's password</param>        
         /// <returns>Returns card number, if credentials is correct, -1 otherwise</returns>
         public static long Authorize(string login, string password)
-        {
+        {            
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Execute("dbo.spCredentials_Authorize @Login @Password", new { Login = login,
+                var output = connection.Execute("dbo.spCredentials_Authorize @Login, @Password", new { Login = login,
                     Password = password });
                 MessageBox.Show(output.GetType().ToString());
             }
 
             return -1;
-
+        
         }
 
         /// <summary>
