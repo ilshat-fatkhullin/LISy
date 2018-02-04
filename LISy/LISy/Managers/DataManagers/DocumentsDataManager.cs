@@ -41,16 +41,16 @@ namespace LISy.Managers.DataManagers
         public static void CheckOutDocument(long userID, long documentID)
         {
 
-            if (!IsAvailable(documentID, userID))
+            if (IsAvailable(documentID, userID))
             {
                 using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
                 {
-                    var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId", new { BookId = documentID }).ToList();
-                    connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output, UserId = userID});
+                    var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentID, UserId = userID }).ToList();
+                    connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output[0], UserId = userID});
                 }
             }
 
-            throw new NotSupportedException();
+            //throw new NotSupportedException();
 
         }
 
