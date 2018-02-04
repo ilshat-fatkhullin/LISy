@@ -41,15 +41,17 @@ namespace LISy.Managers.DataManagers
         {
             Copy copy = new Copy(document);
 
-            if (copy.IsAvailable())
+            if (!copy.IsAvailable())
             {
                 using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
                 {
                     connection.Query<long>("dbo.", patron);
                 }
-            }
 
-            return copy;
+
+                return copy;
+            }
+            throw new NotSupportedException();
         }
     }
 }
