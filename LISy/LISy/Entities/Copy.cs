@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using LISy.Entities.Documents;
 using LISy.Entities.Users;
+using System;
+using System.Data;
+using System.Linq;
 
 namespace LISy.Entities
 {

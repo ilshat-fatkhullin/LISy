@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-       Title="Registration" Height="560" Width="325"
+       Title="Registration" Height="600" Width="325"
         Icon="Design\icon_logo100x100.ico" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" >
     <Window.Background>
         <ImageBrush/>
@@ -15,23 +15,25 @@
             <ImageBrush ImageSource="Design\sing_up_window_back.jpg"/>
         </Grid.Background>
         <Label x:Name="label_title_registration" Content="Registration in the system" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="297" Foreground="White" HorizontalContentAlignment="Center" FontSize="20"/>
-        <Grid Margin="50,52,50,0" Background="#19000000" Height="418" VerticalAlignment="Top">
-            <Label x:Name="label_name" Content="Name*" Margin="10,10,10,0" Height="25" VerticalAlignment="Top" Foreground="White"/>
-            <TextBox x:Name="textBox_name" Margin="10,35,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_name_TextChanged"/>
-            <Label x:Name="label_Address_town" Content="Address (Town)*" Margin="10,65,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
-            <TextBox x:Name="textBox_Address_town" Margin="10,90,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="18" TextChanged="textBox_Address_town_TextChanged"/>
-            <Label x:Name="label_Address_street" Content="Address (Street)*" Margin="10,120,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
-            <TextBox x:Name="textBox_Address_street" Margin="10,145,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_Address_street_TextChanged"/>
-            <Label x:Name="label_Address_street_building" Content="Address (Building №)*" Margin="10,175,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
-            <TextBox x:Name="textBox_Address_building" Margin="10,200,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_Address_building_TextChanged" />
-            <Label x:Name="label_Address_street_flat" Content="Address (Flat №)*" Margin="10,230,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
-            <TextBox x:Name="textBox_Address_flat" Margin="10,255,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_Address_flat_TextChanged"/>
-            <Label x:Name="label_phone_number" Content="Phone number*" Margin="10,285,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
-            <TextBox x:Name="textBox_phone_number" Margin="10,310,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_phone_number_TextChanged"/>
-            <Label x:Name="label_passwors_register" Content="Password*" Margin="10,340,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
-            <PasswordBox x:Name="passwordBox_registration" HorizontalAlignment="Left" Margin="10,365,0,23" RenderTransformOrigin="0.567,0.5" Width="197" Background="#CC000000" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16"/>
-            <CheckBox x:Name="checkBox_faculty" Content="Faculty" Margin="10,400,10,2" FontSize="12" Foreground="White" />
+        <Grid Margin="50,52,50,0" Background="#19000000" Height="484" VerticalAlignment="Top">
+            <Label x:Name="label_name" Content="Last Name*" Margin="10,68,10,0" Height="25" VerticalAlignment="Top" Foreground="White"/>
+            <TextBox x:Name="textBox_last_name" Margin="10,98,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_last_name_TextChanged" />
+            <Label x:Name="label_Address_town" Content="Address (Town)*" Margin="10,128,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address_town" Margin="10,153,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="18" TextChanged="textBox_Address_town_TextChanged"/>
+            <Label x:Name="label_Address_street" Content="Address (Street)*" Margin="10,183,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address_street" Margin="10,208,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_Address_street_TextChanged"/>
+            <Label x:Name="label_Address_street_building" Content="Address (Building №)*" Margin="10,238,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address_building" Margin="10,263,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_Address_building_TextChanged" />
+            <Label x:Name="label_Address_street_flat" Content="Address (Flat №)*" Margin="10,293,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_Address_flat" Margin="10,318,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_Address_flat_TextChanged"/>
+            <Label x:Name="label_phone_number" Content="Phone number*" Margin="10,348,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <TextBox x:Name="textBox_phone_number" Margin="10,373,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_phone_number_TextChanged"/>
+            <Label x:Name="label_passwors_register" Content="Password*" Margin="10,403,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
+            <PasswordBox x:Name="passwordBox_registration" Margin="10,428,10,0" RenderTransformOrigin="0.567,0.5" Background="#CC000000" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16" Height="30" VerticalAlignment="Top"/>
+            <CheckBox x:Name="checkBox_faculty" Content="Faculty" Margin="10,458,10,0" FontSize="12" Foreground="White" Height="16" VerticalAlignment="Top" />
+            <Label x:Name="label_name1" Content="First Name*" Margin="10,13,10,0" Height="25" VerticalAlignment="Top" Foreground="White"/>
+            <TextBox x:Name="textBox_name" Margin="10,38,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_name_TextChanged"/>
         </Grid>
-        <Button x:Name="button_register" Content="Sign Up" Margin="50,475,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_register_Click"/>
+        <Button x:Name="button_register" Content="Sign Up" Margin="50,541,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_register_Click"/>
     </Grid>
 </Window>
