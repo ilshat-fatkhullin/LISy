@@ -11,14 +11,14 @@ namespace LISy.Entities
     /// </summary>
     public interface IUser
     {
+        long CardNumber { get; set; }
+
         string FirstName { get; }
 
         string SecondName { get; }
 
-        long CardNumber { get; set; }
-
         string Phone { get; }
 
-        string Address { get; }        
+        string Address { get; }
     }
 }
