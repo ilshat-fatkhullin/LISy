@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,10 +35,13 @@ namespace LISy.Managers
         /// </summary>
         /// <param name="cardNumber">User's card number</param>
         /// <returns>User's type</returns>
-        public static Type GetUserType(long cardNumber)
+        public static string GetUserType(long cardNumber)
         {
-            //typeof(ILibrarian) -- пример того, как получить тип
-            throw new NotImplementedException();
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<String>("dbo.spUsers_GetUserTypeByCard  @CardNumber", new { CardNumber = cardNumber }).ToList();
+                return output[0];
+            }
         }
 
         /// <summary>

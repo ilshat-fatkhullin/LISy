@@ -29,7 +29,9 @@ namespace LISy.Managers.DataManagers
                     long cardNumber = CredentialsManager.AddUserCredentials(login, password);
 
                     patron.CardNumber = cardNumber;
-                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type", patron);
+                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type", 
+                        new { FirstName = patron.FirstName, SecondName = patron.SecondName, CardNumber = patron.CardNumber,
+                        Phone = patron.Phone, Address = patron.Address, Type = patron.GetType().ToString().Split('.').Last()});
                     return true;
                 }
                 else
