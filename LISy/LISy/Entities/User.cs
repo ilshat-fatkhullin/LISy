@@ -19,9 +19,7 @@ namespace LISy.Entities
 
         public string Phone { get; protected set; }
 
-        public string Address { get; protected set; }
-
-        public string Type { get; protected set; }
+        public string Address { get; protected set; }        
 
         /// <summary>
         /// Initializes a new instance of library user.

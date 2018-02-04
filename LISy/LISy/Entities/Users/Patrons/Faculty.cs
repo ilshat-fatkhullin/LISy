@@ -21,7 +21,7 @@ namespace LISy.Entities.Users.Patrons
         /// <param name="address">Address of the teacher.</param>
         public Faculty(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
         {
-            Type = "Faculty";
+            
         }
     }
 }

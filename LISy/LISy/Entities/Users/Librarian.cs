@@ -22,7 +22,7 @@ namespace LISy.Entities.Users
         /// <param name="address">Address of the worker.</param>
         public Librarian(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
         {
-            Type = "Librarian";
+            
         }
     }
 }
