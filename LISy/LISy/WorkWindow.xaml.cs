@@ -85,15 +85,15 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
-                Owner = this,
+                UserID = UserID,
+                DocumentID = 1,
+                Owner = this,                
                 image_preview =
                 {
                     Stretch = Stretch.Fill,
                     Source = bi1
                 },
-                label_name = {Content = label_book_1.Content},
-                //TODO: в этот лейбл нужно закидовать состояние о кптях книжки количество или слово
-                label_inStock = {Content = "available"},
+                label_name = {Content = label_book_1.Content},                
                 label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
             };
             
@@ -110,14 +110,14 @@ namespace LISy
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
                 UserID = UserID,
+                DocumentID = 2,
                 Owner = this,
                 image_preview =
                 {
                     Stretch = Stretch.Fill,
                     Source = bi2
                 },
-                label_name = {Content = label_book_2.Content},
-                label_inStock = {Content = "available"},
+                label_name = {Content = label_book_2.Content},                
                 label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
             };
             bookingInfo.Show();
@@ -127,19 +127,20 @@ namespace LISy
         {
             BitmapImage bi3 = new BitmapImage();
             bi3.BeginInit();
-            bi3.UriSource = new Uri("Design/Rye_catcher", UriKind.Relative);
+            bi3.UriSource = new Uri("Design/Rye_catcher.jpg", UriKind.Relative);
             bi3.EndInit();
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
+                UserID = UserID,
+                DocumentID = 3,
                 Owner = this,
                 image_preview =
                 {
                     Stretch = Stretch.Fill,
                     Source = bi3
                 },
-                label_name = { Content = label_book_3.Content },
-                label_inStock = { Content = "available" },
+                label_name = { Content = label_book_3.Content },                
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Show();
@@ -154,14 +155,15 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
+                UserID = UserID,
+                DocumentID = 4,
                 Owner = this,
                 image_preview =
                 {
                     Stretch = Stretch.Fill,
                     Source = bi4
                 },
-                label_name = { Content = label_book_4.Content },
-                label_inStock = { Content = "available" },
+                label_name = { Content = label_book_4.Content },                
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Show();
@@ -176,14 +178,15 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
+                UserID = UserID,
+                DocumentID = 5,
                 Owner = this,
                 image_preview =
                 {
                     Stretch = Stretch.Fill,
                     Source = bi5
                 },
-                label_name = { Content = label_book_5.Content },
-                label_inStock = { Content = "available" },
+                label_name = { Content = label_book_5.Content },                
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Show();

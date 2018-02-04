@@ -24,19 +24,28 @@ namespace LISy
     /// </summary>
     public partial class BookingInfoWindow : Window
     {
-        public long BookID;
+        public long DocumentID;
         public long UserID;
 
         public BookingInfoWindow()
         {
-            InitializeComponent();     
-           
-            
+            InitializeComponent();
+
+            if (DocumentsDataManager.IsAvailable(DocumentID, UserID))
+            {
+                button_book.IsEnabled = true;
+                label_inStock.Content = "Available";
+            }
+            else
+            {
+                button_book.IsEnabled = false;
+                label_inStock.Content = "Not available";
+            }
         }
 
         private void button_book_Click(object sender, RoutedEventArgs e)
         {
-            PatronDataManager.CheckOutDocument(BookID, UserID);
+            PatronDataManager.CheckOutDocument(DocumentID, UserID);
             button_book.IsEnabled = false;
         }
     }
