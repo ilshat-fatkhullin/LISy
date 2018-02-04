@@ -62,17 +62,7 @@ namespace LISy
        
         private void button_Profile_Click(object sender, RoutedEventArgs e)
         {
-            Profile profilelWindow = new Profile
-            {
-                Owner = this,
-                label_name = {Content = Profile[0]},
-                label_last_name = {Content = Profile[1]},
-                label_Town = {Content = Profile[2]},
-                label_Street = {Content = Profile[3]},
-                label_build = {Content = Profile[4]},
-                label_flat = {Content = Profile[5]},
-                label_phone = {Content = Profile[6]}
-            };
+            Profile profilelWindow = new Profile();
             profilelWindow.Show();
         }
 
