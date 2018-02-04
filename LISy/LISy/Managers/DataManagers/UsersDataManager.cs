@@ -3,14 +3,13 @@ using LISy.Entities.Users;
 using System;
 using System.Data;
 using System.Linq;
-using System.Windows;
 
 namespace LISy.Managers.DataManagers
 {
     static class UsersDataManager
     {        
         /// <summary>
-        /// Adds new patron to the database.        
+        /// Adds new Patron to the database.        
         /// </summary>
         /// <param name="patron">Patron, which is going to be added.</param>
         public static bool AddPatron(IPatron patron, string login, string password)
@@ -43,7 +42,7 @@ namespace LISy.Managers.DataManagers
         }
 
         /// <summary>
-        /// Deletes a patron from the database.
+        /// Deletes a Patron from the database.
         /// </summary>
         /// <param name="patron">Patron, which is going to be deleted.</param>
         public static void DeletePatron(IPatron patron)
@@ -63,10 +62,10 @@ namespace LISy.Managers.DataManagers
         }
 
         /// <summary>
-        /// Replaces <code>patron</code> on <code>newPatron</code> in the database.
+        /// Replaces <code>Patron</code> on <code>newPatron</code> in the database.
         /// </summary>
         /// <param name="patron">Patron, which is going to be replaced.</param>
-        /// <param name="newPatron">Patron, which is going to be instead of <code>patron</code>.</param>
+        /// <param name="newPatron">Patron, which is going to be instead of <code>Patron</code>.</param>
         public static void EditPatron(IPatron patron, IPatron newPatron)
         {
             if (patron == null || newPatron == null)

@@ -34,11 +34,12 @@ namespace LISy
                        password = InputFieldsManager.ReturnPasswordFromTextBox(passwordBox_enter);
 
                 //if all is OK, so we go to the Work window
-                if (CredentialsManager.Authorize(login, password) != -1)
+                long userID = CredentialsManager.Authorize(login, password);
+                if (userID != -1)
                 {
-                    using (StreamWriter writer = new StreamWriter("login.txt"))
+                    using (StreamWriter writer = new StreamWriter("id.txt"))
                     {
-                        writer.Write(login);
+                        writer.Write(userID);
                     }
                     WorkWindow work = new WorkWindow();
                     GoToWork(work);

@@ -16,21 +16,21 @@ namespace LISy.Entities.Users
         /// <summary>
         /// Initializes a new instance of library client.
         /// </summary>
-        /// <param name="firstName">First name of the patron.</param>
-        /// <param name="secondName">Second name of the patron.</param>
-        /// <param name="cardNumber">Card number of the patron.</param>
-        /// <param name="phone">Phone number of the patron.</param>
-        /// <param name="address">Address of the patron.</param>
+        /// <param name="firstName">First name of the Patron.</param>
+        /// <param name="secondName">Second name of the Patron.</param>
+        /// <param name="cardNumber">Card number of the Patron.</param>
+        /// <param name="phone">Phone number of the Patron.</param>
+        /// <param name="address">Address of the Patron.</param>
         public Patron(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
         {
             TakenCopies = new List<Copy>();
         }
 
         /// <summary>
-        /// Determines whether the patron has a copy of a document.
+        /// Determines whether the Patron has a copy of a document.
         /// </summary>
         /// <param name="document">Document which copy will be searched.</param>
-        /// <returns>true if patron has a copy of such document, false otherwise.</returns>
+        /// <returns>true if Patron has a copy of such document, false otherwise.</returns>
         public bool HasCopyOfDocument(Takable document)
         {
             foreach (Copy temp in TakenCopies)

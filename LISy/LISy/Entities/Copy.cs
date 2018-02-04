@@ -31,26 +31,12 @@ namespace LISy.Entities
         }
 
         /// <summary>
-        /// Determines whether the copy is checked out by some Patron.
-        /// </summary>
-        /// <returns>true if copy is not checked out, false otherwise.</returns>
-        public bool IsAvailable()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
-            {
-                var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId", new { BookId = Document.ID }).ToList();
-                return (output.Count != 0);
-            }
-
-        }
-
-        /// <summary>
-        /// Records a patron that is checking out the copy.
+        /// Records a Patron that is checking out the copy.
         /// </summary>
         /// <param name="patron">Patron that is checking out the copy.</param>
         public void CkeckOut(Patron patron)
         {
-            Patron = patron ?? throw new ArgumentNullException("Copy must be checked out by a patron!");
+            Patron = patron ?? throw new ArgumentNullException("Copy must be checked out by a Patron!");
         }
 
         /// <summary>

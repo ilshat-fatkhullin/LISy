@@ -63,9 +63,9 @@ namespace LISy
                 //if all checks good so open window                
                 if (LibrarianDataManager.AddPatron(patron, login, password))
                 {
-                    using (StreamWriter writer = new StreamWriter("login.txt"))
+                    using (StreamWriter writer = new StreamWriter("id.txt"))
                     {
-                        writer.Write(login);
+                        writer.Write(CredentialsManager.Authorize(login, password));
                     }
 
                     WorkWindow workWindow = new WorkWindow();

@@ -38,20 +38,33 @@ namespace LISy.Managers.DataManagers
             throw new NotImplementedException();
         }
 
-        public static void CheckOutDocument(Takable document, IPatron patron)
+        public static void CheckOutDocument(long userID, long documentID)
         {
-            Copy copy = new Copy(document);
 
-            if (!copy.IsAvailable())
+            if (!IsAvailable(documentID, userID))
             {
                 using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
                 {
-                    var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId", new { BookId = document.ID }).ToList();
-                    connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output, UserId = patron.CardNumber});
+                    var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId", new { BookId = documentID }).ToList();
+                    connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output, UserId = userID});
                 }
             }
 
             throw new NotSupportedException();
+
+        }
+
+        /// <summary>
+        /// Determines whether the copy is checked out by some Patron.
+        /// </summary>
+        /// <returns>true if copy is not checked out, false otherwise.</returns>
+        public static bool IsAvailable(long documentID, long userID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentID, UserId = userID }).ToList();
+                return (output.Count != 0);
+            }
 
         }
     }

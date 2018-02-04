@@ -46,7 +46,7 @@ namespace LISy.Entities.Documents
             int amount = 0;
             foreach (Copy temp in Copies)
             {
-                if (temp.IsAvailable()) ++amount;
+                if (IsAvailable()) ++amount;
             }
             return amount;
         }
@@ -57,10 +57,10 @@ namespace LISy.Entities.Documents
         /// <returns>true if the document has at least 1 copy in the library, false otherwise.</returns>
         public bool IsAvailable()
         {
-            if (LastAvailableCopy != null && LastAvailableCopy.IsAvailable()) return true;
+            if (LastAvailableCopy != null && IsAvailable()) return true;
             foreach (Copy temp in Copies)
             {
-                if (temp.IsAvailable())
+                if (IsAvailable())
                 {
                     LastAvailableCopy = temp;
                     return true;
@@ -70,13 +70,13 @@ namespace LISy.Entities.Documents
         }
 
         /// <summary>
-        /// Allocates a copy of the document for a patron to check out.
+        /// Allocates a copy of the document for a Patron to check out.
         /// </summary>
         /// <param name="patron">Patron that is checking out a copy.</param>
         /// <returns>a copy that was ckecked out.</returns>
         public Copy CheckOutCopy(Patron patron)
         {
-            if (patron == null) throw new ArgumentNullException("Copy must be checked out by a patron!");
+            if (patron == null) throw new ArgumentNullException("Copy must be checked out by a Patron!");
             if (!IsAvailable()) throw new Exception("No availbale copies!");
             LastAvailableCopy.CkeckOut(patron);
             return LastAvailableCopy;

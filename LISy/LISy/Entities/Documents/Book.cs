@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LISy.Entities.Documents
 {
     /// <summary>
-    /// Represents a book entity in the library.
+    /// Represents a Book entity in the library.
     /// </summary>
     public class Book : Takable
     {
@@ -20,18 +20,18 @@ namespace LISy.Entities.Documents
         public bool Bestseller { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of a book.
+        /// Initializes a new instance of a Book.
         /// </summary>
-        /// <param name="authors">Authors of the book.</param>
-        /// <param name="title">Title of the book.</param>
-        /// <param name="publisher">Publixher of the book.</param>
-        /// <param name="edition">Edition of the book.</param>
+        /// <param name="authors">Authors of the Book.</param>
+        /// <param name="title">Title of the Book.</param>
+        /// <param name="publisher">Publixher of the Book.</param>
+        /// <param name="edition">Edition of the Book.</param>
         /// <param name="year">Year in with this edition was published.</param>
-        /// <param name="bestseller">Is the book a bestseller or not.</param>
-        /// <param name="keys">Keywords using which the book can be found.</param>
-        /// <param name="image">Cover of the book.</param>
-        /// <param name="price">Price of the book.</param>
-        /// <param name="amount">Amount of copies of the book.</param>
+        /// <param name="bestseller">Is the Book a bestseller or not.</param>
+        /// <param name="keys">Keywords using which the Book can be found.</param>
+        /// <param name="image">Cover of the Book.</param>
+        /// <param name="price">Price of the Book.</param>
+        /// <param name="amount">Amount of copies of the Book.</param>
         public Book(string[] authors, string title, string publisher, string edition, int year, bool bestseller, string[] keys, string image, int price, int amount) : base(authors, title, keys, image, price, amount)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Book must have a publisher!");
@@ -41,9 +41,9 @@ namespace LISy.Entities.Documents
         }
 
         /// <summary>
-        /// Changes flag "Bestseller" of the book.
+        /// Changes flag "Bestseller" of the Book.
         /// </summary>
-        /// <returns>true if the book is a bestseller, false otherwise.</returns>
+        /// <returns>true if the Book is a bestseller, false otherwise.</returns>
         public bool ChangeBestseller()
         {
             Bestseller = !Bestseller;

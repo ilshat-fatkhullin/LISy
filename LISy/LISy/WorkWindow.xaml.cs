@@ -12,7 +12,7 @@ namespace LISy
     /// </summary>
     public partial class WorkWindow : Window
     {
-        private string login;
+        private long UserID;
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
@@ -22,12 +22,11 @@ namespace LISy
         {
             InitializeComponent();
 
-            using (StreamReader reader = new StreamReader("login.txt"))
+            using (StreamReader reader = new StreamReader("id.txt"))
             {
-                login = reader.ReadLine();
-            }
-             
-    }
+                UserID = Convert.ToInt64(reader.ReadLine());
+            }             
+        }
 
         ///<summary>
         ///this button will be an action to begin search document in DB
@@ -56,7 +55,7 @@ namespace LISy
         }
 
         ///<summary>
-        ///when we find document we click button to read about this document and book it
+        ///when we find document we click button to read about this document and Book it
         ///</summary>
        
        
@@ -95,7 +94,7 @@ namespace LISy
                 label_name = {Content = label_book_1.Content},
                 //TODO: в этот лейбл нужно закидовать состояние о кптях книжки количество или слово
                 label_inStock = {Content = "available"},
-                label_info = {Content = ">Some useful information about this book, which make you to book it."}
+                label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
             };
             
             bookingInfo.Show();
@@ -110,6 +109,7 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
+                UserID = UserID,
                 Owner = this,
                 image_preview =
                 {
@@ -118,7 +118,7 @@ namespace LISy
                 },
                 label_name = {Content = label_book_2.Content},
                 label_inStock = {Content = "available"},
-                label_info = {Content = ">Some useful information about this book, which make you to book it."}
+                label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
             };
             bookingInfo.Show();
         }
@@ -140,7 +140,7 @@ namespace LISy
                 },
                 label_name = { Content = label_book_3.Content },
                 label_inStock = { Content = "available" },
-                label_info = { Content = ">Some useful information about this book, which make you to book it." }
+                label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Show();
         }
@@ -162,7 +162,7 @@ namespace LISy
                 },
                 label_name = { Content = label_book_4.Content },
                 label_inStock = { Content = "available" },
-                label_info = { Content = ">Some useful information about this book, which make you to book it." }
+                label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Show();
         }
@@ -184,7 +184,7 @@ namespace LISy
                 },
                 label_name = { Content = label_book_5.Content },
                 label_inStock = { Content = "available" },
-                label_info = { Content = ">Some useful information about this book, which make you to book it." }
+                label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Show();
         }

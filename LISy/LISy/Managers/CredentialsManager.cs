@@ -1,11 +1,7 @@
 ﻿using Dapper;
-using LISy.Entities.Users;
-using LISy.Entities.Users.Patrons;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Windows;
 
 namespace LISy.Managers
 {
