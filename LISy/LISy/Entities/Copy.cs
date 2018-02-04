@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dapper;
 using LISy.Entities.Documents;
 using LISy.Entities.Users;
 
@@ -27,10 +25,6 @@ namespace LISy.Entities
         /// Initializes an instance of document copy.
         /// </summary>
         /// <param name="document">Document to that copy refers.</param>
-<<<<<<< HEAD
-        /// <param name="level">Level of the room of the copy.</param>
-=======
->>>>>>> 21200ddd70b8b41c2f85533e30a24d0cd4d8809b
         public Copy(Takable document)
         {
             Document = document ?? throw new ArgumentNullException("Copy must refer to a document!");
@@ -43,13 +37,7 @@ namespace LISy.Entities
         /// <returns>true if copy is not checked out, false otherwise.</returns>
         public bool IsAvailable()
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
-            {
-                var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId", new { BookId = Document.ID }).ToList();
-                return (output.Count != 0);
-            }
-
-            //return Patron == null;
+            return Patron == null;
         }
 
         /// <summary>
