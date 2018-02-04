@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using LISy.Entities.Documents;
 using LISy.Entities.Users;
 
@@ -39,7 +41,13 @@ namespace LISy.Entities
         /// <returns>true if copy is not checked out, false otherwise.</returns>
         public bool IsAvailable()
         {
-            return Patron == null;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId", new { BookId = Document.ID }).ToList();
+                return (output.Count != 0);
+            }
+
+            //return Patron == null;
         }
 
         /// <summary>
