@@ -7,20 +7,14 @@ using System.Windows;
 
 namespace LISy.Managers.DataManagers
 {
-    public class UsersDataManager
-    {
-        public UsersDataManager()
-        {
-
-        }
-
+    static class UsersDataManager
+    {        
         /// <summary>
         /// Adds new patron to the database.        
         /// </summary>
         /// <param name="patron">Patron, which is going to be added.</param>
-        public bool AddPatron(IPatron patron, string login, string password)
+        public static bool AddPatron(IPatron patron, string login, string password)
         {
-
             if (patron == null)
             {
                 throw new ArgumentNullException();
@@ -52,7 +46,7 @@ namespace LISy.Managers.DataManagers
         /// Deletes a patron from the database.
         /// </summary>
         /// <param name="patron">Patron, which is going to be deleted.</param>
-        public void DeletePatron(IPatron patron)
+        public static void DeletePatron(IPatron patron)
         {
 
             if (patron == null)
@@ -73,7 +67,7 @@ namespace LISy.Managers.DataManagers
         /// </summary>
         /// <param name="patron">Patron, which is going to be replaced.</param>
         /// <param name="newPatron">Patron, which is going to be instead of <code>patron</code>.</param>
-        public void EditPatron(IPatron patron, IPatron newPatron)
+        public static void EditPatron(IPatron patron, IPatron newPatron)
         {
             if (patron == null || newPatron == null)
             {

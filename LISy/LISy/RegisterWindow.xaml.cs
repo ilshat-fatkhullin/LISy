@@ -58,12 +58,10 @@ namespace LISy
                 else
                 {
                     patron = new Student(firstName, secondName, phone, address);
-                }
-
-                ILibrarianDataManager librarianDataManager = new DataManager();
+                }                
 
                 //if all checks good so open window                
-                if (librarianDataManager.AddPatron(patron, login, password))
+                if (LibrarianDataManager.AddPatron(patron, login, password))
                 {
                     using (StreamWriter writer = new StreamWriter("login.txt"))
                     {
