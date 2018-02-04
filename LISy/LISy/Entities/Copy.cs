@@ -24,8 +24,6 @@ namespace LISy.Entities
         /// <summary>
         /// Initializes an instance of document copy.
         /// </summary>
-        /// <param name="document">Document to that copy refers.</param>
-        /// <param name="room">Room where the copy is stored.</param>
         /// <param name="level">Level of the room of the copy.</param>
         public Copy(Takable document)
         {
