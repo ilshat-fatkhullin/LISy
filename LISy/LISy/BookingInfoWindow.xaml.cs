@@ -31,6 +31,13 @@ namespace LISy
         {
             InitializeComponent();
 
+        }
+
+        public void Initialize(long userID, long documentID)
+        {
+            UserID = userID;
+            DocumentID = documentID;
+
             if (DocumentsDataManager.IsAvailable(DocumentID, UserID))
             {
                 button_book.IsEnabled = true;
@@ -47,6 +54,7 @@ namespace LISy
         {
             PatronDataManager.CheckOutDocument(DocumentID, UserID);
             button_book.IsEnabled = false;
+            label_inStock.Content = "Not available";
         }
     }
 }

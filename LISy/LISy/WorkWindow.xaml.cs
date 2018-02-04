@@ -85,8 +85,6 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
-                UserID = UserID,
-                DocumentID = 1,
                 Owner = this,                
                 image_preview =
                 {
@@ -96,7 +94,8 @@ namespace LISy
                 label_name = {Content = label_book_1.Content},                
                 label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
             };
-            
+            bookingInfo.Initialize(UserID, 1);
+
             bookingInfo.Show();
         }
 
@@ -120,6 +119,7 @@ namespace LISy
                 label_name = {Content = label_book_2.Content},                
                 label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
             };
+            bookingInfo.Initialize(UserID, 2);
             bookingInfo.Show();
         }
 
@@ -132,8 +132,6 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
-                UserID = UserID,
-                DocumentID = 3,
                 Owner = this,
                 image_preview =
                 {
@@ -143,6 +141,8 @@ namespace LISy
                 label_name = { Content = label_book_3.Content },                
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
+            bookingInfo.Initialize(UserID, 3);
+
             bookingInfo.Show();
         }
 
@@ -154,9 +154,7 @@ namespace LISy
             bi4.EndInit();
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
-            {
-                UserID = UserID,
-                DocumentID = 4,
+            {                
                 Owner = this,
                 image_preview =
                 {
@@ -166,6 +164,7 @@ namespace LISy
                 label_name = { Content = label_book_4.Content },                
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
+            bookingInfo.Initialize(UserID, 4);
             bookingInfo.Show();
         }
 
@@ -178,8 +177,6 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
-                UserID = UserID,
-                DocumentID = 5,
                 Owner = this,
                 image_preview =
                 {
@@ -189,6 +186,7 @@ namespace LISy
                 label_name = { Content = label_book_5.Content },                
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
+            bookingInfo.Initialize(UserID, 5);
             bookingInfo.Show();
         }
 

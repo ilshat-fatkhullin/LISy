@@ -38,7 +38,7 @@ namespace LISy.Managers.DataManagers
             throw new NotImplementedException();
         }
 
-        public static void CheckOutDocument(long userID, long documentID)
+        public static void CheckOutDocument(long documentID, long userID)
         {
 
             if (IsAvailable(documentID, userID))
