@@ -1,0 +1,19 @@
+﻿<Window x:Class="LISy.Profile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISy"
+        mc:Ignorable="d"
+        Title="Profile" Height="300" Width="300" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico">
+    <Grid>
+        <Label x:Name="label_name" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="272"/>
+        <Label x:Name="label_last_name" Content="" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="272"/>
+        <Label x:Name="label_Town" Content="" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.486,0.591" Width="272"/>
+        <Label x:Name="label_Street" Content="" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="272"/>
+        <Label x:Name="label_build" Content="" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="272"/>
+        <Label x:Name="label_flat" Content="" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="272"/>
+        <Label x:Name="label_phone" Content="" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Width="272"/>
+
+    </Grid>
+</Window>

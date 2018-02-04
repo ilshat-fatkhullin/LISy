@@ -31,6 +31,7 @@ namespace LISy
         private void button_register_Click(object sender, RoutedEventArgs e)
         {
             if (textBox_name.Text != null &&
+                textBox_last_name.Text != null &&
                 textBox_phone_number.Text != null &&
                 textBox_Address_town.Text != null &&
                 textBox_Address_street.Text != null &&
@@ -40,8 +41,7 @@ namespace LISy
             {
 
                 string firstName = InputFieldsManager.ReturnStringFromTextBox(textBox_name),
-                //TODO: Айдар, сделай поле для secondName и замени тут на него
-                       secondName = InputFieldsManager.ReturnStringFromTextBox(textBox_name),
+                       secondName = InputFieldsManager.ReturnStringFromTextBox(textBox_last_name),
                        phone = InputFieldsManager.ReturnStringFromTextBox(textBox_phone_number),
                        address = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_town) + ' ' +
                                  InputFieldsManager.ReturnStringFromTextBox(textBox_Address_street) + ' ' +
@@ -69,6 +69,13 @@ namespace LISy
                     }
 
                     WorkWindow workWindow = new WorkWindow();
+                    workWindow.Profile[0] = InputFieldsManager.ReturnStringFromTextBox(textBox_name);
+                    workWindow.Profile[1] = InputFieldsManager.ReturnStringFromTextBox(textBox_last_name);
+                    workWindow.Profile[2] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_town);
+                    workWindow.Profile[3] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_street);
+                    workWindow.Profile[4] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_building);
+                    workWindow.Profile[5] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_flat);
+                    workWindow.Profile[6] = InputFieldsManager.ReturnStringFromTextBox(textBox_phone_number);
                     GoToWork(workWindow);
                 }
                 else
@@ -117,6 +124,11 @@ namespace LISy
         private void textBox_phone_number_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckNumericValidity(textBox_phone_number);
+        }
+
+        private void textBox_last_name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(textBox_last_name);
         }
     }
 }
