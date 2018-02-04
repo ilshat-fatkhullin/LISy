@@ -13,19 +13,13 @@ namespace LISy.Entities
     {
         #region MAIN_INFO
 
+        public long ID { get; set; }
+
         public string[] Authors { get; protected set; }
 
         public string Title { get; protected set; }
 
         public List<string> Keywords { get; protected set; }
-
-        public int Room { get; protected set; }
-
-        public int Level { get; protected set; }
-
-        #endregion
-
-        #region ADDITIONAL
 
         public string CoverURL { get; protected set; }
 
@@ -37,32 +31,17 @@ namespace LISy.Entities
         /// <param name="authors">Authors or editors of the document.</param>
         /// <param name="title">Title of the document.</param>
         /// <param name="keys">Keywords using which the document can be found.</param>
-        /// <param name="room">Room where the document is stored.</param>
-        /// <param name="level">Level of the room of the document.</param>
         /// <param name="coverURL">Cover of the document.</param>
-        public Document(string[] authors, string title, string[] keys, int room, int level, string coverURL)
+        public Document(string[] authors, string title, string[] keys, string coverURL)
         {
             if (keys == null) throw new ArgumentNullException("Document must have keywords!");
             Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
             Title = title ?? throw new ArgumentNullException("Document must have a title!");
             Keywords = new List<string>(keys);
-            Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
-            Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
             CoverURL = coverURL;
         }
 
         #region SETTER_FUNCTIONS
-
-        /// <summary>
-        /// Moves the document to new place in the library.
-        /// </summary>
-        /// <param name="room">Room where the document will be moved.</param>
-        /// <param name="level">Level of new room of the document.</param>
-        public virtual void ChangePlace(int room, int level)
-        {
-            Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
-            Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
-        }
 
         /// <summary>
         /// Adds a keyword to the list of document's keywords.

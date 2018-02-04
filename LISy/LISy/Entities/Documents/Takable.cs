@@ -24,12 +24,10 @@ namespace LISy.Entities.Documents
         /// <param name="authors">Authors or editors of the document.</param>
         /// <param name="title">Title of the document.</param>
         /// <param name="keys">Keywords using which the document can be found.</param>
-        /// <param name="room">Room where the document is stored.</param>
-        /// <param name="level">Level of the room of the document.</param>
         /// <param name="image">Cover of the document.</param>
         /// <param name="price">Price of the document.</param>
         /// <param name="amount">Amount of copies of the document.</param>
-        public Takable(string[] authors, string title, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image)
+        public Takable(string[] authors, string title, string[] keys, string image, int price, int amount) : base(authors, title, keys, image)
         {
             if (amount <= 0) throw new ArgumentException("Amount of copies cannot be nonpositive!");
             Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");

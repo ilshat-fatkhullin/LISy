@@ -20,7 +20,7 @@ namespace LISy.Entities.Documents
         /// <param name="title">Title of the article.</param>
         /// <param name="keys">Keywords using which the article can be found.</param>
         /// <param name="journal">Journal in which the article is.</param>
-        public JournalArticle(string[] authors, string title, string[] keys, Journal journal) : base(authors, title, keys, journal.Room, journal.Level, null)
+        public JournalArticle(string[] authors, string title, string[] keys, Journal journal) : base(authors, title, keys, null)
         {
             Journal = journal ?? throw new ArgumentNullException("Article must refer to a journal!");
         }

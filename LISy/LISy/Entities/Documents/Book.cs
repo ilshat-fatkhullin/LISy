@@ -12,8 +12,11 @@ namespace LISy.Entities.Documents
     public class Book : Takable
     {
         public string Publisher { get; private set; }
+
         public string Edition { get; private set; }
+
         public int Year { get; private set; }
+
         public bool Bestseller { get; private set; }
 
         /// <summary>
@@ -26,12 +29,10 @@ namespace LISy.Entities.Documents
         /// <param name="year">Year in with this edition was published.</param>
         /// <param name="bestseller">Is the book a bestseller or not.</param>
         /// <param name="keys">Keywords using which the book can be found.</param>
-        /// <param name="room">Room where the book is stored.</param>
-        /// <param name="level">Level of the room of the book.</param>
         /// <param name="image">Cover of the book.</param>
         /// <param name="price">Price of the book.</param>
         /// <param name="amount">Amount of copies of the book.</param>
-        public Book(string[] authors, string title, string publisher, string edition, int year, bool bestseller, string[] keys, int room, int level, string image, int price, int amount) : base(authors, title, keys, room, level, image, price, amount)
+        public Book(string[] authors, string title, string publisher, string edition, int year, bool bestseller, string[] keys, string image, int price, int amount) : base(authors, title, keys, image, price, amount)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Book must have a publisher!");
             Edition = edition ?? throw new ArgumentNullException("Book must have an edition!");
