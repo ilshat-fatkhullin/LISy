@@ -11,15 +11,15 @@ namespace LISy.Entities
     /// </summary>
     public abstract class User : IUser
     {
+        public long CardNumber { get; set; }
+
         public string FirstName { get; protected set; }
 
         public string SecondName { get; protected set; }
 
-        public long CardNumber { get; set; }
-
         public string Phone { get; protected set; }
 
-        public string Address { get; protected set; }        
+        public string Address { get; protected set; }
 
         /// <summary>
         /// Initializes a new instance of library user.
@@ -32,7 +32,7 @@ namespace LISy.Entities
         public User(string firstName, string secondName, string phone, string address)
         {
             FirstName = firstName ?? throw new ArgumentNullException("User must have a first name!");
-            SecondName = secondName ?? throw new ArgumentNullException("User must have a second name!");            
+            SecondName = secondName ?? throw new ArgumentNullException("User must have a second name!");
             Phone = phone ?? throw new ArgumentNullException("User must have a phone number!");
             Address = address ?? throw new ArgumentNullException("User must have an address!");
         }

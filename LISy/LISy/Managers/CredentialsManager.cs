@@ -21,9 +21,13 @@ namespace LISy.Managers
         {            
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Execute("dbo.spCredentials_Authorize @Login, @Password", new { Login = login,
-                    Password = password });
-                MessageBox.Show(output.GetType().ToString());
+
+                var output = connection.Query<long>("dbo.spCredentials_Authorize @Login, @Password", new { Login = login,
+                    Password = password }).ToList();
+                if (output.Count > 0)
+                {
+                    return output[0];
+                }
             }
 
             return -1;

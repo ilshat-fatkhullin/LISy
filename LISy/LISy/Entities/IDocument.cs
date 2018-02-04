@@ -13,27 +13,19 @@ namespace LISy.Entities
     {
         #region MAIN_INFO
 
+        long ID { get; set; }
+
         string Title { get; }
 
         string[] Authors { get; }
 
         List<string> Keywords { get; }
 
-        int Room { get; }
-
-        int Level { get; }
-
-        #endregion
-
-        #region ADDITIONAL_INFO
-
         string CoverURL { get; }
 
         #endregion
 
         #region SETTER_FUNCTIONS
-
-        void ChangePlace(int room, int level);
 
         void AddKeyword(string keyword);
 

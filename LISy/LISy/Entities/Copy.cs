@@ -13,15 +13,19 @@ namespace LISy.Entities
     /// </summary>
     public class Copy
     {
-
         public Takable Document { get; private set; }
 
         public Patron Patron { get; private set; }
+
+        public int Room { get; private set; }
+
+        public int Level { get; private set; }
 
         /// <summary>
         /// Initializes an instance of document copy.
         /// </summary>
         /// <param name="document">Document to that copy refers.</param>
+        /// <param name="level">Level of the room of the copy.</param>
         public Copy(Takable document)
         {
             Document = document ?? throw new ArgumentNullException("Copy must refer to a document!");
@@ -52,6 +56,17 @@ namespace LISy.Entities
         public void Return()
         {
             Patron = null;
+        }
+
+        /// <summary>
+        /// Moves the copy to new place in the library.
+        /// </summary>
+        /// <param name="room">Room where the copy will be moved.</param>
+        /// <param name="level">Level of new room of the copy.</param>
+        public void ChangePlace(int room, int level)
+        {
+            Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
+            Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }
     }
 }
