@@ -1,6 +1,9 @@
-﻿using LISy.Entities;
+﻿using Dapper;
+using LISy.Entities;
+using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using System;
+using System.Data;
 
 namespace LISy.Managers.DataManagers
 {
@@ -34,9 +37,21 @@ namespace LISy.Managers.DataManagers
             throw new NotImplementedException();
         }
 
-        public static void CheckOutDocument(IDocument document, IPatron patron)
+        public static Copy CheckOutDocument(Takable document, IPatron patron)
         {
-            throw new NotImplementedException();            
+            Copy copy = new Copy(document);
+
+            if (!copy.IsAvailable())
+            {
+                using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+                {
+                    connection.Query<long>("dbo.", patron);
+                }
+
+
+                return copy;
+            }
+            throw new NotSupportedException();
         }
     }
 }
