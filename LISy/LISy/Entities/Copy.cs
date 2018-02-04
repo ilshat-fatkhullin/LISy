@@ -26,11 +26,7 @@ namespace LISy.Entities
         /// <summary>
         /// Initializes an instance of document copy.
         /// </summary>
-        /// <param name="document">Document to that copy refers.</param>
-<<<<<<< HEAD
-        /// <param name="level">Level of the room of the copy.</param>
-=======
->>>>>>> 21200ddd70b8b41c2f85533e30a24d0cd4d8809b
+        /// <param name="document">Document to that copy refers.</param>        
         public Copy(Takable document)
         {
             Document = document ?? throw new ArgumentNullException("Copy must refer to a document!");
