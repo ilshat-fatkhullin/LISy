@@ -210,10 +210,15 @@
     <Resource Include="Design\Strang.jpg" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Resource Include="Design\CA.jpg" />
     <Resource Include="Design\introduction-to-algorithms.jpg" />
     <Resource Include="Design\Rye_catcher.jpg" />
     <Resource Include="Design\wheels.jpg" />
+=======
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+>>>>>>> 67359d9c5a694f22d95d43f8948c2f4645dbc122
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
