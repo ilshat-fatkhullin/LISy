@@ -4,6 +4,9 @@ using LISy.Managers.DataManagers;
 
 namespace LISy.Managers
 {
+    /// <summary>
+    /// Contains database commands for librarians
+    /// </summary>
     public static class LibrarianDataManager
     {        
         public static void AddDocument(IDocument document)

@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace LISy.Managers.DataManagers
 {
+    /// <summary>
+    /// Contains database commands for documents
+    /// </summary>
     static class DocumentsDataManager
     {
         /// <summary>

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace LISy.Managers
 {
+    /// <summary>
+    /// Contains database commands for patrons
+    /// </summary>
     public static class PatronDataManager
     {
         public static void CheckOutDocument(long documentID, long userID)

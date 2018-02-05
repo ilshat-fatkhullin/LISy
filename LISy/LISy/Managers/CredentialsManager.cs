@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace LISy.Managers
 {
+    /// <summary>
+    /// Contains database commands for credentials
+    /// </summary>
     public static class CredentialsManager
     {
         /// <summary>

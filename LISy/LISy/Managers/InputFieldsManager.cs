@@ -3,8 +3,16 @@ using System.Windows.Controls;
 
 namespace LISy.Managers
 {
+    /// <summary>
+    /// Contains functions for input data validity checking
+    /// </summary>
     public static class InputFieldsManager
     {
+        /// <summary>
+        /// Checks is password valid or not
+        /// </summary>
+        /// <param name="passwordBox">Password box, which contains a password</param>
+        /// <returns>True if valid, false otherwise</returns>
         public static bool CheckPasswordValidity(PasswordBox passwordBox)
         {
             bool flag = false;
@@ -20,6 +28,11 @@ namespace LISy.Managers
             return flag;
         }
 
+        /// <summary>
+        /// Returns string text from text box
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <returns></returns>
         public static string ReturnStringFromTextBox(TextBox textBox)
         {
             string input = "";
@@ -30,6 +43,11 @@ namespace LISy.Managers
             return input;
         }
 
+        /// <summary>
+        /// Returns password string from password box
+        /// </summary>
+        /// <param name="passwordBox"></param>
+        /// <returns></returns>
         public static string ReturnPasswordFromTextBox(PasswordBox passwordBox)
         {
             string password = "";
@@ -40,6 +58,10 @@ namespace LISy.Managers
             return password;
         }
 
+        /// <summary>
+        /// Checks is text box contains only numbers
+        /// </summary>
+        /// <param name="textBox"></param>
         public static void CheckNumericValidity(TextBox textBox)
         {                        
             foreach (char c in textBox.Text.ToCharArray())
@@ -53,6 +75,10 @@ namespace LISy.Managers
             }
         }
 
+        /// <summary>
+        /// Checks is text contains only literals
+        /// </summary>
+        /// <param name="textBox"></param>
         public static void CheckLiteralValidity(TextBox textBox)
         {
             if (textBox.Text.Length != 0)
