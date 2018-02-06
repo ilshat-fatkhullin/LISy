@@ -90,8 +90,6 @@ namespace LISy.Managers.DataManagers
 
         public static Copy[] GetAllCopiesList()
         {
-<<<<<<< HEAD
-
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
 
@@ -127,9 +125,6 @@ namespace LISy.Managers.DataManagers
         public int Level { get; set; }
 
         public string ReturningTime { get; set; }
-=======
-            throw new NotImplementedException();
-        }
->>>>>>> 4288d6458bd9e3bfda8af8f037fe892dcadf443e
+
     }
 }
