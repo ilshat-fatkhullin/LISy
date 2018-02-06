@@ -41,20 +41,21 @@ namespace LISy.Managers.DataManagers
             throw new NotImplementedException();
         }
 
-        public static void CheckOutDocument(long documentID, long userID)
+        public static void CheckOutDocument(long documentId, long userId)
         {
+            if (!IsAvailable(documentId, userId))
+                return;
 
-            if (IsAvailable(documentID, userID))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
-                {
-                    var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentID, UserId = userID }).ToList();
-                    connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output[0], UserId = userID});
-                }
+                var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentId, UserId = userId }).ToList();
+                connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output[0], UserId = userId});
             }
+        }
 
-            //throw new NotSupportedException();
-
+        public static void ReturnDocument(long documentId, long userId)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -73,6 +74,6 @@ namespace LISy.Managers.DataManagers
         public static IDocument[] GetAllCopiesList()
         {
             throw new NotImplementedException();
-        }
+        }        
     }
 }
