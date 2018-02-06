@@ -2,6 +2,7 @@
 using LISy.Entities;
 using LISy.Entities.Documents;
 using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
 using System;
 using System.Data;
 using System.Linq;
@@ -42,6 +43,18 @@ namespace LISy.Managers.DataManagers
             throw new NotImplementedException();
         }
 
+        private static string EvaluateReturnData(Takable document, IPatron patron)
+        {
+            DateTime date = DateTime.Today;
+            if (document.GetType() == typeof(Book))
+            {
+                if (patron.GetType() == typeof(Faculty)) date = date.AddDays(28);
+                else if (!(document as Book).Bestseller) date = date.AddDays(21);
+            }
+            else date = date.AddDays(14);
+            return date.ToShortDateString();
+        }
+
         public static void CheckOutDocument(long documentId, long userId)
         {
             if (!IsAvailable(documentId, userId))
@@ -50,7 +63,7 @@ namespace LISy.Managers.DataManagers
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
                 var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentId, UserId = userId }).ToList();
-                connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output[0], UserId = userId});
+                connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output[0], UserId = userId });
             }
         }
 
@@ -77,6 +90,7 @@ namespace LISy.Managers.DataManagers
 
         public static Copy[] GetAllCopiesList()
         {
+<<<<<<< HEAD
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
@@ -113,5 +127,9 @@ namespace LISy.Managers.DataManagers
         public int Level { get; set; }
 
         public string ReturningTime { get; set; }
+=======
+            throw new NotImplementedException();
+        }
+>>>>>>> 4288d6458bd9e3bfda8af8f037fe892dcadf443e
     }
 }
