@@ -12,39 +12,24 @@ namespace LISy.Entities
     /// </summary>
     public class Copy
     {
-        public Takable Document { get; private set; }
+        public long ID { get; set; }
 
-        public Patron Patron { get; private set; }
+        public long DocumentID { get; private set; }
+
+        public long PatronID { get; private set; }
 
         public int Room { get; private set; }
 
         public int Level { get; private set; }
 
-        /// <summary>
-        /// Initializes an instance of document copy.
-        /// </summary>
-        /// <param name="document">Document to that copy refers.</param>                
-        public Copy(Takable document)
+        public Copy()
         {
-            Document = document ?? throw new ArgumentNullException("Copy must refer to a document!");
-            Patron = null;
         }
 
-        /// <summary>
-        /// Records a Patron that is checking out the copy.
-        /// </summary>
-        /// <param name="patron">Patron that is checking out the copy.</param>
-        public void CkeckOut(Patron patron)
+        public Copy(long documentid, long patronid)
         {
-            Patron = patron ?? throw new ArgumentNullException("Copy must be checked out by a Patron!");
-        }
-
-        /// <summary>
-        /// Records that the copy was returned to the library.
-        /// </summary>
-        public void Return()
-        {
-            Patron = null;
+            DocumentID = documentid > 0 ? documentid : throw new ArgumentNullException("Copy must refer to a document!");
+            PatronID = patronid > 0 ? patronid : throw new ArgumentNullException("Copy must refer to a document!");
         }
 
         /// <summary>
