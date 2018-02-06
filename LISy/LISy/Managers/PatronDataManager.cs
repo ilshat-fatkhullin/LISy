@@ -15,9 +15,14 @@ namespace LISy.Managers
     /// </summary>
     public static class PatronDataManager
     {
-        public static void CheckOutDocument(long documentID, long userID)
+        public static void CheckOutDocument(long documentId, long userId)
         {
-            DocumentsDataManager.CheckOutDocument(documentID, userID);
-        }               
+            DocumentsDataManager.CheckOutDocument(documentId, userId);
+        }
+
+        public static void ReturnDocument(long documentId, long userId)
+        {
+            DocumentsDataManager.ReturnDocument(documentId, userId);
+        }
     }
 }

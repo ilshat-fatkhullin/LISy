@@ -39,7 +39,7 @@ namespace LISy.Managers
             UsersDataManager.EditPatron(patron, newPatron);
         }
 
-        public static IDocument[] GetAllCopiesList()
+        public static Copy[] GetAllCopiesList()
         {
             return DocumentsDataManager.GetAllCopiesList();
         }

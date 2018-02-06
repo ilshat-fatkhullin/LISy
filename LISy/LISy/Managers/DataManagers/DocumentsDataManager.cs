@@ -71,7 +71,7 @@ namespace LISy.Managers.DataManagers
             }
         }
 
-        public static IDocument[] GetAllCopiesList()
+        public static Copy[] GetAllCopiesList()
         {
             throw new NotImplementedException();
         }        
