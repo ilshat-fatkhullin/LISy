@@ -36,8 +36,8 @@ namespace LISy.Entities
         {
             Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
             Title = title ?? throw new ArgumentNullException("Document must have a title!");
-            Keywords = keys;// ?? throw new ArgumentNullException("Document must have a title!");
-            CoverURL = coverURL;
+            Keywords = keys ?? throw new ArgumentNullException("Document must have a title!");
+            CoverURL = coverURL ?? throw new ArgumentNullException("Document must have a cover!");
         }
 
         /*#region SETTER_FUNCTIONS
