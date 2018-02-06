@@ -6,6 +6,7 @@ using LISy.Entities.Users.Patrons;
 using System;
 using System.Data;
 using System.Linq;
+using System.Windows;
 
 namespace LISy.Managers.DataManagers
 {
@@ -77,7 +78,41 @@ namespace LISy.Managers.DataManagers
 
         public static Copy[] GetAllCopiesList()
         {
-            throw new NotImplementedException();
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+
+
+                var output = connection.Query<TempCopy>("dbo.spCopies_GetAllCopies").ToArray();
+                Copy[] copies = new Copy[output.Count()];
+                for (int i = 0; i < copies.GetLength(0); i++)
+                {
+                    copies[i] = new Copy(output[i].BookId, output[i].UserId);
+                    copies[i].ID = output[i].CopyId;
+                    copies[i].Level = output[i].Level;
+                    copies[i].Room = output[i].Room;
+                    copies[i].ReturningTime = output[i].ReturningTime;
+                    copies[i].Checked = output[i].Checked;
+                }
+                return copies;
+            }
         }
+    }
+
+    class TempCopy
+    {
+        public int CopyId { get; set; }
+
+        public int BookId { get; set; }
+
+        public int UserId { get; set; }
+
+        public bool Checked { get; set; }
+
+        public int Room { get; set; }
+
+        public int Level { get; set; }
+
+        public string ReturningTime { get; set; }
+
     }
 }

@@ -25,7 +25,7 @@ namespace LISy
             using (StreamReader reader = new StreamReader("id.txt"))
             {
                 UserID = Convert.ToInt64(reader.ReadLine());
-            }             
+            }
         }
 
         ///<summary>
@@ -57,8 +57,7 @@ namespace LISy
         ///<summary>
         ///when we find document we click button to read about this document and Book it
         ///</summary>
-       
-       
+
         private void button_Profile_Click(object sender, RoutedEventArgs e)
         {
             Profile profilelWindow = new Profile();
@@ -79,7 +78,7 @@ namespace LISy
 
         private void button_open_book_1_Click(object sender, RoutedEventArgs e)
         {
-            
+
             BitmapImage bi1 = new BitmapImage();
             bi1.BeginInit();
             bi1.UriSource = new Uri("Design/Strang.jpg", UriKind.Relative);
@@ -87,14 +86,14 @@ namespace LISy
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
             {
-                Owner = this,                
+                Owner = this,
                 image_preview =
                 {
                     Stretch = Stretch.Fill,
                     Source = bi1
                 },
-                label_name = {Content = label_book_1.Content},                
-                label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
+                label_name = { Content = label_book_1.Content },
+                label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Initialize(UserID, 1);
 
@@ -118,8 +117,8 @@ namespace LISy
                     Stretch = Stretch.Fill,
                     Source = bi2
                 },
-                label_name = {Content = label_book_2.Content},                
-                label_info = {Content = ">Some useful information about this Book, which make you to Book it."}
+                label_name = { Content = label_book_2.Content },
+                label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Initialize(UserID, 2);
             bookingInfo.Show();
@@ -140,7 +139,7 @@ namespace LISy
                     Stretch = Stretch.Fill,
                     Source = bi3
                 },
-                label_name = { Content = label_book_3.Content },                
+                label_name = { Content = label_book_3.Content },
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Initialize(UserID, 3);
@@ -156,14 +155,14 @@ namespace LISy
             bi4.EndInit();
 
             BookingInfoWindow bookingInfo = new BookingInfoWindow
-            {                
+            {
                 Owner = this,
                 image_preview =
                 {
                     Stretch = Stretch.Fill,
                     Source = bi4
                 },
-                label_name = { Content = label_book_4.Content },                
+                label_name = { Content = label_book_4.Content },
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Initialize(UserID, 4);
@@ -185,7 +184,7 @@ namespace LISy
                     Stretch = Stretch.Fill,
                     Source = bi5
                 },
-                label_name = { Content = label_book_5.Content },                
+                label_name = { Content = label_book_5.Content },
                 label_info = { Content = ">Some useful information about this Book, which make you to Book it." }
             };
             bookingInfo.Initialize(UserID, 5);

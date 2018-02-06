@@ -52,9 +52,15 @@ namespace LISy
         {
           
         }
-        private void button_Click(object sender, RoutedEventArgs e)
+       
+        private void buttonRefresh_Click(object sender, RoutedEventArgs e)
         {
             UpdateDB();
+        }
+
+        private void button_search_db_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
    
