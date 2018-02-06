@@ -5,15 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="BookingInfoWindow" Height="218" Width="358.5" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico">
+        Title="BookingInfoWindow" Height="250.462" Width="524.314" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/bookss.jpg"/>
     </Window.Background>
-    <Grid Background="#66000000">
+    <Grid Background="#66000000" Margin="0,0,0,-3">
         <Image x:Name="image_preview" HorizontalAlignment="Left" Height="133" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="Design/Strang.jpg" Stretch="Fill"/>
-        <Label x:Name="label_name" Content="&quot;Introduction to Linear Algebra&quot; &#xD;&#xA;Gilbert Strang 4th edition &#xD;&#xA;(WELLESLEY - CAMBRIDGE PRESS)" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="227" Height="65" FontSize="14" Foreground="White"/>
-        <Button x:Name="button_book" Content="Check out" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="100" Height="32" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_book_Click"/>
-        <Label x:Name="label_info" Content="&gt;Some useful information about this &#xD;&#xA;Book, which make you to Book it." HorizontalAlignment="Left" Margin="115,80,0,0" VerticalAlignment="Top" Width="227" Foreground="White"/>
-        <Label x:Name="label_inStock" Content="" HorizontalAlignment="Left" Margin="115,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="28" Width="227" Foreground="White" FontSize="10"/>
+        <Label x:Name="label_name" Content="&quot;Introduction to Linear Algebra&quot; Gilbert Strang 4th edition &#xA;(WELLESLEY - CAMBRIDGE PRESS)" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="393" Height="45" FontSize="14" Foreground="White"/>
+        <Button x:Name="button_book" Content="Check out" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_book_Click"/>
+        <Label x:Name="label_info" Content="&gt;Some useful information about this Book, which make you to Book it." HorizontalAlignment="Left" Margin="115,80,0,0" VerticalAlignment="Top" Width="393" Foreground="White"/>
+        <Label x:Name="label_inStock" Content="" Margin="115,111,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393"/>
+        <Label x:Name="label_return_data" Content="" HorizontalAlignment="Left" Margin="115,148,0,0" VerticalAlignment="Top" Width="393" Foreground="White" Height="30" FontSize="16" />
+        <Label x:Name="label_best_seller" Content="" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Height="20" Width="45" FontSize="8" Foreground="White"/>
+        <Image x:Name="image_best_seller" HorizontalAlignment="Left" Height="20" Margin="160,60,0,0" VerticalAlignment="Top" Width="20">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="Design/star_20x20.png"/>
+            </Image.OpacityMask>
+        </Image>
     </Grid>
 </Window>

@@ -33,17 +33,34 @@ namespace LISy
 
         }
 
+        public bool bestSellerChecking()
+        {
+            return true;
+        }
+
         public void Initialize(long userID, long documentID)
         {
             UserID = userID;
             DocumentID = documentID;
+            BitmapImage bi1 = new BitmapImage();
+            bi1.BeginInit();
+            bi1.UriSource = new Uri("Design/star_20x20.png", UriKind.Relative);
+            bi1.EndInit();
 
-            if (DocumentsDataManager.IsAvailable(DocumentID, UserID))
+            if (DocumentsDataManager.IsAvailable(DocumentID, UserID) && bestSellerChecking()/*check if it best_seller*/)
             {
                 button_book.IsEnabled = true;
                 label_inStock.Content = "Available";
+                label_best_seller.Content = "BestSeller";
+                image_best_seller.Source = bi1;
+                image_best_seller.Stretch = Stretch.Fill;
             }
-            else
+            else if (bestSellerChecking())
+            {
+                label_best_seller.Content = "BestSeller";
+                image_best_seller.Source = bi1;
+                image_best_seller.Stretch = Stretch.Fill;
+            }
             {
                 button_book.IsEnabled = false;
                 label_inStock.Content = "Not available";
