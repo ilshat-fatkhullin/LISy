@@ -19,7 +19,7 @@ namespace LISy
         }
         ///<summary>
         ///when users input all data to textBoxes clicked on this button user go to workWindow but before system will checked all data in textBoxes and checked if this user exist
-        ///<summary>
+        ///</summary>
         private void button_sign_in_Click(object sender, RoutedEventArgs e)
         {
             // here you will need to check that a username and password exist in dB it should be done in a separate function which will check it
@@ -59,7 +59,7 @@ namespace LISy
         //переходим к рабочему окну
         ///<summary>
         ///method that goes to another window
-        ///<summary>
+        ///</summary>
         private void GoToWork(WorkWindow work)
         {
             work.Show();
