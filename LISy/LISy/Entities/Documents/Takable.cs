@@ -14,7 +14,7 @@ namespace LISy.Entities.Documents
     {
         public int Price { get; protected set; }
 
-        public List<Copy> Copies { get; protected set; }
+        //public List<Copy> Copies { get; protected set; }
 
         private Copy LastAvailableCopy;
 
@@ -31,17 +31,17 @@ namespace LISy.Entities.Documents
         {
             if (amount <= 0) throw new ArgumentException("Amount of copies cannot be nonpositive!");
             Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
-            Copies = new List<Copy>();
+            /*Copies = new List<Copy>();
             for (int i = 1; i <= amount; ++i)
                 Copies.Add(new Copy(this));
-            LastAvailableCopy = Copies[0];
+            LastAvailableCopy = Copies[0];*/
         }
 
         /// <summary>
         /// Evaluates amount of available copies of the document.
         /// </summary>
         /// <returns>integer of amount of available copies.</returns>
-        public int AvailableCopiesAmount()
+        /*public int AvailableCopiesAmount()
         {
             int amount = 0;
             foreach (Copy temp in Copies)
@@ -101,6 +101,6 @@ namespace LISy.Entities.Documents
             if (!IsAvailable()) throw new Exception("No availbale copies!");
             Copies.Remove(LastAvailableCopy);
             LastAvailableCopy = null;
-        }
+        }*/
     }
 }

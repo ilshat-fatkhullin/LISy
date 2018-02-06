@@ -9,7 +9,7 @@ namespace LISy.Entities.Users
 {
     public abstract class Patron : User, IPatron
     {
-        public List<Copy> TakenCopies { get; protected set; }
+        //public List<Copy> TakenCopies { get; protected set; }
 
         private Copy LastFoundCopy = null;
 
@@ -23,10 +23,10 @@ namespace LISy.Entities.Users
         /// <param name="address">Address of the Patron.</param>
         public Patron(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
         {
-            TakenCopies = new List<Copy>();
+            //TakenCopies = new List<Copy>();
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Determines whether the Patron has a copy of a document.
         /// </summary>
         /// <param name="document">Document which copy will be searched.</param>
@@ -61,6 +61,6 @@ namespace LISy.Entities.Users
             if (!HasCopyOfDocument(document)) throw new ArgumentException("Such document has not been borrowed!");
             TakenCopies.Remove(LastFoundCopy);
             LastFoundCopy.Return();
-        }
+        }*/
     }
 }
