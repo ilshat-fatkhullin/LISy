@@ -12,13 +12,15 @@
             <RowDefinition Height="0" />
             <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="LibraryGrid" Margin="0,0,0,10">
+        <DataGrid AutoGenerateColumns="False" x:Name="LibraryGrid" Margin="0,45,0,-35" Grid.RowSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Title}" Header="ID BOOK" Width="120"/>
                 <DataGridTextColumn Binding="{Binding Company}" Header="ID Patron" Width="125"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="button" Content="Refresh" Margin="434,0,429,-40" Grid.Row="1" VerticalAlignment="Bottom" Height="30" Grid.RowSpan="2" Click="button_Click"/>
+        <Button x:Name="buttonRefresh" Content="Refresh" Margin="853,10,10,306" Click="buttonRefresh_Click"/>
+        <Button x:Name="button_search_db" Content="Search" HorizontalAlignment="Left" Margin="749,10,0,306" Width="99" Click="button_search_db_Click"/>
+        <TextBox x:Name="textBox_search_db" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="734" FontSize="16"/>
     </Grid>
 </Window>
