@@ -18,6 +18,6 @@ namespace LISy.Managers
         public static void CheckOutDocument(long documentID, long userID)
         {
             DocumentsDataManager.CheckOutDocument(documentID, userID);
-        }
+        }               
     }
 }

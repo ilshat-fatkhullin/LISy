@@ -68,7 +68,11 @@ namespace LISy.Managers.DataManagers
                 var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentID, UserId = userID }).ToList();
                 return (output.Count != 0);
             }
+        }
 
+        public static IDocument[] GetAllCopiesList()
+        {
+            throw new NotImplementedException();
         }
     }
 }
