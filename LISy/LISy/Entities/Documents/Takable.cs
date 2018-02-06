@@ -12,6 +12,8 @@ namespace LISy.Entities.Documents
     /// </summary>
     public abstract class Takable : Document
     {
+        public const int BASIC_RETURN_TIME = 14;
+
         public int Price { get; protected set; }
 
         //public List<Copy> Copies { get; protected set; }
@@ -37,11 +39,18 @@ namespace LISy.Entities.Documents
             LastAvailableCopy = Copies[0];*/
         }
 
-        /// <summary>
+        public virtual string EvaluateReturnDate(IPatron patron)
+        {
+            DateTime date = DateTime.Today;
+            date = date.AddDays(BASIC_RETURN_TIME);
+            return date.ToShortDateString();
+        }
+
+        /*/// <summary>
         /// Evaluates amount of available copies of the document.
         /// </summary>
         /// <returns>integer of amount of available copies.</returns>
-        /*public int AvailableCopiesAmount()
+        public int AvailableCopiesAmount()
         {
             int amount = 0;
             foreach (Copy temp in Copies)

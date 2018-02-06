@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
 
 namespace LISy.Entities.Documents
 {
@@ -11,6 +13,12 @@ namespace LISy.Entities.Documents
     /// </summary>
     public class Book : Takable
     {
+        public const int FACULTY_RETURN_TIME = 28;
+
+        public const int STUDENT_BESTSELLER_RETURN_TIME = 14;
+
+        public const int STUDENT_RETURN_TIME = 21;
+
         public string Publisher { get; private set; }
 
         public string Edition { get; private set; }
@@ -48,6 +56,15 @@ namespace LISy.Entities.Documents
         {
             Bestseller = !Bestseller;
             return Bestseller;
+        }
+
+        public override string EvaluateReturnDate(IPatron patron)
+        {
+            DateTime date = DateTime.Today;
+            if (patron.GetType() == typeof(Faculty)) date = date.AddDays(FACULTY_RETURN_TIME);
+            else if (Bestseller) date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
+            else date = date.AddDays(STUDENT_RETURN_TIME);
+            return date.ToShortDateString();
         }
     }
 }

@@ -42,18 +42,6 @@ namespace LISy.Managers.DataManagers
             throw new NotImplementedException();
         }
 
-        private static string EvaluateReturnData(Takable document, IPatron patron)
-        {
-            DateTime date = DateTime.Today;
-            if (document.GetType() == typeof(Book))
-            {
-                if (patron.GetType() == typeof(Faculty)) date = date.AddDays(28);
-                else if (!(document as Book).Bestseller) date = date.AddDays(21);
-            }
-            else date = date.AddDays(14);
-            return date.ToShortDateString();
-        }
-
         public static void CheckOutDocument(long documentId, long userId)
         {
             if (!IsAvailable(documentId, userId))
