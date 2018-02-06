@@ -18,9 +18,13 @@ namespace LISy.Entities
 
         public long PatronID { get; private set; }
 
-        public int Room { get; private set; }
+        public bool Checked { get; set; }
 
-        public int Level { get; private set; }
+        public string ReturningTime { get; set; }
+
+        public int Room { get; set; }
+
+        public int Level { get; set; }
 
         public Copy()
         {
@@ -29,7 +33,7 @@ namespace LISy.Entities
         public Copy(long documentid, long patronid)
         {
             DocumentID = documentid > 0 ? documentid : throw new ArgumentNullException("Copy must refer to a document!");
-            PatronID = patronid > 0 ? patronid : throw new ArgumentNullException("Copy must refer to a document!");
+            PatronID = patronid; //> 0 ? patronid : throw new ArgumentNullException("Copy must refer to a document!");
         }
 
         /// <summary>
