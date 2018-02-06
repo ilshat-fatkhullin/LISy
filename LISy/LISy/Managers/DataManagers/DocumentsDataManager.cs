@@ -55,7 +55,10 @@ namespace LISy.Managers.DataManagers
 
         public static void ReturnDocument(long documentId, long userId)
         {
-            throw new NotImplementedException();
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Execute("dbo.spCopies_ReturnDocument @DocumentId, @UserId", new { DocumentId = documentId, UserId = userId });
+            }
         }
 
         /// <summary>
