@@ -12,28 +12,33 @@ namespace LISy.Entities
     /// </summary>
     public class Copy
     {
-        public long ID { get; set; }
+        public long ID { get; private set; }
 
         public long DocumentID { get; private set; }
 
         public long PatronID { get; private set; }
 
-        public bool Checked { get; set; }
+        public bool Checked { get; private set; }
 
-        public string ReturningTime { get; set; }
+        public string ReturningTime { get; private set; }
 
-        public int Room { get; set; }
+        public int Room { get; private set; }
 
-        public int Level { get; set; }
+        public int Level { get; private set; }
 
         public Copy()
         {
         }
 
-        public Copy(long documentid, long patronid)
+        public Copy(long id, long documentid, long patronid, bool check, string time, int room, int level)
         {
-            DocumentID = documentid > 0 ? documentid : throw new ArgumentNullException("Copy must refer to a document!");
-            PatronID = patronid; //> 0 ? patronid : throw new ArgumentNullException("Copy must refer to a document!");
+            ID = id >= 0 ? id : throw new ArgumentException("Invalid ID!");
+            DocumentID = documentid >= 0 ? documentid : throw new ArgumentException("Invalid document ID!");
+            PatronID = patronid; //>= 0 ? patronid : throw new ArgumentException("Invalid user ID!");
+            Checked = check;
+            ReturningTime = time ?? throw new ArgumentNullException("Invalid returning time!");
+            Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
+            Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }
 
         /// <summary>

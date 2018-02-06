@@ -85,14 +85,7 @@ namespace LISy.Managers.DataManagers
                 var output = connection.Query<TempCopy>("dbo.spCopies_GetAllCopies").ToArray();
                 Copy[] copies = new Copy[output.Count()];
                 for (int i = 0; i < copies.GetLength(0); i++)
-                {
-                    copies[i] = new Copy(output[i].BookId, output[i].UserId);
-                    copies[i].ID = output[i].CopyId;
-                    copies[i].Level = output[i].Level;
-                    copies[i].Room = output[i].Room;
-                    copies[i].ReturningTime = output[i].ReturningTime;
-                    copies[i].Checked = output[i].Checked;
-                }
+                    copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningTime, output[i].Room, output[i].Level);
                 return copies;
             }
         }
