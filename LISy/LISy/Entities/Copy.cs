@@ -20,7 +20,7 @@ namespace LISy.Entities
 
         public bool Checked { get; private set; }
 
-        public string ReturningTime { get; private set; }
+        public string ReturningDate { get; private set; }
 
         public int Room { get; private set; }
 
@@ -28,6 +28,7 @@ namespace LISy.Entities
 
         public Copy()
         {
+
         }
 
         public Copy(long id, long documentid, long patronid, bool check, string time, int room, int level)
@@ -36,7 +37,7 @@ namespace LISy.Entities
             DocumentID = documentid >= 0 ? documentid : throw new ArgumentException("Invalid document ID!");
             PatronID = patronid; //>= 0 ? patronid : throw new ArgumentException("Invalid user ID!");
             Checked = check;
-            ReturningTime = time; //?? throw new ArgumentNullException("Invalid returning time!");
+            ReturningDate = time; //?? throw new ArgumentNullException("Invalid returning time!");
             Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
             Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }

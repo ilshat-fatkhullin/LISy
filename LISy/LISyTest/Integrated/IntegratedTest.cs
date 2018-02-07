@@ -79,7 +79,7 @@ namespace LISyTest.Integrated
             {
                 if (c.PatronID == FACULTY_ID &&
                     c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
-                    Math.Abs((DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays - Book.FACULTY_RETURN_TIME) < 0.1)
+                    Math.Abs((DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays - Book.FACULTY_RETURN_TIME) < 0.1)
                 {
                     flag = true;
                 }
