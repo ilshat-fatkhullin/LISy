@@ -78,9 +78,9 @@ namespace LISyTest.Integrated
 
             foreach (var c in copies)
             {
-                if (c.ReturningTime != null)
+                if (c.ReturningDate != null)
                 {
-                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
                     if (c.PatronID == FACULTY_ID &&
                         c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
@@ -111,9 +111,9 @@ namespace LISyTest.Integrated
 
             foreach (var c in copies)
             {
-                if (c.ReturningTime != null)
+                if (c.ReturningDate != null)
                 {
-                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
                     if (c.PatronID == FACULTY_ID &&
                         c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
@@ -247,9 +247,9 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.ReturningTime != null)
+                if (c.ReturningDate != null)
                 {
-                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
                     if (c.PatronID == STUDENT_ID &&
                         c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
@@ -279,9 +279,9 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.ReturningTime != null)
+                if (c.ReturningDate != null)
                 {
-                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
                     if (c.PatronID == STUDENT_ID &&
                         c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
