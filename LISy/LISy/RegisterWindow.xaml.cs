@@ -69,13 +69,15 @@ namespace LISy
                     }
 
                     WorkWindow workWindow = new WorkWindow();
+                    /*
                     workWindow.Profile[0] = InputFieldsManager.ReturnStringFromTextBox(textBox_name);
                     workWindow.Profile[1] = InputFieldsManager.ReturnStringFromTextBox(textBox_last_name);
                     workWindow.Profile[2] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_town);
                     workWindow.Profile[3] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_street);
                     workWindow.Profile[4] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_building);
                     workWindow.Profile[5] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_flat);
-                    workWindow.Profile[6] = InputFieldsManager.ReturnStringFromTextBox(textBox_phone_number);
+                    workWindow.Profile[6] = InputFieldsManager.ReturnStringFromTextBox(textBox_phone_number); 
+                    */
                     GoToWork(workWindow);
                 }
                 else

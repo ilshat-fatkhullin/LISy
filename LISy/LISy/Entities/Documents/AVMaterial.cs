@@ -23,9 +23,8 @@ namespace LISy.Entities.Documents
         /// <param name="image">Cover of the material.</param>
         /// <param name="price">Price of the material.</param>
         /// <param name="amount">Amount of copies of the material.</param>
-        public AVMaterial(string[] authors, string title, bool video, string[] keys, string image, int price, int amount) : base(authors, title, keys, image, price, amount)
+        public AVMaterial(string[] authors, string title, string[] keys, string image, int price, int amount) : base(authors, title, keys, image, price, amount)
         {
-            IsAVideo = video;
         }
     }
 }

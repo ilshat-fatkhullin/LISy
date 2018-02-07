@@ -50,6 +50,34 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
+                string type = GetType(documentId);
+                if (type == "Inner")
+                {
+                    return;
+                }
+                else if (type == "Book")
+                {
+                    var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAll").ToArray();
+                    Book[] documents = new Book[outputDoc.Count()];
+                    for (int i = 0; i < documents.GetLength(0); i++)
+                        documents[i] = new Book(outputDoc[i].Authors.Split(','), outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, new string[] { "" }, "", 0, 0);
+                }
+                else if (type == "AV")
+                {
+                    var outputDoc = connection.Query<TempAV>("dbo.spAudioVideos_GetAll").ToArray();
+                    AVMaterial[] documents = new AVMaterial[outputDoc.Count()];
+                    for (int i = 0; i < documents.GetLength(0); i++)
+                        documents[i] = new AVMaterial(outputDoc[i].Authors.Split(','), outputDoc[i].Title, new string[] { "" }, "", 0, 0);
+                }
+                else if (type == "Journal Article")
+                {
+                    var outputDoc = connection.Query<TempJournal>("dbo.spAudioVideos_GetAll").ToArray();
+                    Journal[] documents = new Journal[outputDoc.Count()];
+                    for (int i = 0; i < documents.GetLength(0); i++)
+                        documents[i] = new Journal(outputDoc[i].Authors.Split(','), outputDoc[i].Title, new string[] { "" }, "", 0, 0);
+                }
+
+
                 var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentId, UserId = userId }).ToList();
                 connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output[0], UserId = userId });
             }
@@ -73,6 +101,20 @@ namespace LISy.Managers.DataManagers
             {
                 var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentID, UserId = userID }).ToList();
                 return (output.Count != 0);
+            }
+        }
+
+        /// <summary>
+        /// Get type of document
+        /// </summary>
+        /// <param name="documentId">ID of document</param>
+        /// <returns>String with type of document</returns>
+        public static string GetType(long documentId)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<string>("dbo.spDocuments_GetType @DocumentId", new { DocumentId = documentId}).ToList();
+                return (output[0]);
             }
         }
 
@@ -106,6 +148,46 @@ namespace LISy.Managers.DataManagers
         public int Level { get; set; }
 
         public string ReturningTime { get; set; }
+    }
 
+    class TempBook
+    {
+        public int Id { get; set; }
+
+        public string Title { get; set; }
+
+        public string Authors { get; set; }
+
+        public string Publisher { get; set; }
+
+        public int Edition { get; set; }
+
+        public int Year { get; set; }
+
+        public bool IsBestseller { get; set; }
+    }
+
+    class TempAV
+    {
+        public int Id { get; set; }
+        
+        public string Title { get; set; }
+
+        public string Authors { get; set; }
+    }
+
+    class TempJournal
+    {
+        public int Id { get; set; }
+
+        public string Title { get; set; }
+
+        public string Publisher { get; set; }
+
+        public int Issue { get; set; }
+
+        public string Editors { get; set; }
+
+        public string PublicationDate { get; set; }
     }
 }
