@@ -36,7 +36,7 @@ namespace LISy.Entities
             DocumentID = documentid >= 0 ? documentid : throw new ArgumentException("Invalid document ID!");
             PatronID = patronid; //>= 0 ? patronid : throw new ArgumentException("Invalid user ID!");
             Checked = check;
-            ReturningTime = time ?? throw new ArgumentNullException("Invalid returning time!");
+            ReturningTime = time; //?? throw new ArgumentNullException("Invalid returning time!");
             Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
             Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }

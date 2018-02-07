@@ -15,11 +15,11 @@ namespace LISy.Entities
 
         public long ID { get; set; }
 
-        public string[] Authors { get; protected set; }
+        public string Authors { get; protected set; }
 
         public string Title { get; protected set; }
 
-        public List<string> Keywords { get; protected set; }
+        public string Keywords { get; protected set; }
 
         public string CoverURL { get; protected set; }
 
@@ -32,16 +32,15 @@ namespace LISy.Entities
         /// <param name="title">Title of the document.</param>
         /// <param name="keys">Keywords using which the document can be found.</param>
         /// <param name="coverURL">Cover of the document.</param>
-        public Document(string[] authors, string title, string[] keys, string coverURL)
+        public Document(string authors, string title, string keys, string coverURL)
         {
-            if (keys == null) throw new ArgumentNullException("Document must have keywords!");
             Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
             Title = title ?? throw new ArgumentNullException("Document must have a title!");
-            Keywords = new List<string>(keys);
-            CoverURL = coverURL;
+            Keywords = keys ?? throw new ArgumentNullException("Document must have a title!");
+            CoverURL = coverURL ?? throw new ArgumentNullException("Document must have a cover!");
         }
 
-        #region SETTER_FUNCTIONS
+        /*#region SETTER_FUNCTIONS
 
         /// <summary>
         /// Adds a keyword to the list of document's keywords.
@@ -76,6 +75,6 @@ namespace LISy.Entities
             AddKeyword(newkeyword);
         }
 
-        #endregion
+        #endregion*/
     }
 }

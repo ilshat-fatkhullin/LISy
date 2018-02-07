@@ -18,7 +18,7 @@ namespace LISy.Entities.Documents
 
         //public List<Copy> Copies { get; protected set; }
 
-        private Copy LastAvailableCopy;
+        //private Copy LastAvailableCopy;
 
         /// <summary>
         /// Initializes a new instance of library document that can be checked out.
@@ -29,7 +29,7 @@ namespace LISy.Entities.Documents
         /// <param name="image">Cover of the document.</param>
         /// <param name="price">Price of the document.</param>
         /// <param name="amount">Amount of copies of the document.</param>
-        public Takable(string[] authors, string title, string[] keys, string image, int price, int amount) : base(authors, title, keys, image)
+        public Takable(string authors, string title, string keys, string image, int price, int amount) : base(authors, title, keys, image)
         {
             if (amount <= 0) throw new ArgumentException("Amount of copies cannot be nonpositive!");
             Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");

@@ -17,15 +17,15 @@ namespace LISy.Entities
 
         string Title { get; }
 
-        string[] Authors { get; }
+        string Authors { get; }
 
-        List<string> Keywords { get; }
+        string Keywords { get; }
 
         string CoverURL { get; }
 
         #endregion
 
-        #region SETTER_FUNCTIONS
+        /*#region SETTER_FUNCTIONS
 
         void AddKeyword(string keyword);
 
@@ -33,6 +33,6 @@ namespace LISy.Entities
 
         void ChangeKeyword(string keyword, string newKeyword);
 
-        #endregion
+        #endregion*/
     }
 }
