@@ -16,7 +16,7 @@ namespace LISy
     {
         public MainWindow()
         {
-            DocumentsDataManager.CheckOutDocument(int.MaxValue, 1);
+            DocumentsDataManager.GetAllCopiesList();
             InitializeComponent();
         }
         ///<summary>
