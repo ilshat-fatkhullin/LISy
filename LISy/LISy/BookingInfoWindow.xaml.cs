@@ -55,12 +55,7 @@ namespace LISy
                 image_best_seller.Source = bi1;
                 image_best_seller.Stretch = Stretch.Fill;
             }
-            else if (bestSellerChecking())
-            {
-                label_best_seller.Content = "BestSeller";
-                image_best_seller.Source = bi1;
-                image_best_seller.Stretch = Stretch.Fill;
-            }
+            else            
             {
                 button_book.IsEnabled = false;
                 label_inStock.Content = "Not available";
