@@ -58,7 +58,7 @@ namespace LISy.Managers.DataManagers
                 }
                 else if (type == "Book")
                 {
-                    var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAll").ToArray();
+                    var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAllById @DocumentId", new {DocumentId = documentId}).ToArray();
                     Book[] documents = new Book[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
                         documents[i] = new Book(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, "", "", 0, 0);
@@ -67,7 +67,7 @@ namespace LISy.Managers.DataManagers
                 }
                 else if (type == "AV")
                 {
-                    var outputDoc = connection.Query<TempAV>("dbo.spAudioVideos_GetAll").ToArray();
+                    var outputDoc = connection.Query<TempAV>("dbo.spAudioVideos_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     AVMaterial[] documents = new AVMaterial[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
                         documents[i] = new AVMaterial(outputDoc[i].Authors, outputDoc[i].Title, "", "", 0, 0);
@@ -76,7 +76,7 @@ namespace LISy.Managers.DataManagers
                 }
                 else if (type == "Journal Article")
                 {
-                    var outputDoc = connection.Query<TempJournal>("dbo.spAudioVideos_GetAll").ToArray();
+                    var outputDoc = connection.Query<TempJournal>("dbo.spAudioVideos_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Journal[] documents = new Journal[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
                         documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue.ToString(), outputDoc[i].PublicationDate  ,"", "", 0, 0);
