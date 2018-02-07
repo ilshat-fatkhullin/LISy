@@ -13,7 +13,8 @@ namespace LISyTest.Integrated
             FACULTY_ID = 1,
             STUDENT_ID = 2,
             BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID = 1,
-            BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID = 2;
+            BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID = 2,
+            BOOK_REFERENCE_ID = 3;
 
         /// <summary>
         /// Action: Patron p checks out a copy of book b.
@@ -77,11 +78,17 @@ namespace LISyTest.Integrated
 
             foreach (var c in copies)
             {
-                if (c.PatronID == FACULTY_ID &&
-                    c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
-                    Math.Abs((DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays - Book.FACULTY_RETURN_TIME) < 0.1)
+                if (c.ReturningTime != null)
                 {
-                    flag = true;
+                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+
+                    if (c.PatronID == FACULTY_ID &&
+                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                        Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
+                    {
+                        flag = true;
+                        break;                        
+                    }
                 }
             }
 
@@ -92,12 +99,35 @@ namespace LISyTest.Integrated
 
         /// <summary>
         /// Action: 'f' checks out book 'b'
-        /// Effect: The book is checked out by 'f' with returning time of 2 weeks(from the day it was checked out)
+        /// Effect: The book is checked out by 'f' with returning time of 4 weeks(from the day it was checked out)
         /// </summary>
         [TestMethod]
         public void TestCase4()
         {
-            
+            PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
+
+            Copy[] copies = LibrarianDataManager.GetAllCopiesList();
+            bool flag = false;
+
+            foreach (var c in copies)
+            {
+                if (c.ReturningTime != null)
+                {
+                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+
+                    if (c.PatronID == FACULTY_ID &&
+                        c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
+                        Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
+                    {
+                        flag = true;
+                        break;                        
+                    }
+                }
+            }
+
+            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
+
+            Assert.IsTrue(flag);
         }
 
         /// <summary>
@@ -139,6 +169,158 @@ namespace LISyTest.Integrated
             PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_3_ID);
 
             Assert.IsTrue(checked1 && checked2 && !checked3);
+        }
+
+        /// <summary>
+        /// Action: Patron p tries to check out another copy c' of book b.
+        /// Effect: None. In particular, librarians can check that Patron p has the same copy c of book b as before and copy c' is still in the library.
+        /// </summary>
+        [TestMethod]
+        public void TestCase6()
+        {
+            PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+
+            int count = 0;
+
+            foreach (var c in LibrarianDataManager.GetAllCopiesList())
+            {
+                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
+                    c.PatronID == PATRON_1_ID)
+                {
+                    count++;
+                }
+            }
+
+            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+
+            Assert.IsTrue(count == 1);
+        }
+
+        /// <summary>
+        /// Action: p1 and p2 check out b1.
+        /// Effect: The system should track both bookings
+        /// </summary>
+        [TestMethod]
+        public void TestCase7()
+        {
+            PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
+
+            int size = 0;
+            bool first = false, last = false;
+
+            foreach (var c in LibrarianDataManager.GetAllCopiesList())
+            {
+                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                {
+                    size++;
+                }
+                if (c.PatronID == PATRON_1_ID &&
+                    c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                {
+                    first = true;
+                }
+                if (c.PatronID == PATRON_2_ID &&
+                    c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                {
+                    last = true;
+                }
+            }
+
+            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
+
+            Assert.IsTrue(last && first && size == 2);
+        }
+
+        /// <summary>
+        /// Action: 's' checks out book 'b'
+        /// Effect: The book is checked out by 's' with returning time of 3 weeks(from the day it was checked out)
+        /// </summary>
+        [TestMethod]
+        public void TestCase8()
+        {
+            PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+
+            bool flag = false;
+
+            foreach (var c in LibrarianDataManager.GetAllCopiesList())
+            {
+                if (c.ReturningTime != null)
+                {
+                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+
+                    if (c.PatronID == STUDENT_ID &&
+                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                        Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
+                    {
+                        flag = true;
+                        return;
+                    }
+                }
+            }
+
+            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+
+            Assert.IsTrue(flag);
+        }
+
+        /// <summary>
+        /// Action: 's' checks out book 'b'
+        /// Effect: The book is checked out by 's' with returning time of 2 weeks(from the day it was checked out)
+        /// </summary>        
+        [TestMethod]
+        public void TestCase9()
+        {
+            PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+
+            bool flag = false;
+
+            foreach (var c in LibrarianDataManager.GetAllCopiesList())
+            {
+                if (c.ReturningTime != null)
+                {
+                    double days = (DateTime.Parse(c.ReturningTime) - DateTime.Now).TotalDays;
+
+                    if (c.PatronID == STUDENT_ID &&
+                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                        Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
+                    {
+                        flag = true;
+                        return;
+                    }
+                }
+            }
+
+            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+
+            Assert.IsTrue(flag);
+        }
+
+        [TestMethod]
+        public void TestCase10()
+        {
+            PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+            PatronDataManager.CheckOutDocument(BOOK_REFERENCE_ID, STUDENT_ID);
+
+            bool flag = false;
+            foreach (var c in LibrarianDataManager.GetAllCopiesList())
+            {
+                if (c.DocumentID == BOOK_REFERENCE_ID && c.PatronID == STUDENT_ID)
+                {
+                    Assert.IsTrue(false);
+                }
+
+                if (c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    c.PatronID == STUDENT_ID)
+                {
+                    flag = true;
+                }
+            }
+
+            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);            
+            Assert.IsTrue(flag);
         }
     }
 }
