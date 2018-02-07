@@ -133,7 +133,7 @@ namespace LISy.Managers.DataManagers
                 var output = connection.Query<TempCopy>("dbo.spCopies_GetAllCopies").ToArray();
                 Copy[] copies = new Copy[output.Count()];
                 for (int i = 0; i < copies.GetLength(0); i++)
-                    copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningTime, output[i].Room, output[i].Level);
+                    copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningDate, output[i].Room, output[i].Level);
                 return copies;
             }
         }
@@ -153,7 +153,7 @@ namespace LISy.Managers.DataManagers
 
         public int Level { get; set; }
 
-        public string ReturningTime { get; set; }
+        public string ReturningDate { get; set; }
     }
 
     class TempBook
