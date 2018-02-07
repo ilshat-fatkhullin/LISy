@@ -58,10 +58,10 @@ namespace LISy.Entities.Documents
             return Bestseller;
         }
 
-        public override string EvaluateReturnDate(IPatron patron)
+        public override string EvaluateReturnDate(string patronType)
         {
             DateTime date = DateTime.Today;
-            if (patron.GetType() == typeof(Faculty)) date = date.AddDays(FACULTY_RETURN_TIME);
+            if (patronType.Equals("Faculty")) date = date.AddDays(FACULTY_RETURN_TIME);
             else if (Bestseller) date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
             else date = date.AddDays(STUDENT_RETURN_TIME);
             return date.ToShortDateString();

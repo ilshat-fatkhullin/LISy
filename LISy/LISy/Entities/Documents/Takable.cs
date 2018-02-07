@@ -39,7 +39,7 @@ namespace LISy.Entities.Documents
             LastAvailableCopy = Copies[0];*/
         }
 
-        public virtual string EvaluateReturnDate(IPatron patron)
+        public virtual string EvaluateReturnDate(string patronType)
         {
             DateTime date = DateTime.Today;
             date = date.AddDays(BASIC_RETURN_TIME);

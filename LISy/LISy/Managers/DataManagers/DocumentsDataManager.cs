@@ -50,6 +50,7 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
+                string date = "";
                 string type = GetType(documentId);
                 if (type == "Inner")
                 {
@@ -60,26 +61,31 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAll").ToArray();
                     Book[] documents = new Book[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Book(outputDoc[i].Authors.Split(','), outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, new string[] { "" }, "", 0, 0);
+                        documents[i] = new Book(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, "", "", 0, 0);
+                    var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
+                    date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
                 else if (type == "AV")
                 {
                     var outputDoc = connection.Query<TempAV>("dbo.spAudioVideos_GetAll").ToArray();
                     AVMaterial[] documents = new AVMaterial[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new AVMaterial(outputDoc[i].Authors.Split(','), outputDoc[i].Title, new string[] { "" }, "", 0, 0);
+                        documents[i] = new AVMaterial(outputDoc[i].Authors, outputDoc[i].Title, "", "", 0, 0);
+                    var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
+                    date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
                 else if (type == "Journal Article")
                 {
                     var outputDoc = connection.Query<TempJournal>("dbo.spAudioVideos_GetAll").ToArray();
                     Journal[] documents = new Journal[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Journal(outputDoc[i].Authors.Split(','), outputDoc[i].Title, new string[] { "" }, "", 0, 0);
+                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue.ToString(), outputDoc[i].PublicationDate  ,"", "", 0, 0);
+                    var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
+                    date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
 
-
                 var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentId, UserId = userId }).ToList();
-                connection.Execute("dbo.spCopies_takeCopy @CopyId, @UserId", new { CopyId = output[0], UserId = userId });
+                connection.Execute("dbo.spCopies_takeCopyWithReturningDate @CopyId, @UserId, @ReturningDate", new { CopyId = output[0], UserId = userId, ReturningDate = date});
             }
         }
 
