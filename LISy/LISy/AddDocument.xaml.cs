@@ -1,5 +1,6 @@
 ﻿using LISy.Entities.Documents;
 using LISy.Managers;
+using LISy.Managers.DataManagers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,7 +94,7 @@ namespace LISy
             room_of_book.Visibility = Visibility.Visible;
             level_of_book.Visibility = Visibility.Visible;
             add_book_to_db.Visibility = Visibility.Visible;
-
+            publisher_of_book.Visibility = Visibility.Visible;
         }
 
         private void add_book_to_db_Click(object sender, RoutedEventArgs e)
@@ -114,7 +115,8 @@ namespace LISy
                 room_of_book.Text != null &&
                 level_of_book.Text != null)
             {
-                
+                Book book = new Book(InputFieldsManager.ReturnStringFromTextBox(author_of_book), InputFieldsManager.ReturnStringFromTextBox(title_of_book), InputFieldsManager.ReturnStringFromTextBox(publisher_of_book), InputFieldsManager.ReturnStringFromTextBox(edition_of_book), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(year_of_book)),is_best_seller, InputFieldsManager.ReturnStringFromTextBox(keywords_of_book),"", Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(price_of_book)));
+                DocumentsDataManager.AddDocument(book);
             }
 
 
