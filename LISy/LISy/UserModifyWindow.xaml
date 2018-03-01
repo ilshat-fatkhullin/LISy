@@ -1,0 +1,26 @@
+﻿<Window x:Class="LISy.UserModifyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISy"
+        mc:Ignorable="d"
+        Title="User modify" Height="215.425" Width="400.085">
+    <Grid Margin="0,0,-255,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="42*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="First name" VerticalAlignment="Top" Width="360" RenderTransformOrigin="0.415,0.265" Grid.ColumnSpan="2" TextChanged="FirstName_TextChanged"/>
+        <TextBox x:Name="SecondName" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Second name" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="SecondName_TextChanged"/>
+        <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="Phone_TextChanged"/>
+        <TextBox x:Name="Address" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="Address_TextChanged"/>
+        <CheckBox x:Name="FacultyCheckBox" Content="Is Faculty" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Height="15" Width="68"/>
+        <Button x:Name="Enter" Content="Enter" HorizontalAlignment="Left" Margin="90,154,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Enter_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Cancel_Click" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

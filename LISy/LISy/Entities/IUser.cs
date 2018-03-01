@@ -13,14 +13,14 @@ namespace LISy.Entities
     {
         long CardNumber { get; set; }
 
-        string FirstName { get; }
+        string FirstName { get; set; }
 
-        string SecondName { get; }
+        string SecondName { get; set; }
 
-        string Phone { get; }
+        string Phone { get; set; }
 
-        string Address { get; }
+        string Address { get; set; }
 
-        string Type { get; }
+        string Type { get; set; }
     }
 }

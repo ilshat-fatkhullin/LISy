@@ -72,9 +72,9 @@ namespace LISy.Managers.DataManagers
         /// </summary>
         /// <param name="user">Patron, which is going to be replaced.</param>
         /// <param name="newUser">Patron, which is going to be instead of <code>Patron</code>.</param>
-        public static void EditUser(IUser user, IUser newUser)
+        public static void EditUser(IUser newUser)
         {
-            if (user == null || newUser == null)
+            if (newUser == null)
             {
                 throw new ArgumentNullException();
             }
@@ -82,7 +82,7 @@ namespace LISy.Managers.DataManagers
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
                 connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address", 
-                    new { CardNumber = user.CardNumber, FirstName = newUser.FirstName,
+                    new { CardNumber = newUser.CardNumber, FirstName = newUser.FirstName,
                         SecondName = newUser.SecondName, Phone = newUser.Phone, Address = newUser.Address });
             }
         }

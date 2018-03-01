@@ -61,9 +61,13 @@ namespace LISy
         }                    
 
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            MyUserTable path = DataGridInfo.SelectedItem as MyUserTable;
-            // окно modify для изменение значение для этого юзера
+        {            
+            IUser user = DataGridInfo.SelectedItem as IUser;
+            if (user.Type != "Librarian")
+            {
+                UserModifyWindow window = new UserModifyWindow(user);
+                window.Show();
+            }
         }
 
         private void UpdateDataGrid()

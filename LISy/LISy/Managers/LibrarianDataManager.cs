@@ -19,24 +19,24 @@ namespace LISy.Managers
             DocumentsDataManager.DeleteDocument(document);
         }
 
-        public static void EditDocument(IDocument document, IDocument newDocument)
+        public static void EditDocument(IDocument newDocument)
         {
-            DocumentsDataManager.EditDocument(document, newDocument);
+            DocumentsDataManager.EditDocument(newDocument);
         }
 
-        public static bool AddPatron(IPatron patron, string login, string password)
+        public static bool AddUser(IUser user, string login, string password)
         {
-            return UsersDataManager.AddUser(patron, login, password);
+            return UsersDataManager.AddUser(user, login, password);
         }
 
-        public static void DeletePatron(IPatron patron)
+        public static void DeleteUser(IUser user)
         {
-            UsersDataManager.DeleteUser(patron);
+            UsersDataManager.DeleteUser(user);
         }
 
-        public static void EditPatron(IPatron patron, IPatron newPatron)
+        public static void EditUser(IUser newUser)
         {
-            UsersDataManager.EditUser(patron, newPatron);
+            UsersDataManager.EditUser(newUser);
         }
 
         public static Copy[] GetAllCopiesList()

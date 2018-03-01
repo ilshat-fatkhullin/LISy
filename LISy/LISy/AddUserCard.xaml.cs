@@ -98,7 +98,7 @@ namespace LISy
                 }
 
                 //if all checks good so open window                
-                if (LibrarianDataManager.AddPatron(patron, login, password))
+                if (LibrarianDataManager.AddUser(patron, login, password))
                 {
                     using (StreamWriter writer = new StreamWriter("id.txt"))
                     {
