@@ -11,7 +11,7 @@ namespace LISy.Managers.DataManagers
     /// Contains database commands for users
     /// </summary>
     static class UsersDataManager
-    {        
+    {
         /// <summary>
         /// Adds new Patron to the database.        
         /// </summary>

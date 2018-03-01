@@ -71,9 +71,9 @@ namespace LISy
 
         private void button_Info_Click(object sender, RoutedEventArgs e)
         {
-            LabrarianWorkWindow labrarianWork = new LabrarianWorkWindow();
-            labrarianWork.Owner = this;
-            labrarianWork.Show();
+            LibrarianWorkWindow librarianWork = new LibrarianWorkWindow();
+            librarianWork.Owner = this;
+            librarianWork.Show();
         }
 
         private void button_open_book_1_Click(object sender, RoutedEventArgs e)
