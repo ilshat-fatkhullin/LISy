@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using LISy.Entities;
 using LISy.Entities.Users;
 using System;
 using System.Data;
@@ -17,33 +18,26 @@ namespace LISy.Managers.DataManagers
         /// <summary>
         /// Adds new Patron to the database.        
         /// </summary>
-        /// <param name="patron">Patron, which is going to be added.</param>
-        public static bool AddPatron(IPatron patron, string login, string password)
+        /// <param name="user">Patron, which is going to be added.</param>
+        public static bool AddUser(IUser user, string login, string password)
         {
-            if (patron == null)
+            if (user == null)
             {
                 throw new ArgumentNullException();
             }
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<bool>("dbo.spUsers_IsUserInTable @FirstName, @SecondName, @Phone",
-                    new { FirstName = patron.FirstName, SecondName = patron.SecondName, Phone = patron.Phone }).ToList();
+                var output = connection.Query<bool>("dbo.spUsers_IsUserInTable @FirstName, @SecondName, @Phone", 
+                    new { FirstName = user.FirstName, SecondName = user.SecondName, Phone = user.Phone}).ToList();
                 if (!output[0])
                 {
                     long cardNumber = CredentialsManager.AddUserCredentials(login, password);
 
-                    patron.CardNumber = cardNumber;
-                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type",
-                        new
-                        {
-                            FirstName = patron.FirstName,
-                            SecondName = patron.SecondName,
-                            CardNumber = patron.CardNumber,
-                            Phone = patron.Phone,
-                            Address = patron.Address,
-                            Type = patron.GetType().ToString().Split('.').Last()
-                        });
+                    user.CardNumber = cardNumber;
+                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type", 
+                        new { FirstName = user.FirstName, SecondName = user.SecondName, CardNumber = user.CardNumber,
+                        Phone = user.Phone, Address = user.Address, Type = user.GetType().ToString().Split('.').Last()});
                     return true;
                 }
                 else
@@ -56,46 +50,40 @@ namespace LISy.Managers.DataManagers
         /// <summary>
         /// Deletes a Patron from the database.
         /// </summary>
-        /// <param name="patron">Patron, which is going to be deleted.</param>
-        public static void DeletePatron(IPatron patron)
+        /// <param name="user">Patron, which is going to be deleted.</param>
+        public static void DeleteUser(IUser user)
         {
 
-            if (patron == null)
+            if (user == null)
             {
                 throw new ArgumentNullException();
             }
 
-            CredentialsManager.DeleteUserCredentials(patron.CardNumber);
+            CredentialsManager.DeleteUserCredentials(user.CardNumber);
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spUsers_DeleteUser @CardNumber", patron);
+                connection.Execute("dbo.spUsers_DeleteUser @CardNumber", user);
             }
         }
 
         /// <summary>
         /// Replaces <code>Patron</code> on <code>newPatron</code> in the database.
         /// </summary>
-        /// <param name="patron">Patron, which is going to be replaced.</param>
-        /// <param name="newPatron">Patron, which is going to be instead of <code>Patron</code>.</param>
-        public static void EditPatron(IPatron patron, IPatron newPatron)
+        /// <param name="user">Patron, which is going to be replaced.</param>
+        /// <param name="newUser">Patron, which is going to be instead of <code>Patron</code>.</param>
+        public static void EditUser(IUser user, IUser newUser)
         {
-            if (patron == null || newPatron == null)
+            if (user == null || newUser == null)
             {
                 throw new ArgumentNullException();
             }
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address",
-                    new
-                    {
-                        CardNumber = patron.CardNumber,
-                        FirstName = newPatron.FirstName,
-                        SecondName = newPatron.SecondName,
-                        Phone = newPatron.Phone,
-                        Address = newPatron.Address
-                    });
+                connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address", 
+                    new { CardNumber = user.CardNumber, FirstName = newUser.FirstName,
+                        SecondName = newUser.SecondName, Phone = newUser.Phone, Address = newUser.Address });
             }
         }
 
