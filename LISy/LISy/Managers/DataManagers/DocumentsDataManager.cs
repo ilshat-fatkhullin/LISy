@@ -28,12 +28,20 @@ namespace LISy.Managers.DataManagers
             {
                 if (type == typeof(AVMaterial))
                 {
-
+                    AVMaterial temp = document as AVMaterial;
+                    connection.Execute("dbo.spAudioVideos_AddAV @Title, @Authors, @Keywords, @Price",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Keywords = temp.Keywords,
+                            Price = temp.Price
+                        });
                 }
                 else if (type == typeof(Book))
                 {
                     Book temp = document as Book;
-                    connection.Execute("dbo.spBook_AddBook @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
+                    connection.Execute("dbo.spBooks_AddBook @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
                         new
                         {
                             Title = temp.Title,
@@ -141,7 +149,7 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Book[] documents = new Book[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Book(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, "", "", 0, 0);
+                        documents[i] = new Book(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, "", "", 0);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
@@ -150,7 +158,7 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempAV>("dbo.spAudioVideos_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     AVMaterial[] documents = new AVMaterial[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new AVMaterial(outputDoc[i].Authors, outputDoc[i].Title, "", "", 0, 0);
+                        documents[i] = new AVMaterial(outputDoc[i].Authors, outputDoc[i].Title, "", "", 0);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
@@ -159,7 +167,7 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempJournal>("dbo.spJournals_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Journal[] documents = new Journal[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate, "", "", 0, 0);
+                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate, "", "", 0);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
