@@ -11,7 +11,7 @@ namespace LISy.Entities.Documents
     /// </summary>
     public class JournalArticle : Document
     {
-        //public long Journal { get; private set; }
+        public long JournalId { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of article in journal.

@@ -56,7 +56,15 @@ namespace LISy.Managers.DataManagers
                 }
                 else if (type == typeof(InnerMaterials))
                 {
-
+                    InnerMaterials temp = document as InnerMaterials;
+                    connection.Execute("dbo.spInnerMaterials_AddInnerMaterial @Title, @Authors, @Type, @Keywords",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Keywords = temp.Keywords,
+                            Type = temp.Type
+                        });
                 }
                 else if (type == typeof(Journal))
                 {
@@ -75,7 +83,15 @@ namespace LISy.Managers.DataManagers
                 }
                 else if (type == typeof(JournalArticle))
                 {
-
+                    JournalArticle temp = document as JournalArticle;
+                    connection.Execute("dbo.spJournalArticles_AddJournalArticle @Title, @Authors, @JournalId, @Keywords",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Keywords = temp.Keywords,
+                            JournalId = temp.JournalId
+                        });
                 }
             }
         }
