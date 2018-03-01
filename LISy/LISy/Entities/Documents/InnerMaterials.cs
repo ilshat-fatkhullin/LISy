@@ -44,11 +44,5 @@ namespace LISy.Entities.Documents
             Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
             Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }
-
-        public string Type()
-        {
-            if (IsAMagazine) return "Magazine";
-            return "ReferenceBook";
-        }
     }
 }
