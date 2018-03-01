@@ -21,6 +21,8 @@ namespace LISy.Entities
 
         public string Address { get; protected set; }
 
+        public string Type { get; protected set; }
+
         /// <summary>
         /// Initializes a new instance of library user.
         /// </summary>
@@ -35,6 +37,7 @@ namespace LISy.Entities
             SecondName = secondName ?? throw new ArgumentNullException("User must have a second name!");
             Phone = phone ?? throw new ArgumentNullException("User must have a phone number!");
             Address = address ?? throw new ArgumentNullException("User must have an address!");
+            Type = this.GetType().FullName.Split('.').Last();
         }
     }
 }
