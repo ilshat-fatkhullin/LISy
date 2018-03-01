@@ -45,7 +45,9 @@ namespace LISy
 
         private void add_doc_Click(object sender, RoutedEventArgs e)
         {
-
+            AddDocument addDocument = new AddDocument();
+            addDocument.Owner = this;
+            addDocument.Show();
         }
 
         private void show_all_Click(object sender, RoutedEventArgs e)
