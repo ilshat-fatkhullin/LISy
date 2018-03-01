@@ -60,7 +60,18 @@ namespace LISy.Managers.DataManagers
                 }
                 else if (type == typeof(Journal))
                 {
-
+                    Journal temp = document as Journal;
+                    connection.Execute("dbo.spJournals_AddJournal @Title, @Editors, @Publisher, @Issue, @PublicationDate, @Keywords, @Price",
+                        new
+                        {
+                            Title = temp.Title,
+                            Editors = temp.Authors,
+                            Publisher = temp.Publisher,
+                            Issue = temp.Issue,
+                            PublicationDate = temp.PublicationDate,
+                            Keywords = temp.Keywords,
+                            Price = temp.Price
+                        });
                 }
                 else if (type == typeof(JournalArticle))
                 {
