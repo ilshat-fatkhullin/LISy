@@ -1,6 +1,3 @@
-
-using LISy.Entities.Users;
-using LISy.Entities.Users.Patrons;
 using LISy.Managers;
 using LISy.Managers.DataManagers;
 using System.IO;
@@ -42,9 +39,8 @@ namespace LISy
                     using (StreamWriter writer = new StreamWriter("id.txt"))
                     {
                         writer.Write(userID);
-                    }
-                    WorkWindow work = new WorkWindow();
-                    GoToWork(work);
+                    }                    
+                    GoToWork(CredentialsManager.GetUserType(userID));
                 }
                 else
                 {
@@ -62,9 +58,19 @@ namespace LISy
         ///<summary>
         ///method that goes to another window
         ///</summary>
-        private void GoToWork(WorkWindow work)
+        private void GoToWork(string userType)
         {
-            work.Show();
+            Window window;
+            switch (userType)
+            {
+                case "Librarian":
+                    window = new LibrarianWorkWindow();                    
+                    break;
+                default:
+                    window = new WorkWindow();                    
+                    break;
+            }
+            window.Show();
             this.Close();
         }
 

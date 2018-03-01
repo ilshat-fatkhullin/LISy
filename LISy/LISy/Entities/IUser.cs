@@ -20,5 +20,7 @@ namespace LISy.Entities
         string Phone { get; }
 
         string Address { get; }
+
+        string Type { get; }
     }
 }

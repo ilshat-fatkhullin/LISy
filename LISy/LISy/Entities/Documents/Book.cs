@@ -40,7 +40,7 @@ namespace LISy.Entities.Documents
         /// <param name="image">Cover of the Book.</param>
         /// <param name="price">Price of the Book.</param>
         /// <param name="amount">Amount of copies of the Book.</param>
-        public Book(string authors, string title, string publisher, string edition, int year, bool bestseller, string keys, string image, int price, int amount) : base(authors, title, keys, image, price, amount)
+        public Book(string authors, string title, string publisher, string edition, int year, bool bestseller, string keys, string image, int price) : base(authors, title, keys, image, price)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Book must have a publisher!");
             Edition = edition ?? throw new ArgumentNullException("Book must have an edition!");
