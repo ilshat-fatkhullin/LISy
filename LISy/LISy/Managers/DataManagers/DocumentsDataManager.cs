@@ -115,10 +115,11 @@ namespace LISy.Managers.DataManagers
         /// </summary>
         /// <param name="document">Document, which is going to be replaced.</param>
         /// <param name="newDocument">Document, which is going to be instead of <code>document</code>.</param>
-        public static void EditDocument(IDocument document, IDocument newDocument)
+        public static void EditDocument(IDocument newDocument)
         {
-            if (document == null || newDocument == null) throw new ArgumentNullException("Invalid document!");
-            var type = document.GetType();
+            if (newDocument == null)
+                throw new ArgumentNullException("Invalid document!");
+            var type = newDocument.GetType();
             if (type != newDocument.GetType()) throw new ArgumentException("Types of documents are not the same!");
             if (type == typeof(AVMaterial))
             {

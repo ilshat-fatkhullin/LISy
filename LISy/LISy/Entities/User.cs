@@ -13,15 +13,15 @@ namespace LISy.Entities
     {
         public long CardNumber { get; set; }
 
-        public string FirstName { get; protected set; }
+        public string FirstName { get; set; }
 
-        public string SecondName { get; protected set; }
+        public string SecondName { get; set; }
 
-        public string Phone { get; protected set; }
+        public string Phone { get; set; }
 
-        public string Address { get; protected set; }
+        public string Address { get; set; }
 
-        public string Type { get; protected set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Initializes a new instance of library user.
