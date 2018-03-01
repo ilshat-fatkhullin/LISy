@@ -63,6 +63,9 @@ namespace LISy
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {            
             IUser user = DataGridInfo.SelectedItem as IUser;
+            if (user == null)
+                return;
+
             if (user.Type != "Librarian")
             {
                 UserModifyWindow window = new UserModifyWindow(user);
