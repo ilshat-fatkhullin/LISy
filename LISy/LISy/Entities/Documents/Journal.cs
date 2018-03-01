@@ -35,8 +35,8 @@ namespace LISy.Entities.Documents
         /// <param name="art_authors">Authors of journal's atricles.</param>
         /// <param name="art_titles">Titles of journal's atricles.</param>
         /// <param name="art_keys">Keywords using which every journal's atricle can be found.</param>*/
-        public Journal(string authors, string title, string publisher, int issue, string date, string keys, string image, int price, int amount/*,
-            int art_amount, string[] art_authors, string[] art_titles, string[] art_keys*/) : base(authors, title, keys, image, price, amount)
+        public Journal(string authors, string title, string publisher, int issue, string date, string keys, string image, int price/*,
+            int art_amount, string[] art_authors, string[] art_titles, string[] art_keys*/) : base(authors, title, keys, image, price)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Journal must have a publisher!");
             Issue = issue;// > 0 ? issue : throw new ArgumentNullException("Invalid issue!");
