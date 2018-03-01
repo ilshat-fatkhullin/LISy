@@ -25,7 +25,7 @@ namespace LISy.Entities.Documents
 
         public int Year { get; private set; }
 
-        public bool Bestseller { get; private set; }
+        public bool IsBestseller { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of a Book.
@@ -45,7 +45,7 @@ namespace LISy.Entities.Documents
             Publisher = publisher ?? throw new ArgumentNullException("Book must have a publisher!");
             Edition = edition ?? throw new ArgumentNullException("Book must have an edition!");
             Year = year > 0 ? year : throw new ArgumentException("Invalid year!");
-            Bestseller = bestseller;
+            IsBestseller = bestseller;
         }
 
         /// <summary>
@@ -54,15 +54,15 @@ namespace LISy.Entities.Documents
         /// <returns>true if the Book is a bestseller, false otherwise.</returns>
         public bool ChangeBestseller()
         {
-            Bestseller = !Bestseller;
-            return Bestseller;
+            IsBestseller = !IsBestseller;
+            return IsBestseller;
         }
 
         public override string EvaluateReturnDate(string patronType)
         {
             DateTime date = DateTime.Today;
             if (patronType.Equals("Faculty")) date = date.AddDays(FACULTY_RETURN_TIME);
-            else if (Bestseller) date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
+            else if (IsBestseller) date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
             else date = date.AddDays(STUDENT_RETURN_TIME);
             return date.ToShortDateString();
         }
