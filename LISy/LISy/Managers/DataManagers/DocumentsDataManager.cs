@@ -28,7 +28,15 @@ namespace LISy.Managers.DataManagers
             {
                 if (type == typeof(AVMaterial))
                 {
-
+                    AVMaterial temp = document as AVMaterial;
+                    connection.Execute("dbo.spAudioVideos_AddAV @Title, @Authors, @Keywords, @Price",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Keywords = temp.Keywords,
+                            Price = temp.Price
+                        });
                 }
                 else if (type == typeof(Book))
                 {
