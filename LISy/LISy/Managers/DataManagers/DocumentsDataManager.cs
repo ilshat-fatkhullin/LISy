@@ -177,7 +177,7 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Book[] documents = new Book[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Book(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, "", "", 0);
+                        documents[i] = new Book(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition, outputDoc[i].Year, outputDoc[i].IsBestseller, "", "", outputDoc[i].Price);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
@@ -186,7 +186,7 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempAV>("dbo.spAudioVideos_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     AVMaterial[] documents = new AVMaterial[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new AVMaterial(outputDoc[i].Authors, outputDoc[i].Title, "", "", 0);
+                        documents[i] = new AVMaterial(outputDoc[i].Authors, outputDoc[i].Title, "", "", outputDoc[i].Price);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
@@ -195,7 +195,7 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempJournal>("dbo.spJournals_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Journal[] documents = new Journal[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate, "", "", 0);
+                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate, "", "", outputDoc[i].Price);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
@@ -251,6 +251,22 @@ namespace LISy.Managers.DataManagers
                 return copies;
             }
         }
+
+        public static Book[] GetAllBooksList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<TempBook>("dbo.spBooks_GetAllBooks").ToArray();
+                Book[] books = new Book[output.Count()];
+                for (int i = 0; i < books.GetLength(0); i++)
+                {
+                    books[i] = new Book(output[i].Authors, output[i].Title, output[i].Publisher, output[i].Edition, output[i].Year, output[i].IsBestseller, "", "", output[i].Price);
+                    books[i].ID = output[i].Id;
+                }
+
+                return books;
+            }
+        }
     }
 
     class TempCopy
@@ -280,11 +296,13 @@ namespace LISy.Managers.DataManagers
 
         public string Publisher { get; set; }
 
-        public int Edition { get; set; }
+        public string Edition { get; set; }
 
         public int Year { get; set; }
 
         public bool IsBestseller { get; set; }
+
+        public int Price { get; set; }
     }
 
     class TempAV
@@ -294,6 +312,8 @@ namespace LISy.Managers.DataManagers
         public string Title { get; set; }
 
         public string Authors { get; set; }
+
+        public int Price { get; set; }
     }
 
     class TempJournal
@@ -309,5 +329,7 @@ namespace LISy.Managers.DataManagers
         public string Editors { get; set; }
 
         public string PublicationDate { get; set; }
+
+        public int Price { get; set; }
     }
 }
