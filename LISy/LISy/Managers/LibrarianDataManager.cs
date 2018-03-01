@@ -26,17 +26,17 @@ namespace LISy.Managers
 
         public static bool AddPatron(IPatron patron, string login, string password)
         {
-            return UsersDataManager.AddPatron(patron, login, password);
+            return UsersDataManager.AddUser(patron, login, password);
         }
 
         public static void DeletePatron(IPatron patron)
         {
-            UsersDataManager.DeletePatron(patron);
+            UsersDataManager.DeleteUser(patron);
         }
 
         public static void EditPatron(IPatron patron, IPatron newPatron)
         {
-            UsersDataManager.EditPatron(patron, newPatron);
+            UsersDataManager.EditUser(patron, newPatron);
         }
 
         public static Copy[] GetAllCopiesList()
