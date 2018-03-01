@@ -89,8 +89,8 @@
     <Compile Include="Entities\Users\ILibrarian.cs" />
     <Compile Include="Entities\Users\IPatron.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="LabrarianWorkWindow.xaml.cs">
-      <DependentUpon>LabrarianWorkWindow.xaml</DependentUpon>
+    <Compile Include="LibrarianWorkWindow.xaml.cs">
+      <DependentUpon>LibrarianWorkWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Managers\CredentialsManager.cs" />
     <Compile Include="Managers\DataManagers\DocumentsDataManager.cs" />
@@ -98,6 +98,7 @@
     <Compile Include="Managers\DataManagers\UsersDataManager.cs" />
     <Compile Include="Managers\InputFieldsManager.cs" />
     <Compile Include="Managers\LibrarianDataManager.cs" />
+    <Compile Include="MyUserTable.cs" />
     <Compile Include="Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -111,7 +112,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LabrarianWorkWindow.xaml">
+    <Page Include="LibrarianWorkWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
