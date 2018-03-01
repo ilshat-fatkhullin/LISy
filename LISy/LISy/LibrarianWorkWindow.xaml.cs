@@ -68,12 +68,12 @@ namespace LISy
 
             if (user.Type != "Librarian")
             {
-                UserModifyWindow window = new UserModifyWindow(user);
+                UserModifyWindow window = new UserModifyWindow(user, this);
                 window.Show();
             }
         }
 
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             List<IUser> result = new List<IUser>();
             result.Clear();
