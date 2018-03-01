@@ -26,7 +26,7 @@ namespace LISy
 
         private void choose_user_card_Click(object sender, RoutedEventArgs e)
         {
-
+            //grid_Loaded();
         }
 
         private void refresh_Click(object sender, RoutedEventArgs e)
@@ -36,7 +36,9 @@ namespace LISy
 
         private void add_user_Click(object sender, RoutedEventArgs e)
         {
-
+            AddUserCard addUserCard = new AddUserCard();
+            addUserCard.Owner = this;
+            addUserCard.Show();
         }
 
         private void add_doc_Click(object sender, RoutedEventArgs e)
@@ -50,15 +52,13 @@ namespace LISy
         }
         private void grid_Loaded(object sender, RoutedEventArgs e)
         {
-            List<MyUserTable> result = new List<MyUserTable>();
-            result.Add(new MyUserTable(1,"Peter","Ivanov","innopolis", "Lenin", 70,21,"8909008989", 5));
-            DataGridInfo.ItemsSource = result;
+            List<MyUserTable> listOfUsers = new List<MyUserTable>();
+           
         }
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MyUserTable path = DataGridInfo.SelectedItem as MyUserTable;
-            MessageBox.Show(" ID: " + path.Id + "\n Name: " + path.FirstName+ "\n LastName: " + path.LastName
-                + "\n Town: " + path.town + "\n Street:" + path.street+ "\n Booked Books:"+path.countBookedBooks);
+            // окно modify для изменение значение для этого юзера
         }
     }
 }
