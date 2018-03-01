@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="LibrarianWorkWindow" Height="450.148" Width="822.448" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize">
+        Title="LibrarianWorkWindow" Height="454.648" Width="856.948" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize">
     <Grid x:Name="work_lib_grid" Margin="0,0,4,-1">
         <Label x:Name="librarian_name" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" FontSize="16"/>
         <Label x:Name="librarian_name_fill" Content="" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Height="31" Width="305" FontSize="16"/>
         <Label x:Name="librarian_status" Content="Status:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="60" FontSize="16"/>
         <Label x:Name="librarian_status_fill" Content="" HorizontalAlignment="Left" Margin="75,46,0,0" VerticalAlignment="Top" Width="305" FontSize="16"/>
-        <DataGrid x:Name="DataGridInfo" Height="265" Margin="10,109,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="752" Loaded="grid_Loaded" MouseUp="grid_MouseUp"/>
+        <DataGrid x:Name="DataGridInfo" Height="308" Margin="10,109,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="827" Loaded="grid_Loaded" MouseUp="grid_MouseUp"/>
         <ComboBox x:Name="list_doc_button" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="True">
             <Button x:Name="chosee_books" Content="Books"/>
             <Button x:Name="choose_ref_books" Content="Reference Books"/>

@@ -13,7 +13,7 @@ namespace LISy.Managers.DataManagers
     /// Contains database commands for users
     /// </summary>
     static class UsersDataManager
-    {        
+    {
         /// <summary>
         /// Adds new Patron to the database.        
         /// </summary>
@@ -27,16 +27,23 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<bool>("dbo.spUsers_IsUserInTable @FirstName, @SecondName, @Phone", 
-                    new { FirstName = patron.FirstName, SecondName = patron.SecondName, Phone = patron.Phone}).ToList();
+                var output = connection.Query<bool>("dbo.spUsers_IsUserInTable @FirstName, @SecondName, @Phone",
+                    new { FirstName = patron.FirstName, SecondName = patron.SecondName, Phone = patron.Phone }).ToList();
                 if (!output[0])
                 {
                     long cardNumber = CredentialsManager.AddUserCredentials(login, password);
 
                     patron.CardNumber = cardNumber;
-                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type", 
-                        new { FirstName = patron.FirstName, SecondName = patron.SecondName, CardNumber = patron.CardNumber,
-                        Phone = patron.Phone, Address = patron.Address, Type = patron.GetType().ToString().Split('.').Last()});
+                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type",
+                        new
+                        {
+                            FirstName = patron.FirstName,
+                            SecondName = patron.SecondName,
+                            CardNumber = patron.CardNumber,
+                            Phone = patron.Phone,
+                            Address = patron.Address,
+                            Type = patron.GetType().ToString().Split('.').Last()
+                        });
                     return true;
                 }
                 else
@@ -80,9 +87,15 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address", 
-                    new { CardNumber = patron.CardNumber, FirstName = newPatron.FirstName,
-                        SecondName = newPatron.SecondName, Phone = newPatron.Phone, Address = newPatron.Address });
+                connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address",
+                    new
+                    {
+                        CardNumber = patron.CardNumber,
+                        FirstName = newPatron.FirstName,
+                        SecondName = newPatron.SecondName,
+                        Phone = newPatron.Phone,
+                        Address = newPatron.Address
+                    });
             }
         }
 
