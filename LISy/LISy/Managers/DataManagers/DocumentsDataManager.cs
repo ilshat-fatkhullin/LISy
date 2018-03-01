@@ -21,26 +21,43 @@ namespace LISy.Managers.DataManagers
         /// <param name="document">Document, which is going to be added.</param>
         public static void AddDocument(IDocument document)
         {
+            if (document == null) throw new ArgumentNullException("Invalid document!");
             var type = document.GetType();
-            if (type == typeof(AVMaterial))
-            {
 
-            }
-            else if (type == typeof(Book))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
+                if (type == typeof(AVMaterial))
+                {
 
-            }
-            else if (type == typeof(InnerMaterials))
-            {
+                }
+                else if (type == typeof(Book))
+                {
+                    Book temp = document as Book;
+                    connection.Execute("dbo.spBook_AddBook @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Publisher = temp.Publisher,
+                            Edition = temp.Edition,
+                            Year = temp.Year,
+                            IsBestseller = temp.IsBestseller,
+                            Keywords = temp.Keywords,
+                            Price = temp.Price
+                        });
+                }
+                else if (type == typeof(InnerMaterials))
+                {
 
-            }
-            else if (type == typeof(Journal))
-            {
+                }
+                else if (type == typeof(Journal))
+                {
 
-            }
-            else if (type == typeof(JournalArticle))
-            {
+                }
+                else if (type == typeof(JournalArticle))
+                {
 
+                }
             }
         }
 
@@ -50,6 +67,7 @@ namespace LISy.Managers.DataManagers
         /// <param name="document">Document, which is going to be deleted.</param>
         public static void DeleteDocument(IDocument document)
         {
+            if (document == null) throw new ArgumentNullException("Invalid document!");
             var type = document.GetType();
             if (type == typeof(AVMaterial))
             {
@@ -80,6 +98,7 @@ namespace LISy.Managers.DataManagers
         /// <param name="newDocument">Document, which is going to be instead of <code>document</code>.</param>
         public static void EditDocument(IDocument document, IDocument newDocument)
         {
+            if (document == null || newDocument == null) throw new ArgumentNullException("Invalid document!");
             var type = document.GetType();
             if (type != newDocument.GetType()) throw new ArgumentException("Types of documents are not the same!");
             if (type == typeof(AVMaterial))
