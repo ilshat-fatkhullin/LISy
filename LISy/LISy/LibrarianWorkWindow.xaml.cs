@@ -33,7 +33,7 @@ namespace LISy
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateDataGrid();
         }
 
         private void add_user_Click(object sender, RoutedEventArgs e)
@@ -55,19 +55,24 @@ namespace LISy
 
         private void grid_Loaded(object sender, RoutedEventArgs e)
         {
-            List<IUser> result = new List<IUser>();
-            result.Clear();
-            foreach (IUser user in LibrarianDataManager.GetAllUsersList())
-            {
-                result.Add(user);
-            }            
-            DataGridInfo.ItemsSource = result;            
-        }
+            UpdateDataGrid();
+        }                    
 
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MyUserTable path = DataGridInfo.SelectedItem as MyUserTable;
             // окно modify для изменение значение для этого юзера
+        }
+
+        private void UpdateDataGrid()
+        {
+            List<IUser> result = new List<IUser>();
+            result.Clear();
+            foreach (IUser user in LibrarianDataManager.GetAllUsersList())
+            {
+                result.Add(user);
+            }
+            DataGridInfo.ItemsSource = result;
         }
     }
 }

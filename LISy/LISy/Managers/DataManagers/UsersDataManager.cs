@@ -121,7 +121,7 @@ namespace LISy.Managers.DataManagers
                             break;                        
                     }
 
-                    users[i].CardNumber = users[i].CardNumber;
+                    users[i].CardNumber = output[i].CardNumber;
                 }
                 return users;
             }
