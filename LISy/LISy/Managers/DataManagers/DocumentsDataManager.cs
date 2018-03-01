@@ -21,7 +21,27 @@ namespace LISy.Managers.DataManagers
         /// <param name="document">Document, which is going to be added.</param>
         public static void AddDocument(IDocument document)
         {
-            throw new NotImplementedException();
+            var type = document.GetType();
+            if (type == typeof(AVMaterial))
+            {
+
+            }
+            else if (type == typeof(Book))
+            {
+
+            }
+            else if (type == typeof(InnerMaterials))
+            {
+
+            }
+            else if (type == typeof(Journal))
+            {
+
+            }
+            else if (type == typeof(JournalArticle))
+            {
+
+            }
         }
 
         /// <summary>
@@ -30,7 +50,27 @@ namespace LISy.Managers.DataManagers
         /// <param name="document">Document, which is going to be deleted.</param>
         public static void DeleteDocument(IDocument document)
         {
-            throw new NotImplementedException();
+            var type = document.GetType();
+            if (type == typeof(AVMaterial))
+            {
+
+            }
+            else if (type == typeof(Book))
+            {
+
+            }
+            else if (type == typeof(InnerMaterials))
+            {
+
+            }
+            else if (type == typeof(Journal))
+            {
+
+            }
+            else if (type == typeof(JournalArticle))
+            {
+
+            }
         }
 
         /// <summary>
@@ -40,7 +80,28 @@ namespace LISy.Managers.DataManagers
         /// <param name="newDocument">Document, which is going to be instead of <code>document</code>.</param>
         public static void EditDocument(IDocument document, IDocument newDocument)
         {
-            throw new NotImplementedException();
+            var type = document.GetType();
+            if (type != newDocument.GetType()) throw new ArgumentException("Types of documents are not the same!");
+            if (type == typeof(AVMaterial))
+            {
+
+            }
+            else if (type == typeof(Book))
+            {
+
+            }
+            else if (type == typeof(InnerMaterials))
+            {
+
+            }
+            else if (type == typeof(Journal))
+            {
+
+            }
+            else if (type == typeof(JournalArticle))
+            {
+
+            }
         }
 
         public static void CheckOutDocument(long documentId, long userId)
@@ -58,7 +119,7 @@ namespace LISy.Managers.DataManagers
                 }
                 else if (type == "Book")
                 {
-                    var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAllById @DocumentId", new {DocumentId = documentId}).ToArray();
+                    var outputDoc = connection.Query<TempBook>("dbo.spBooks_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Book[] documents = new Book[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
                         documents[i] = new Book(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Edition.ToString(), outputDoc[i].Year, outputDoc[i].IsBestseller, "", "", 0, 0);
@@ -79,13 +140,13 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempJournal>("dbo.spAudioVideos_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Journal[] documents = new Journal[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate  ,"", "", 0, 0);
+                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate, "", "", 0, 0);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
 
                 var output = connection.Query<long>("dbo.spCopies_GetAvailableCopies @BookId, @UserId", new { BookId = documentId, UserId = userId }).ToList();
-                connection.Execute("dbo.spCopies_takeCopyWithReturningDate @CopyId, @UserId, @ReturningDate", new { CopyId = output[0], UserId = userId, ReturningDate = date});
+                connection.Execute("dbo.spCopies_takeCopyWithReturningDate @CopyId, @UserId, @ReturningDate", new { CopyId = output[0], UserId = userId, ReturningDate = date });
             }
         }
 
@@ -119,7 +180,7 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<string>("dbo.spDocuments_GetType @DocumentId", new { DocumentId = documentId}).ToList();
+                var output = connection.Query<string>("dbo.spDocuments_GetType @DocumentId", new { DocumentId = documentId }).ToList();
                 return (output[0]);
             }
         }
@@ -176,7 +237,7 @@ namespace LISy.Managers.DataManagers
     class TempAV
     {
         public int Id { get; set; }
-        
+
         public string Title { get; set; }
 
         public string Authors { get; set; }
