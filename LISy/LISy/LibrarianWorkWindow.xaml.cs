@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LISy.Entities;
+using LISy.Entities.Documents;
 using LISy.Managers;
 
 namespace LISy
@@ -33,7 +34,7 @@ namespace LISy
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDataGrid();
+            UpdateDataGridUser();
         }
 
         private void add_user_Click(object sender, RoutedEventArgs e)
@@ -50,19 +51,14 @@ namespace LISy
             addDocument.Show();
         }
 
-        private void show_all_Click(object sender, RoutedEventArgs e)
+        private void grid_LoadedUser(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            UpdateDataGrid();
+            UpdateDataGridUser();
         }                    
 
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {            
-            IUser user = DataGridInfo.SelectedItem as IUser;
+            IUser user = DataGridInfoUser.SelectedItem as IUser;
             if (user == null)
                 return;
 
@@ -73,7 +69,7 @@ namespace LISy
             }
         }
 
-        private void UpdateDataGrid()
+        private void UpdateDataGridUser()
         {
             List<IUser> result = new List<IUser>();
             result.Clear();
@@ -81,7 +77,22 @@ namespace LISy
             {
                 result.Add(user);
             }
-            DataGridInfo.ItemsSource = result;
+            DataGridInfoUser.ItemsSource = result;
+        }
+        private void UptadeDataGridBook()
+        {
+            List<Book> result = new List<Book>();
+            result.Clear();
+            foreach (Book book in LibrarianDataManager.GetAllUsersList())
+            {
+                result.Add(book);
+            }
+            DataGridBook.ItemsSource = result;
+        }
+
+        private void grid_LoaderBook(object sender, RoutedEventArgs e)
+        {
+            UptadeDataGridBook();
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿<Window x:Class="LISy.UserModifyWindow"
+﻿<Window x:Name="user_modify" x:Class="LISy.UserModifyWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="User modify" Height="215.425" Width="400.085">
+        Title="User modify" Height="231.828" Width="400.085" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,-255,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
