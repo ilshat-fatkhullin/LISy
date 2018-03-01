@@ -189,8 +189,6 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-
-
                 var output = connection.Query<TempCopy>("dbo.spCopies_GetAllCopies").ToArray();
                 Copy[] copies = new Copy[output.Count()];
                 for (int i = 0; i < copies.GetLength(0); i++)

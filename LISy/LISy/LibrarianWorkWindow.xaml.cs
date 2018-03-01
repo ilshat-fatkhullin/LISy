@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LISy.Entities;
+using LISy.Managers;
 
 namespace LISy
 {
@@ -48,12 +50,18 @@ namespace LISy
         {
 
         }
+
         private void grid_Loaded(object sender, RoutedEventArgs e)
         {
-            List<MyUserTable> result = new List<MyUserTable>();
-            result.Add(new MyUserTable(1,"Peter","Ivanov","innopolis", "Lenin", 70,21,"8909008989", 5));
+            List<IUser> result = new List<IUser>();
+            result.Clear();
+            foreach (IUser user in LibrarianDataManager.GetAllUsersList())
+            {
+                result.Add(user);
+            }            
             DataGridInfo.ItemsSource = result;
         }
+
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MyUserTable path = DataGridInfo.SelectedItem as MyUserTable;

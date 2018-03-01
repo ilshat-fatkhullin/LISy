@@ -43,5 +43,10 @@ namespace LISy.Managers
         {
             return DocumentsDataManager.GetAllCopiesList();
         }
+
+        public static IUser[] GetAllUsersList()
+        {
+            return UsersDataManager.GetUsersList();
+        }
     }
 }

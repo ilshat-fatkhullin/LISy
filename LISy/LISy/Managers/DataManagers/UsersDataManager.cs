@@ -3,6 +3,9 @@ using LISy.Entities.Users;
 using System;
 using System.Data;
 using System.Linq;
+using System.Windows.Documents;
+using LISy.Entities;
+using LISy.Entities.Users.Patrons;
 
 namespace LISy.Managers.DataManagers
 {
@@ -82,5 +85,48 @@ namespace LISy.Managers.DataManagers
                         SecondName = newPatron.SecondName, Phone = newPatron.Phone, Address = newPatron.Address });
             }
         }
+
+        public static IUser[] GetUsersList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<TempUser>("dbo.spUsers_GetAllUsers").ToArray();
+                IUser[] users = new IUser[output.Count()];
+                for (int i = 0; i < users.GetLength(0); i++)
+                {
+                    TempUser user = output[i];
+                    switch (user.Type)
+                    {
+                        case "Faculty":
+                            users[i] = new Faculty(user.FirstName, user.SecondName, user.Phone, user.Address);
+                            break;
+                        case "Student":
+                            users[i] = new Student(user.FirstName, user.SecondName, user.Phone, user.Address);
+                            break;
+                        case "Librarian":
+                            users[i] = new Librarian(user.FirstName, user.SecondName, user.Phone, user.Address);
+                            break;                        
+                    }
+
+                    users[i].CardNumber = users[i].CardNumber;
+                }
+                return users;
+            }
+        }
+    }
+
+    class TempUser
+    {
+        public string FirstName;
+
+        public string SecondName;
+
+        public int CardNumber;
+
+        public string Phone;
+
+        public string Address;
+
+        public string Type;        
     }
 }
