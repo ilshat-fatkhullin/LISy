@@ -11,18 +11,22 @@
         <Label x:Name="librarian_name_fill" Content="" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Height="31" Width="305" FontSize="16"/>
         <Label x:Name="librarian_status" Content="Status:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="60" FontSize="16"/>
         <Label x:Name="librarian_status_fill" Content="" HorizontalAlignment="Left" Margin="75,46,0,0" VerticalAlignment="Top" Width="305" FontSize="16"/>
-        <DataGrid x:Name="DataGridInfo" Height="308" Margin="10,109,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="827" Loaded="grid_Loaded" MouseUp="grid_MouseUp"/>
-        <ComboBox x:Name="list_doc_button" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="True">
-            <Button x:Name="chosee_books" Content="Books"/>
-            <Button x:Name="choose_ref_books" Content="Reference Books"/>
-            <Button x:Name="choose_JA" Content="Journal Articles"/>
-            <Button x:Name="choose_AV" Content="AV materials"/>
-            <Button x:Name="show_all" Content="All" Click="show_all_Click"/>
-        </ComboBox>
         <Button x:Name="choose_user_card" Content="User Cards" HorizontalAlignment="Left" Margin="135,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="choose_user_card_Click"/>
         <Button x:Name="refresh" Content="Refresh" HorizontalAlignment="Left" Margin="510,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="refresh_Click"/>
         <Button x:Name="add_user" Content="Add User" HorizontalAlignment="Left" Margin="260,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_user_Click"/>
         <Button x:Name="add_doc" Content="Add Document" HorizontalAlignment="Left" Margin="385,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_doc_Click"/>
+        <TabControl x:Name="tab_control_grid" HorizontalAlignment="Left" Height="308" Margin="10,109,0,0" VerticalAlignment="Top" Width="827">
+            <TabItem x:Name="tab_item_users" Header="Users">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="DataGridInfoUser" Height="260" VerticalAlignment="Top" HorizontalAlignment="Left" Width="801" Loaded="grid_LoadedUser" MouseUp="grid_MouseUp" Margin="10,10,0,0"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tab_item_books" Header="Books">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderBook"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

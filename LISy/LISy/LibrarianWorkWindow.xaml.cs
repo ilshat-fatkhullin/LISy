@@ -34,7 +34,7 @@ namespace LISy
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDataGridUser();
+            UpdateUsersDataGrid();
         }
 
         private void add_user_Click(object sender, RoutedEventArgs e)
@@ -53,7 +53,7 @@ namespace LISy
 
         private void grid_LoadedUser(object sender, RoutedEventArgs e)
         {
-            UpdateDataGridUser();
+            UpdateUsersDataGrid();
         }                    
 
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
@@ -64,12 +64,13 @@ namespace LISy
 
             if (user.Type != "Librarian")
             {
-                UserModifyWindow window = new UserModifyWindow(user);
+                UserModifyWindow window = new UserModifyWindow(user, this);
                 window.Show();
             }
         }
 
-        private void UpdateDataGridUser()
+
+        public void UpdateUsersDataGrid()
         {
             List<IUser> result = new List<IUser>();
             result.Clear();
@@ -83,7 +84,7 @@ namespace LISy
         {
             List<Book> result = new List<Book>();
             result.Clear();
-            foreach (Book book in LibrarianDataManager.GetAllUsersList())
+            foreach (Book book in LibrarianDataManager)
             {
                 result.Add(book);
             }

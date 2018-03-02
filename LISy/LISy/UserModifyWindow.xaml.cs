@@ -22,16 +22,18 @@ namespace LISy
     public partial class UserModifyWindow : Window
     {
         private IUser user;
+        private LibrarianWorkWindow workWindow;
 
-        public UserModifyWindow(IUser user)
+        public UserModifyWindow(IUser user, LibrarianWorkWindow workWindow)
         {            
             InitializeComponent();
             this.user = user;
+            this.workWindow = workWindow;
             FirstName.Text = user.FirstName;
             SecondName.Text = user.SecondName;
             Phone.Text = user.Phone;
             Address.Text = user.Address;
-            FacultyCheckBox.IsEnabled = user.Type == "Faculty";
+            FacultyCheckBox.IsEnabled = user.Type == "Faculty";            
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -41,6 +43,7 @@ namespace LISy
             user.Phone = Phone.Text;
             user.Address = Address.Text;
             LibrarianDataManager.EditUser(user);
+            workWindow.UpdateUsersDataGrid();
             this.Close();
         }
 
@@ -67,6 +70,13 @@ namespace LISy
         private void Address_TextChanged(object sender, TextChangedEventArgs e)
         {
             Address.Text = InputFieldsManager.ReturnStringFromTextBox(Address);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            LibrarianDataManager.DeleteUser(user);            
+            workWindow.UpdateUsersDataGrid();
+            this.Close();
         }
     }
 }
