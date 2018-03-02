@@ -28,16 +28,24 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<bool>("dbo.spUsers_IsUserInTable @FirstName, @SecondName, @Phone", 
-                    new { FirstName = user.FirstName, SecondName = user.SecondName, Phone = user.Phone}).ToList();
+                var output = connection.Query<bool>("dbo.spUsers_IsUserInTable @FirstName, @SecondName, @Phone",
+                    new
+                    { FirstName = user.FirstName, SecondName = user.SecondName, Phone = user.Phone }).ToList();
                 if (!output[0])
                 {
                     long cardNumber = CredentialsManager.AddUserCredentials(login, password);
 
                     user.CardNumber = cardNumber;
-                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type", 
-                        new { FirstName = user.FirstName, SecondName = user.SecondName, CardNumber = user.CardNumber,
-                        Phone = user.Phone, Address = user.Address, Type = user.GetType().ToString().Split('.').Last()});
+                    connection.Execute("dbo.spUsers_AddUser @FirstName, @SecondName, @CardNumber, @Phone, @Address, @Type",
+                        new
+                        {
+                            FirstName = user.FirstName,
+                            SecondName = user.SecondName,
+                            CardNumber = user.CardNumber,
+                            Phone = user.Phone,
+                            Address = user.Address,
+                            Type = user.GetType().ToString().Split('.').Last()
+                        });
                     return true;
                 }
                 else
@@ -70,7 +78,6 @@ namespace LISy.Managers.DataManagers
         /// <summary>
         /// Replaces <code>Patron</code> on <code>newPatron</code> in the database.
         /// </summary>
-        /// <param name="user">Patron, which is going to be replaced.</param>
         /// <param name="newUser">Patron, which is going to be instead of <code>Patron</code>.</param>
         public static void EditUser(IUser newUser)
         {
@@ -81,9 +88,15 @@ namespace LISy.Managers.DataManagers
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address", 
-                    new { CardNumber = newUser.CardNumber, FirstName = newUser.FirstName,
-                        SecondName = newUser.SecondName, Phone = newUser.Phone, Address = newUser.Address });
+                connection.Execute("dbo.spUsers_ModifyUser @CardNumber, @FirstName, @SecondName, @Phone, @Address",
+                    new
+                    {
+                        CardNumber = newUser.CardNumber,
+                        FirstName = newUser.FirstName,
+                        SecondName = newUser.SecondName,
+                        Phone = newUser.Phone,
+                        Address = newUser.Address
+                    });
             }
         }
 
@@ -106,7 +119,7 @@ namespace LISy.Managers.DataManagers
                             break;
                         case "Librarian":
                             users[i] = new Librarian(user.FirstName, user.SecondName, user.Phone, user.Address);
-                            break;                        
+                            break;
                     }
 
                     users[i].CardNumber = output[i].CardNumber;
@@ -128,6 +141,6 @@ namespace LISy.Managers.DataManagers
 
         public string Address;
 
-        public string Type;        
+        public string Type;
     }
 }
