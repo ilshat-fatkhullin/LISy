@@ -122,9 +122,10 @@ namespace LISy.Managers.DataManagers
                 if (type == typeof(AVMaterial))
                 {
                     AVMaterial temp = newDocument as AVMaterial;
-                    connection.Execute("dbo.spAudioVideos_ModifyAV @Title, @Authors, @Keywords, @Price",
+                    connection.Execute("dbo.spAudioVideos_ModifyAV @Id, @Title, @Authors, @Keywords, @Price",
                         new
                         {
+                            Id = temp.ID,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Keywords = temp.Keywords,
@@ -134,9 +135,10 @@ namespace LISy.Managers.DataManagers
                 else if (type == typeof(Book))
                 {
                     Book temp = newDocument as Book;
-                    connection.Execute("dbo.spBooks_ModifyBook @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
+                    connection.Execute("dbo.spBooks_ModifyBook @Id, @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
                         new
                         {
+                            Id = temp.ID,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Publisher = temp.Publisher,
@@ -150,21 +152,22 @@ namespace LISy.Managers.DataManagers
                 else if (type == typeof(InnerMaterials))
                 {
                     InnerMaterials temp = newDocument as InnerMaterials;
-                    connection.Execute("dbo.spInnerMaterials_ModifyInnerMaterial @Title, @Authors, @Type, @Keywords",
+                    connection.Execute("dbo.spInnerMaterials_ModifyInnerMaterial @Id, @Title, @Authors, @Keywords",
                         new
                         {
+                            Id = temp.ID,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Keywords = temp.Keywords,
-                            Type = temp.Type
                         });
                 }
                 else if (type == typeof(Journal))
                 {
                     Journal temp = newDocument as Journal;
-                    connection.Execute("dbo.spJournals_ModifyJournal @Title, @Editors, @Publisher, @Issue, @PublicationDate, @Keywords, @Price",
+                    connection.Execute("dbo.spJournals_ModifyJournal @Id, @Title, @Editors, @Publisher, @Issue, @PublicationDate, @Keywords, @Price",
                         new
                         {
+                            Id = temp.ID,
                             Title = temp.Title,
                             Editors = temp.Authors,
                             Publisher = temp.Publisher,
@@ -177,13 +180,13 @@ namespace LISy.Managers.DataManagers
                 else if (type == typeof(JournalArticle))
                 {
                     JournalArticle temp = newDocument as JournalArticle;
-                    connection.Execute("dbo.spJournalArticles_ModifyJournalArticle @Title, @Authors, @JournalId, @Keywords",
+                    connection.Execute("dbo.spJournalArticles_ModifyJournalArticle @Id, @Title, @Authors, @Keywords",
                         new
                         {
+                            Id = temp.ID,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Keywords = temp.Keywords,
-                            JournalId = temp.JournalId
                         });
                 }
             }
