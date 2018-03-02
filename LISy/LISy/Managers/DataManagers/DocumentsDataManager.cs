@@ -23,7 +23,6 @@ namespace LISy.Managers.DataManagers
         {
             if (document == null) throw new ArgumentNullException("Invalid document!");
             var type = document.GetType();
-
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
                 if (type == typeof(AVMaterial))
@@ -104,58 +103,89 @@ namespace LISy.Managers.DataManagers
         {
             if (document == null) throw new ArgumentNullException("Invalid document!");
             var type = document.GetType();
-            if (type == typeof(AVMaterial))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-
-            }
-            else if (type == typeof(Book))
-            {
-
-            }
-            else if (type == typeof(InnerMaterials))
-            {
-
-            }
-            else if (type == typeof(Journal))
-            {
-
-            }
-            else if (type == typeof(JournalArticle))
-            {
-
+                connection.Execute("dbo.spDocuments_DeleteDocument @Id", new { Id = document.ID });
             }
         }
 
         /// <summary>
         /// Replaces <code>document</code> on <code>newDocument</code> in the database.
         /// </summary>
-        /// <param name="document">Document, which is going to be replaced.</param>
         /// <param name="newDocument">Document, which is going to be instead of <code>document</code>.</param>
         public static void EditDocument(IDocument newDocument)
         {
-            if (newDocument == null)
-                throw new ArgumentNullException("Invalid document!");
+            if (newDocument == null) throw new ArgumentNullException("Invalid document!");
             var type = newDocument.GetType();
-            if (type != newDocument.GetType()) throw new ArgumentException("Types of documents are not the same!");
-            if (type == typeof(AVMaterial))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-
-            }
-            else if (type == typeof(Book))
-            {
-
-            }
-            else if (type == typeof(InnerMaterials))
-            {
-
-            }
-            else if (type == typeof(Journal))
-            {
-
-            }
-            else if (type == typeof(JournalArticle))
-            {
-
+                if (type == typeof(AVMaterial))
+                {
+                    AVMaterial temp = newDocument as AVMaterial;
+                    connection.Execute("dbo.spAudioVideos_ModifyAV @Title, @Authors, @Keywords, @Price",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Keywords = temp.Keywords,
+                            Price = temp.Price
+                        });
+                }
+                else if (type == typeof(Book))
+                {
+                    Book temp = newDocument as Book;
+                    connection.Execute("dbo.spBooks_ModifyBook @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Publisher = temp.Publisher,
+                            Edition = temp.Edition,
+                            Year = temp.Year,
+                            IsBestseller = temp.IsBestseller,
+                            Keywords = temp.Keywords,
+                            Price = temp.Price
+                        });
+                }
+                else if (type == typeof(InnerMaterials))
+                {
+                    InnerMaterials temp = newDocument as InnerMaterials;
+                    connection.Execute("dbo.spInnerMaterials_ModifyInnerMaterial @Title, @Authors, @Type, @Keywords",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Keywords = temp.Keywords,
+                            Type = temp.Type
+                        });
+                }
+                else if (type == typeof(Journal))
+                {
+                    Journal temp = newDocument as Journal;
+                    connection.Execute("dbo.spJournals_ModifyJournal @Title, @Editors, @Publisher, @Issue, @PublicationDate, @Keywords, @Price",
+                        new
+                        {
+                            Title = temp.Title,
+                            Editors = temp.Authors,
+                            Publisher = temp.Publisher,
+                            Issue = temp.Issue,
+                            PublicationDate = temp.PublicationDate,
+                            Keywords = temp.Keywords,
+                            Price = temp.Price
+                        });
+                }
+                else if (type == typeof(JournalArticle))
+                {
+                    JournalArticle temp = newDocument as JournalArticle;
+                    connection.Execute("dbo.spJournalArticles_ModifyJournalArticle @Title, @Authors, @JournalId, @Keywords",
+                        new
+                        {
+                            Title = temp.Title,
+                            Authors = temp.Authors,
+                            Keywords = temp.Keywords,
+                            JournalId = temp.JournalId
+                        });
+                }
             }
         }
 
