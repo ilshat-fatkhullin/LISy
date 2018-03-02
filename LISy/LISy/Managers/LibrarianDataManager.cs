@@ -1,4 +1,5 @@
 ﻿using LISy.Entities;
+using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Managers.DataManagers;
 
@@ -47,6 +48,10 @@ namespace LISy.Managers
         public static IUser[] GetAllUsersList()
         {
             return UsersDataManager.GetUsersList();
+        }
+        public static Book[] GetAllBooksList()
+        {
+            return DocumentsDataManager.GetAllBooksList();
         }
     }
 }

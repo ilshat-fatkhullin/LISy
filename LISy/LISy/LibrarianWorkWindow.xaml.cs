@@ -84,7 +84,7 @@ namespace LISy
         {
             List<Book> result = new List<Book>();
             result.Clear();
-            foreach (Book book in LibrarianDataManager)
+            foreach (Book book in LibrarianDataManager.GetAllBooksList())
             {
                 result.Add(book);
             }
