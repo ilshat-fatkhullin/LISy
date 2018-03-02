@@ -300,6 +300,22 @@ namespace LISy.Managers.DataManagers
                 return books;
             }
         }
+        /*
+        public static AVMaterial[] GetAllAVMaterialList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<TempAV>("dbo.spBooks_GetAllAV").ToArray();
+                AVMaterial[] av = new AVMaterial[output.Count()];
+                for (int i = 0; i < av.GetLength(0); i++)
+                {
+                    av[i] = new AVMaterial(output[i].Authors,output[i].Title,"","",output[i].Price);
+                    av[i].ID = output[i].Id;
+                }
+
+                return av;
+            }
+        }*/
     }
 
     class TempCopy

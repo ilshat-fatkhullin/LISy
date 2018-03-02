@@ -132,5 +132,81 @@ namespace LISy
         {
             InputFieldsManager.CheckLiteralValidity(edition_of_book);
         }
+
+        private void av_title_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(av_title_text_box);
+        }
+
+        private void authors_av_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(authors_av_text_box);
+        }
+
+        private void av_copy_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(av_copy_text_box);
+        }
+
+        private void av_level_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(av_level_text_box);
+        }
+
+        private void av_room_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(av_room_text_box);
+        }
+
+        private void add_av_Click(object sender, RoutedEventArgs e)
+        {   
+            //add to grid our labels for av
+            av_title_label.Visibility = Visibility.Visible;
+            authors_av_label.Visibility = Visibility.Visible;
+            av_room_label.Visibility = Visibility.Visible;
+            av_level_label.Visibility = Visibility.Visible;
+            av_copy_label.Visibility = Visibility.Visible;
+            av_price_label.Visibility = Visibility.Visible;
+            av_keywords_label.Visibility = Visibility.Visible;
+
+            //add to grid textBoxes for av
+            av_title_text_box.Visibility = Visibility.Visible;
+            authors_av_text_box.Visibility = Visibility.Visible;
+            av_room_text_box.Visibility = Visibility.Visible;
+            av_level_text_box.Visibility = Visibility.Visible;
+            av_copy_text_box.Visibility = Visibility.Visible;
+            av_add_to_db.Visibility = Visibility.Visible;
+            av_key_words_text_box.Visibility = Visibility.Visible;
+            av_price_text_box.Visibility = Visibility.Visible;
+
+        }
+
+        private void av_add_to_db_Click(object sender, RoutedEventArgs e)
+        {
+            if (av_title_text_box.Text != null &&
+                authors_av_text_box.Text != null &&
+                av_room_text_box.Text != null &&
+                av_level_text_box.Text != null &&
+                av_copy_text_box.Text != null &&
+                av_key_words_text_box.Text != null &&
+                av_price_text_box.Text != null)
+            {
+                AVMaterial av_material = new AVMaterial(InputFieldsManager.ReturnStringFromTextBox(authors_av_text_box), InputFieldsManager.ReturnStringFromTextBox(av_title_text_box), InputFieldsManager.ReturnStringFromTextBox(av_key_words_text_box),"", Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_price_text_box)));
+                DocumentsDataManager.AddDocument(av_material);
+                this.Close();
+            }
+            
+        }
+
+        private void av_key_words_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(av_key_words_text_box);
+        }
+
+
+        private void Av_price_text_box(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(av_price_text_box);
+        }
     }
 }

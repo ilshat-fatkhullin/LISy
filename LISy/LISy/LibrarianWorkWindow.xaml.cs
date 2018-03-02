@@ -35,6 +35,8 @@ namespace LISy
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
             UpdateUsersDataGrid();
+            UptadeDataGridBook();
+            //UptadeDataGridAV_material();
         }
 
         private void add_user_Click(object sender, RoutedEventArgs e)
@@ -94,6 +96,20 @@ namespace LISy
         private void grid_LoaderBook(object sender, RoutedEventArgs e)
         {
             UptadeDataGridBook();
+        }
+        /*private void UptadeDataGridAV_material()
+        {
+            List<AVMaterial> result = new List<AVMaterial>();
+            result.Clear();
+            foreach (AVMaterial av_material in LibrarianDataManager.GetAllAVMaterialList())
+            {
+                result.Add(av_material);
+            }
+            DataGridAV_material.ItemsSource = result;
+        }*/
+        private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
+        {
+            //UptadeDataGridAV_material();
         }
     }
 }
