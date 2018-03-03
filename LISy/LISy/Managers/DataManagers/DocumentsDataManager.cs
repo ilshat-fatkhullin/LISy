@@ -285,11 +285,27 @@ namespace LISy.Managers.DataManagers
             }
         }
 
+        public static AVMaterial[] GetAllAVMaterialsList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<AVMaterial>("dbo.spAudioVideos_GetAll").ToArray();
+                AVMaterial[] temp = new AVMaterial[output.Count()];
+                for (int i = 0; i < temp.GetLength(0); i++)
+                {
+                    temp[i] = new AVMaterial(output[i].Authors, output[i].Title, "", "", output[i].Price);
+                    temp[i].Id = output[i].Id;
+                }
+
+                return temp;
+            }
+        }
+
         public static Book[] GetAllBooksList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<Book>("dbo.spBooks_GetAllBooks").ToArray();
+                var output = connection.Query<Book>("dbo.spBooks_GetAll").ToArray();
                 Book[] books = new Book[output.Count()];
                 for (int i = 0; i < books.GetLength(0); i++)
                 {
@@ -300,22 +316,6 @@ namespace LISy.Managers.DataManagers
                 return books;
             }
         }
-        /*
-        public static AVMaterial[] GetAllAVMaterialList()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
-            {
-                var output = connection.Query<TempAV>("dbo.spBooks_GetAllAV").ToArray();
-                AVMaterial[] av = new AVMaterial[output.Count()];
-                for (int i = 0; i < av.GetLength(0); i++)
-                {
-                    av[i] = new AVMaterial(output[i].Authors,output[i].Title,"","",output[i].Price);
-                    av[i].Id = output[i].Id;
-                }
-
-                return av;
-            }
-        }*/
     }
 
     class TempCopy

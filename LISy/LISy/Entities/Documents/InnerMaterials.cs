@@ -11,11 +11,11 @@ namespace LISy.Entities.Documents
     /// </summary>
     class InnerMaterials : Document
     {
-        public int Room { get; private set; }
+        public int Room { get; set; }
 
-        public int Level { get; private set; }
+        public int Level { get; set; }
 
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Initializes a new instance of library document which cannot be checked out.

@@ -12,7 +12,7 @@ namespace LISy.Entities
     /// </summary>
     public class Copy
     {
-        public long ID { get; private set; }
+        public long Id { get; private set; }
 
         public long DocumentID { get; private set; }
 
@@ -33,7 +33,7 @@ namespace LISy.Entities
 
         public Copy(long id, long documentid, long patronid, bool check, string time, int room, int level)
         {
-            ID = id >= 0 ? id : throw new ArgumentException("Invalid Id!");
+            Id = id >= 0 ? id : throw new ArgumentException("Invalid Id!");
             DocumentID = documentid >= 0 ? documentid : throw new ArgumentException("Invalid document Id!");
             PatronID = patronid; //>= 0 ? patronid : throw new ArgumentException("Invalid user Id!");
             Checked = check;
