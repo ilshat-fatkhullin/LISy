@@ -28,19 +28,19 @@ namespace LISy.Managers.DataManagers
                 if (type == typeof(AVMaterial))
                 {
                     AVMaterial temp = document as AVMaterial;
-                    connection.Execute("dbo.spAudioVideos_AddAV @Title, @Authors, @Keywords, @Price",
+                    connection.Execute("dbo.spAudioVideos_AddAV @Title, @Authors, @KeyWords, @Price",
                         new
                         {
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
                 else if (type == typeof(Book))
                 {
                     Book temp = document as Book;
-                    connection.Execute("dbo.spBooks_AddBook @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
+                    connection.Execute("dbo.spBooks_AddBook @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @KeyWords, @Price",
                         new
                         {
                             Title = temp.Title,
@@ -49,26 +49,26 @@ namespace LISy.Managers.DataManagers
                             Edition = temp.Edition,
                             Year = temp.Year,
                             IsBestseller = temp.IsBestseller,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
                 else if (type == typeof(InnerMaterials))
                 {
                     InnerMaterials temp = document as InnerMaterials;
-                    connection.Execute("dbo.spInnerMaterials_AddInnerMaterial @Title, @Authors, @Type, @Keywords",
+                    connection.Execute("dbo.spInnerMaterials_AddInnerMaterial @Title, @Authors, @Type, @KeyWords",
                         new
                         {
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             Type = temp.Type
                         });
                 }
                 else if (type == typeof(Journal))
                 {
                     Journal temp = document as Journal;
-                    connection.Execute("dbo.spJournals_AddJournal @Title, @Editors, @Publisher, @Issue, @PublicationDate, @Keywords, @Price",
+                    connection.Execute("dbo.spJournals_AddJournal @Title, @Editors, @Publisher, @Issue, @PublicationDate, @KeyWords, @Price",
                         new
                         {
                             Title = temp.Title,
@@ -76,19 +76,19 @@ namespace LISy.Managers.DataManagers
                             Publisher = temp.Publisher,
                             Issue = temp.Issue,
                             PublicationDate = temp.PublicationDate,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
                 else if (type == typeof(JournalArticle))
                 {
                     JournalArticle temp = document as JournalArticle;
-                    connection.Execute("dbo.spJournalArticles_AddJournalArticle @Title, @Authors, @JournalId, @Keywords",
+                    connection.Execute("dbo.spJournalArticles_AddJournalArticle @Title, @Authors, @JournalId, @KeyWords",
                         new
                         {
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             JournalId = temp.JournalId
                         });
                 }
@@ -122,20 +122,20 @@ namespace LISy.Managers.DataManagers
                 if (type == typeof(AVMaterial))
                 {
                     AVMaterial temp = newDocument as AVMaterial;
-                    connection.Execute("dbo.spAudioVideos_ModifyAV @Id, @Title, @Authors, @Keywords, @Price",
+                    connection.Execute("dbo.spAudioVideos_ModifyAV @Id, @Title, @Authors, @KeyWords, @Price",
                         new
                         {
                             Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
                 else if (type == typeof(Book))
                 {
                     Book temp = newDocument as Book;
-                    connection.Execute("dbo.spBooks_ModifyBook @Id, @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
+                    connection.Execute("dbo.spBooks_ModifyBook @Id, @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @KeyWords, @Price",
                         new
                         {
                             Id = temp.Id,
@@ -145,26 +145,26 @@ namespace LISy.Managers.DataManagers
                             Edition = temp.Edition,
                             Year = temp.Year,
                             IsBestseller = temp.IsBestseller,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
                 else if (type == typeof(InnerMaterials))
                 {
                     InnerMaterials temp = newDocument as InnerMaterials;
-                    connection.Execute("dbo.spInnerMaterials_ModifyInnerMaterial @Id, @Title, @Authors, @Keywords",
+                    connection.Execute("dbo.spInnerMaterials_ModifyInnerMaterial @Id, @Title, @Authors, @KeyWords",
                         new
                         {
                             Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                         });
                 }
                 else if (type == typeof(Journal))
                 {
                     Journal temp = newDocument as Journal;
-                    connection.Execute("dbo.spJournals_ModifyJournal @Id, @Title, @Editors, @Publisher, @Issue, @PublicationDate, @Keywords, @Price",
+                    connection.Execute("dbo.spJournals_ModifyJournal @Id, @Title, @Editors, @Publisher, @Issue, @PublicationDate, @KeyWords, @Price",
                         new
                         {
                             Id = temp.Id,
@@ -173,20 +173,20 @@ namespace LISy.Managers.DataManagers
                             Publisher = temp.Publisher,
                             Issue = temp.Issue,
                             PublicationDate = temp.PublicationDate,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
                 else if (type == typeof(JournalArticle))
                 {
                     JournalArticle temp = newDocument as JournalArticle;
-                    connection.Execute("dbo.spJournalArticles_ModifyJournalArticle @Id, @Title, @Authors, @Keywords",
+                    connection.Execute("dbo.spJournalArticles_ModifyJournalArticle @Id, @Title, @Authors, @KeyWords",
                         new
                         {
                             Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.Keywords,
+                            Keywords = temp.KeyWords,
                         });
                 }
             }

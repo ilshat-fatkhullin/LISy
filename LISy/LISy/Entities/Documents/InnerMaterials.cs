@@ -23,7 +23,7 @@ namespace LISy.Entities.Documents
         /// <param name="authors">Authors or editors of the document.</param>
         /// <param name="title">Title of the document.</param>
         /// <param name="type">Type of the document.</param>
-        /// <param name="keys">Keywords using which the document can be found.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
         /// <param name="room">Room where the document is stored.</param>
         /// <param name="level">Level of the room of the document.</param>
         /// <param name="coverURL">Cover of the document.</param>

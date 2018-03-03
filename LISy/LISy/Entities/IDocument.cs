@@ -19,7 +19,7 @@ namespace LISy.Entities
 
         string Authors { get; set; }
 
-        string Keywords { get; set; }
+        string KeyWords { get; set; }
 
         string CoverURL { get; set; }
 

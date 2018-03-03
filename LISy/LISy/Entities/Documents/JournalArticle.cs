@@ -18,7 +18,7 @@ namespace LISy.Entities.Documents
         /// </summary>
         /// <param name="authors">Authors of the article.</param>
         /// <param name="title">Title of the article.</param>
-        /// <param name="keys">Keywords using which the article can be found.</param>
+        /// <param name="keys">KeyWords using which the article can be found.</param>
         ///// <param name="journal">Journal in which the article is.</param>
         public JournalArticle(string authors, string title, string keys) : base(authors, title, keys, "")
         {
