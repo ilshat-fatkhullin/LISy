@@ -54,14 +54,30 @@ namespace LISy.Managers
         {
             return UsersDataManager.GetUsersList();
         }
+
+        public static AVMaterial[] GetAllAVMaterialsList()
+        {
+            return DocumentsDataManager.GetAllAVMaterialsList();
+        }
+
         public static Book[] GetAllBooksList()
         {
             return DocumentsDataManager.GetAllBooksList();
-        }        
+        }
 
-        /*public static AVMaterial[] GetAllAVMaterialList()
+        public static InnerMaterial[] GetAllInnerMaterialsList()
         {
-            return DocumentsDataManager.GetAllAVMaterialList();
-        }*/
+            return DocumentsDataManager.GetAllInnerMaterialsList();
+        }
+
+        public static Journal[] GetAllJournalsList()
+        {
+            return DocumentsDataManager.GetAllJournalsList();
+        }
+
+        public static JournalArticle[] GetAllJournalArticlesList()
+        {
+            return DocumentsDataManager.GetAllJournalArticlesList();
+        }
     }
 }

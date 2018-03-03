@@ -331,20 +331,17 @@ namespace LISy.Managers.DataManagers
             }
         }
 
-        /*public static InnerMaterial[] GetAllInnerMaterialsList()
+        public static InnerMaterial[] GetAllInnerMaterialsList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<AVMaterial>("dbo.spAudioVideos_GetAll").ToArray();
-                AVMaterial[] temp = new AVMaterial[output.Count()];
+                var output = connection.Query<TempInner>("spInnerMaterials_GetAll").ToArray();
+                InnerMaterial[] temp = new InnerMaterial[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
-                {
-                    temp[i] = new AVMaterial(output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL, output[i].Price);
-                    temp[i].Id = output[i].Id;
-                }
-
-                return null;
-            }*/
+                    temp[i] = new InnerMaterial(output[i].Id, output[i].Authors, output[i].Title, output[i].Type, output[i].KeyWords, output[i].Room, output[i].Level, output[i].CoverURL);
+                return temp;
+            }
+        }
 
         public static Journal[] GetAllJournalsList()
         {
@@ -354,6 +351,18 @@ namespace LISy.Managers.DataManagers
                 Journal[] temp = new Journal[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
                     temp[i] = new Journal(output[i].Id, output[i].Authors, output[i].Title, output[i].Publisher, output[i].Issue, output[i].PublicationDate, output[i].KeyWords, output[i].CoverURL, output[i].Price);
+                return temp;
+            }
+        }
+
+        public static JournalArticle[] GetAllJournalArticlesList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<TempArticle>("spJournalArticles_GetAll").ToArray();
+                JournalArticle[] temp = new JournalArticle[output.Count()];
+                for (int i = 0; i < temp.GetLength(0); i++)
+                    temp[i] = new JournalArticle(output[i].Id, output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL);
                 return temp;
             }
         }
@@ -374,6 +383,21 @@ namespace LISy.Managers.DataManagers
         public int Level { get; set; }
 
         public string ReturningDate { get; set; }
+    }
+
+    class TempAV
+    {
+        public int Id { get; set; }
+
+        public string Title { get; set; }
+
+        public string Authors { get; set; }
+
+        public int Price { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
     }
 
     class TempBook
@@ -399,7 +423,7 @@ namespace LISy.Managers.DataManagers
         public string CoverURL { get; set; }
     }
 
-    class TempAV
+    class TempInner
     {
         public int Id { get; set; }
 
@@ -407,7 +431,11 @@ namespace LISy.Managers.DataManagers
 
         public string Authors { get; set; }
 
-        public int Price { get; set; }
+        public string Type { get; set; }
+
+        public int Room { get; set; }
+
+        public int Level { get; set; }
 
         public string KeyWords { get; set; }
 
@@ -429,6 +457,19 @@ namespace LISy.Managers.DataManagers
         public string PublicationDate { get; set; }
 
         public int Price { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
+    }
+
+    class TempArticle
+    {
+        public int Id { get; set; }
+
+        public string Title { get; set; }
+
+        public string Authors { get; set; }
 
         public string KeyWords { get; set; }
 
