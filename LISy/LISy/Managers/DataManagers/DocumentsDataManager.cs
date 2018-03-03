@@ -404,9 +404,9 @@ namespace LISy.Managers.DataManagers
 
         public int Year { get; set; }
 
-        public bool IsBestseller { get; set; }
-
         public int Price { get; set; }
+
+        public bool IsBestseller { get; set; }
 
         public string KeyWords { get; set; }
 
