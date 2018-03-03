@@ -35,7 +35,8 @@ namespace LISy
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
             UpdateUsersDataGrid();
-            UptadeDataGridBook();
+            UpdateDataGridBook();
+            UpdateDataGridCopies();
             //UptadeDataGridAV_material();
         }
 
@@ -82,7 +83,7 @@ namespace LISy
             }
             DataGridInfoUser.ItemsSource = result;
         }
-        private void UptadeDataGridBook()
+        private void UpdateDataGridBook()
         {
             List<Book> result = new List<Book>();
             result.Clear();
@@ -95,7 +96,7 @@ namespace LISy
 
         private void grid_LoaderBook(object sender, RoutedEventArgs e)
         {
-            UptadeDataGridBook();
+            UpdateDataGridBook();
         }
         /*private void UptadeDataGridAV_material()
         {
@@ -110,6 +111,39 @@ namespace LISy
         private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
         {
             //UptadeDataGridAV_material();
+        }
+
+        private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
+        {
+            // сюда нужны апдейты такие как для копий и книжек
+        }
+
+        private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
+        {
+            // сюда нужны апдейты такие как для копий и книжек
+        }
+
+        private void grid_LoaderCopies(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridCopies();
+        }
+        private void UpdateDataGridCopies()
+        {
+            List<Copy> result = new List<Copy>();
+            result.Clear();
+            foreach (Copy copy in LibrarianDataManager.GetAllCopiesList())
+            {
+                result.Add(copy);
+            }
+            DataGridCopies.ItemsSource = result;
+        }
+
+        private void add_librarian_Click(object sender, RoutedEventArgs e)
+        {
+            //сюда нужно добавить добавление библиотекаря пока есть окошко с именем и статусом 
+            AddLibrarian addLibrarian = new AddLibrarian();
+            addLibrarian.Owner = this;
+            addLibrarian.Show();
         }
     }
 }

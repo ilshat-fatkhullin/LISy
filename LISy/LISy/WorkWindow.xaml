@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="479" Width="785" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="480" Width="1335" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="Design/books.jpg"/>
     </Window.Background>
@@ -71,7 +71,7 @@
         <Button x:Name="button_Profile" Content="My Profile" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="145" Height="30"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Profile_Click"/>
         <Button x:Name="button_Booking" Content="Booking Story" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Booking_Click"/>
         <Button x:Name="button_Info" Content="Info" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Info_Click"/>
-        <Grid Margin="160,129,97,10">
+        <Grid Margin="160,129,0,10" HorizontalAlignment="Left" Width="597">
             <Label x:Name="label_book_1" Content="&quot;Introduction to Linear Algebra&quot; Gilbert Strang 4th edition &#xD;&#xA;(WELLESLEY - CAMBRIDGE PRESS)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="430" Foreground="White" Height="50"/>
             <Button x:Name="button_open_book_1" Content="Open" HorizontalAlignment="Left" Margin="445,10,0,0" VerticalAlignment="Top" Width="75" Height="26" FontSize="14" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_open_book_1_Click" />
             <Label x:Name="label_book_2" Content="&quot;Introduction to Algorithms&quot; T. H. Cormen, C.E, Leiserson, R.L. Rivest, C. Stein &#xD;&#xA;3rd edition (The MIT Press Cambridge, Massachusetts)" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="430" Foreground="White" Height="50"/>
@@ -94,6 +94,31 @@
                 <ImageBrush/>
             </CheckBox.Background>
         </CheckBox>
+        <Grid HorizontalAlignment="Left" Height="299" Margin="762,70,0,0" VerticalAlignment="Top" Width="542">
+            <TabControl HorizontalAlignment="Left" Height="279" Margin="10,10,0,0" VerticalAlignment="Top" Width="522">
+                <TabItem x:Name="tab_item_books" Header="Books">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderBook"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="av_material" Header="AV materials">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderAV_material"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="reference_book" Header="Reference Books">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderReference_book"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="journal_article" Header="Journal\Articles">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="DataGridJournal_article" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderJournal_article"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
 
     </Grid>
 </Window>

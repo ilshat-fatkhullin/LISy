@@ -71,6 +71,9 @@ namespace LISy
 
         private void add_book_Click(object sender, RoutedEventArgs e)
         {
+            make_hidden_journal();
+            make_hidden_reference_book();
+            make_hidden_av_materials();
             //появление лабелов на экране при добавление книжки
             title_label.Visibility = Visibility.Visible;
             author_of_book_label.Visibility = Visibility.Visible;
@@ -159,7 +162,10 @@ namespace LISy
         }
 
         private void add_av_Click(object sender, RoutedEventArgs e)
-        {   
+        {
+            make_hidden_books();
+            make_hidden_journal();
+            make_hidden_reference_book();
             //add to grid our labels for av
             av_title_label.Visibility = Visibility.Visible;
             authors_av_label.Visibility = Visibility.Visible;
@@ -207,6 +213,174 @@ namespace LISy
         private void Av_price_text_box(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckNumericValidity(av_price_text_box);
+        }
+
+        private void ja_title_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(ja_title_text_box);
+        }
+
+        private void ja_publisher_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(ja_publisher_text_box);
+        }
+
+        private void ja_issue_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(ja_issue_text_box);
+        }
+
+        private void ja_editors_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(ja_editors_text_box);
+        }
+
+        private void ja_PD_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(ja_PD_text_box);
+        }
+
+        private void ja_price_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(ja_price_text_box);
+        }
+
+        private void ja_level_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(ja_level_text_box);
+        }
+
+        private void ja_room_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(ja_room_text_box);
+        }
+
+        private void add_ja_to_db_Click(object sender, RoutedEventArgs e)
+        {
+            if (ja_title_text_box.Text != null &&
+                ja_publisher_text_box.Text != null &&
+                ja_editors_text_box.Text != null &&
+                ja_issue_text_box.Text != null &&
+                ja_price_text_box.Text != null &&
+                ja_room_text_box.Text != null &&
+                ja_level_text_box.Text != null &&
+                ja_PD_text_box.Text != null)
+            {
+                Journal journal = new Journal(InputFieldsManager.ReturnStringFromTextBox(ja_editors_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_title_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_publisher_text_box), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_issue_text_box)) , InputFieldsManager.ReturnStringFromTextBox(ja_PD_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_keywords_text_box),"",Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_price_text_box)));
+                DocumentsDataManager.AddDocument(journal);
+                this.Close();
+            }
+        }
+        private void make_hidden_books()
+        {
+            //скрытие лабелов на экране при добавление книжки
+            title_label.Visibility = Visibility.Hidden;
+            author_of_book_label.Visibility = Visibility.Hidden;
+            edition_of_book_label.Visibility = Visibility.Hidden;
+            publisher_label.Visibility = Visibility.Hidden;
+            year_label.Visibility = Visibility.Hidden;
+            best_seller_of_book.Visibility = Visibility.Hidden;
+            keywords_label.Visibility = Visibility.Hidden;
+            price_label.Visibility = Visibility.Hidden;
+            copy_label.Visibility = Visibility.Hidden;
+            room_label.Visibility = Visibility.Hidden;
+            book_label_level.Visibility = Visibility.Hidden;
+            //скрытие текст боксов для заполнения
+            title_of_book.Visibility = Visibility.Hidden;
+            author_of_book.Visibility = Visibility.Hidden;
+            edition_of_book.Visibility = Visibility.Hidden;
+            year_of_book.Visibility = Visibility.Hidden;
+            keywords_of_book.Visibility = Visibility.Hidden;
+            price_of_book.Visibility = Visibility.Hidden;
+            copy_of_book.Visibility = Visibility.Hidden;
+            room_of_book.Visibility = Visibility.Hidden;
+            level_of_book.Visibility = Visibility.Hidden;
+            add_book_to_db.Visibility = Visibility.Hidden;
+            publisher_of_book.Visibility = Visibility.Hidden;
+        }
+        private void make_hidden_reference_book()
+        {
+            //пока не знаю даже какие поля там есть
+        }
+        private void make_hidden_journal()
+        {
+            ja_title_label.Visibility = Visibility.Hidden;
+            ja_publisher_label.Visibility = Visibility.Hidden;
+            ja_editors_label.Visibility = Visibility.Hidden;
+            ja_issue_label.Visibility = Visibility.Hidden;
+            ja_level_label.Visibility = Visibility.Hidden;
+            ja_PD_label.Visibility = Visibility.Hidden;
+            ja_price_label.Visibility = Visibility.Hidden;
+            ja_room_label.Visibility = Visibility.Hidden;
+            ja_keywords_label.Visibility = Visibility.Hidden;
+            //add text boxes for journal
+            ja_title_text_box.Visibility = Visibility.Hidden;
+            ja_publisher_text_box.Visibility = Visibility.Hidden;
+            ja_editors_text_box.Visibility = Visibility.Hidden;
+            ja_issue_text_box.Visibility = Visibility.Hidden;
+            ja_level_text_box.Visibility = Visibility.Hidden;
+            ja_PD_text_box.Visibility = Visibility.Hidden;
+            ja_price_text_box.Visibility = Visibility.Hidden;
+            ja_room_text_box.Visibility = Visibility.Hidden;
+            ja_keywords_text_box.Visibility = Visibility.Hidden;
+
+            add_ja_to_db.Visibility = Visibility.Hidden;
+        }
+        private void make_hidden_av_materials()
+        {
+            //add to grid our labels for av
+            av_title_label.Visibility = Visibility.Hidden;
+            authors_av_label.Visibility = Visibility.Hidden;
+            av_room_label.Visibility = Visibility.Hidden;
+            av_level_label.Visibility = Visibility.Hidden;
+            av_copy_label.Visibility = Visibility.Hidden;
+            av_price_label.Visibility = Visibility.Hidden;
+            av_keywords_label.Visibility = Visibility.Hidden;
+
+            //add to grid textBoxes for av
+            av_title_text_box.Visibility = Visibility.Hidden;
+            authors_av_text_box.Visibility = Visibility.Hidden;
+            av_room_text_box.Visibility = Visibility.Hidden;
+            av_level_text_box.Visibility = Visibility.Hidden;
+            av_copy_text_box.Visibility = Visibility.Hidden;
+            av_add_to_db.Visibility = Visibility.Hidden;
+            av_key_words_text_box.Visibility = Visibility.Hidden;
+            av_price_text_box.Visibility = Visibility.Hidden;
+        }
+
+        private void add_journal_Click(object sender, RoutedEventArgs e)
+        {
+            make_hidden_av_materials();
+            make_hidden_reference_book();
+            make_hidden_books();
+            //add label for journal
+            ja_title_label.Visibility = Visibility.Visible;
+            ja_publisher_label.Visibility = Visibility.Visible;
+            ja_editors_label.Visibility = Visibility.Visible;
+            ja_issue_label.Visibility = Visibility.Visible;
+            ja_level_label.Visibility = Visibility.Visible;
+            ja_PD_label.Visibility = Visibility.Visible;
+            ja_price_label.Visibility = Visibility.Visible;
+            ja_room_label.Visibility = Visibility.Visible;
+            ja_keywords_label.Visibility = Visibility.Visible;
+            //add text boxes for journal
+            ja_title_text_box.Visibility = Visibility.Visible;
+            ja_publisher_text_box.Visibility = Visibility.Visible;
+            ja_editors_text_box.Visibility = Visibility.Visible;
+            ja_issue_text_box.Visibility = Visibility.Visible;
+            ja_level_text_box.Visibility = Visibility.Visible;
+            ja_PD_text_box.Visibility = Visibility.Visible;
+            ja_price_text_box.Visibility = Visibility.Visible;
+            ja_room_text_box.Visibility = Visibility.Visible;
+            ja_keywords_text_box.Visibility = Visibility.Visible;
+
+            add_ja_to_db.Visibility = Visibility.Visible;
+
+        }
+
+        private void ja_keywords_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(ja_keywords_text_box);
         }
     }
 }

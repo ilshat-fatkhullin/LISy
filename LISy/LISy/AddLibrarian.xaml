@@ -1,0 +1,19 @@
+﻿<Window x:Name="add_librarian" x:Class="LISy.AddLibrarian"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISy"
+        mc:Ignorable="d"
+        Title="AddLibrarian" Height="300" Width="325" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="lib_name_label" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label x:Name="lib_status_label" Content="Status:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="50"/>
+        <TextBox x:Name="lib_name_box" HorizontalAlignment="Left" Height="26" Margin="65,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16" TextChanged="lib_name_box_TextChanged"/>
+        <TextBox x:Name="lib_status_box" HorizontalAlignment="Left" Height="26" Margin="65,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16" TextChanged="lib_status_box_TextChanged"/>
+        <Label x:Name="lib_password_label" Content="Password:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="65"/>
+        <PasswordBox x:Name="lib_password_box" HorizontalAlignment="Left" Margin="75,72,0,0" VerticalAlignment="Top" Width="209" Height="26" FontSize="16"/>
+        <Button x:Name="add_new_lib_to_system" Content="Add" HorizontalAlignment="Left" Margin="184,103,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="add_new_lib_to_system_Click"/>
+
+    </Grid>
+</Window>

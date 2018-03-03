@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LISy.Entities.Documents;
+using LISy.Managers;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -199,6 +202,36 @@ namespace LISy
         private void checkBox_Article_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void grid_LoaderBook(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridBook();
+        }
+        private void UpdateDataGridBook()
+        {
+            List<Book> result = new List<Book>();
+            result.Clear();
+            foreach (Book book in LibrarianDataManager.GetAllBooksList())
+            {
+                result.Add(book);
+            }
+            DataGridBook.ItemsSource = result;
         }
     }
 }
