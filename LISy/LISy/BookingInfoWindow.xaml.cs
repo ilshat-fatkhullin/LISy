@@ -68,6 +68,7 @@ namespace LISy
             PatronDataManager.CheckOutDocument(DocumentID, UserID);
             button_book.IsEnabled = false;
             label_inStock.Content = "Not available";
+            /*label_return_data.Content = сюда поставить дату*/
         }
     }
 }
