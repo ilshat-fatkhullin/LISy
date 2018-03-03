@@ -11,11 +11,11 @@ namespace LISy.Entities.Documents
     /// </summary>
     public class Journal : Takable
     {
-        public string Publisher { get; private set; }
+        public string Publisher { get; set; }
 
-        public int Issue { get; private set; }
+        public int Issue { get; set; }
 
-        public string PublicationDate { get; private set; }
+        public string PublicationDate { get; set; }
 
         //public JournalArticle[] Articles { get; private set; }
 
