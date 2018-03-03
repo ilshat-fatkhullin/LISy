@@ -33,7 +33,7 @@ namespace LISy.Managers.DataManagers
                         {
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
@@ -49,7 +49,7 @@ namespace LISy.Managers.DataManagers
                             Edition = temp.Edition,
                             Year = temp.Year,
                             IsBestseller = temp.IsBestseller,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
@@ -61,7 +61,7 @@ namespace LISy.Managers.DataManagers
                         {
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             Type = temp.Type
                         });
                 }
@@ -76,7 +76,7 @@ namespace LISy.Managers.DataManagers
                             Publisher = temp.Publisher,
                             Issue = temp.Issue,
                             PublicationDate = temp.PublicationDate,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
@@ -88,7 +88,7 @@ namespace LISy.Managers.DataManagers
                         {
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             JournalId = temp.JournalId
                         });
                 }
@@ -128,7 +128,7 @@ namespace LISy.Managers.DataManagers
                             Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
@@ -145,7 +145,7 @@ namespace LISy.Managers.DataManagers
                             Edition = temp.Edition,
                             Year = temp.Year,
                             IsBestseller = temp.IsBestseller,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
@@ -158,7 +158,7 @@ namespace LISy.Managers.DataManagers
                             Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                         });
                 }
                 else if (type == typeof(Journal))
@@ -173,7 +173,7 @@ namespace LISy.Managers.DataManagers
                             Publisher = temp.Publisher,
                             Issue = temp.Issue,
                             PublicationDate = temp.PublicationDate,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                             Price = temp.Price
                         });
                 }
@@ -186,7 +186,7 @@ namespace LISy.Managers.DataManagers
                             Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
-                            Keywords = temp.KeyWords,
+                            KeyWords = temp.KeyWords,
                         });
                 }
             }
