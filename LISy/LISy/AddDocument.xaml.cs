@@ -120,6 +120,8 @@ namespace LISy
             {
                 Book book = new Book(InputFieldsManager.ReturnStringFromTextBox(author_of_book), InputFieldsManager.ReturnStringFromTextBox(title_of_book), InputFieldsManager.ReturnStringFromTextBox(publisher_of_book), InputFieldsManager.ReturnStringFromTextBox(edition_of_book), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(year_of_book)),is_best_seller, InputFieldsManager.ReturnStringFromTextBox(keywords_of_book),"", Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(price_of_book)));
                 DocumentsDataManager.AddDocument(book);
+                
+
                 this.Close();
             }
 
@@ -301,6 +303,24 @@ namespace LISy
         private void make_hidden_reference_book()
         {
             //пока не знаю даже какие поля там есть
+            //hide label to screen
+            inner_title_label.Visibility = Visibility.Hidden;
+            inner_type_label.Visibility = Visibility.Hidden;
+            inner_room_label.Visibility = Visibility.Hidden;
+            inner_author_label.Visibility = Visibility.Hidden;
+            inner_level_label.Visibility = Visibility.Hidden;
+            inner_coverUrl_label.Visibility = Visibility.Hidden;
+            inner_keywords_label.Visibility = Visibility.Hidden;
+
+            //hide text_box to screen
+            inner_title_box.Visibility = Visibility.Hidden;
+            inner_type_text_box.Visibility = Visibility.Hidden;
+            inner_room_text_box.Visibility = Visibility.Hidden;
+            inner_author_box.Visibility = Visibility.Hidden;
+            inner_level_text_box.Visibility = Visibility.Hidden;
+            inner_cover_url_box.Visibility = Visibility.Hidden;
+            inner_keywords_text_box.Visibility = Visibility.Hidden;
+            add_inner_to_db.Visibility = Visibility.Hidden;
         }
         private void make_hidden_journal()
         {
@@ -381,6 +401,83 @@ namespace LISy
         private void ja_keywords_text_box_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckLiteralValidity(ja_keywords_text_box);
+        }
+
+        private void add_reference_book_Click(object sender, RoutedEventArgs e)
+        {
+            make_hidden_av_materials();
+            make_hidden_books();
+            make_hidden_journal();
+            //add label to screen
+            inner_title_label.Visibility = Visibility.Visible;
+            inner_type_label.Visibility = Visibility.Visible;
+            inner_room_label.Visibility = Visibility.Visible;
+            inner_author_label.Visibility = Visibility.Visible;
+            inner_level_label.Visibility = Visibility.Visible;
+            inner_coverUrl_label.Visibility = Visibility.Visible;
+            inner_keywords_label.Visibility = Visibility.Visible;
+           
+            //add text_box to screen
+            inner_title_box.Visibility = Visibility.Visible;
+            inner_type_text_box.Visibility = Visibility.Visible;
+            inner_room_text_box.Visibility = Visibility.Visible;
+            inner_author_box.Visibility = Visibility.Visible;
+            inner_level_text_box.Visibility = Visibility.Visible;
+            inner_cover_url_box.Visibility = Visibility.Visible;
+            inner_keywords_text_box.Visibility = Visibility.Visible;
+            add_inner_to_db.Visibility = Visibility.Visible;
+            
+        }
+
+        private void innner_title_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(inner_title_box);
+        }
+
+        private void inner_author_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(inner_author_box);
+        }
+
+        private void inner_keywords_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(inner_keywords_text_box);
+        }
+
+        private void inner_room_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(inner_room_text_box);
+        }
+
+        private void inner_level_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(inner_level_text_box);
+        }
+
+        private void inner_type_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(inner_type_text_box);
+        }
+
+        private void inner_cover_url_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(inner_cover_url_box);
+        }
+
+        private void add_inner_to_db_Click(object sender, RoutedEventArgs e)
+        {
+            if (inner_title_box.Text != null &&
+                inner_author_box.Text != null &&
+                inner_level_text_box.Text != null &&
+                inner_room_text_box.Text != null &&
+                inner_type_text_box.Text != null &&
+                inner_cover_url_box.Text != null &&
+                inner_keywords_text_box.Text != null)
+            {
+                InnerMaterials innerMaterials = new InnerMaterials(InputFieldsManager.ReturnStringFromTextBox(inner_author_box),InputFieldsManager.ReturnStringFromTextBox(inner_title_box),InputFieldsManager.ReturnStringFromTextBox(inner_type_text_box),InputFieldsManager.ReturnStringFromTextBox(inner_keywords_text_box),Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_room_text_box)), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_level_text_box)),InputFieldsManager.ReturnStringFromTextBox(inner_cover_url_box));
+                //DocumentsDataManager.AddDocument(innerMaterials);
+                this.Close();
+            }
         }
     }
 }

@@ -26,6 +26,7 @@
         <Label Content="Password:" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="73"/>
         <PasswordBox x:Name="user_new_password" HorizontalAlignment="Left" Margin="88,248,0,0" VerticalAlignment="Top" Width="241" Height="29" FontSize="14"/>
         <Button x:Name="save_user" Content="Save" HorizontalAlignment="Left" Margin="250,282,0,0" VerticalAlignment="Top" Width="79" Click="save_user_Click"/>
+        <CheckBox x:Name="check_box_for_lib" Content="Librarian" HorizontalAlignment="Left" Margin="127,285,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -27,10 +27,6 @@ namespace LISy
             InitializeComponent();
         }
 
-        private void choose_user_card_Click(object sender, RoutedEventArgs e)
-        {
-            //grid_Loaded();
-        }
 
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
@@ -38,7 +34,13 @@ namespace LISy
             UpdateDataGridBook();
             UpdateDataGridCopies();
             //UptadeDataGridAV_material();
+            //UpdateDataGridInnerMaterials();
+            //UpdateDataGridJournal();
         }
+
+
+
+
 
         private void add_user_Click(object sender, RoutedEventArgs e)
         {
@@ -54,10 +56,9 @@ namespace LISy
             addDocument.Show();
         }
 
-        private void grid_LoadedUser(object sender, RoutedEventArgs e)
-        {
-            UpdateUsersDataGrid();
-        }                    
+        
+
+
 
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {            
@@ -85,6 +86,37 @@ namespace LISy
             
         }
 
+
+
+        private void grid_LoadedUser(object sender, RoutedEventArgs e)
+        {
+            UpdateUsersDataGrid();
+        }
+
+        private void grid_LoaderBook(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridBook();
+        }
+        private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
+        {
+            //UptadeDataGridAV_material();
+        }
+        private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
+        {
+            // сюда нужны апдейты такие как для копий и книжек
+            //UpdateDataGridInnerMaterials();
+        }
+        private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
+        {
+            // сюда нужны апдейты такие как для копий и книжек
+            //UpdateDataGridJournal();
+        }
+        private void grid_LoaderCopies(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridCopies();
+        }
+
+
         public void UpdateUsersDataGrid()
         {
             List<IUser> result = new List<IUser>();
@@ -105,40 +137,6 @@ namespace LISy
             }
             DataGridBook.ItemsSource = result;
         }
-
-        private void grid_LoaderBook(object sender, RoutedEventArgs e)
-        {
-            UpdateDataGridBook();
-        }
-        /*private void UptadeDataGridAV_material()
-        {
-            List<AVMaterial> result = new List<AVMaterial>();
-            result.Clear();
-            foreach (AVMaterial av_material in LibrarianDataManager.GetAllAVMaterialList())
-            {
-                result.Add(av_material);
-            }
-            DataGridAV_material.ItemsSource = result;
-        }*/
-        private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
-        {
-            //UptadeDataGridAV_material();
-        }
-
-        private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
-        {
-            // сюда нужны апдейты такие как для копий и книжек
-        }
-
-        private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
-        {
-            // сюда нужны апдейты такие как для копий и книжек
-        }
-
-        private void grid_LoaderCopies(object sender, RoutedEventArgs e)
-        {
-            UpdateDataGridCopies();
-        }
         private void UpdateDataGridCopies()
         {
             List<Copy> result = new List<Copy>();
@@ -149,13 +147,39 @@ namespace LISy
             }
             DataGridCopies.ItemsSource = result;
         }
-
-        private void add_librarian_Click(object sender, RoutedEventArgs e)
+        /*
+        private void UpdateDataGridInnerMaterials()
         {
-            //сюда нужно добавить добавление библиотекаря пока есть окошко с именем и статусом 
-            AddLibrarian addLibrarian = new AddLibrarian();
-            addLibrarian.Owner = this;
-            addLibrarian.Show();
-        }
+            List<InnerMaterials> result = new List<InnerMaterials>();
+            result.Clear();
+            foreach (InnerMaterials inner in LibrarianDataManager.GetAllInnerMaterialList())
+            {
+                result.Add(inner);
+            }
+            DataGridRefernce_book.ItemsSource = result;
+        }*/
+
+        /*
+        private void UpdateDataGridJournal()
+        {
+            List<Journal> result = new List<Journal>();
+            result.Clear();
+            foreach (Journal journal in LibrarianDataManager.GetAllJournallList())
+            {
+                result.Add(journal);
+            }
+            DataGridJournal_article.ItemsSource = result;
+        }*/
+
+        /*private void UptadeDataGridAV_material()
+       {
+           List<AVMaterial> result = new List<AVMaterial>();
+           result.Clear();
+           foreach (AVMaterial av_material in LibrarianDataManager.GetAllAVMaterialList())
+           {
+               result.Add(av_material);
+           }
+           DataGridAV_material.ItemsSource = result;
+       }*/
     }
 }

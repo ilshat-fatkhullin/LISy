@@ -1,4 +1,5 @@
-﻿using LISy.Entities.Users;
+﻿using LISy.Entities;
+using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
 using LISy.Managers.DataManagers;
@@ -87,18 +88,23 @@ namespace LISy
                 string password = InputFieldsManager.ReturnPasswordFromTextBox(user_new_password);
                 string login = firstName.Substring(0, 1) + '.' + secondName;
 
-                IPatron patron = null;
+                IUser user = null;
                 if (faculty_check.IsChecked == true)
                 {
-                    patron = new Faculty(firstName, secondName, phone, address);
+                    user = new Faculty(firstName, secondName, phone, address);
+                }
+                else if (check_box_for_lib.IsChecked == true)
+                {
+                     user = new Librarian(firstName,secondName,phone,address);
+                
                 }
                 else
                 {
-                    patron = new Student(firstName, secondName, phone, address);
+                    user = new Student(firstName, secondName, phone, address);
                 }
 
                 //if all checks good so open window                
-                if (LibrarianDataManager.AddUser(patron, login, password))
+                if (LibrarianDataManager.AddUser(user, login, password))
                 {
                     using (StreamWriter writer = new StreamWriter("id.txt"))
                     {
