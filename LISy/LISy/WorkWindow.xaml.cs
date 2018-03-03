@@ -74,9 +74,7 @@ namespace LISy
 
         private void button_Info_Click(object sender, RoutedEventArgs e)
         {
-            LibrarianWorkWindow librarianWork = new LibrarianWorkWindow();
-            librarianWork.Owner = this;
-            librarianWork.Show();
+            
         }
         
         private void grid_LoaderBook(object sender, RoutedEventArgs e)
