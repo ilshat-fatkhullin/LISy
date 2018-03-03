@@ -15,13 +15,13 @@ namespace LISy.Entities
 
         long ID { get; set; }
 
-        string Title { get; }
+        string Title { get; set; }
 
-        string Authors { get; }
+        string Authors { get; set; }
 
-        string Keywords { get; }
+        string Keywords { get; set; }
 
-        string CoverURL { get; }
+        string CoverURL { get; set; }
 
         #endregion
 
