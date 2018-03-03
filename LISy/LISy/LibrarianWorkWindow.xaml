@@ -25,7 +25,7 @@
                     <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderBook"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="av_material" Header="AV materials">
+            <TabItem x:Name="av_material" Header="AV materials" MouseUp="grid_MouseUpForAVMaterial">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderAV_material"/>
                 </Grid>
@@ -45,7 +45,7 @@
                     <DataGrid x:Name="DataGridCopies" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderCopies"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Check_out_Copies" Header="Check out Copies">
+            <TabItem x:Name="Check_out_Copies" Header="Check out Copies" Loaded="grid_LoaderCheckedOutCopies" MouseUp="grid_MouseUpForCheckedOutCopies">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGridCheckedOutCopies" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderCheckedOutCopies"/>
                 </Grid>

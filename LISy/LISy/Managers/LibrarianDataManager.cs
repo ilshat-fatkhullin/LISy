@@ -9,7 +9,7 @@ namespace LISy.Managers
     /// Contains database commands for librarians
     /// </summary>
     public static class LibrarianDataManager
-    {        
+    {
         public static void AddDocument(IDocument document)
         {
             DocumentsDataManager.AddDocument(document);
@@ -45,6 +45,11 @@ namespace LISy.Managers
             return DocumentsDataManager.GetAllCopiesList();
         }
 
+        public static Copy[] GetCheckedCopiesList()
+        {
+            return DocumentsDataManager.GetCheckedCopiesList();
+        }
+
         public static IUser[] GetAllUsersList()
         {
             return UsersDataManager.GetUsersList();
@@ -52,10 +57,17 @@ namespace LISy.Managers
         public static Book[] GetAllBooksList()
         {
             return DocumentsDataManager.GetAllBooksList();
+
         }
+
         public static AVMaterial[] GetAllAVMaterialList()
+
         {
             return DocumentsDataManager.GetAllAVMaterialsList();
+        }
+        public static void ReturnDocument(long DocumentId, long UserId)
+        {
+            DocumentsDataManager.ReturnDocument(DocumentId,UserId);
         }
     }
 }

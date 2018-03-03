@@ -278,6 +278,20 @@ namespace LISy.Managers.DataManagers
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
                 var output = connection.Query<TempCopy>("dbo.spCopies_GetAll").ToArray();
+
+                Copy[] copies = new Copy[output.Count()];
+                for (int i = 0; i < copies.GetLength(0); i++)
+                    copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningDate, output[i].Room, output[i].Level);
+                return copies;
+            }
+        }
+
+        public static Copy[] GetCheckedCopiesList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<TempCopy>("dbo.spCopies_GetChecked").ToArray();
+
                 Copy[] copies = new Copy[output.Count()];
                 for (int i = 0; i < copies.GetLength(0); i++)
                     copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningDate, output[i].Room, output[i].Level);
@@ -289,11 +303,11 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<AVMaterial>("dbo.spAudioVideos_GetAll").ToArray();
+                var output = connection.Query<TempAV>("dbo.spAudioVideos_GetAll").ToArray();
                 AVMaterial[] temp = new AVMaterial[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
                 {
-                    temp[i] = new AVMaterial(output[i].Authors, output[i].Title, "", "", output[i].Price);
+                    temp[i] = new AVMaterial(output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL, output[i].Price);
                     temp[i].Id = output[i].Id;
                 }
 
@@ -305,11 +319,11 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<Book>("dbo.spBooks_GetAll").ToArray();
+                var output = connection.Query<TempBook>("dbo.spBooks_GetAll").ToArray();
                 Book[] books = new Book[output.Count()];
                 for (int i = 0; i < books.GetLength(0); i++)
                 {
-                    books[i] = new Book(output[i].Authors, output[i].Title, output[i].Publisher, output[i].Edition, output[i].Year, output[i].IsBestseller, "", "", output[i].Price);
+                    books[i] = new Book(output[i].Authors, output[i].Title, output[i].Publisher, output[i].Edition, output[i].Year, output[i].IsBestseller, output[i].KeyWords, output[i].CoverURL, output[i].Price);
                     books[i].Id = output[i].Id;
                 }
 
@@ -352,6 +366,10 @@ namespace LISy.Managers.DataManagers
         public bool IsBestseller { get; set; }
 
         public int Price { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
     }
 
     class TempAV
@@ -363,6 +381,10 @@ namespace LISy.Managers.DataManagers
         public string Authors { get; set; }
 
         public int Price { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
     }
 
     class TempJournal
@@ -380,5 +402,9 @@ namespace LISy.Managers.DataManagers
         public string PublicationDate { get; set; }
 
         public int Price { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
     }
 }

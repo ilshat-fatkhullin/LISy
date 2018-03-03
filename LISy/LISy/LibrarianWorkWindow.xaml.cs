@@ -34,6 +34,7 @@ namespace LISy
             UpdateDataGridBook();
             UpdateDataGridCopies();
             UptadeDataGridAV_material();
+            UpdatDataGridChekedOutCopies();
             //UpdateDataGridInnerMaterials();
             //UpdateDataGridJournal();
         }
@@ -91,12 +92,23 @@ namespace LISy
             if (AVmaterial == null)
                 return;
 
-            /*BookModifyWindow window = new BookModifyWindow(AVmaterial, this);
+            ModifyAVMaterials window = new ModifyAVMaterials(AVmaterial, this);
             window.Owner = this;
-            window.Show();*/
+            window.Show();
 
         }
 
+        private void grid_MouseUpForCheckedOutCopies(object sender, MouseButtonEventArgs e)
+        {
+            Copy copy = DataGridCheckedOutCopies.SelectedItem as Copy;
+            if (copy == null)
+                return;
+
+            ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentID,copy.PatronID,this);
+            window.Owner = this;
+            window.Show();
+
+        }
 
         private void grid_LoadedUser(object sender, RoutedEventArgs e)
         {
@@ -127,9 +139,18 @@ namespace LISy
         }
         private void grid_LoaderCheckedOutCopies(object sender, RoutedEventArgs e)
         {
-
+            UpdatDataGridChekedOutCopies();
         }
-
+        public void UpdatDataGridChekedOutCopies()
+        {
+            List<Copy> result = new List<Copy>();
+            result.Clear();
+            foreach (Copy copy in LibrarianDataManager.GetCheckedCopiesList())
+            {
+                result.Add(copy);
+            }
+            DataGridCheckedOutCopies.ItemsSource = result;
+        }
         public void UpdateUsersDataGrid()
         {
             List<IUser> result = new List<IUser>();
@@ -150,7 +171,7 @@ namespace LISy
             }
             DataGridBook.ItemsSource = result;
         }
-        private void UpdateDataGridCopies()
+        public void UpdateDataGridCopies()
         {
             List<Copy> result = new List<Copy>();
             result.Clear();
@@ -184,7 +205,7 @@ namespace LISy
             DataGridJournal_article.ItemsSource = result;
         }*/
 
-        private void UptadeDataGridAV_material()
+        public void UptadeDataGridAV_material()
        {
            List<AVMaterial> result = new List<AVMaterial>();
            result.Clear();

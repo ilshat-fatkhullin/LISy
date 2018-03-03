@@ -35,7 +35,7 @@ namespace LISy
             year_of_book.Text = Convert.ToString(book.Year);
             keywords_of_book.Text = book.KeyWords;
             price_of_book.Text = Convert.ToString(book.Price);
-            best_seller_of_book.IsEnabled = book.IsBestseller;
+            best_seller_of_book.IsChecked = book.IsBestseller;
             
         }
 
@@ -63,6 +63,7 @@ namespace LISy
             LibrarianDataManager.EditDocument(book);
             workWindow.UpdateDataGridBook();
             this.Close();
+
         }
 
         private void TextBox_titleChanged(object sender, TextChangedEventArgs e)
