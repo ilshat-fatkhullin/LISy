@@ -13,13 +13,13 @@ namespace LISy.Entities
     {
         #region MAIN_INFO
 
-        long ID { get; set; }
+        long Id { get; set; }
 
         string Title { get; set; }
 
         string Authors { get; set; }
 
-        string Keywords { get; set; }
+        string KeyWords { get; set; }
 
         string CoverURL { get; set; }
 

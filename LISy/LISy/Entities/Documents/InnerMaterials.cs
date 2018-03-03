@@ -11,11 +11,11 @@ namespace LISy.Entities.Documents
     /// </summary>
     class InnerMaterials : Document
     {
-        public int Room { get; private set; }
+        public int Room { get; set; }
 
-        public int Level { get; private set; }
+        public int Level { get; set; }
 
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Initializes a new instance of library document which cannot be checked out.
@@ -23,7 +23,7 @@ namespace LISy.Entities.Documents
         /// <param name="authors">Authors or editors of the document.</param>
         /// <param name="title">Title of the document.</param>
         /// <param name="type">Type of the document.</param>
-        /// <param name="keys">Keywords using which the document can be found.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
         /// <param name="room">Room where the document is stored.</param>
         /// <param name="level">Level of the room of the document.</param>
         /// <param name="coverURL">Cover of the document.</param>

@@ -11,14 +11,14 @@ namespace LISy.Entities.Documents
     /// </summary>
     public class JournalArticle : Document
     {
-        public long JournalId { get; private set; }
+        public long JournalId { get; set; }
 
         /// <summary>
         /// Initializes a new instance of article in journal.
         /// </summary>
         /// <param name="authors">Authors of the article.</param>
         /// <param name="title">Title of the article.</param>
-        /// <param name="keys">Keywords using which the article can be found.</param>
+        /// <param name="keys">KeyWords using which the article can be found.</param>
         ///// <param name="journal">Journal in which the article is.</param>
         public JournalArticle(string authors, string title, string keys) : base(authors, title, keys, "")
         {

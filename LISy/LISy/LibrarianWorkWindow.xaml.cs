@@ -33,7 +33,7 @@ namespace LISy
             UpdateUsersDataGrid();
             UpdateDataGridBook();
             UpdateDataGridCopies();
-            //UptadeDataGridAV_material();
+            UptadeDataGridAV_material();
             //UpdateDataGridInnerMaterials();
             //UpdateDataGridJournal();
         }
@@ -85,7 +85,17 @@ namespace LISy
             window.Show();
             
         }
+        private void grid_MouseUpForAVMaterial(object sender, MouseButtonEventArgs e)
+        {
+            AVMaterial AVmaterial = DataGridAV_material.SelectedItem as AVMaterial;
+            if (AVmaterial == null)
+                return;
 
+            /*BookModifyWindow window = new BookModifyWindow(AVmaterial, this);
+            window.Owner = this;
+            window.Show();*/
+
+        }
 
 
         private void grid_LoadedUser(object sender, RoutedEventArgs e)
@@ -99,7 +109,7 @@ namespace LISy
         }
         private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
         {
-            //UptadeDataGridAV_material();
+            UptadeDataGridAV_material();
         }
         private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
         {
@@ -115,7 +125,10 @@ namespace LISy
         {
             UpdateDataGridCopies();
         }
+        private void grid_LoaderCheckedOutCopies(object sender, RoutedEventArgs e)
+        {
 
+        }
 
         public void UpdateUsersDataGrid()
         {
@@ -171,7 +184,7 @@ namespace LISy
             DataGridJournal_article.ItemsSource = result;
         }*/
 
-        /*private void UptadeDataGridAV_material()
+        private void UptadeDataGridAV_material()
        {
            List<AVMaterial> result = new List<AVMaterial>();
            result.Clear();
@@ -180,6 +193,8 @@ namespace LISy
                result.Add(av_material);
            }
            DataGridAV_material.ItemsSource = result;
-       }*/
+       }
+
+
     }
 }

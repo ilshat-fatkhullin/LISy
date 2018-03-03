@@ -25,7 +25,7 @@ namespace LISy.Entities.Documents
         /// </summary>
         /// <param name="authors">Authors or editors of the document.</param>
         /// <param name="title">Title of the document.</param>
-        /// <param name="keys">Keywords using which the document can be found.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
         /// <param name="image">Cover of the document.</param>
         /// <param name="price">Price of the document.</param>
         /// <param name="amount">Amount of copies of the document.</param>

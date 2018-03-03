@@ -53,9 +53,9 @@ namespace LISy.Managers
         {
             return DocumentsDataManager.GetAllBooksList();
         }
-        /*public static AVMaterial[] GetAllAVMaterialList()
+        public static AVMaterial[] GetAllAVMaterialList()
         {
-            return DocumentsDataManager.GetAllAVMaterialList();
-        }*/
+            return DocumentsDataManager.GetAllAVMaterialsList();
+        }
     }
 }
