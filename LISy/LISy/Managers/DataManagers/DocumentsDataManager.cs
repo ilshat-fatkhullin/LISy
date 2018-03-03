@@ -53,9 +53,9 @@ namespace LISy.Managers.DataManagers
                             Price = temp.Price
                         });
                 }
-                else if (type == typeof(InnerMaterials))
+                else if (type == typeof(InnerMaterial))
                 {
-                    InnerMaterials temp = document as InnerMaterials;
+                    InnerMaterial temp = document as InnerMaterial;
                     connection.Execute("dbo.spInnerMaterials_AddInnerMaterial @Title, @Authors, @Type, @KeyWords",
                         new
                         {
@@ -149,9 +149,9 @@ namespace LISy.Managers.DataManagers
                             Price = temp.Price
                         });
                 }
-                else if (type == typeof(InnerMaterials))
+                else if (type == typeof(InnerMaterial))
                 {
-                    InnerMaterials temp = newDocument as InnerMaterials;
+                    InnerMaterial temp = newDocument as InnerMaterial;
                     connection.Execute("dbo.spInnerMaterials_ModifyInnerMaterial @Id, @Title, @Authors, @KeyWords",
                         new
                         {
@@ -301,14 +301,10 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<AVMaterial>("dbo.spAudioVideos_GetAll").ToArray();
+                var output = connection.Query<TempAV>("dbo.spAudioVideos_GetAll").ToArray();
                 AVMaterial[] temp = new AVMaterial[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
-                {
-                    temp[i] = new AVMaterial(output[i].Authors, output[i].Title, "", "", output[i].Price);
-                    temp[i].Id = output[i].Id;
-                }
-
+                    temp[i] = new AVMaterial(output[i].Id, output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL, output[i].Price);
                 return temp;
             }
         }
@@ -318,14 +314,37 @@ namespace LISy.Managers.DataManagers
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
                 var output = connection.Query<TempBook>("dbo.spBooks_GetAll").ToArray();
-                Book[] books = new Book[output.Count()];
-                for (int i = 0; i < books.GetLength(0); i++)
+                Book[] temp = new Book[output.Count()];
+                for (int i = 0; i < temp.GetLength(0); i++)
+                    temp[i] = new Book(output[i].Id, output[i].Authors, output[i].Title, output[i].Publisher, output[i].Edition, output[i].Year, output[i].IsBestseller, output[i].KeyWords, output[i].CoverURL, output[i].Price);
+                return temp;
+            }
+        }
+
+        /*public static InnerMaterial[] GetAllInnerMaterialsList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<AVMaterial>("dbo.spAudioVideos_GetAll").ToArray();
+                AVMaterial[] temp = new AVMaterial[output.Count()];
+                for (int i = 0; i < temp.GetLength(0); i++)
                 {
-                    books[i] = new Book(output[i].Authors, output[i].Title, output[i].Publisher, output[i].Edition, output[i].Year, output[i].IsBestseller, output[i].KeyWords, output[i].CoverURL, output[i].Price);
-                    books[i].Id = output[i].Id;
+                    temp[i] = new AVMaterial(output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL, output[i].Price);
+                    temp[i].Id = output[i].Id;
                 }
 
-                return books;
+                return null;
+            }*/
+
+        public static Journal[] GetAllJournalsList()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<Journal>("dbo.spJournals_GetAll").ToArray();
+                Journal[] temp = new Journal[output.Count()];
+                for (int i = 0; i < temp.GetLength(0); i++)
+                    temp[i] = new Journal(output[i].Id, output[i].Authors, output[i].Title, output[i].Publisher, output[i].Issue, output[i].PublicationDate, output[i].KeyWords, output[i].CoverURL, output[i].Price);
+                return temp;
             }
         }
     }
@@ -379,6 +398,10 @@ namespace LISy.Managers.DataManagers
         public string Authors { get; set; }
 
         public int Price { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
     }
 
     class TempJournal
@@ -396,5 +419,9 @@ namespace LISy.Managers.DataManagers
         public string PublicationDate { get; set; }
 
         public int Price { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
     }
 }

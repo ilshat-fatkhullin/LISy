@@ -19,13 +19,18 @@ namespace LISy.Entities.Documents
 
         public const int STUDENT_RETURN_TIME = 21;
 
-        public string Publisher { get;  set; }
+        public string Publisher { get; set; }
 
-        public string Edition { get;  set; }
+        public string Edition { get; set; }
 
         public int Year { get; set; }
 
         public bool IsBestseller { get; set; }
+
+        public Book() : base()
+        {
+
+        }
 
         /// <summary>
         /// Initializes a new instance of a Book.
@@ -40,6 +45,14 @@ namespace LISy.Entities.Documents
         /// <param name="image">Cover of the Book.</param>
         /// <param name="price">Price of the Book.</param>
         public Book(string authors, string title, string publisher, string edition, int year, bool bestseller, string keys, string image, int price) : base(authors, title, keys, image, price)
+        {
+            Publisher = publisher ?? throw new ArgumentNullException("Book must have a publisher!");
+            Edition = edition ?? throw new ArgumentNullException("Book must have an edition!");
+            Year = year > 0 ? year : throw new ArgumentException("Invalid year!");
+            IsBestseller = bestseller;
+        }
+
+        public Book(long id, string authors, string title, string publisher, string edition, int year, bool bestseller, string keys, string image, int price) : base(id, authors, title, keys, image, price)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Book must have a publisher!");
             Edition = edition ?? throw new ArgumentNullException("Book must have an edition!");

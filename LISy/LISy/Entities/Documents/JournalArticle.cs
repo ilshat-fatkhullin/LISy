@@ -13,6 +13,11 @@ namespace LISy.Entities.Documents
     {
         public long JournalId { get; set; }
 
+        public JournalArticle() : base()
+        {
+
+        }
+
         /// <summary>
         /// Initializes a new instance of article in journal.
         /// </summary>
@@ -23,6 +28,10 @@ namespace LISy.Entities.Documents
         public JournalArticle(string authors, string title, string keys) : base(authors, title, keys, "")
         {
             //Journal = journal ?? throw new ArgumentNullException("Article must refer to a journal!");
+        }
+
+        public JournalArticle(long id, string authors, string title, string keys) : base(id, authors, title, keys, "")
+        {
         }
     }
 }

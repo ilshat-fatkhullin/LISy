@@ -14,11 +14,16 @@ namespace LISy.Entities.Documents
     {
         public const int BASIC_RETURN_TIME = 14;
 
-        public int Price { get;  set; }
+        public int Price { get; set; }
 
         //public List<Copy> Copies { get; protected set; }
 
         //private Copy LastAvailableCopy;
+
+        public Takable() : base()
+        {
+
+        }
 
         /// <summary>
         /// Initializes a new instance of library document that can be checked out.
@@ -36,6 +41,11 @@ namespace LISy.Entities.Documents
             for (int i = 1; i <= amount; ++i)
                 Copies.Add(new Copy(this));
             LastAvailableCopy = Copies[0];*/
+        }
+
+        public Takable(long id, string authors, string title, string keys, string image, int price) : base(id, authors, title, keys, image)
+        {
+            Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
         }
 
         public virtual string EvaluateReturnDate(string patronType)

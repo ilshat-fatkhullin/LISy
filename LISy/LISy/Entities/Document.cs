@@ -25,6 +25,11 @@ namespace LISy.Entities
 
         #endregion
 
+        public Document()
+        {
+
+        }
+
         /// <summary>
         /// Initializes a new instance of library document with common properties.
         /// </summary>
@@ -40,6 +45,14 @@ namespace LISy.Entities
             CoverURL = coverURL ?? throw new ArgumentNullException("Document must have a cover!");
         }
 
+        public Document(long id, string authors, string title, string keys, string coverURL)
+        {
+            Id = id >= 0 ? id : throw new ArgumentException("Invalid Id!");
+            Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
+            Title = title ?? throw new ArgumentNullException("Document must have a title!");
+            KeyWords = keys ?? throw new ArgumentNullException("Document must have a title!");
+            CoverURL = coverURL ?? throw new ArgumentNullException("Document must have a cover!");
+        }
         /*#region SETTER_FUNCTIONS
 
         /// <summary>
