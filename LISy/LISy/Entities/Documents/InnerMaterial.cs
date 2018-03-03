@@ -9,7 +9,7 @@ namespace LISy.Entities.Documents
     /// <summary>
     /// Represents a set of documents which cannot be checked out.
     /// </summary>
-    class InnerMaterial : Document
+    public class InnerMaterial : Document
     {
         public int Room { get; set; }
 
