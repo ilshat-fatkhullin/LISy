@@ -132,16 +132,16 @@ namespace LISy.Managers.DataManagers
 
     class TempUser
     {
-        public string FirstName;
+        public string FirstName { get; set; }
 
-        public string SecondName;
+        public string SecondName { get; set; }
 
-        public int CardNumber;
+        public int CardNumber { get; set; }
 
-        public string Phone;
+        public string Phone { get; set; }
 
-        public string Address;
+        public string Address { get; set; }
 
-        public string Type;
+        public string Type { get; set; }
     }
 }
