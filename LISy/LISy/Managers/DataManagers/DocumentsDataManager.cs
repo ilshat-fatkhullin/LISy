@@ -316,15 +316,7 @@ namespace LISy.Managers.DataManagers
                 var output = connection.Query<TempAV>("dbo.spAudioVideos_GetAll").ToArray();
                 AVMaterial[] temp = new AVMaterial[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
-<<<<<<< HEAD
-                {
-                    temp[i] = new AVMaterial(output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL, output[i].Price);
-                    temp[i].Id = output[i].Id;
-                }
-
-=======
                     temp[i] = new AVMaterial(output[i].Id, output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL, output[i].Price);
->>>>>>> 8b686fb7d4113696e6b2fe878a298a6605c5a311
                 return temp;
             }
         }
@@ -441,15 +433,11 @@ namespace LISy.Managers.DataManagers
 
         public string Authors { get; set; }
 
-<<<<<<< HEAD
-        public int Price { get; set; }
-=======
         public string Type { get; set; }
 
         public int Room { get; set; }
 
         public int Level { get; set; }
->>>>>>> 8b686fb7d4113696e6b2fe878a298a6605c5a311
 
         public string KeyWords { get; set; }
 
@@ -475,8 +463,6 @@ namespace LISy.Managers.DataManagers
         public string KeyWords { get; set; }
 
         public string CoverURL { get; set; }
-<<<<<<< HEAD
-=======
     }
 
     class TempArticle
@@ -490,6 +476,5 @@ namespace LISy.Managers.DataManagers
         public string KeyWords { get; set; }
 
         public string CoverURL { get; set; }
->>>>>>> 8b686fb7d4113696e6b2fe878a298a6605c5a311
     }
 }

@@ -55,6 +55,11 @@ namespace LISy.Managers
             return UsersDataManager.GetUsersList();
         }
 
+        public static void ReturnDocument(long DocumentId, long UserId)
+        {
+            DocumentsDataManager.ReturnDocument(DocumentId, UserId);
+        }
+
         public static AVMaterial[] GetAllAVMaterialsList()
         {
             return DocumentsDataManager.GetAllAVMaterialsList();
@@ -63,19 +68,6 @@ namespace LISy.Managers
         public static Book[] GetAllBooksList()
         {
             return DocumentsDataManager.GetAllBooksList();
-<<<<<<< HEAD
-
-        }
-
-        public static AVMaterial[] GetAllAVMaterialList()
-
-        {
-            return DocumentsDataManager.GetAllAVMaterialsList();
-        }
-        public static void ReturnDocument(long DocumentId, long UserId)
-        {
-            DocumentsDataManager.ReturnDocument(DocumentId,UserId);
-=======
         }
 
         public static InnerMaterial[] GetAllInnerMaterialsList()
@@ -91,7 +83,6 @@ namespace LISy.Managers
         public static JournalArticle[] GetAllJournalArticlesList()
         {
             return DocumentsDataManager.GetAllJournalArticlesList();
->>>>>>> 8b686fb7d4113696e6b2fe878a298a6605c5a311
         }
     }
 }

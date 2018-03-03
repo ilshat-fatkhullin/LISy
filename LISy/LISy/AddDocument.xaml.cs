@@ -474,7 +474,7 @@ namespace LISy
                 inner_cover_url_box.Text != null &&
                 inner_keywords_text_box.Text != null)
             {
-                InnerMaterials innerMaterials = new InnerMaterials(InputFieldsManager.ReturnStringFromTextBox(inner_author_box),InputFieldsManager.ReturnStringFromTextBox(inner_title_box),InputFieldsManager.ReturnStringFromTextBox(inner_type_text_box),InputFieldsManager.ReturnStringFromTextBox(inner_keywords_text_box),Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_room_text_box)), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_level_text_box)),InputFieldsManager.ReturnStringFromTextBox(inner_cover_url_box));
+                InnerMaterial innerMaterials = new InnerMaterial(InputFieldsManager.ReturnStringFromTextBox(inner_author_box),InputFieldsManager.ReturnStringFromTextBox(inner_title_box),InputFieldsManager.ReturnStringFromTextBox(inner_type_text_box),InputFieldsManager.ReturnStringFromTextBox(inner_keywords_text_box),Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_room_text_box)), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_level_text_box)),InputFieldsManager.ReturnStringFromTextBox(inner_cover_url_box));
                 //DocumentsDataManager.AddDocument(innerMaterials);
                 this.Close();
             }

@@ -104,7 +104,7 @@ namespace LISy
             if (copy == null)
                 return;
 
-            ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentID,copy.PatronID,this);
+            ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentID,copy.PatronID);
             window.Owner = this;
             window.Show();
 
@@ -209,7 +209,7 @@ namespace LISy
        {
            List<AVMaterial> result = new List<AVMaterial>();
            result.Clear();
-           foreach (AVMaterial av_material in LibrarianDataManager.GetAllAVMaterialList())
+           foreach (AVMaterial av_material in LibrarianDataManager.GetAllAVMaterialsList())
            {
                result.Add(av_material);
            }
