@@ -26,22 +26,16 @@ namespace LISy
     {
         public long DocumentID;
         public long UserID;
+        private Book book;
+        private WorkWindow workWindow;
 
-        public BookingInfoWindow()
+        public BookingInfoWindow(Book book, WorkWindow workWindow, long Document_ID, long User_Id)
         {
             InitializeComponent();
-
-        }
-
-        public bool bestSellerChecking()
-        {
-            return true;
-        }
-
-        public void Initialize(long userID, long documentID)
-        {
-            UserID = userID;
-            DocumentID = documentID;
+            this.book = book;
+            this.workWindow = workWindow;
+            User_Id = UserID;
+            Document_ID = DocumentID;
             BitmapImage bi1 = new BitmapImage();
             bi1.BeginInit();
             bi1.UriSource = new Uri("Design/star_20x20.png", UriKind.Relative);
@@ -55,12 +49,19 @@ namespace LISy
                 image_best_seller.Source = bi1;
                 image_best_seller.Stretch = Stretch.Fill;
             }
-            else            
+            else
             {
                 button_book.IsEnabled = false;
                 label_inStock.Content = "Not available";
             }
+
         }
+
+        public bool bestSellerChecking()
+        {
+            return true;
+        }
+
 
         private void button_book_Click(object sender, RoutedEventArgs e)
         {

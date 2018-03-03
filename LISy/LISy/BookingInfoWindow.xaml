@@ -10,10 +10,7 @@
         <ImageBrush ImageSource="Design/bookss.jpg"/>
     </Window.Background>
     <Grid Background="#66000000" Margin="0,0,0,-3">
-        <Image x:Name="image_preview" HorizontalAlignment="Left" Height="133" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="Design/Strang.jpg" Stretch="Fill"/>
-        <Label x:Name="label_name" Content="&quot;Introduction to Linear Algebra&quot; Gilbert Strang 4th edition &#xA;(WELLESLEY - CAMBRIDGE PRESS)" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="393" Height="45" FontSize="14" Foreground="White"/>
         <Button x:Name="button_book" Content="Check out" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_book_Click"/>
-        <Label x:Name="label_info" Content="&gt;Some useful information about this Book, which make you to Book it." HorizontalAlignment="Left" Margin="115,80,0,0" VerticalAlignment="Top" Width="393" Foreground="White"/>
         <Label x:Name="label_inStock" Content="" Margin="115,111,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393"/>
         <Label x:Name="label_return_data" Content="" HorizontalAlignment="Left" Margin="115,148,0,0" VerticalAlignment="Top" Width="393" Foreground="White" Height="30" FontSize="16" />
         <Label x:Name="label_best_seller" Content="" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Height="20" Width="45" FontSize="8" Foreground="White"/>

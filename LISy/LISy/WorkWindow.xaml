@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="480" Width="1335" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="480" Width="808.5" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="Design/books.jpg"/>
     </Window.Background>
@@ -25,39 +25,6 @@
                 <ImageBrush/>
             </TextBox.SelectionBrush>
         </TextBox>
-        <CheckBox x:Name="checkBox_books" Content="Books" HorizontalAlignment="Left" Margin="160,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" Checked="checkBox_books_Checked">
-            <CheckBox.BorderBrush>
-                <RadialGradientBrush>
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </RadialGradientBrush>
-            </CheckBox.BorderBrush>
-            <CheckBox.Background>
-                <ImageBrush/>
-            </CheckBox.Background>
-        </CheckBox>
-        <CheckBox x:Name="checkBox_JA" Content="Journal" HorizontalAlignment="Left" Margin="230,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" Checked="checkBox_JA_Checked_1" >
-            <CheckBox.BorderBrush>
-                <RadialGradientBrush>
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </RadialGradientBrush>
-            </CheckBox.BorderBrush>
-            <CheckBox.Background>
-                <ImageBrush/>
-            </CheckBox.Background>
-        </CheckBox>
-        <CheckBox x:Name="checkBox_AV" Content="AV matireals" HorizontalAlignment="Left" Margin="309,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" Checked="checkBox_AV_Checked">
-            <CheckBox.BorderBrush>
-                <RadialGradientBrush>
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </RadialGradientBrush>
-            </CheckBox.BorderBrush>
-            <CheckBox.Background>
-                <ImageBrush/>
-            </CheckBox.Background>
-        </CheckBox>
         <Image x:Name="image" HorizontalAlignment="Left" Height="135" VerticalAlignment="Top" Width="155" Source="Design/White_logo.png" Margin="15,6,0,0"/>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="55" Margin="160,10,0,0" VerticalAlignment="Top" Width="597" Source="Design/title_white.png"/>
         <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="695,70,0,0" VerticalAlignment="Top" Width="62" Height="25" Foreground="White" Click="buttonSearch_Click">
@@ -71,34 +38,11 @@
         <Button x:Name="button_Profile" Content="My Profile" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="145" Height="30"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Profile_Click"/>
         <Button x:Name="button_Booking" Content="Booking Story" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Booking_Click"/>
         <Button x:Name="button_Info" Content="Info" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Info_Click"/>
-        <Grid Margin="160,129,0,10" HorizontalAlignment="Left" Width="597">
-            <Label x:Name="label_book_1" Content="&quot;Introduction to Linear Algebra&quot; Gilbert Strang 4th edition &#xD;&#xA;(WELLESLEY - CAMBRIDGE PRESS)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="430" Foreground="White" Height="50"/>
-            <Button x:Name="button_open_book_1" Content="Open" HorizontalAlignment="Left" Margin="445,10,0,0" VerticalAlignment="Top" Width="75" Height="26" FontSize="14" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_open_book_1_Click" />
-            <Label x:Name="label_book_2" Content="&quot;Introduction to Algorithms&quot; T. H. Cormen, C.E, Leiserson, R.L. Rivest, C. Stein &#xD;&#xA;3rd edition (The MIT Press Cambridge, Massachusetts)" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="430" Foreground="White" Height="50"/>
-            <Label x:Name="label_book_3" Content="&quot;The Catcher in the Rue&quot; J.D. Salinger (Rainbow Press)" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Width="430" Foreground="White" Height="26"/>
-            <Label x:Name="label_book_4" Content="&quot;Wheels&quot; Arthur Hailey 1972 (Doubleday - GARDEN CITY)" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="430" Foreground="White" Height="26"/>
-            <Label x:Name="label_book_5" Content="&quot;Computer Organization and Design&quot; D.A. Patterson 5th edition &#xA;(Morgan Koufmann)" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Width="430" Foreground="White" Height="50"/>
-            <Button x:Name="button_open_book_2" Content="Open" HorizontalAlignment="Left" Margin="445,65,0,0" VerticalAlignment="Top" Width="75" Height="26" FontSize="14" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White"  RenderTransformOrigin="0.48,1.577" Click="button_open_book_2_Click"/>
-            <Button x:Name="button_open_book_3" Content="Open" HorizontalAlignment="Left" Margin="445,120,0,0" VerticalAlignment="Top" Width="75" Height="26" FontSize="14" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_open_book_3_Click" />
-            <Button x:Name="button_open_book_4" Content="Open" HorizontalAlignment="Left" Margin="445,151,0,0" VerticalAlignment="Top" Width="75" Height="26" FontSize="14" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_open_book_4_Click" />
-            <Button x:Name="button_open_book_5" Content="Open" HorizontalAlignment="Left" Margin="445,182,0,0" VerticalAlignment="Top" Width="75" Height="26" FontSize="14" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_open_book_5_Click" />
-        </Grid>
-        <CheckBox x:Name="checkBox_Article" Content="Article" HorizontalAlignment="Left" Margin="431,100,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" Checked="checkBox_Article_Checked" >
-            <CheckBox.BorderBrush>
-                <RadialGradientBrush>
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </RadialGradientBrush>
-            </CheckBox.BorderBrush>
-            <CheckBox.Background>
-                <ImageBrush/>
-            </CheckBox.Background>
-        </CheckBox>
-        <Grid HorizontalAlignment="Left" Height="299" Margin="762,70,0,0" VerticalAlignment="Top" Width="542">
+        <Grid HorizontalAlignment="Left" Height="299" Margin="160,100,0,0" VerticalAlignment="Top" Width="542">
             <TabControl HorizontalAlignment="Left" Height="279" Margin="10,10,0,0" VerticalAlignment="Top" Width="522">
                 <TabItem x:Name="tab_item_books" Header="Books">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderBook"/>
+                        <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderBook" MouseUp="DataGridBook_MouseUp_book"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="av_material" Header="AV materials">
