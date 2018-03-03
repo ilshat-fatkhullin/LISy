@@ -38,7 +38,7 @@ namespace LISy
             TitleLabel.Content = book.Title;
             Authors.Content = book.Authors;
 
-            if (DocumentsDataManager.IsAvailable(book.ID, patron.CardNumber))
+            if (DocumentsDataManager.IsAvailable(book.Id, patron.CardNumber))
             {
                 BookButton.IsEnabled = true;
                 InStockLabel.Content = "Available.";                
@@ -53,7 +53,7 @@ namespace LISy
 
         private void button_book_Click(object sender, RoutedEventArgs e)
         {
-            PatronDataManager.CheckOutDocument(book.ID, patron.CardNumber);
+            PatronDataManager.CheckOutDocument(book.Id, patron.CardNumber);
             BookButton.IsEnabled = false;
             InStockLabel.Content = "Not available.";
             ReturnDataLabel.Content = book.EvaluateReturnDate(patron.Type);            

@@ -99,17 +99,24 @@ namespace LISy.Managers
                 var output = connection.Query<TempUser>("dbo.spUsers_GetUserById @Id", new { Id = userID}).ToArray();
                 if (output.Length != 1)
                     return null;
+                IUser user = null;
                 switch (output[0].Type)
                 {
                     case "Librarian":
-                        return new Librarian(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);                        
+                        user = new Librarian(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);                        
+                        break;
                     case "Faculty":
-                        return new Faculty(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
+                        user = new Faculty(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
+                        break;
                     case "Student":
-                        return new Student(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
+                        user =  new Student(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
+                        break;
                     default:
                         return null;
-                }                
+                }
+
+                user.CardNumber = output[0].CardNumber;
+                return user;
             }
         }
     }

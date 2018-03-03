@@ -111,8 +111,10 @@ namespace LISy
             if (book == null)
                 return;
 
-            BookingInfoWindow window = new BookingInfoWindow(book, patron, this);
-            window.Owner = this;
+            BookingInfoWindow window = new BookingInfoWindow(book, patron, this)
+            {
+                Owner = this
+            };
             window.Show();
         }
     }

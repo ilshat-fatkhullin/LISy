@@ -13,13 +13,13 @@ namespace LISy.Entities
     {
         #region MAIN_INFO
 
-        public long ID { get; set; }
+        public long Id { get; set; }
 
         public string Authors { get; set; }
 
         public string Title { get; set; }
 
-        public string Keywords { get; set; }
+        public string KeyWords { get; set; }
 
         public string CoverURL { get; set; }
 
@@ -30,13 +30,13 @@ namespace LISy.Entities
         /// </summary>
         /// <param name="authors">Authors or editors of the document.</param>
         /// <param name="title">Title of the document.</param>
-        /// <param name="keys">Keywords using which the document can be found.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
         /// <param name="coverURL">Cover of the document.</param>
         public Document(string authors, string title, string keys, string coverURL)
         {
             Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
             Title = title ?? throw new ArgumentNullException("Document must have a title!");
-            Keywords = keys ?? throw new ArgumentNullException("Document must have a title!");
+            KeyWords = keys ?? throw new ArgumentNullException("Document must have a title!");
             CoverURL = coverURL ?? throw new ArgumentNullException("Document must have a cover!");
         }
 
@@ -49,8 +49,8 @@ namespace LISy.Entities
         public void AddKeyword(string word)
         {
             if (word == null) throw new ArgumentNullException("Invalid keyword!");
-            if (Keywords.Contains(word)) return;
-            Keywords.Add(word);
+            if (KeyWords.Contains(word)) return;
+            KeyWords.Add(word);
         }
 
         /// <summary>
@@ -60,8 +60,8 @@ namespace LISy.Entities
         public void RemoveKeyword(string keyword)
         {
             if (keyword == null) throw new ArgumentNullException("Invalid keyword!");
-            if (!Keywords.Contains(keyword)) throw new ArgumentException("Document has not such keyword!");
-            Keywords.Remove(keyword);
+            if (!KeyWords.Contains(keyword)) throw new ArgumentException("Document has not such keyword!");
+            KeyWords.Remove(keyword);
         }
 
         /// <summary>

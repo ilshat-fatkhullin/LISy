@@ -11,11 +11,11 @@ namespace LISy.Entities.Documents
     /// </summary>
     public class Journal : Takable
     {
-        public string Publisher { get; private set; }
+        public string Publisher { get; set; }
 
-        public int Issue { get; private set; }
+        public int Issue { get; set; }
 
-        public string PublicationDate { get; private set; }
+        public string PublicationDate { get; set; }
 
         //public JournalArticle[] Articles { get; private set; }
 
@@ -30,16 +30,15 @@ namespace LISy.Entities.Documents
         /// <param name="keys">Keywords using which the journal can be found.</param>
         /// <param name="image">Cover of the journal.</param>
         /// <param name="price">Price of the journal.</param>
-        /// <param name="amount">Amount of copies of the journal.</param>
         /*/// <param name="art_amount">Amount of articles in the journal.</param>
         /// <param name="art_authors">Authors of journal's atricles.</param>
         /// <param name="art_titles">Titles of journal's atricles.</param>
-        /// <param name="art_keys">Keywords using which every journal's atricle can be found.</param>*/
+        /// <param name="art_keys">KeyWords using which every journal's atricle can be found.</param>*/
         public Journal(string authors, string title, string publisher, int issue, string date, string keys, string image, int price/*,
             int art_amount, string[] art_authors, string[] art_titles, string[] art_keys*/) : base(authors, title, keys, image, price)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Journal must have a publisher!");
-            Issue = issue;// > 0 ? issue : throw new ArgumentNullException("Invalid issue!");
+            Issue = issue > 0 ? issue : throw new ArgumentNullException("Invalid issue!");
             PublicationDate = date ?? throw new ArgumentNullException("Journal must have a publication date!");
             /*Articles = art_amount > 0 ? new JournalArticle[art_amount] : throw new ArgumentException("Journal must contain articles!");
             if (art_authors == null) throw new ArgumentNullException("Articles must have authors!");
