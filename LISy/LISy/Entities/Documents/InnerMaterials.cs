@@ -17,6 +17,9 @@ namespace LISy.Entities.Documents
 
         public string Type { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of library document which cannot be checked out.
+        /// </summary>
         public InnerMaterial() : base()
         {
 
@@ -39,6 +42,17 @@ namespace LISy.Entities.Documents
             Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }
 
+        /// <summary>
+        /// Initializes a new instance of library document which cannot be checked out.
+        /// </summary>
+        /// <param name="id">Id of the document.</param>
+        /// <param name="authors">Authors or editors of the document.</param>
+        /// <param name="title">Title of the document.</param>
+        /// <param name="type">Type of the document.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
+        /// <param name="room">Room where the document is stored.</param>
+        /// <param name="level">Level of the room of the document.</param>
+        /// <param name="coverURL">Cover of the document.</param>
         public InnerMaterial(long id, string authors, string title, string type, string keys, int room, int level, string coverURL) : base(id, authors, title, keys, coverURL)
         {
             Type = type ?? throw new ArgumentNullException("Ivalid type!");

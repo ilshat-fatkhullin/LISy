@@ -68,11 +68,11 @@ namespace LISy.Managers.DataManagers
                 else if (type == typeof(Journal))
                 {
                     Journal temp = document as Journal;
-                    connection.Execute("dbo.spJournals_AddJournal @Title, @Editors, @Publisher, @Issue, @PublicationDate, @KeyWords, @Price",
+                    connection.Execute("dbo.spJournals_AddJournal @Title, @Authors, @Publisher, @Issue, @PublicationDate, @KeyWords, @Price",
                         new
                         {
                             Title = temp.Title,
-                            Editors = temp.Authors,
+                            Authors = temp.Authors,
                             Publisher = temp.Publisher,
                             Issue = temp.Issue,
                             PublicationDate = temp.PublicationDate,
@@ -164,12 +164,12 @@ namespace LISy.Managers.DataManagers
                 else if (type == typeof(Journal))
                 {
                     Journal temp = newDocument as Journal;
-                    connection.Execute("dbo.spJournals_ModifyJournal @Id, @Title, @Editors, @Publisher, @Issue, @PublicationDate, @KeyWords, @Price",
+                    connection.Execute("dbo.spJournals_ModifyJournal @Id, @Title, @Authors, @Publisher, @Issue, @PublicationDate, @KeyWords, @Price",
                         new
                         {
                             Id = temp.Id,
                             Title = temp.Title,
-                            Editors = temp.Authors,
+                            Authors = temp.Authors,
                             Publisher = temp.Publisher,
                             Issue = temp.Issue,
                             PublicationDate = temp.PublicationDate,
@@ -228,7 +228,7 @@ namespace LISy.Managers.DataManagers
                     var outputDoc = connection.Query<TempJournal>("dbo.spJournals_GetAllById @DocumentId", new { DocumentId = documentId }).ToArray();
                     Journal[] documents = new Journal[outputDoc.Count()];
                     for (int i = 0; i < documents.GetLength(0); i++)
-                        documents[i] = new Journal(outputDoc[i].Editors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate, "", "", outputDoc[i].Price);
+                        documents[i] = new Journal(outputDoc[i].Authors, outputDoc[i].Title, outputDoc[i].Publisher, outputDoc[i].Issue, outputDoc[i].PublicationDate, "", "", outputDoc[i].Price);
                     var patronType = connection.Query<string>("dbo.spUsers_GetType @UserId", new { UserId = userId }).ToList();
                     date = documents[0].EvaluateReturnDate(patronType[0]);
                 }
@@ -414,7 +414,7 @@ namespace LISy.Managers.DataManagers
 
         public int Issue { get; set; }
 
-        public string Editors { get; set; }
+        public string Authors { get; set; }
 
         public string PublicationDate { get; set; }
 

@@ -20,6 +20,9 @@ namespace LISy.Entities.Documents
 
         //private Copy LastAvailableCopy;
 
+        /// <summary>
+        /// Initializes a new instance of library document that can be checked out.
+        /// </summary>
         public Takable() : base()
         {
 
@@ -33,7 +36,6 @@ namespace LISy.Entities.Documents
         /// <param name="keys">KeyWords using which the document can be found.</param>
         /// <param name="image">Cover of the document.</param>
         /// <param name="price">Price of the document.</param>
-        /// <param name="amount">Amount of copies of the document.</param>
         public Takable(string authors, string title, string keys, string image, int price) : base(authors, title, keys, image)
         {
             Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
@@ -43,6 +45,15 @@ namespace LISy.Entities.Documents
             LastAvailableCopy = Copies[0];*/
         }
 
+        /// <summary>
+        /// Initializes a new instance of library document that can be checked out.
+        /// </summary>
+        /// <param name="id">Id or editors of the document.</param>
+        /// <param name="authors">Authors or editors of the document.</param>
+        /// <param name="title">Title of the document.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
+        /// <param name="image">Cover of the document.</param>
+        /// <param name="price">Price of the document.</param>
         public Takable(long id, string authors, string title, string keys, string image, int price) : base(id, authors, title, keys, image)
         {
             Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");

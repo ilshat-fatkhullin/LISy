@@ -19,6 +19,9 @@ namespace LISy.Entities.Documents
 
         //public JournalArticle[] Articles { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of a journal.
+        /// </summary>
         public Journal() : base()
         {
 
@@ -56,7 +59,18 @@ namespace LISy.Entities.Documents
                 Articles[i] = new JournalArticle(art_authors[i], art_titles[i], art_keys[i]);*/
         }
 
-
+        /// <summary>
+        /// Initializes a new instance of a journal.
+        /// </summary>
+        /// <param name="id">Id of the journal.</param>
+        /// <param name="authors">Editors of the journal.</param>
+        /// <param name="title">Title of the journal.</param>
+        /// <param name="publisher">Publisher of the journal.</param>
+        /// <param name="issue">Issue of the journal.</param>
+        /// <param name="date">Publication date of the journal.</param>
+        /// <param name="keys">Keywords using which the journal can be found.</param>
+        /// <param name="image">Cover of the journal.</param>
+        /// <param name="price">Price of the journal.</param>
         public Journal(long id, string authors, string title, string publisher, int issue, string date, string keys, string image, int price) : base(id, authors, title, keys, image, price)
         {
             Publisher = publisher ?? throw new ArgumentNullException("Journal must have a publisher!");
