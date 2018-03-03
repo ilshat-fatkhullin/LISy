@@ -5,7 +5,6 @@ using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Documents;
-using LISy.Entities;
 using LISy.Entities.Users.Patrons;
 
 namespace LISy.Managers.DataManagers
@@ -19,6 +18,8 @@ namespace LISy.Managers.DataManagers
         /// Adds new Patron to the database.        
         /// </summary>
         /// <param name="user">Patron, which is going to be added.</param>
+        /// <param name="login">Login of the patron.</param>
+        /// <param name="password">Password of the patron.</param>
         public static bool AddUser(IUser user, string login, string password)
         {
             if (user == null)

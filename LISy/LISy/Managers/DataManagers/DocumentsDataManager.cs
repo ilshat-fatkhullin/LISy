@@ -325,7 +325,7 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<TempInner>("spInnerMaterials_GetAll").ToArray();
+                var output = connection.Query<TempInner>("dbo.spInnerMaterials_GetAll").ToArray();
                 InnerMaterial[] temp = new InnerMaterial[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
                     temp[i] = new InnerMaterial(output[i].Id, output[i].Authors, output[i].Title, output[i].Type, output[i].KeyWords, output[i].Room, output[i].Level, output[i].CoverURL);
@@ -349,7 +349,7 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<TempArticle>("spJournalArticles_GetAll").ToArray();
+                var output = connection.Query<TempArticle>("dbo.spJournalArticles_GetAll").ToArray();
                 JournalArticle[] temp = new JournalArticle[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
                     temp[i] = new JournalArticle(output[i].Id, output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL);

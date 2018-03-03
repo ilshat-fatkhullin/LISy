@@ -16,7 +16,6 @@ namespace LISy.Entities.Users.Patrons
         /// </summary>
         /// <param name="firstName">First name of the student.</param>
         /// <param name="secondName">Second name of the student.</param>
-        /// <param name="cardNumber">Card number of the student.</param>
         /// <param name="phone">Phone number of the student.</param>
         /// <param name="address">Address of the student.</param>
         public Student(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
