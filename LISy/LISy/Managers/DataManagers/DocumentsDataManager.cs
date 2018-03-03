@@ -105,7 +105,7 @@ namespace LISy.Managers.DataManagers
             var type = document.GetType();
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                connection.Execute("dbo.spDocuments_DeleteDocument @Id", new { Id = document.ID });
+                connection.Execute("dbo.spDocuments_DeleteDocument @Id", new { Id = document.Id });
             }
         }
 
@@ -125,7 +125,7 @@ namespace LISy.Managers.DataManagers
                     connection.Execute("dbo.spAudioVideos_ModifyAV @Id, @Title, @Authors, @Keywords, @Price",
                         new
                         {
-                            Id = temp.ID,
+                            Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Keywords = temp.Keywords,
@@ -138,7 +138,7 @@ namespace LISy.Managers.DataManagers
                     connection.Execute("dbo.spBooks_ModifyBook @Id, @Title, @Authors, @Publisher, @Edition, @Year, @IsBestseller, @Keywords, @Price",
                         new
                         {
-                            Id = temp.ID,
+                            Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Publisher = temp.Publisher,
@@ -155,7 +155,7 @@ namespace LISy.Managers.DataManagers
                     connection.Execute("dbo.spInnerMaterials_ModifyInnerMaterial @Id, @Title, @Authors, @Keywords",
                         new
                         {
-                            Id = temp.ID,
+                            Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Keywords = temp.Keywords,
@@ -167,7 +167,7 @@ namespace LISy.Managers.DataManagers
                     connection.Execute("dbo.spJournals_ModifyJournal @Id, @Title, @Editors, @Publisher, @Issue, @PublicationDate, @Keywords, @Price",
                         new
                         {
-                            Id = temp.ID,
+                            Id = temp.Id,
                             Title = temp.Title,
                             Editors = temp.Authors,
                             Publisher = temp.Publisher,
@@ -183,7 +183,7 @@ namespace LISy.Managers.DataManagers
                     connection.Execute("dbo.spJournalArticles_ModifyJournalArticle @Id, @Title, @Authors, @Keywords",
                         new
                         {
-                            Id = temp.ID,
+                            Id = temp.Id,
                             Title = temp.Title,
                             Authors = temp.Authors,
                             Keywords = temp.Keywords,
@@ -262,7 +262,7 @@ namespace LISy.Managers.DataManagers
         /// <summary>
         /// Get type of document
         /// </summary>
-        /// <param name="documentId">ID of document</param>
+        /// <param name="documentId">Id of document</param>
         /// <returns>String with type of document</returns>
         public static string GetType(long documentId)
         {
@@ -289,12 +289,12 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<TempBook>("dbo.spBooks_GetAllBooks").ToArray();
+                var output = connection.Query<Book>("dbo.spBooks_GetAllBooks").ToArray();
                 Book[] books = new Book[output.Count()];
                 for (int i = 0; i < books.GetLength(0); i++)
                 {
                     books[i] = new Book(output[i].Authors, output[i].Title, output[i].Publisher, output[i].Edition, output[i].Year, output[i].IsBestseller, "", "", output[i].Price);
-                    books[i].ID = output[i].Id;
+                    books[i].Id = output[i].Id;
                 }
 
                 return books;
@@ -310,7 +310,7 @@ namespace LISy.Managers.DataManagers
                 for (int i = 0; i < av.GetLength(0); i++)
                 {
                     av[i] = new AVMaterial(output[i].Authors,output[i].Title,"","",output[i].Price);
-                    av[i].ID = output[i].Id;
+                    av[i].Id = output[i].Id;
                 }
 
                 return av;

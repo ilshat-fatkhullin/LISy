@@ -13,7 +13,7 @@ namespace LISy.Entities
     {
         #region MAIN_INFO
 
-        long ID { get; set; }
+        long Id { get; set; }
 
         string Title { get; set; }
 
