@@ -277,7 +277,7 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<TempCopy>("dbo.spCopies_GetAllCopies").ToArray();
+                var output = connection.Query<TempCopy>("dbo.spCopies_GetAll").ToArray();
                 Copy[] copies = new Copy[output.Count()];
                 for (int i = 0; i < copies.GetLength(0); i++)
                     copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningDate, output[i].Room, output[i].Level);
@@ -349,9 +349,10 @@ namespace LISy.Managers.DataManagers
 
         public int Year { get; set; }
 
+        public int Price { get; set; }
+
         public bool IsBestseller { get; set; }
 
-        public int Price { get; set; }
     }
 
     class TempAV
