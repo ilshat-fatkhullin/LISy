@@ -14,7 +14,7 @@ namespace LISy.Entities.Documents
     {
         public const int BASIC_RETURN_TIME = 14;
 
-        public int Price { get; protected set; }
+        public int Price { get;  set; }
 
         //public List<Copy> Copies { get; protected set; }
 

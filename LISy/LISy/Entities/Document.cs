@@ -15,11 +15,11 @@ namespace LISy.Entities
 
         public long ID { get; set; }
 
-        public string Authors { get; protected set; }
+        public string Authors { get; set; }
 
-        public string Title { get; protected set; }
+        public string Title { get; set; }
 
-        public string Keywords { get; protected set; }
+        public string Keywords { get; set; }
 
         public string CoverURL { get; protected set; }
 

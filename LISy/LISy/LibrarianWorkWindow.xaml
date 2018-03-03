@@ -20,7 +20,7 @@
                     <DataGrid x:Name="DataGridInfoUser" Height="260" VerticalAlignment="Top" HorizontalAlignment="Left" Width="801" Loaded="grid_LoadedUser" MouseUp="grid_MouseUp" Margin="10,10,0,0"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tab_item_books" Header="Books">
+            <TabItem x:Name="tab_item_books" Header="Books" MouseUp="grid_MouseUpForBook">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderBook"/>
                 </Grid>

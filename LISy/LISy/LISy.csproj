@@ -95,6 +95,9 @@
     <Compile Include="BookingInfoWindow.xaml.cs">
       <DependentUpon>BookingInfoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BookModifyWindow.xaml.cs">
+      <DependentUpon>BookModifyWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Users\ILibrarian.cs" />
     <Compile Include="Entities\Users\IPatron.cs" />
     <Compile Include="Helper.cs" />
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookingInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookModifyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

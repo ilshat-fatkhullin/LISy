@@ -19,13 +19,13 @@ namespace LISy.Entities.Documents
 
         public const int STUDENT_RETURN_TIME = 21;
 
-        public string Publisher { get; private set; }
+        public string Publisher { get;  set; }
 
-        public string Edition { get; private set; }
+        public string Edition { get;  set; }
 
-        public int Year { get; private set; }
+        public int Year { get; set; }
 
-        public bool IsBestseller { get; private set; }
+        public bool IsBestseller { get; set; }
 
         /// <summary>
         /// Initializes a new instance of a Book.

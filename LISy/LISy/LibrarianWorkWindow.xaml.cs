@@ -68,10 +68,22 @@ namespace LISy
             if (user.Type != "Librarian")
             {
                 UserModifyWindow window = new UserModifyWindow(user, this);
+                window.Owner = this;
                 window.Show();
             }
         }
 
+        private void grid_MouseUpForBook(object sender, MouseButtonEventArgs e)
+        {
+            Book book = DataGridBook.SelectedItem as Book;
+            if (book == null)
+                return;
+       
+            BookModifyWindow window = new BookModifyWindow(book, this);
+            window.Owner = this;
+            window.Show();
+            
+        }
 
         public void UpdateUsersDataGrid()
         {
@@ -83,7 +95,7 @@ namespace LISy
             }
             DataGridInfoUser.ItemsSource = result;
         }
-        private void UpdateDataGridBook()
+        public void UpdateDataGridBook()
         {
             List<Book> result = new List<Book>();
             result.Clear();
