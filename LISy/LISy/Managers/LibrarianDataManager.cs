@@ -45,6 +45,11 @@ namespace LISy.Managers
             return DocumentsDataManager.GetAllCopiesList();
         }
 
+        public static Copy[] GetCheckedCopiesList()
+        {
+            return DocumentsDataManager.GetCheckedCopiesList();
+        }
+
         public static IUser[] GetAllUsersList()
         {
             return UsersDataManager.GetUsersList();
@@ -52,7 +57,8 @@ namespace LISy.Managers
         public static Book[] GetAllBooksList()
         {
             return DocumentsDataManager.GetAllBooksList();
-        }
+        }        
+
         /*public static AVMaterial[] GetAllAVMaterialList()
         {
             return DocumentsDataManager.GetAllAVMaterialList();

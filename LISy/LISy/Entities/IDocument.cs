@@ -19,20 +19,10 @@ namespace LISy.Entities
 
         string Authors { get; set; }
 
-        string Keywords { get; set; }
+        string KeyWords { get; set; }
 
         string CoverURL { get; set; }
 
         #endregion
-
-        /*#region SETTER_FUNCTIONS
-
-        void AddKeyword(string keyword);
-
-        void RemoveKeyword(string keyword);
-
-        void ChangeKeyword(string keyword, string newKeyword);
-
-        #endregion*/
     }
 }

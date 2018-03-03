@@ -24,51 +24,39 @@ namespace LISy
     /// </summary>
     public partial class BookingInfoWindow : Window
     {
-        public long DocumentID;
-        public long UserID;
+        private IPatron patron;
         private Book book;
         private WorkWindow workWindow;
 
-        public BookingInfoWindow(Book book, WorkWindow workWindow, long Document_ID, long User_Id)
+        public BookingInfoWindow(Book book, IPatron patron, WorkWindow workWindow)
         {
             InitializeComponent();
             this.book = book;
             this.workWindow = workWindow;
-            User_Id = UserID;
-            Document_ID = DocumentID;
-            BitmapImage bi1 = new BitmapImage();
-            bi1.BeginInit();
-            bi1.UriSource = new Uri("Design/star_20x20.png", UriKind.Relative);
-            bi1.EndInit();
+            this.patron = patron;
 
-            if (DocumentsDataManager.IsAvailable(DocumentID, UserID) && bestSellerChecking()/*check if it best_seller*/)
+            TitleLabel.Content = book.Title;
+            Authors.Content = book.Authors;
+
+            if (DocumentsDataManager.IsAvailable(book.Id, patron.CardNumber))
             {
-                button_book.IsEnabled = true;
-                label_inStock.Content = "Available";
-                label_best_seller.Content = "BestSeller";
-                image_best_seller.Source = bi1;
-                image_best_seller.Stretch = Stretch.Fill;
+                BookButton.IsEnabled = true;
+                InStockLabel.Content = "Available.";                
             }
             else
             {
-                button_book.IsEnabled = false;
-                label_inStock.Content = "Not available";
+                BookButton.IsEnabled = false;
+                InStockLabel.Content = "Not available.";
             }
-
+            BestSellerLabel.Content = book.IsBestseller ? "Bestseller." : "";
         }
-
-        public bool bestSellerChecking()
-        {
-            return true;
-        }
-
 
         private void button_book_Click(object sender, RoutedEventArgs e)
         {
-            PatronDataManager.CheckOutDocument(DocumentID, UserID);
-            button_book.IsEnabled = false;
-            label_inStock.Content = "Not available";
-            /*label_return_data.Content = сюда поставить дату*/
+            PatronDataManager.CheckOutDocument(book.Id, patron.CardNumber);
+            BookButton.IsEnabled = false;
+            InStockLabel.Content = "Not available.";
+            ReturnDataLabel.Content = book.EvaluateReturnDate(patron.Type);            
         }
     }
 }

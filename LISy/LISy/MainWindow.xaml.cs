@@ -3,6 +3,8 @@ using LISy.Managers.DataManagers;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using LISy.Entities;
+using LISy.Entities.Users;
 
 namespace LISy
 {
@@ -40,7 +42,7 @@ namespace LISy
                     {
                         writer.Write(userID);
                     }                    
-                    GoToWork(CredentialsManager.GetUserType(userID));
+                    GoToWork(CredentialsManager.GetUserByID(userID));
                 }
                 else
                 {
@@ -58,16 +60,16 @@ namespace LISy
         ///<summary>
         ///method that goes to another window
         ///</summary>
-        private void GoToWork(string userType)
+        private void GoToWork(IUser user)
         {
             Window window;
-            switch (userType)
+            switch (user.Type)
             {
                 case "Librarian":
                     window = new LibrarianWorkWindow();                    
                     break;
                 default:
-                    window = new WorkWindow();                    
+                    window = new WorkWindow(user as IPatron);
                     break;
             }
             window.Show();

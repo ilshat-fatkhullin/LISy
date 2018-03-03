@@ -62,13 +62,8 @@ namespace LISy
 
                 //if all checks good so open window                
                 if (LibrarianDataManager.AddUser(patron, login, password))
-                {
-                    using (StreamWriter writer = new StreamWriter("id.txt"))
-                    {
-                        writer.Write(CredentialsManager.Authorize(login, password));
-                    }
-
-                    WorkWindow workWindow = new WorkWindow();
+                {                    
+                    WorkWindow workWindow = new WorkWindow(CredentialsManager.GetUserByID(CredentialsManager.Authorize(login, password)) as IPatron);
                     /*
                     workWindow.Profile[0] = InputFieldsManager.ReturnStringFromTextBox(textBox_name);
                     workWindow.Profile[1] = InputFieldsManager.ReturnStringFromTextBox(textBox_last_name);

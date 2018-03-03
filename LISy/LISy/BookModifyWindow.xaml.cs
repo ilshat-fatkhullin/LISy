@@ -33,7 +33,7 @@ namespace LISy
             publisher_of_book.Text = book.Publisher;
             edition_of_book.Text = book.Edition;
             year_of_book.Text = Convert.ToString(book.Year);
-            keywords_of_book.Text = book.Keywords;
+            keywords_of_book.Text = book.KeyWords;
             price_of_book.Text = Convert.ToString(book.Price);
             best_seller_of_book.IsEnabled = book.IsBestseller;
             
@@ -58,7 +58,7 @@ namespace LISy
             book.Publisher = publisher_of_book.Text;
             book.Edition = edition_of_book.Text;
             book.Year = Convert.ToInt32(year_of_book.Text);
-            book.Keywords = keywords_of_book.Text;
+            book.KeyWords = keywords_of_book.Text;
             book.Price = Convert.ToInt32(price_of_book.Text);
             LibrarianDataManager.EditDocument(book);
             workWindow.UpdateDataGridBook();

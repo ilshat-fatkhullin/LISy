@@ -104,11 +104,11 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<User>("dbo.spUsers_GetAllUsers").ToArray();
+                var output = connection.Query<TempUser>("dbo.spUsers_GetAllUsers").ToArray();
                 IUser[] users = new IUser[output.Count()];
                 for (int i = 0; i < users.GetLength(0); i++)
                 {
-                    User user = output[i];
+                    TempUser user = output[i];
                     switch (user.Type)
                     {
                         case "Faculty":
