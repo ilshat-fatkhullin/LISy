@@ -57,7 +57,6 @@ namespace LISy.Managers
         /// </summary>
         /// <param name="login">Account's login</param>
         /// <param name="password">Account's password</param>
-        /// <param name="cardNumber">Account's card number</param>
         public static long AddUserCredentials(string login, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
@@ -82,7 +81,8 @@ namespace LISy.Managers
         /// <summary>
         /// Modify current credentials
         /// </summary>
-        /// <param name="cardNumber">Account's card number</param>        
+        /// <param name="cardNumber">Account's card number.</param>      
+        /// <param name="password">Account's card password.</param>       
         public static void ModifyUserCredentials(long cardNumber, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
