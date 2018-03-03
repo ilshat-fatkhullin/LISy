@@ -43,6 +43,7 @@ namespace LISy.Entities.Documents
         ///// <param name="journal">Journal in which the article is.</param>
         public JournalArticle(long id, string authors, string title, string keys) : base(id, authors, title, keys, "")
         {
+
         }
     }
 }

@@ -340,7 +340,7 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<Journal>("dbo.spJournals_GetAll").ToArray();
+                var output = connection.Query<TempJournal>("dbo.spJournals_GetAll").ToArray();
                 Journal[] temp = new Journal[output.Count()];
                 for (int i = 0; i < temp.GetLength(0); i++)
                     temp[i] = new Journal(output[i].Id, output[i].Authors, output[i].Title, output[i].Publisher, output[i].Issue, output[i].PublicationDate, output[i].KeyWords, output[i].CoverURL, output[i].Price);

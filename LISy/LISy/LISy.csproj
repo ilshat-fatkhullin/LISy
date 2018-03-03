@@ -159,7 +159,7 @@
     <Compile Include="Entities\Document.cs" />
     <Compile Include="Entities\Documents\AVMaterial.cs" />
     <Compile Include="Entities\Documents\Book.cs" />
-    <Compile Include="Entities\Documents\InnerMaterials.cs" />
+    <Compile Include="Entities\Documents\InnerMaterial.cs" />
     <Compile Include="Entities\Documents\Journal.cs" />
     <Compile Include="Entities\Documents\JournalArticle.cs" />
     <Compile Include="Entities\Documents\Takable.cs" />
