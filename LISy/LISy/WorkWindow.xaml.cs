@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using LISy.Entities.Users;
 
 namespace LISy
 {
@@ -15,20 +16,17 @@ namespace LISy
     /// </summary>
     public partial class WorkWindow : Window
     {
-        private long UserID;
+        private IPatron patron;
+
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
         public string[] Profile = new string[6];
 
-        public WorkWindow()
+        public WorkWindow(IPatron patron)
         {
             InitializeComponent();
-
-            using (StreamReader reader = new StreamReader("id.txt"))
-            {
-                UserID = Convert.ToInt64(reader.ReadLine());
-            }
+            this.patron = patron;
         }
 
         ///<summary>
@@ -113,7 +111,7 @@ namespace LISy
             if (book == null)
                 return;
 
-            BookingInfoWindow window = new BookingInfoWindow(book,this,book.ID,UserID);
+            BookingInfoWindow window = new BookingInfoWindow(book, patron, this);
             window.Owner = this;
             window.Show();
         }

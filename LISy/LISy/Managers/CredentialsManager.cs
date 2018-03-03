@@ -2,6 +2,11 @@
 using System;
 using System.Data;
 using System.Linq;
+using LISy.Entities;
+using LISy.Entities.Documents;
+using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
+using LISy.Managers.DataManagers;
 
 namespace LISy.Managers
 {
@@ -84,6 +89,27 @@ namespace LISy.Managers
             {
                 connection.Execute("dbo.spCredentials_ModifyCredential @CardNumber, @Password",
                     new { CardNumber = cardNumber, Password = password });
+            }
+        }
+
+        public static IUser GetUserByID(long userID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {                
+                var output = connection.Query<TempUser>("dbo.spUsers_GetUserById @Id", new { Id = userID}).ToArray();
+                if (output.Length != 1)
+                    return null;
+                switch (output[0].Type)
+                {
+                    case "Librarian":
+                        return new Librarian(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);                        
+                    case "Faculty":
+                        return new Faculty(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
+                    case "Student":
+                        return new Student(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
+                    default:
+                        return null;
+                }                
             }
         }
     }
