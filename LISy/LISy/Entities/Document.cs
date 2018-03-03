@@ -21,7 +21,7 @@ namespace LISy.Entities
 
         public string Keywords { get; set; }
 
-        public string CoverURL { get; protected set; }
+        public string CoverURL { get; set; }
 
         #endregion
 
