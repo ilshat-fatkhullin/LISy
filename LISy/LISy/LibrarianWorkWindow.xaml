@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="LibrarianWorkWindow" Height="454.648" Width="856.948" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="LibrarianWorkWindow" Height="476.648" Width="860.948" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
+    </Window.Background>
     <Grid x:Name="work_lib_grid" Margin="0,0,4,-1">
-        <Label x:Name="librarian_name" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" FontSize="16"/>
+        <Label x:Name="librarian_name" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" FontSize="16" Foreground="White"/>
         <Label x:Name="librarian_name_fill" Content="" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Height="31" Width="305" FontSize="16"/>
-        <Label x:Name="librarian_status" Content="Status:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="60" FontSize="16"/>
+        <Label x:Name="librarian_status" Content="Status:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="60" FontSize="16" Foreground="White"/>
         <Label x:Name="librarian_status_fill" Content="" HorizontalAlignment="Left" Margin="75,46,0,0" VerticalAlignment="Top" Width="305" FontSize="16"/>
         <Button x:Name="refresh" Content="Refresh" HorizontalAlignment="Left" Margin="260,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="refresh_Click"/>
         <Button x:Name="add_user" Content="Add User" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_user_Click"/>
         <Button x:Name="add_doc" Content="Add Document" HorizontalAlignment="Left" Margin="135,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_doc_Click"/>
-        <TabControl x:Name="tab_control_grid" HorizontalAlignment="Left" Height="308" Margin="10,109,0,0" VerticalAlignment="Top" Width="827">
+        <TabControl x:Name="tab_control_grid" HorizontalAlignment="Left" Margin="10,109,0,0" Width="827" Height="308" VerticalAlignment="Top">
             <TabItem x:Name="tab_item_users" Header="Users">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGridInfoUser" Height="260" VerticalAlignment="Top" HorizontalAlignment="Left" Width="801" Loaded="grid_LoadedUser" MouseUp="grid_MouseUp" Margin="10,10,0,0"/>

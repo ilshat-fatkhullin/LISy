@@ -24,7 +24,12 @@ namespace LISy
         private long documentId;
         private long userId;
         private LibrarianWorkWindow workWindow;
-        
+        /// <summary>
+        /// Взаимодействие окна и его конструктор
+        /// </summary>
+        /// <param name="documentId"></param>
+        /// <param name="userId"></param>
+        /// <param name="workWindow"></param>
         public ModifyChekedOutCopies(long documentId,long userId, LibrarianWorkWindow workWindow)
         {
             InitializeComponent();

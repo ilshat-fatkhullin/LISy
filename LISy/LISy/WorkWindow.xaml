@@ -39,25 +39,25 @@
         <Button x:Name="button_Booking" Content="Booking Story" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Booking_Click"/>
         <Button x:Name="button_Info" Content="Info" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Info_Click"/>
         <Grid HorizontalAlignment="Left" Height="299" Margin="160,100,0,0" VerticalAlignment="Top" Width="542">
-            <TabControl HorizontalAlignment="Left" Height="279" Margin="10,10,0,0" VerticalAlignment="Top" Width="522">
+            <TabControl HorizontalAlignment="Left" Height="289" Margin="0,10,0,0" VerticalAlignment="Top" Width="532">
                 <TabItem x:Name="tab_item_books" Header="Books">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderBook" MouseUp="DataGridBook_MouseUp_book"/>
+                        <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderBook" MouseUp="DataGridBook_MouseUp_book"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="av_material" Header="AV materials">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderAV_material"/>
+                        <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderAV_material"/>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="reference_book" Header="Reference Books">
+                <TabItem x:Name="reference_book" Header="Inner Materials">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderReference_book"/>
+                        <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderReference_book"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="journal_article" Header="Journal\Articles">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridJournal_article" HorizontalAlignment="Left" Height="231" Margin="10,10,0,0" VerticalAlignment="Top" Width="496" Loaded="grid_LoaderJournal_article"/>
+                        <DataGrid x:Name="DataGridJournal_article" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderJournal_article"/>
                     </Grid>
                 </TabItem>
             </TabControl>
