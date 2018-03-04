@@ -25,11 +25,14 @@ namespace LISy
         private long userId;
         //private LibrarianWorkWindow workWindow;
         
-        public ModifyChekedOutCopies(long documentId,long userId)
+        public ModifyChekedOutCopies(long documentId,long userId, LibrarianWorkWindow workWindow)
         {
             InitializeComponent();
             this.documentId = documentId;
             this.userId= userId;
+            this.workWindow = workWindow;
+
+
         }
 
         private void change_status_of_copy_Click(object sender, RoutedEventArgs e)
@@ -38,7 +41,7 @@ namespace LISy
             {
                 LibrarianDataManager.ReturnDocument(documentId,userId);
             }
-            
+            workWindow.UpdatDataGridChekedOutCopies();
             this.Close();
         }
     }

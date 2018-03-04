@@ -35,8 +35,8 @@ namespace LISy
             UpdateDataGridCopies();
             UptadeDataGridAV_material();
             UpdatDataGridChekedOutCopies();
-            //UpdateDataGridInnerMaterials();
-            //UpdateDataGridJournal();
+            UpdateDataGridInnerMaterials();
+            UpdateDataGridJournal();
         }
 
 
@@ -104,7 +104,7 @@ namespace LISy
             if (copy == null)
                 return;
 
-            ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentID,copy.PatronID);
+            ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentID,copy.PatronID,this);
             window.Owner = this;
             window.Show();
 
@@ -126,12 +126,12 @@ namespace LISy
         private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
         {
             // сюда нужны апдейты такие как для копий и книжек
-            //UpdateDataGridInnerMaterials();
+             UpdateDataGridInnerMaterials();
         }
         private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
         {
             // сюда нужны апдейты такие как для копий и книжек
-            //UpdateDataGridJournal();
+            UpdateDataGridJournal();
         }
         private void grid_LoaderCopies(object sender, RoutedEventArgs e)
         {
@@ -181,29 +181,29 @@ namespace LISy
             }
             DataGridCopies.ItemsSource = result;
         }
-        /*
+        
         private void UpdateDataGridInnerMaterials()
         {
-            List<InnerMaterials> result = new List<InnerMaterials>();
+            List<InnerMaterial> result = new List<InnerMaterial>();
             result.Clear();
-            foreach (InnerMaterials inner in LibrarianDataManager.GetAllInnerMaterialList())
+            foreach (InnerMaterial inner in LibrarianDataManager.GetAllInnerMaterialsList())
             {
                 result.Add(inner);
             }
             DataGridRefernce_book.ItemsSource = result;
-        }*/
+        }
 
-        /*
+        
         private void UpdateDataGridJournal()
         {
             List<Journal> result = new List<Journal>();
             result.Clear();
-            foreach (Journal journal in LibrarianDataManager.GetAllJournallList())
+            foreach (Journal journal in LibrarianDataManager.GetAllJournalsList())
             {
                 result.Add(journal);
             }
             DataGridJournal_article.ItemsSource = result;
-        }*/
+        }
 
         public void UptadeDataGridAV_material()
        {

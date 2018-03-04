@@ -30,7 +30,7 @@
                     <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderAV_material"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="reference_book" Header="Reference Books">
+            <TabItem x:Name="reference_book" Header="Inner Materials">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderReference_book"/>
                 </Grid>
