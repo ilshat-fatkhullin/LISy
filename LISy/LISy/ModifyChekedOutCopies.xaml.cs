@@ -23,7 +23,7 @@ namespace LISy
     {
         private long documentId;
         private long userId;
-        //private LibrarianWorkWindow workWindow;
+        private LibrarianWorkWindow workWindow;
         
         public ModifyChekedOutCopies(long documentId,long userId, LibrarianWorkWindow workWindow)
         {
@@ -35,7 +35,7 @@ namespace LISy
 
         }
 
-        private void change_status_of_copy_Click(object sender, RoutedEventArgs e)
+        private void Сhange_status_of_copy_Click(object sender, RoutedEventArgs e)
         {
             if (make_book_returned.IsChecked == true && delete_copy.IsChecked == false)
             {
