@@ -23,7 +23,7 @@ namespace LISy
     {
         private long documentId;
         private long userId;
-        private LibrarianWorkWindow workWindow;
+        //private LibrarianWorkWindow workWindow;
         
         public ModifyChekedOutCopies(long documentId,long userId)
         {

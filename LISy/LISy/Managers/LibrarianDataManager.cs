@@ -23,9 +23,14 @@ namespace LISy.Managers
         public static void EditDocument(IDocument newDocument)
         {
             DocumentsDataManager.EditDocument(newDocument);
-        }
+		}
 
-        public static bool AddUser(IUser user, string login, string password)
+		public static void ReturnDocument(long DocumentId, long UserId)
+		{
+			DocumentsDataManager.ReturnDocument(DocumentId, UserId);
+		}
+
+		public static bool AddUser(IUser user, string login, string password)
         {
             return UsersDataManager.AddUser(user, login, password);
         }
@@ -53,11 +58,6 @@ namespace LISy.Managers
         public static IUser[] GetAllUsersList()
         {
             return UsersDataManager.GetUsersList();
-        }
-
-        public static void ReturnDocument(long DocumentId, long UserId)
-        {
-            DocumentsDataManager.ReturnDocument(DocumentId, UserId);
         }
 
         public static AVMaterial[] GetAllAVMaterialsList()
