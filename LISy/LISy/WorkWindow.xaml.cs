@@ -82,17 +82,17 @@ namespace LISy
 
         private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
         {
-
+            UptadeDataGridAV_material();
         }
 
         private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
         {
-
+            UpdateDataGridInnerMaterials();
         }
 
         private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
         {
-           
+            UpdateDataGridJournal();
         }
         private void UpdateDataGridBook()
         {
@@ -104,7 +104,40 @@ namespace LISy
             }
             DataGridBook.ItemsSource = result;
         }
-           
+        private void UpdateDataGridInnerMaterials()
+        {
+            List<InnerMaterial> result = new List<InnerMaterial>();
+            result.Clear();
+            foreach (InnerMaterial inner in LibrarianDataManager.GetAllInnerMaterialsList())
+            {
+                result.Add(inner);
+            }
+            DataGridRefernce_book.ItemsSource = result;
+        }
+        private void UpdateDataGridJournal()
+        {
+            List<Journal> result = new List<Journal>();
+            result.Clear();
+            foreach (Journal journal in LibrarianDataManager.GetAllJournalsList())
+            {
+                result.Add(journal);
+            }
+            DataGridJournal_article.ItemsSource = result;
+        }
+
+        public void UptadeDataGridAV_material()
+        {
+            List<AVMaterial> result = new List<AVMaterial>();
+            result.Clear();
+            foreach (AVMaterial av_material in LibrarianDataManager.GetAllAVMaterialsList())
+            {
+                result.Add(av_material);
+            }
+            DataGridAV_material.ItemsSource = result;
+        }
+
+
+
         private void DataGridBook_MouseUp_book(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Book book = DataGridBook.SelectedItem as Book;
