@@ -14,7 +14,7 @@ namespace LISy.Entities
     {
         public long Id { get; private set; }
 
-        public long DocumentID { get; private set; }
+        public long DocumentID { get; set; }
 
         public long PatronID { get; private set; }
 
@@ -22,9 +22,9 @@ namespace LISy.Entities
 
         public string ReturningDate { get; private set; }
 
-        public int Room { get; private set; }
+        public int Room { get; set; }
 
-        public int Level { get; private set; }
+        public int Level { get; set; }
 
         public Copy()
         {

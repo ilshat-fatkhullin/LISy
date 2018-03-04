@@ -45,6 +45,11 @@ namespace LISy.Managers
             UsersDataManager.EditUser(newUser);
         }
 
+        public static void AddCopy(Copy copy)
+        {
+            DocumentsDataManager.AddCopy(copy);
+        }
+
         public static Copy[] GetAllCopiesList()
         {
             return DocumentsDataManager.GetAllCopiesList();

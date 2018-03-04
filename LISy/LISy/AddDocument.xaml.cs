@@ -1,4 +1,5 @@
-﻿using LISy.Entities.Documents;
+﻿using LISy.Entities;
+using LISy.Entities.Documents;
 using LISy.Managers;
 using LISy.Managers.DataManagers;
 using System;
@@ -120,7 +121,19 @@ namespace LISy
             {
                 Book book = new Book(InputFieldsManager.ReturnStringFromTextBox(author_of_book), InputFieldsManager.ReturnStringFromTextBox(title_of_book), InputFieldsManager.ReturnStringFromTextBox(publisher_of_book), InputFieldsManager.ReturnStringFromTextBox(edition_of_book), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(year_of_book)),is_best_seller, InputFieldsManager.ReturnStringFromTextBox(keywords_of_book),"", Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(price_of_book)));
                 DocumentsDataManager.AddDocument(book);
-                
+
+                Copy copy = new Copy();
+                int n = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(copy_of_book));
+                copy.DocumentID = DocumentsDataManager.GetDocumentId(book);
+                copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(room_of_book));
+                copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(level_of_book));
+
+                for (int i = 0; i < n; i++)
+                {
+                    LibrarianDataManager.AddCopy(copy);
+                }
+
+
 
                 this.Close();
             }
@@ -201,9 +214,21 @@ namespace LISy
             {
                 AVMaterial av_material = new AVMaterial(InputFieldsManager.ReturnStringFromTextBox(authors_av_text_box), InputFieldsManager.ReturnStringFromTextBox(av_title_text_box), InputFieldsManager.ReturnStringFromTextBox(av_key_words_text_box),"", Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_price_text_box)));
                 DocumentsDataManager.AddDocument(av_material);
+
+                Copy copy = new Copy();
+                int n = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_copy_text_box));
+                copy.DocumentID = DocumentsDataManager.GetDocumentId(av_material);
+                copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_room_text_box));
+                copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_level_text_box));
+
+                for (int i = 0; i < n; i++)
+                {
+                    LibrarianDataManager.AddCopy(copy);
+                }
+
                 this.Close();
             }
-            
+
         }
 
         private void av_key_words_text_box_TextChanged(object sender, TextChangedEventArgs e)
@@ -270,6 +295,18 @@ namespace LISy
             {
                 Journal journal = new Journal(InputFieldsManager.ReturnStringFromTextBox(ja_editors_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_title_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_publisher_text_box), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_issue_text_box)) , InputFieldsManager.ReturnStringFromTextBox(ja_PD_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_keywords_text_box),"",Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_price_text_box)));
                 DocumentsDataManager.AddDocument(journal);
+
+                Copy copy = new Copy();
+                int n = 2;
+                copy.DocumentID = DocumentsDataManager.GetDocumentId(journal);
+                copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_room_text_box));
+                copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_level_text_box));
+
+                for (int i = 0; i < n; i++)
+                {
+                    LibrarianDataManager.AddCopy(copy);
+                }
+
                 this.Close();
             }
         }

@@ -283,6 +283,23 @@ namespace LISy.Managers.DataManagers
             }
         }
 
+        public static long GetDocumentId(IDocument document)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<long>("dbo.spDocuments_GetDocumentId @Title, @Authors, @KeyWords", new { Title = document.Title, Authors = document.Authors, KeyWords = document.KeyWords}).ToList();
+                return output[0];
+            }
+        }
+
+        public static void AddCopy(Copy copy)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Execute("dbo.spCopies_AddCopy @BookId, @Room, @Level", new { BookId = copy.DocumentID, Room = copy.Room, Level = copy.Level });
+            }
+        }
+
         public static Copy[] GetAllCopiesList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))

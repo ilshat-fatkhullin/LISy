@@ -5,6 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using LISy.Entities;
 using LISy.Entities.Users;
+using System.Data;
+using Dapper;
+using System.Linq;
 
 namespace LISy
 {
