@@ -55,6 +55,11 @@ namespace LISy.Managers
             return DocumentsDataManager.GetAllCopiesList();
         }
 
+        public static void ClearAll()
+        {
+            DatabaseDataManager.ClearAll();
+        }
+
         public static Copy[] GetCheckedCopiesList()
         {
             return DocumentsDataManager.GetCheckedCopiesList();
