@@ -16,6 +16,12 @@
         <Button x:Name="add_journal" Content="Journal" HorizontalAlignment="Left" Margin="418,10,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="add_journal_Click"/>
         <Button x:Name="add_av" Content="AV material" HorizontalAlignment="Left" Margin="498,10,0,0" VerticalAlignment="Top" Width="85" Height="30" Click="add_av_Click"/>
         <Grid x:Name="grid_of_tools">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#3E060606" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Label x:Name="title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
             <TextBox x:Name="title_of_book" HorizontalAlignment="Left" Height="26" Margin="85,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" TextChanged="TextBox_titleChanged" FontSize="16" Visibility="Hidden"/>
             <Label x:Name="author_of_book_label" Content="Authors:" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>
@@ -38,7 +44,7 @@
             <Label x:Name="book_label_level" Content="Level:" HorizontalAlignment="Left" Margin="313,169,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
             <TextBox x:Name="level_of_book" HorizontalAlignment="Left" Height="26" Margin="388,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="level_of_book_TextChanged" Visibility="Hidden"/>
             <Button x:Name="add_book_to_db" Content="Add" HorizontalAlignment="Left" Margin="481,200,0,0" VerticalAlignment="Top" Width="130" Height="35" FontSize="16" Click="add_book_to_db_Click" Visibility="Hidden"/>
-            <TextBox x:Name="book_cover_URL_text_box" HorizontalAlignment="Left" Height="23" Margin="85,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="cover_URL_text_box_TextChanged" Visibility="Hidden"/>
+            <TextBox x:Name="book_cover_URL_text_box" HorizontalAlignment="Left" Height="26" Margin="85,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="cover_URL_text_box_TextChanged" Visibility="Hidden"/>
             <Label x:Name="book_coverURL_label" Content="Cover URL:" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>
             <Label x:Name="av_title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
             <TextBox x:Name="av_title_text_box" HorizontalAlignment="Left" Height="26" Margin="85,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_title_text_box_TextChanged" Visibility="Hidden"/>
@@ -89,6 +95,12 @@
             <Label x:Name="inner_coverUrl_label" Content="CoverUrl:" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
             <TextBox x:Name="inner_cover_url_box" HorizontalAlignment="Left" Height="26" Margin="85,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="inner_cover_url_box_TextChanged" Visibility="Hidden"/>
             <Button x:Name="add_inner_to_db" Content="Add" HorizontalAlignment="Left" Margin="521,138,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="add_inner_to_db_Click" Visibility="Hidden"/>
+            <Label x:Name="av_coverURL_label" Content="Cover URL:" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>
+            <TextBox x:Name="av_coverURL_text_box" HorizontalAlignment="Left" Height="26" Margin="85,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_coverURL_text_box_TextChanged" Visibility="Hidden"/>
+            <Label x:Name="ja_coverURL_label" Content="Cover URL:" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>
+            <TextBox x:Name="ja_coverURL_text_box" HorizontalAlignment="Left" Height="26" Margin="85,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="ja_coverURL_text_box_TextChanged" Visibility="Hidden"/>
+            <Label x:Name="ja_countOf_label" Content="Count of journal articles:" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="139" Foreground="White" Visibility="Hidden"/>
+            <TextBox x:Name="ja_countOf_text_box" HorizontalAlignment="Left" Height="26" Margin="149,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" FontSize="16" TextChanged="ja_countOf_text_box_TextChanged" Visibility="Hidden"/>
 
         </Grid>
     </Grid>

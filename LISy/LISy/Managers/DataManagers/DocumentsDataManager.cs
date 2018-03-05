@@ -292,11 +292,11 @@ namespace LISy.Managers.DataManagers
             }
         }
 
-        public static void AddCopy(Copy copy)
+        public static void AddCopy(int n, Copy copy)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Execute("dbo.spCopies_AddCopy @BookId, @Room, @Level", new { BookId = copy.DocumentID, Room = copy.Room, Level = copy.Level });
+                var output = connection.Execute("dbo.spCopies_AddCopy @N, @BookId, @Room, @Level", new { N = n, BookId = copy.DocumentID, Room = copy.Room, Level = copy.Level });
             }
         }
 
