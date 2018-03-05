@@ -127,13 +127,7 @@ namespace LISy
                 copy.DocumentID = DocumentsDataManager.GetDocumentId(book);
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(room_of_book));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(level_of_book));
-
-                for (int i = 0; i < n; i++)
-                {
-                    LibrarianDataManager.AddCopy(copy);
-                }
-
-
+                LibrarianDataManager.AddCopy(n, copy);
 
                 this.Close();
             }
@@ -220,11 +214,7 @@ namespace LISy
                 copy.DocumentID = DocumentsDataManager.GetDocumentId(av_material);
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_level_text_box));
-
-                for (int i = 0; i < n; i++)
-                {
-                    LibrarianDataManager.AddCopy(copy);
-                }
+                LibrarianDataManager.AddCopy(n, copy);
 
                 this.Close();
             }
@@ -301,11 +291,7 @@ namespace LISy
                 copy.DocumentID = DocumentsDataManager.GetDocumentId(journal);
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_level_text_box));
-
-                for (int i = 0; i < n; i++)
-                {
-                    LibrarianDataManager.AddCopy(copy);
-                }
+                LibrarianDataManager.AddCopy(n, copy);
 
                 this.Close();
             }
