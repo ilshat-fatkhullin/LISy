@@ -87,6 +87,7 @@ namespace LISy
             copy_label.Visibility = Visibility.Visible;
             room_label.Visibility = Visibility.Visible;
             book_label_level.Visibility = Visibility.Visible;
+            book_coverURL_label.Visibility = Visibility.Visible;
             //появление текст боксов для заполнения
             title_of_book.Visibility = Visibility.Visible;
             author_of_book.Visibility = Visibility.Visible;
@@ -99,6 +100,7 @@ namespace LISy
             level_of_book.Visibility = Visibility.Visible;
             add_book_to_db.Visibility = Visibility.Visible;
             publisher_of_book.Visibility = Visibility.Visible;
+            book_cover_URL_text_box.Visibility = Visibility.Visible;
         }
 
         private void add_book_to_db_Click(object sender, RoutedEventArgs e)
@@ -117,9 +119,10 @@ namespace LISy
                 price_of_book.Text != null &&
                 copy_of_book.Text != null &&
                 room_of_book.Text != null &&
-                level_of_book.Text != null)
+                level_of_book.Text != null &&
+                book_cover_URL_text_box.Text != null)
             {
-                Book book = new Book(InputFieldsManager.ReturnStringFromTextBox(author_of_book), InputFieldsManager.ReturnStringFromTextBox(title_of_book), InputFieldsManager.ReturnStringFromTextBox(publisher_of_book), InputFieldsManager.ReturnStringFromTextBox(edition_of_book), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(year_of_book)),is_best_seller, InputFieldsManager.ReturnStringFromTextBox(keywords_of_book),"", Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(price_of_book)));
+                Book book = new Book(InputFieldsManager.ReturnStringFromTextBox(author_of_book), InputFieldsManager.ReturnStringFromTextBox(title_of_book), InputFieldsManager.ReturnStringFromTextBox(publisher_of_book), InputFieldsManager.ReturnStringFromTextBox(edition_of_book), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(year_of_book)),is_best_seller, InputFieldsManager.ReturnStringFromTextBox(keywords_of_book),InputFieldsManager.ReturnStringFromTextBox(book_cover_URL_text_box), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(price_of_book)));
                 DocumentsDataManager.AddDocument(book);
 
                 Copy copy = new Copy();
@@ -132,9 +135,6 @@ namespace LISy
                 {
                     LibrarianDataManager.AddCopy(copy);
                 }
-
-
-
                 this.Close();
             }
 
@@ -324,6 +324,7 @@ namespace LISy
             copy_label.Visibility = Visibility.Hidden;
             room_label.Visibility = Visibility.Hidden;
             book_label_level.Visibility = Visibility.Hidden;
+            book_coverURL_label.Visibility = Visibility.Hidden;
             //скрытие текст боксов для заполнения
             title_of_book.Visibility = Visibility.Hidden;
             author_of_book.Visibility = Visibility.Hidden;
@@ -336,6 +337,7 @@ namespace LISy
             level_of_book.Visibility = Visibility.Hidden;
             add_book_to_db.Visibility = Visibility.Hidden;
             publisher_of_book.Visibility = Visibility.Hidden;
+            book_cover_URL_text_box.Visibility = Visibility.Hidden;
         }
         private void make_hidden_reference_book()
         {
@@ -512,9 +514,14 @@ namespace LISy
                 inner_keywords_text_box.Text != null)
             {
                 InnerMaterial innerMaterials = new InnerMaterial(InputFieldsManager.ReturnStringFromTextBox(inner_author_box),InputFieldsManager.ReturnStringFromTextBox(inner_title_box),InputFieldsManager.ReturnStringFromTextBox(inner_type_text_box),InputFieldsManager.ReturnStringFromTextBox(inner_keywords_text_box),Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_room_text_box)), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(inner_level_text_box)),InputFieldsManager.ReturnStringFromTextBox(inner_cover_url_box));
-                DocumentsDataManager.AddDocument(innerMaterials);
+                DocumentsDataManager.AddDocument(innerMaterials);               
                 this.Close();
             }
+        }
+
+        private void cover_URL_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(book_cover_URL_text_box);
         }
     }
 }
