@@ -7,22 +7,21 @@
         mc:Ignorable="d"
         Title="AddDocument" Height="375.18" Width="652.85" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Window.Background>
-        <ImageBrush ImageSource="Design/bookss.jpg"/>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="#33FFFFFF" Offset="1"/>
+        </LinearGradientBrush>
     </Window.Background>
     <Grid x:Name="grid_add_doc">
+        <Grid.Background>
+            <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
+        </Grid.Background>
         <Label x:Name="label_main" Content="Choose the type of a document:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="218" Height="30" Foreground="White"/>
         <Button x:Name="add_book" Content="Book" HorizontalAlignment="Left" Margin="233,10,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="add_book_Click"/>
         <Button x:Name="add_reference_book" Content="Inner material" HorizontalAlignment="Left" Margin="313,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="add_reference_book_Click"/>
         <Button x:Name="add_journal" Content="Journal" HorizontalAlignment="Left" Margin="418,10,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="add_journal_Click"/>
         <Button x:Name="add_av" Content="AV material" HorizontalAlignment="Left" Margin="498,10,0,0" VerticalAlignment="Top" Width="85" Height="30" Click="add_av_Click"/>
-        <Grid x:Name="grid_of_tools">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#3E060606" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Label x:Name="title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
+        <Label x:Name="title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
             <TextBox x:Name="title_of_book" HorizontalAlignment="Left" Height="26" Margin="85,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" TextChanged="TextBox_titleChanged" FontSize="16" Visibility="Hidden"/>
             <Label x:Name="author_of_book_label" Content="Authors:" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>
             <TextBox x:Name="author_of_book" HorizontalAlignment="Left" Height="26" Margin="85,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="author_of_book_TextChanged" Visibility="Hidden"/>
@@ -100,8 +99,6 @@
             <Label x:Name="ja_coverURL_label" Content="Cover URL:" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>
             <TextBox x:Name="ja_coverURL_text_box" HorizontalAlignment="Left" Height="26" Margin="85,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="ja_coverURL_text_box_TextChanged" Visibility="Hidden"/>
             <Label x:Name="ja_countOf_label" Content="Count of journal articles:" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="139" Foreground="White" Visibility="Hidden"/>
-            <TextBox x:Name="ja_countOf_text_box" HorizontalAlignment="Left" Height="26" Margin="149,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" FontSize="16" TextChanged="ja_countOf_text_box_TextChanged" Visibility="Hidden"/>
-
-        </Grid>
+        <TextBox x:Name="ja_countOf_text_box" HorizontalAlignment="Left" Height="26" Margin="149,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" FontSize="16" TextChanged="ja_countOf_text_box_TextChanged" Visibility="Hidden"/>
     </Grid>
 </Window>
