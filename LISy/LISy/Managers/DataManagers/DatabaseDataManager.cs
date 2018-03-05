@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LISy.Managers.DataManagers
 {
-    static class DatabaseDataManager
+    public static class DatabaseDataManager
     {
         public static void ClearAll()
         {
