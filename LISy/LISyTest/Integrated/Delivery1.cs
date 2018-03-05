@@ -35,9 +35,11 @@ namespace LISyTest.Integrated
             LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_3", "12345");
 
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));
+            LibrarianDataManager.AddDocument(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));            
+            LibrarianDataManager.AddCopy(1, new Copy(1, 1, 1));
             LibrarianDataManager.AddDocument(new Book("Authors", "Book_2", "Publisher", "Edition", 2018, true, "Keys", "", 50));
-            LibrarianDataManager.AddDocument(new InnerMaterial("Authors", "Book_3", "Book", "Keys", 1, 1, "https://"));
+            LibrarianDataManager.AddCopy(2, new Copy(2, 1, 1));
+            LibrarianDataManager.AddDocument(new InnerMaterial("Authors", "Book_3", "Book", "Keys", 1, 1, "https://"));            
         }
 
         /// <summary>
@@ -46,7 +48,8 @@ namespace LISyTest.Integrated
         /// </summary>
         [TestMethod]
         public void TestCase1()
-        {            
+        {      
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
 
             Copy[] copies = LibrarianDataManager.GetAllCopiesList();
@@ -73,6 +76,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase2()
         {
+            Initialize();
             Copy[] oldCopies = LibrarianDataManager.GetAllCopiesList();
             PatronDataManager.CheckOutDocument(int.MaxValue, PATRON_1_ID);
             Copy[] newCopies = LibrarianDataManager.GetAllCopiesList();
@@ -95,6 +99,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase3()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
 
             Copy[] copies = LibrarianDataManager.GetAllCopiesList();
@@ -128,6 +133,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase4()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
 
             Copy[] copies = LibrarianDataManager.GetAllCopiesList();
@@ -161,6 +167,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase5()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_3_ID);
@@ -202,6 +209,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase6()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
 
@@ -228,6 +236,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase7()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
 
@@ -265,6 +274,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase8()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
 
             bool flag = false;
@@ -297,6 +307,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase9()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
 
             bool flag = false;
@@ -328,6 +339,7 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase10()
         {
+            Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
             PatronDataManager.CheckOutDocument(BOOK_REFERENCE_ID, STUDENT_ID);
 

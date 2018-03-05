@@ -13,7 +13,7 @@ namespace LISy.Managers.DataManagers
     /// <summary>
     /// Contains database commands for documents
     /// </summary>
-    static class DocumentsDataManager
+    public static class DocumentsDataManager
     {
         /// <summary>
         /// Adds new document to the database.
