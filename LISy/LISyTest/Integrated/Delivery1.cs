@@ -7,14 +7,22 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LISyTest.Integrated
 {
     [TestClass]
-    public class IntegratedTest
+    public class Delivery1
     {        
-        private const long PATRON_1_ID = 1, PATRON_2_ID = 2, PATRON_3_ID = 3,
-            FACULTY_ID = 1,
-            STUDENT_ID = 2,
+        private const long PATRON_1_ID = 2,
+            PATRON_2_ID = 3,
+            PATRON_3_ID = 4,
+            FACULTY_ID = 2,
+            STUDENT_ID = 3,
             BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID = 1,
             BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID = 2,
             BOOK_REFERENCE_ID = 3;
+
+
+        public void Initialize()
+        {
+
+        }
 
         /// <summary>
         /// Action: Patron p checks out a copy of book b.
@@ -298,6 +306,9 @@ namespace LISyTest.Integrated
             Assert.IsTrue(flag);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [TestMethod]
         public void TestCase10()
         {
@@ -321,6 +332,6 @@ namespace LISyTest.Integrated
 
             PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);            
             Assert.IsTrue(flag);
-        }
+        }        
     }
 }
