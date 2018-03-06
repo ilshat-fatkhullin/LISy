@@ -47,7 +47,9 @@ namespace LISyTest.Integrated
             LibrarianDataManager.DeleteCopy(new Copy(1, 1, 1));
             LibrarianDataManager.DeleteCopy(new Copy(1, 1, 1));
             LibrarianDataManager.DeleteCopy(new Copy(3, 1, 3));
-            LibrarianDataManager.DeleteUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"));
+            Student student = new Student("StudentName", "StudentSurname", "80000000000", "Address")
+                { CardNumber = 3};
+            LibrarianDataManager.DeleteUser(student);
 
             int n = LibrarianDataManager.GetNumberOfCopies();
             int s = LibrarianDataManager.GetNumberOfUsers();
