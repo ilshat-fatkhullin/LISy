@@ -124,5 +124,10 @@ namespace LISy.Managers
         {
             return CredentialsManager.GetUserByID(userId);
         }
+
+        public static Copy[] GetCheckedByUserCopiesList(long userId)
+        {
+            return DocumentsDataManager.GetCheckedByUserCopiesList(userId);
+        }
     }
 }
