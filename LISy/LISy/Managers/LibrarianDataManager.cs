@@ -55,6 +55,11 @@ namespace LISy.Managers
             DocumentsDataManager.DeleteCopy(copy);
         }
 
+        public static void DeleteCopyByDocId(Copy copy)
+        {
+            DocumentsDataManager.DeleteCopyByDocId(copy);
+        }
+
         public static Copy[] GetAllCopiesList()
         {
             return DocumentsDataManager.GetAllCopiesList();

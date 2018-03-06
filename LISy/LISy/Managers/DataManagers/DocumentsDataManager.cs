@@ -85,7 +85,7 @@ namespace LISy.Managers.DataManagers
                             CoverURL = temp.CoverURL,
                             Price = temp.Price
                         });
-                }   
+                }
                 else if (type == typeof(JournalArticle))
                 {
                     JournalArticle temp = document as JournalArticle;
@@ -287,8 +287,32 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<long>("dbo.spDocuments_GetDocumentId @Title, @Authors, @KeyWords", new { Title = document.Title, Authors = document.Authors, KeyWords = document.KeyWords}).ToList();
+                var output = connection.Query<long>("dbo.spDocuments_GetDocumentId @Title, @Authors, @KeyWords", new { Title = document.Title, Authors = document.Authors, KeyWords = document.KeyWords }).ToList();
                 return output[0];
+            }
+        }
+
+        public static int GetCopyId(Copy copy)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<int>("dbo.spCopies_GetCopyId @DocId, @Room, @Level", new { DocId = copy.DocumentID, copy.Room, copy.Level }).ToList();
+                if (output.Count() > 0)
+                {
+                    return output[0];
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+        public static void DeleteCopyByDocId(Copy copy)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                connection.Execute("dbo.spCopies_DeleteCopyByDocumentIdRoomLevel @DocId, @Room, @Level", new { DocId = copy.DocumentID, copy.Room, copy.Level });
             }
         }
 
