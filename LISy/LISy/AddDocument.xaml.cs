@@ -91,6 +91,7 @@ namespace LISy
             ja_keywords_label.Visibility = Visibility.Hidden;
             ja_coverURL_label.Visibility = Visibility.Hidden;
             ja_countOf_label.Visibility = Visibility.Hidden;
+            ja_copies_label.Visibility = Visibility.Hidden;
 
             //add text boxes for journal
             ja_title_text_box.Visibility = Visibility.Hidden;
@@ -104,6 +105,7 @@ namespace LISy
             ja_keywords_text_box.Visibility = Visibility.Hidden;
             ja_coverURL_text_box.Visibility = Visibility.Hidden;
             ja_countOf_text_box.Visibility = Visibility.Hidden;
+            ja_copies_text_box.Visibility = Visibility.Hidden;
 
             add_ja_to_db.Visibility = Visibility.Hidden;
         }
@@ -283,6 +285,10 @@ namespace LISy
             InputFieldsManager.CheckLiteralValidity(publisher_of_book);
         }
 
+        private void ja_copies_text_box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(ja_copies_text_box);
+        }
 
         private void year_of_book_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -376,6 +382,7 @@ namespace LISy
             make_hidden_reference_book();
             make_hidden_books();
             //add label for journal
+            ja_copies_label.Visibility = Visibility.Visible;
             ja_title_label.Visibility = Visibility.Visible;
             ja_publisher_label.Visibility = Visibility.Visible;
             ja_editors_label.Visibility = Visibility.Visible;
@@ -388,6 +395,7 @@ namespace LISy
             ja_coverURL_label.Visibility = Visibility.Visible;
             ja_countOf_label.Visibility = Visibility.Visible;
             //add text boxes for journal
+            ja_copies_text_box.Visibility = Visibility.Visible;
             ja_title_text_box.Visibility = Visibility.Visible;
             ja_publisher_text_box.Visibility = Visibility.Visible;
             ja_editors_text_box.Visibility = Visibility.Visible;
@@ -505,13 +513,14 @@ namespace LISy
                 ja_level_text_box.Text != null &&
                 ja_PD_text_box.Text != null &&
                 ja_coverURL_text_box.Text != null &&
-                ja_countOf_text_box.Text != null)
+                ja_countOf_text_box.Text != null &&
+                ja_copies_text_box.Text != null)
             {
                 Journal journal = new Journal(InputFieldsManager.ReturnStringFromTextBox(ja_editors_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_title_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_publisher_text_box), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_issue_text_box)) , InputFieldsManager.ReturnStringFromTextBox(ja_PD_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_keywords_text_box),InputFieldsManager.ReturnStringFromTextBox(ja_coverURL_text_box),Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_price_text_box)));
                 DocumentsDataManager.AddDocument(journal);
 
                 Copy copy = new Copy();
-                int n = Convert.ToInt32(ja_countOf_text_box.Text);
+                int n = Convert.ToInt32(ja_copies_text_box.Text);
                 copy.DocumentID = DocumentsDataManager.GetDocumentId(journal);
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_level_text_box));
@@ -536,5 +545,7 @@ namespace LISy
                 this.Close();
             }
         }
+
+
     }
 }
