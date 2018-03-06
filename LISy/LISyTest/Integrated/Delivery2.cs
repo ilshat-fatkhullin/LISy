@@ -99,5 +99,32 @@ namespace LISyTest.Integrated
                     Assert.Fail();
             }
         }
+
+        [TestMethod]
+        public void TestCase6()
+        {
+            TestCase2();
+            PatronDataManager.CheckOutDocument(1, 2);
+            PatronDataManager.CheckOutDocument(1, 4);
+            PatronDataManager.CheckOutDocument(2, 2);
+            
+            IUser faculty = LibrarianDataManager.GetUserById(2);
+            Assert.AreEqual(faculty.FirstName, "Sergey");
+            Assert.AreEqual(faculty.SecondName, "Afonso");
+            Assert.AreEqual(faculty.Phone, "30001");
+            Assert.AreEqual(faculty.Type, "Faculty");
+            Assert.AreEqual(faculty.Address, "ViaMargutta, 3");
+            Copy copy = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber)[0];
+            Assert.AreEqual(copy.DocumentID, 1);            
+
+            faculty = LibrarianDataManager.GetUserById(4);
+            Assert.AreEqual(faculty.FirstName, "Elvira");
+            Assert.AreEqual(faculty.SecondName, "Espindola");
+            Assert.AreEqual(faculty.Phone, "30003");
+            Assert.AreEqual(faculty.Type, "Student");
+            Assert.AreEqual(faculty.Address, "Via del Corso, 22");
+            copy = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber)[0];
+            Assert.AreEqual(copy.DocumentID, 2);
+        }
     }
 }
