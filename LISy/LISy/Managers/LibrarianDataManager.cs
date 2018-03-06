@@ -80,6 +80,16 @@ namespace LISy.Managers
             return DocumentsDataManager.GetAllBooksList();
         }
 
+        public static int GetNumberOfDocuments()
+        {
+            return DocumentsDataManager.GetNumberOfDocuments();
+        }
+
+        public static int GetNumberOfUsers()
+        {
+            return UsersDataManager.GetNumberOfUsers();
+        }
+
         public static InnerMaterial[] GetAllInnerMaterialsList()
         {
             return DocumentsDataManager.GetAllInnerMaterialsList();
