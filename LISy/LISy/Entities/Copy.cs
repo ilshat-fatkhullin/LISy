@@ -42,6 +42,13 @@ namespace LISy.Entities
             Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
         }
 
+        public Copy(long documentId, int room, int level)
+        {
+            DocumentID = documentId >= 0 ? documentId : throw new ArgumentException("Invalid document Id!");
+            Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
+            Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
+        }
+
         /// <summary>
         /// Moves the copy to new place in the library.
         /// </summary>

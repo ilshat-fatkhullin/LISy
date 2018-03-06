@@ -101,6 +101,15 @@ namespace LISy.Managers.DataManagers
             }
         }
 
+        public static int GetNumberOfUsers()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<int>("dbo.spUsers_GetNumberOfUsers").ToList();
+                return (output[0]);
+            }
+        }
+
         public static IUser[] GetUsersList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))

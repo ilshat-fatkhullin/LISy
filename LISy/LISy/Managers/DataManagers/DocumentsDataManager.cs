@@ -13,7 +13,7 @@ namespace LISy.Managers.DataManagers
     /// <summary>
     /// Contains database commands for documents
     /// </summary>
-    static class DocumentsDataManager
+    public static class DocumentsDataManager
     {
         /// <summary>
         /// Adds new document to the database.
@@ -85,7 +85,7 @@ namespace LISy.Managers.DataManagers
                             CoverURL = temp.CoverURL,
                             Price = temp.Price
                         });
-                }   
+                }
                 else if (type == typeof(JournalArticle))
                 {
                     JournalArticle temp = document as JournalArticle;
@@ -287,8 +287,59 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<long>("dbo.spDocuments_GetDocumentId @Title, @Authors, @KeyWords", new { Title = document.Title, Authors = document.Authors, KeyWords = document.KeyWords}).ToList();
+                var output = connection.Query<long>("dbo.spDocuments_GetDocumentId @Title, @Authors, @KeyWords", new { Title = document.Title, Authors = document.Authors, KeyWords = document.KeyWords }).ToList();
                 return output[0];
+            }
+        }
+
+        public static int GetCopyId(Copy copy)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<int>("dbo.spCopies_GetCopyId @DocId, @Room, @Level", new { DocId = copy.DocumentID, copy.Room, copy.Level }).ToList();
+                if (output.Count() > 0)
+                {
+                    return output[0];
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+        public static void DeleteCopyByDocId(Copy copy)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                connection.Execute("dbo.spCopies_DeleteCopyByDocumentIdRoomLevel @DocId, @Room, @Level", new { DocId = copy.DocumentID, copy.Room, copy.Level });
+            }
+        }
+
+        public static void DeleteCopy(Copy copy)
+        {
+            if (copy == null) throw new ArgumentNullException("Invalid document!");
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                connection.Execute("dbo.spCopies_DeleteCopy @CopyId", new { CopyId = copy.Id });
+            }
+        }
+
+        public static int GetNumberOfDocuments()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<int>("dbo.spDocuments_GetNumberOfDocuments").ToList();
+                return (output[0]);
+            }
+        }
+
+        public static int GetNumberOfCopies()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<int>("dbo.spCopies_GetNumberOfCopies").ToList();
+                return (output[0]);
             }
         }
 
@@ -318,6 +369,19 @@ namespace LISy.Managers.DataManagers
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
                 var output = connection.Query<TempCopy>("dbo.spCopies_GetChecked").ToArray();
+
+                Copy[] copies = new Copy[output.Count()];
+                for (int i = 0; i < copies.GetLength(0); i++)
+                    copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningDate, output[i].Room, output[i].Level);
+                return copies;
+            }
+        }
+
+        public static Copy[] GetCheckedByUserCopiesList(long userId)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<TempCopy>("dbo.spCopies_GetCheckedByUser @UserId", new { UserId =  userId }).ToArray();
 
                 Copy[] copies = new Copy[output.Count()];
                 for (int i = 0; i < copies.GetLength(0); i++)

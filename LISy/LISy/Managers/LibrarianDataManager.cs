@@ -50,6 +50,16 @@ namespace LISy.Managers
             DocumentsDataManager.AddCopy(n, copy);
         }
 
+        public static void DeleteCopy(Copy copy)
+        {
+            DocumentsDataManager.DeleteCopy(copy);
+        }
+
+        public static void DeleteCopyByDocId(Copy copy)
+        {
+            DocumentsDataManager.DeleteCopyByDocId(copy);
+        }
+
         public static Copy[] GetAllCopiesList()
         {
             return DocumentsDataManager.GetAllCopiesList();
@@ -80,6 +90,21 @@ namespace LISy.Managers
             return DocumentsDataManager.GetAllBooksList();
         }
 
+        public static int GetNumberOfDocuments()
+        {
+            return DocumentsDataManager.GetNumberOfDocuments();
+        }
+
+        public static int GetNumberOfUsers()
+        {
+            return UsersDataManager.GetNumberOfUsers();
+        }
+
+        public static int GetNumberOfCopies()
+        {
+            return DocumentsDataManager.GetNumberOfCopies();
+        }
+
         public static InnerMaterial[] GetAllInnerMaterialsList()
         {
             return DocumentsDataManager.GetAllInnerMaterialsList();
@@ -93,6 +118,16 @@ namespace LISy.Managers
         public static JournalArticle[] GetAllJournalArticlesList()
         {
             return DocumentsDataManager.GetAllJournalArticlesList();
+        }
+
+        public static IUser GetUserById(long userId)
+        {
+            return CredentialsManager.GetUserByID(userId);
+        }
+
+        public static Copy[] GetCheckedByUserCopiesList(long userId)
+        {
+            return DocumentsDataManager.GetCheckedByUserCopiesList(userId);
         }
     }
 }
