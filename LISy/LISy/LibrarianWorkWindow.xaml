@@ -43,7 +43,7 @@
                     <DataGrid x:Name="DataGridJournal_article" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderJournal_article"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="copies" Header="Copies">
+            <TabItem x:Name="copies" Header="Copies" Loaded="copies_Loaded" MouseUp="copies_MouseUp">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGridCopies" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderCopies"/>
                 </Grid>

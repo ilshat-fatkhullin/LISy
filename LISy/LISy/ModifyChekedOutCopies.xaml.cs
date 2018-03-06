@@ -42,7 +42,7 @@ namespace LISy
 
         private void Сhange_status_of_copy_Click(object sender, RoutedEventArgs e)
         {
-            if (make_book_returned.IsChecked == true && delete_copy.IsChecked == false)
+            if (make_book_returned.IsChecked == true)
             {
                 LibrarianDataManager.ReturnDocument(documentId,userId);
             }

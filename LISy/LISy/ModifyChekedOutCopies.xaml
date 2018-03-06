@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="ModifyChekedOutCopies" Height="102.631" Width="230.076" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Grid>
-        <CheckBox x:Name="make_book_returned" Content="Make Returned" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="delete_copy" Content="Delete" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="make_book_returned" Content="Make Returned" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top"/>
         <Button x:Name="change_status_of_copy" Content="Save" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" Width="90" Height="35" Click="Сhange_status_of_copy_Click"/>
 
     </Grid>

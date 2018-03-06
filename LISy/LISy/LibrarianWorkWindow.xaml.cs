@@ -216,6 +216,20 @@ namespace LISy
            DataGridAV_material.ItemsSource = result;
        }
 
+        private void copies_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridCopies();
+        }
 
+        private void copies_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Copy copy = DataGridCopies.SelectedItem as Copy;
+            if (copy == null)
+                return;
+
+            DeleteCopy window = new DeleteCopy(copy, this);
+            window.Owner = this;
+            window.Show();
+        }
     }
 }

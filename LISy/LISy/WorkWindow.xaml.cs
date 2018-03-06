@@ -67,7 +67,9 @@ namespace LISy
 
         private void button_Booking_Click(object sender, RoutedEventArgs e)
         {
-
+            BookingHistory bookingHistory = new BookingHistory(patron);
+            bookingHistory.Owner = this;
+            bookingHistory.Show();
         }
 
         private void button_Info_Click(object sender, RoutedEventArgs e)

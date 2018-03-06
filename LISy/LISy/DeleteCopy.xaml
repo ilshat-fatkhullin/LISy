@@ -1,0 +1,12 @@
+﻿<Window x:Name="delete_copy_fron_db" x:Class="LISy.DeleteCopy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISy"
+        mc:Ignorable="d"
+        Title="DeleteCopy" Height="147.794" Width="292.279" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="delete_copy" Content="Delete" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="260" Height="93" FontSize="20" Click="delete_copy_Click"/>
+    </Grid>
+</Window>

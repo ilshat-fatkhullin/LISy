@@ -95,11 +95,17 @@
     <Compile Include="AddUserCard.xaml.cs">
       <DependentUpon>AddUserCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BookingHistory.xaml.cs">
+      <DependentUpon>BookingHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BookingInfoWindow.xaml.cs">
       <DependentUpon>BookingInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BookModifyWindow.xaml.cs">
       <DependentUpon>BookModifyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteCopy.xaml.cs">
+      <DependentUpon>DeleteCopy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\Users\ILibrarian.cs" />
     <Compile Include="Entities\Users\IPatron.cs" />
@@ -149,11 +155,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BookingHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BookingInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookModifyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteCopy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
