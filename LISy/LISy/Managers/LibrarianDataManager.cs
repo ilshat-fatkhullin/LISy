@@ -50,6 +50,11 @@ namespace LISy.Managers
             DocumentsDataManager.AddCopy(n, copy);
         }
 
+        public static void DeleteCopy(Copy copy)
+        {
+            DocumentsDataManager.DeleteCopy(copy);
+        }
+
         public static Copy[] GetAllCopiesList()
         {
             return DocumentsDataManager.GetAllCopiesList();
@@ -88,6 +93,11 @@ namespace LISy.Managers
         public static int GetNumberOfUsers()
         {
             return UsersDataManager.GetNumberOfUsers();
+        }
+
+        public static int GetNumberOfCopies()
+        {
+            return DocumentsDataManager.GetNumberOfCopies();
         }
 
         public static InnerMaterial[] GetAllInnerMaterialsList()
