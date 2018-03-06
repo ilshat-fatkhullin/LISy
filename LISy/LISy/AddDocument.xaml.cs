@@ -287,7 +287,7 @@ namespace LISy
 
         private void ja_copies_text_box_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InputFieldsManager.CheckLiteralValidity(ja_copies_text_box);
+            InputFieldsManager.CheckNumericValidity(ja_copies_text_box);
         }
 
         private void year_of_book_TextChanged(object sender, TextChangedEventArgs e)
@@ -524,9 +524,12 @@ namespace LISy
                 copy.DocumentID = DocumentsDataManager.GetDocumentId(journal);
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_level_text_box));
+
                 LibrarianDataManager.AddCopy(n, copy);
 
-                this.Close();
+                AddJournalArticlesToJournal addJournalArticlesToJournal = new AddJournalArticlesToJournal(DocumentsDataManager.GetDocumentId(journal),this);
+                addJournalArticlesToJournal.Owner = this;
+                addJournalArticlesToJournal.Show();
             }
         }
        

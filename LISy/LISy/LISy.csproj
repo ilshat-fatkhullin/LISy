@@ -86,6 +86,9 @@
     <Compile Include="AddDocument.xaml.cs">
       <DependentUpon>AddDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddJournalArticlesToJournal.xaml.cs">
+      <DependentUpon>AddJournalArticlesToJournal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddLibrarian.xaml.cs">
       <DependentUpon>AddLibrarian.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AddDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddJournalArticlesToJournal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

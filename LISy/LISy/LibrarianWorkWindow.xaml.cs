@@ -182,7 +182,7 @@ namespace LISy
             DataGridCopies.ItemsSource = result;
         }
         
-        private void UpdateDataGridInnerMaterials()
+        public void UpdateDataGridInnerMaterials()
         {
             List<InnerMaterial> result = new List<InnerMaterial>();
             result.Clear();
@@ -194,7 +194,7 @@ namespace LISy
         }
 
         
-        private void UpdateDataGridJournal()
+        public void UpdateDataGridJournal()
         {
             List<Journal> result = new List<Journal>();
             result.Clear();
