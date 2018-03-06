@@ -377,6 +377,19 @@ namespace LISy.Managers.DataManagers
             }
         }
 
+        public static Copy[] GetCheckedByUserCopiesList(long userId)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<TempCopy>("dbo.spCopies_GetCheckedByUser @UserId", new { UserId =  userId }).ToArray();
+
+                Copy[] copies = new Copy[output.Count()];
+                for (int i = 0; i < copies.GetLength(0); i++)
+                    copies[i] = new Copy(output[i].CopyId, output[i].BookId, output[i].UserId, output[i].Checked, output[i].ReturningDate, output[i].Room, output[i].Level);
+                return copies;
+            }
+        }
+
         public static AVMaterial[] GetAllAVMaterialsList()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
