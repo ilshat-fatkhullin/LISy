@@ -292,11 +292,29 @@ namespace LISy.Managers.DataManagers
             }
         }
 
+        public static void DeleteCopy(Copy copy)
+        {
+            if (copy == null) throw new ArgumentNullException("Invalid document!");
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                connection.Execute("dbo.spCopies_DeleteCopy @CopyId", new { CopyId = copy.Id });
+            }
+        }
+
         public static int GetNumberOfDocuments()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
                 var output = connection.Query<int>("dbo.spDocuments_GetNumberOfDocuments").ToList();
+                return (output[0]);
+            }
+        }
+
+        public static int GetNumberOfCopies()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<int>("dbo.spCopies_GetNumberOfCopies").ToList();
                 return (output[0]);
             }
         }

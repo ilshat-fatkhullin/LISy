@@ -105,7 +105,7 @@ namespace LISy.Managers.DataManagers
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
             {
-                var output = connection.Query<int>("dbo.spDocuments_GetNumberOfUsers").ToList();
+                var output = connection.Query<int>("dbo.spUsers_GetNumberOfUsers").ToList();
                 return (output[0]);
             }
         }
