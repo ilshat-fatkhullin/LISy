@@ -29,7 +29,7 @@ namespace LISyTest.Integrated
 
             LibrarianDataManager.AddUser(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
                 "librarian_1", "12345");
-            LibrarianDataManager.AddUser(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address"),
+            LibrarianDataManager.AddUser(new Faculty("Sergey", "Afonso", "30001", "ViaMargutta, 3"),
                 "patron_1", "12345");
             LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_2", "12345");
@@ -37,6 +37,24 @@ namespace LISyTest.Integrated
                 "patron_3", "12345");
 
             
+        }
+
+        [TestMethod]
+        public void TestCase2()
+        {
+            TestCase1();
+            LibrarianDataManager.DeleteUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"));
+        }
+
+        [TestMethod]
+        public void TestCase3()
+        {
+            TestCase1();
+            IUser faculty = LibrarianDataManager.GetUserById(2);
+            Assert.AreEqual(faculty.FirstName, "Sergey");
+            Assert.AreEqual(faculty.SecondName, "Afonso");
+            Assert.AreEqual(faculty.Phone, "30001");
+            Assert.AreEqual(faculty.Address, "ViaMargutta, 3");
         }
     }
 }

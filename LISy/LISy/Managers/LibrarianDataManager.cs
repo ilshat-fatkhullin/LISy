@@ -94,5 +94,10 @@ namespace LISy.Managers
         {
             return DocumentsDataManager.GetAllJournalArticlesList();
         }
+
+        public static IUser GetUserById(long userId)
+        {
+            return CredentialsManager.GetUserByID(userId);
+        }
     }
 }
