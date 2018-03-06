@@ -292,6 +292,15 @@ namespace LISy.Managers.DataManagers
             }
         }
 
+        public static int GetNumberOfDocuments()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
+            {
+                var output = connection.Query<int>("dbo.spDocuments_GetNumberOfDocuments").ToList();
+                return (output[0]);
+            }
+        }
+
         public static void AddCopy(int n, Copy copy)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
