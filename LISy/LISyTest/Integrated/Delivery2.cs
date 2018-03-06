@@ -44,9 +44,9 @@ namespace LISyTest.Integrated
         public void TestCase2()
         {
             TestCase1();
-            LibrarianDataManager.DeleteCopy(new Copy(1, 1, 1));
-            LibrarianDataManager.DeleteCopy(new Copy(1, 1, 1));
-            LibrarianDataManager.DeleteCopy(new Copy(3, 1, 3));
+            LibrarianDataManager.DeleteCopyByDocId(new Copy(1, 1, 1));
+            LibrarianDataManager.DeleteCopyByDocId(new Copy(1, 1, 1));
+            LibrarianDataManager.DeleteCopyByDocId(new Copy(3, 1, 3));
             Student student = new Student("StudentName", "StudentSurname", "80000000000", "Address")
                 { CardNumber = 3};
             LibrarianDataManager.DeleteUser(student);
@@ -70,6 +70,7 @@ namespace LISyTest.Integrated
             Assert.AreEqual(faculty.FirstName, "Elvira");
             Assert.AreEqual(faculty.SecondName, "Espindola");
             Assert.AreEqual(faculty.Phone, "30003");
+            Assert.AreEqual(faculty.Type, "Faculty");
             Assert.AreEqual(faculty.Address, "Via del Corso, 22");
         }
 
@@ -77,7 +78,26 @@ namespace LISyTest.Integrated
         public void TestCase4()
         {
             TestCase2();
+            IUser faculty = LibrarianDataManager.GetUserById(3);
+            Assert.IsNull(faculty);
+            faculty = LibrarianDataManager.GetUserById(4);
+            Assert.AreEqual(faculty.FirstName, "Elvira");
+            Assert.AreEqual(faculty.SecondName, "Espindola");
+            Assert.AreEqual(faculty.Phone, "30003");
+            Assert.AreEqual(faculty.Type, "Student");
+            Assert.AreEqual(faculty.Address, "Via del Corso, 22");            
+        }
 
+        [TestMethod]
+        public void TestCase5()
+        {
+            TestCase2();
+            PatronDataManager.CheckOutDocument(1, 3);
+            foreach (var copy in LibrarianDataManager.GetAllCopiesList())
+            {
+                if (copy.DocumentID == 1 && copy.PatronID == 3)
+                    Assert.Fail();
+            }
         }
     }
 }
