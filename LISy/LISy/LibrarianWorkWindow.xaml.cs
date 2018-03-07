@@ -25,6 +25,7 @@ namespace LISy
         public LibrarianWorkWindow()
         {
             InitializeComponent();
+            
         }
 
 
@@ -141,6 +142,10 @@ namespace LISy
         {
             UpdatDataGridChekedOutCopies();
         }
+        private void copies_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridCopies();
+        }
         public void UpdatDataGridChekedOutCopies()
         {
             List<Copy> result = new List<Copy>();
@@ -216,10 +221,6 @@ namespace LISy
            DataGridAV_material.ItemsSource = result;
        }
 
-        private void copies_Loaded(object sender, RoutedEventArgs e)
-        {
-            UpdateDataGridCopies();
-        }
 
         private void copies_MouseUp(object sender, MouseButtonEventArgs e)
         {

@@ -67,7 +67,7 @@ namespace LISy
             Copy copy = new Copy();
             copy.DocumentID = DocumentsDataManager.GetDocumentId(book);
             if (room_of_book.Text != "" &&
-                level_of_book.Text != ""&&
+                level_of_book.Text != "" &&
                 copy_of_book.Text != "")
             {
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(room_of_book));
@@ -121,12 +121,12 @@ namespace LISy
 
         private void room_of_book_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            InputFieldsManager.CheckNumericValidity(room_of_book);
         }
 
         private void level_of_book_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            InputFieldsManager.CheckNumericValidity(level_of_book);
         }
     }
 }
