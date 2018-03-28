@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="Enter" Height="374" Width="572" Icon ="Design\icon_logo100x100.ico" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" >
+        Title="Enter" Height="374" Width="572" Icon ="Design\icon_logo100x100.ico" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTabStop="True" IsHitTestVisible="True" >
     <Window.BorderBrush>
         <ImageBrush/>
     </Window.BorderBrush>
     <Window.Background>
         <ImageBrush ImageSource="Design\books_shelf_back.jpg"/>
     </Window.Background>
-    <Grid x:Name="grid_enter">
+    <Grid x:Name="grid_enter" IsHitTestVisible="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
