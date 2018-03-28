@@ -7,66 +7,69 @@ using LISy.Entities.Users;
 
 namespace LISy.Entities.Documents
 {
-    /// <summary>
-    /// Describes properties of a set of documents that can be checked out.
-    /// </summary>
-    public abstract class Takable : Document
-    {
-        public const int BASIC_RETURN_TIME = 14;
+	/// <summary>
+	/// Describes properties of a set of documents that can be checked out.
+	/// </summary>
+	public abstract class Takable : Document
+	{
+		public const int BASIC_RETURN_TIME = 14;
 
-        public int Price { get; set; }
+		public const int GUEST_RETURN_TIME = 7;
 
-        //public List<Copy> Copies { get; protected set; }
+		public int Price { get; set; }
 
-        //private Copy LastAvailableCopy;
+		//public List<Copy> Copies { get; protected set; }
 
-        /// <summary>
-        /// Initializes a new instance of library document that can be checked out.
-        /// </summary>
-        public Takable() : base()
-        {
+		//private Copy LastAvailableCopy;
 
-        }
+		/// <summary>
+		/// Initializes a new instance of library document that can be checked out.
+		/// </summary>
+		public Takable() : base()
+		{
 
-        /// <summary>
-        /// Initializes a new instance of library document that can be checked out.
-        /// </summary>
-        /// <param name="authors">Authors or editors of the document.</param>
-        /// <param name="title">Title of the document.</param>
-        /// <param name="keys">KeyWords using which the document can be found.</param>
-        /// <param name="image">Cover of the document.</param>
-        /// <param name="price">Price of the document.</param>
-        public Takable(string authors, string title, string keys, string image, int price) : base(authors, title, keys, image)
-        {
-            Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
-            /*Copies = new List<Copy>();
+		}
+
+		/// <summary>
+		/// Initializes a new instance of library document that can be checked out.
+		/// </summary>
+		/// <param name="authors">Authors or editors of the document.</param>
+		/// <param name="title">Title of the document.</param>
+		/// <param name="keys">KeyWords using which the document can be found.</param>
+		/// <param name="image">Cover of the document.</param>
+		/// <param name="price">Price of the document.</param>
+		public Takable(string authors, string title, string keys, string image, int price) : base(authors, title, keys, image)
+		{
+			Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
+			/*Copies = new List<Copy>();
             for (int i = 1; i <= amount; ++i)
                 Copies.Add(new Copy(this));
             LastAvailableCopy = Copies[0];*/
-        }
+		}
 
-        /// <summary>
-        /// Initializes a new instance of library document that can be checked out.
-        /// </summary>
-        /// <param name="id">Id or editors of the document.</param>
-        /// <param name="authors">Authors or editors of the document.</param>
-        /// <param name="title">Title of the document.</param>
-        /// <param name="keys">KeyWords using which the document can be found.</param>
-        /// <param name="image">Cover of the document.</param>
-        /// <param name="price">Price of the document.</param>
-        public Takable(long id, string authors, string title, string keys, string image, int price) : base(id, authors, title, keys, image)
-        {
-            Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
-        }
+		/// <summary>
+		/// Initializes a new instance of library document that can be checked out.
+		/// </summary>
+		/// <param name="id">Id or editors of the document.</param>
+		/// <param name="authors">Authors or editors of the document.</param>
+		/// <param name="title">Title of the document.</param>
+		/// <param name="keys">KeyWords using which the document can be found.</param>
+		/// <param name="image">Cover of the document.</param>
+		/// <param name="price">Price of the document.</param>
+		public Takable(long id, string authors, string title, string keys, string image, int price) : base(id, authors, title, keys, image)
+		{
+			Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
+		}
 
-        public virtual string EvaluateReturnDate(string patronType)
-        {
-            DateTime date = DateTime.Today;
-            date = date.AddDays(BASIC_RETURN_TIME);
-            return date.ToShortDateString();
-        }
+		public virtual string EvaluateReturnDate(string patronType)
+		{
+			DateTime date = DateTime.Today;
+			if (patronType.Equals("Guest")) date = date.AddDays(GUEST_RETURN_TIME);
+			else date = date.AddDays(BASIC_RETURN_TIME);
+			return date.ToShortDateString();
+		}
 
-        /*/// <summary>
+		/*/// <summary>
         /// Evaluates amount of available copies of the document.
         /// </summary>
         /// <returns>integer of amount of available copies.</returns>
@@ -131,5 +134,5 @@ namespace LISy.Entities.Documents
             Copies.Remove(LastAvailableCopy);
             LastAvailableCopy = null;
         }*/
-    }
+	}
 }

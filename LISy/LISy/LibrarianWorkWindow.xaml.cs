@@ -108,7 +108,6 @@ namespace LISy
             ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentID,copy.PatronID,this);
             window.Owner = this;
             window.Show();
-
         }
 
         private void grid_LoadedUser(object sender, RoutedEventArgs e)

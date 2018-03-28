@@ -90,7 +90,8 @@ namespace LISy.Entities.Documents
         public override string EvaluateReturnDate(string patronType)
         {
             DateTime date = DateTime.Today;
-            if (patronType.Equals("Faculty")) date = date.AddDays(FACULTY_RETURN_TIME);
+			if (patronType.Equals("Guest")) date = date.AddDays(GUEST_RETURN_TIME);
+			else if (patronType.Equals("Faculty")) date = date.AddDays(FACULTY_RETURN_TIME);
             else if (IsBestseller) date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
             else date = date.AddDays(STUDENT_RETURN_TIME);
             return date.ToShortDateString();

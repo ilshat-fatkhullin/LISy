@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Entities\Users\ILibrarian.cs" />
     <Compile Include="Entities\Users\IPatron.cs" />
+    <Compile Include="Entities\Users\Patrons\Guest.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="LibrarianWorkWindow.xaml.cs">
       <DependentUpon>LibrarianWorkWindow.xaml</DependentUpon>
