@@ -12,6 +12,11 @@ namespace LISy.Entities.Users.Patrons
 	public class Guest : Patron
 	{
 		/// <summary>
+		/// String Type.
+		/// </summary>
+		public const string TYPE = "Guest";
+
+		/// <summary>
 		/// Initializes a new instance of a visiting professor.
 		/// </summary>
 		/// <param name="firstName">First name of the visiting professor.</param>

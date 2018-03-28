@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
 
 namespace LISy.Entities.Documents
 {
@@ -61,10 +61,15 @@ namespace LISy.Entities.Documents
 			Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
 		}
 
+		/// <summary>
+		/// Evaluates return date.
+		/// </summary>
+		/// <param name="patronType">Type of borrowing patron.</param>
+		/// <returns>Evaluated date.</returns>
 		public virtual string EvaluateReturnDate(string patronType)
 		{
 			DateTime date = DateTime.Today;
-			if (patronType.Equals("Guest")) date = date.AddDays(GUEST_RETURN_TIME);
+			if (patronType.Equals(Guest.TYPE)) date = date.AddDays(GUEST_RETURN_TIME);
 			else date = date.AddDays(BASIC_RETURN_TIME);
 			return date.ToShortDateString();
 		}
