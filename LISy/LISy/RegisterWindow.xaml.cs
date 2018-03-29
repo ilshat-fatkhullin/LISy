@@ -51,9 +51,21 @@ namespace LISy
                 string login = firstName.Substring(0, 1) + '.' + secondName;
 
                 IPatron patron = null;
-                if (professor_type.IsChecked == true || VP_professor_type.IsChecked == true || TA_type.IsChecked == true || instructor_type.IsChecked == true)
+                if (professor_type.IsChecked == true)
                 {
-                    patron = new Faculty(firstName, secondName, phone, address, "");
+                    patron = new Faculty(firstName, secondName, phone, address, Faculty.PROFESSOR_SUBTYPE);
+                }
+                else if (VP_professor_type.IsChecked == true)
+                {
+                    patron = new Guest(firstName, secondName, phone, address);
+                }
+                else if (TA_type.IsChecked == true)
+                {
+                    patron = new Faculty(firstName, secondName, phone, address, Faculty.TA_SUBTYPE);
+                }
+                else if (instructor_type.IsChecked == true)
+                {
+                    patron = new Faculty(firstName,secondName,phone,address, Faculty.INSTRUCTOR_SUBTYPE);
                 }
                 else if (student_type.IsChecked == true)
                 {

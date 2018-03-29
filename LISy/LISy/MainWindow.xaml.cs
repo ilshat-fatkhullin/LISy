@@ -72,7 +72,7 @@ namespace LISy
 			switch (user.Type)
 			{
 				case Librarian.TYPE:
-					window = new LibrarianWorkWindow();
+					window = new LibrarianWorkWindow(user);
 					break;
 				default:
 					window = new WorkWindow(user as IPatron);

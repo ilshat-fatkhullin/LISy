@@ -141,8 +141,6 @@ namespace LISy
             }
             DataGridAV_material.ItemsSource = result;
         }
-
-
         /// <summary>
         /// choosing row with book -> click on it -> look info about this book
         /// </summary>

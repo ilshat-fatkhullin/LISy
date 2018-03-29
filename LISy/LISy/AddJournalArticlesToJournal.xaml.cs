@@ -73,8 +73,7 @@ namespace LISy
 
         private void save_and_exit_Click(object sender, RoutedEventArgs e)
         {
-            LibrarianWorkWindow librarianWorkWindow = new LibrarianWorkWindow();
-            librarianWorkWindow.UpdateDataGridJournal();
+           
             this.Close();
             addDocument.Close();
         }
