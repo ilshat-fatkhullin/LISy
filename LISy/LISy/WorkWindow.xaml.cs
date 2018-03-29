@@ -21,8 +21,6 @@ namespace LISy
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
-        public string[] Profile = new string[6];
-
         public WorkWindow(IPatron patron)
         {
             InitializeComponent();
@@ -37,28 +35,6 @@ namespace LISy
 
 
         }
-        ///<summary>
-        ///every checked checkBox will be like a filter for seaching 
-        ///</summary>
-        private void checkBox_AV_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void checkBox_JA_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void checkBox_books_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        ///<summary>
-        ///when we find document we click button to read about this document and Book it
-        ///</summary>
-
         private void button_Profile_Click(object sender, RoutedEventArgs e)
         {
             Profile profilelWindow = new Profile();
@@ -72,30 +48,50 @@ namespace LISy
             bookingHistory.Show();
         }
 
+
         private void button_Info_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
-        
+        /// <summary>
+        /// loader to table grid book
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void grid_LoaderBook(object sender, RoutedEventArgs e)
         {
             UpdateDataGridBook();
         }
-
+        /// <summary>
+        /// loader to table grid av material
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
         {
             UptadeDataGridAV_material();
         }
-
+        /// <summary>
+        /// loader to table grid innner material
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
         {
             UpdateDataGridInnerMaterials();
         }
-
+        /// <summary>
+        /// loader to table grid journal article
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
         {
             UpdateDataGridJournal();
         }
+        /// <summary>
+        /// update table (data grid) Book
+        /// </summary>
         private void UpdateDataGridBook()
         {
             List<Book> result = new List<Book>();
@@ -106,6 +102,9 @@ namespace LISy
             }
             DataGridBook.ItemsSource = result;
         }
+        /// <summary>
+        /// update table (data grid) inner material
+        /// </summary>
         private void UpdateDataGridInnerMaterials()
         {
             List<InnerMaterial> result = new List<InnerMaterial>();
@@ -116,6 +115,9 @@ namespace LISy
             }
             DataGridRefernce_book.ItemsSource = result;
         }
+        /// <summary>
+        /// update table (data grid) Journal
+        /// </summary>
         private void UpdateDataGridJournal()
         {
             List<Journal> result = new List<Journal>();
@@ -126,7 +128,9 @@ namespace LISy
             }
             DataGridJournal_article.ItemsSource = result;
         }
-
+        /// <summary>
+        /// update table (data grid) AV material
+        /// </summary>
         public void UptadeDataGridAV_material()
         {
             List<AVMaterial> result = new List<AVMaterial>();
@@ -139,7 +143,11 @@ namespace LISy
         }
 
 
-
+        /// <summary>
+        /// choosing row with book -> click on it -> look info about this book
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridBook_MouseUp_book(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Book book = DataGridBook.SelectedItem as Book;
@@ -151,6 +159,13 @@ namespace LISy
                 Owner = this
             };
             window.Show();
+        }
+
+        private void log_out_button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

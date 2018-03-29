@@ -51,11 +51,11 @@ namespace LISy
                 string login = firstName.Substring(0, 1) + '.' + secondName;
 
                 IPatron patron = null;
-                if (checkBox_faculty.IsChecked == true)
+                if (professor_type.IsChecked == true || VP_professor_type.IsChecked == true || TA_type.IsChecked == true || instructor_type.IsChecked == true)
                 {
                     patron = new Faculty(firstName, secondName, phone, address);
                 }
-                else
+                else if (student_type.IsChecked == true)
                 {
                     patron = new Student(firstName, secondName, phone, address);
                 }                
@@ -64,15 +64,6 @@ namespace LISy
                 if (LibrarianDataManager.AddUser(patron, login, password))
                 {                    
                     WorkWindow workWindow = new WorkWindow(CredentialsManager.GetUserByID(CredentialsManager.Authorize(login, password)) as IPatron);
-                    /*
-                    workWindow.Profile[0] = InputFieldsManager.ReturnStringFromTextBox(textBox_name);
-                    workWindow.Profile[1] = InputFieldsManager.ReturnStringFromTextBox(textBox_last_name);
-                    workWindow.Profile[2] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_town);
-                    workWindow.Profile[3] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_street);
-                    workWindow.Profile[4] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_building);
-                    workWindow.Profile[5] = InputFieldsManager.ReturnStringFromTextBox(textBox_Address_flat);
-                    workWindow.Profile[6] = InputFieldsManager.ReturnStringFromTextBox(textBox_phone_number); 
-                    */
                     GoToWork(workWindow);
                 }
                 else
@@ -84,45 +75,37 @@ namespace LISy
             {
                 MessageBox.Show("Error! Invalid fields.");
             }
-        }
-                              
+        }             
         private void GoToWork(WorkWindow work)
         {            
             work.Show();
             this.Close();
         }        
-
         //return name from textBox_name
         private void textBox_name_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckLiteralValidity(textBox_name);
         }                                 
-
         private void textBox_Address_town_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckLiteralValidity(textBox_Address_town);
         }
-
         private void textBox_Address_street_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckLiteralValidity(textBox_Address_street);
         }
-
         private void textBox_Address_building_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckNumericValidity(textBox_Address_building);
         }
-
         private void textBox_Address_flat_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckNumericValidity(textBox_Address_flat);
         }
-
         private void textBox_phone_number_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckNumericValidity(textBox_phone_number);
         }
-
         private void textBox_last_name_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckLiteralValidity(textBox_last_name);
