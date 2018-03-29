@@ -28,7 +28,7 @@ namespace LISyTest.Integrated
 
             LibrarianDataManager.AddUser(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
                 "librarian_1", "12345");
-            LibrarianDataManager.AddUser(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address"),
+            LibrarianDataManager.AddUser(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address", ""),
                 "patron_1", "12345");
             LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_2", "12345");

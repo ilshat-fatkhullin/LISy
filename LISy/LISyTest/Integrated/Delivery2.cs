@@ -21,7 +21,7 @@ namespace LISyTest.Integrated
             DatabaseDataManager.ClearAll();
             LibrarianDataManager.AddUser(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
                 "librarian_1", "12345");
-            LibrarianDataManager.AddUser(new Faculty("Sergey", "Afonso", "30001", "ViaMargutta, 3"),
+            LibrarianDataManager.AddUser(new Faculty("Sergey", "Afonso", "30001", "ViaMargutta, 3", ""),
                 "patron_1", "12345");
             LibrarianDataManager.AddUser(new Student("Nadia", "Teixeira", "30002", "Via Sacra, 13"),
                 "patron_2", "12345");
