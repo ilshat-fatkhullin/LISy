@@ -7,25 +7,30 @@ using LISy.Entities.Documents;
 
 namespace LISy.Entities.Users
 {
-    public abstract class Patron : User, IPatron
-    {
-        //public List<Copy> TakenCopies { get; protected set; }
+	public abstract class Patron : User, IPatron
+	{
+		//public List<Copy> TakenCopies { get; protected set; }
 
-        //private Copy LastFoundCopy = null;
+		//private Copy LastFoundCopy = null;
 
-        /// <summary>
-        /// Initializes a new instance of library client.
-        /// </summary>
-        /// <param name="firstName">First name of the Patron.</param>
-        /// <param name="secondName">Second name of the Patron.</param>
-        /// <param name="phone">Phone number of the Patron.</param>
-        /// <param name="address">Address of the Patron.</param>
-        public Patron(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
-        {
-            //TakenCopies = new List<Copy>();
-        }
+		/// <summary>
+		/// Queue priority.
+		/// </summary>
+		public int Priority { get; set; }
 
-        /*/// <summary>
+		/// <summary>
+		/// Initializes a new instance of library client.
+		/// </summary>
+		/// <param name="firstName">First name of the Patron.</param>
+		/// <param name="secondName">Second name of the Patron.</param>
+		/// <param name="phone">Phone number of the Patron.</param>
+		/// <param name="address">Address of the Patron.</param>
+		public Patron(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
+		{
+			//TakenCopies = new List<Copy>();
+		}
+
+		/*/// <summary>
         /// Determines whether the Patron has a copy of a document.
         /// </summary>
         /// <param name="document">Document which copy will be searched.</param>
@@ -61,5 +66,5 @@ namespace LISy.Entities.Users
             TakenCopies.Remove(LastFoundCopy);
             LastFoundCopy.Return();
         }*/
-    }
+	}
 }

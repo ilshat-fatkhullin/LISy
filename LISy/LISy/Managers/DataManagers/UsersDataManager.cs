@@ -122,7 +122,7 @@ namespace LISy.Managers.DataManagers
 					switch (user.Type)
 					{
 						case Faculty.TYPE:
-							users[i] = new Faculty(user.FirstName, user.SecondName, user.Phone, user.Address);
+							users[i] = new Faculty(user.FirstName, user.SecondName, user.Phone, user.Address, "");
 							break;
 						case Student.TYPE:
 							users[i] = new Student(user.FirstName, user.SecondName, user.Phone, user.Address);

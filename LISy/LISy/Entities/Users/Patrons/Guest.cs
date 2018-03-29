@@ -17,6 +17,11 @@ namespace LISy.Entities.Users.Patrons
 		public const string TYPE = "Guest";
 
 		/// <summary>
+		/// Queue priority.
+		/// </summary>
+		public const int PRIORITY = 4;
+
+		/// <summary>
 		/// Initializes a new instance of a visiting professor.
 		/// </summary>
 		/// <param name="firstName">First name of the visiting professor.</param>
@@ -25,7 +30,7 @@ namespace LISy.Entities.Users.Patrons
 		/// <param name="address">Address of the visiting professor.</param>
 		public Guest(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
 		{
-
+			Priority = PRIORITY;
 		}
 	}
 }

@@ -32,7 +32,7 @@ namespace LISy
 
         private void save_all_Click(object sender, RoutedEventArgs e)
         {
-            JournalArticle journalArticle = new JournalArticle();
+            Article journalArticle = new Article();
             if (article_keywords_text_box.Text != null &&
                 article_coverURL_text_box.Text != null &&
                 article_authors_text_box.Text != null &&

@@ -109,7 +109,7 @@ namespace LISy.Managers
 						user = new Librarian(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
 						break;
 					case Faculty.TYPE:
-						user = new Faculty(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);
+						user = new Faculty(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address, "");
 						break;
 					case Student.TYPE:
 						user = new Student(output[0].FirstName, output[0].SecondName, output[0].Phone, output[0].Address);

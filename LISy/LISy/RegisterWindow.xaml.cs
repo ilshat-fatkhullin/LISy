@@ -53,7 +53,7 @@ namespace LISy
                 IPatron patron = null;
                 if (checkBox_faculty.IsChecked == true)
                 {
-                    patron = new Faculty(firstName, secondName, phone, address);
+                    patron = new Faculty(firstName, secondName, phone, address, "");
                 }
                 else
                 {

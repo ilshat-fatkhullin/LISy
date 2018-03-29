@@ -86,9 +86,9 @@ namespace LISy.Managers.DataManagers
 							Price = temp.Price
 						});
 				}
-				else if (type == typeof(JournalArticle))
+				else if (type == typeof(Article))
 				{
-					JournalArticle temp = document as JournalArticle;
+					Article temp = document as Article;
 					connection.Execute("dbo.spJournalArticles_AddJournalArticle @Title, @Authors, @JournalId, @KeyWords, @CoverURL",
 						new
 						{
@@ -187,9 +187,9 @@ namespace LISy.Managers.DataManagers
 							Price = temp.Price
 						});
 				}
-				else if (type == typeof(JournalArticle))
+				else if (type == typeof(Article))
 				{
-					JournalArticle temp = newDocument as JournalArticle;
+					Article temp = newDocument as Article;
 					connection.Execute("dbo.spJournalArticles_ModifyJournalArticle @Id, @Title, @Authors, @KeyWords",
 						new
 						{
@@ -443,14 +443,14 @@ namespace LISy.Managers.DataManagers
 			}
 		}
 
-		public static JournalArticle[] GetAllJournalArticlesList()
+		public static Article[] GetAllJournalArticlesList()
 		{
 			using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LibraryDB")))
 			{
 				var output = connection.Query<TempArticle>("dbo.spJournalArticles_GetAll").ToArray();
-				JournalArticle[] temp = new JournalArticle[output.Count()];
+				Article[] temp = new Article[output.Count()];
 				for (int i = 0; i < temp.GetLength(0); i++)
-					temp[i] = new JournalArticle(output[i].Id, output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL);
+					temp[i] = new Article(output[i].Id, output[i].Authors, output[i].Title, output[i].KeyWords, output[i].CoverURL);
 				return temp;
 			}
 		}
