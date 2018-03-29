@@ -115,7 +115,7 @@ namespace LISy.Managers
             return DocumentsDataManager.GetAllJournalsList();
         }
 
-        public static JournalArticle[] GetAllJournalArticlesList()
+        public static Article[] GetAllJournalArticlesList()
         {
             return DocumentsDataManager.GetAllJournalArticlesList();
         }

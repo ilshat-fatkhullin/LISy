@@ -53,7 +53,7 @@ namespace LISy
                 IPatron patron = null;
                 if (professor_type.IsChecked == true || VP_professor_type.IsChecked == true || TA_type.IsChecked == true || instructor_type.IsChecked == true)
                 {
-                    patron = new Faculty(firstName, secondName, phone, address);
+                    patron = new Faculty(firstName, secondName, phone, address, "");
                 }
                 else if (student_type.IsChecked == true)
                 {

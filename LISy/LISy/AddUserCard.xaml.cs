@@ -91,7 +91,7 @@ namespace LISy
                 IUser user = null;
                 if (faculty_check.IsChecked == true)
                 {
-                    user = new Faculty(firstName, secondName, phone, address);
+                    user = new Faculty(firstName, secondName, phone, address, "");
                 }
                 else if (check_box_for_lib.IsChecked == true)
                 {

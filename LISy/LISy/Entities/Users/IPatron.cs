@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace LISy.Entities.Users
 {
-    public interface IPatron: IUser
-    {
-        
-    }
+	public interface IPatron : IUser
+	{
+		/// <summary>
+		/// Queue priority.
+		/// </summary>
+		int Priority { get; set; }
+	}
 }

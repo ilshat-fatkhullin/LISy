@@ -17,7 +17,7 @@ namespace LISy.Entities.Documents
 
         public string PublicationDate { get; set; }
 
-        //public JournalArticle[] Articles { get; private set; }
+        //public Article[] Articles { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of a journal.
@@ -48,7 +48,7 @@ namespace LISy.Entities.Documents
             Publisher = publisher ?? throw new ArgumentNullException("Journal must have a publisher!");
             Issue = issue > 0 ? issue : throw new ArgumentNullException("Invalid issue!");
             PublicationDate = date ?? throw new ArgumentNullException("Journal must have a publication date!");
-            /*Articles = art_amount > 0 ? new JournalArticle[art_amount] : throw new ArgumentException("Journal must contain articles!");
+            /*Articles = art_amount > 0 ? new Article[art_amount] : throw new ArgumentException("Journal must contain articles!");
             if (art_authors == null) throw new ArgumentNullException("Articles must have authors!");
             if (art_titles == null) throw new ArgumentNullException("Articles must have titles!");
             if (art_keys == null) throw new ArgumentNullException("Articles must have keywords!");
@@ -56,7 +56,7 @@ namespace LISy.Entities.Documents
             if (art_amount != art_titles.Length) throw new ArgumentException("Invalid amount of titles of articles!");
             if (art_amount != art_keys.Length) throw new ArgumentException("Invalid amount of collections of articles' keywords!");
             for (int i = 0; i < art_amount; ++i)
-                Articles[i] = new JournalArticle(art_authors[i], art_titles[i], art_keys[i]);*/
+                Articles[i] = new Article(art_authors[i], art_titles[i], art_keys[i]);*/
         }
 
         /// <summary>
