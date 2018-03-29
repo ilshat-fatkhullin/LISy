@@ -1,7 +1,7 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
-using LISy.Entities.Users;
-using LISy.Managers.DataManagers;
+using RestSharp;
+using System.Collections.Generic;
 
 namespace LISy.Managers
 {
@@ -10,124 +10,158 @@ namespace LISy.Managers
     /// </summary>
     public static class LibrarianDataManager
     {
-        public static void AddDocument(IDocument document)
+        public static void AddArticle(Article article)
         {
-            DocumentsDataManager.AddDocument(document);
+            HttpHelper.MakePostRequest("librarian/add_article", article);
         }
 
-        public static void DeleteDocument(IDocument document)
+        public static void EditArticle(Article article)
         {
-            DocumentsDataManager.DeleteDocument(document);
+            HttpHelper.MakePutRequest("librarian/edit_article", article);
         }
 
-        public static void EditDocument(IDocument newDocument)
+        public static void AddAVMaterial(AVMaterial avMaterial)
         {
-            DocumentsDataManager.EditDocument(newDocument);
-		}
-
-		public static void ReturnDocument(long DocumentId, long UserId)
-		{
-			DocumentsDataManager.ReturnDocument(DocumentId, UserId);
-		}
-
-		public static bool AddUser(IUser user, string login, string password)
-        {
-            return UsersDataManager.AddUser(user, login, password);
+            HttpHelper.MakePostRequest("librarian/add_av_material", avMaterial);
         }
 
-        public static void DeleteUser(IUser user)
+        public static void EditAVMaterial(AVMaterial avMaterial)
         {
-            UsersDataManager.DeleteUser(user);
+            HttpHelper.MakePutRequest("librarian/edit_av_material", avMaterial);
         }
 
-        public static void EditUser(IUser newUser)
+        public static void AddBook(Book book)
         {
-            UsersDataManager.EditUser(newUser);
+            HttpHelper.MakePostRequest("librarian/add_book", book);
         }
 
-        public static void AddCopy(int n, Copy copy)
+        public static void EditBook(Book book)
         {
-            DocumentsDataManager.AddCopy(n, copy);
+            HttpHelper.MakePutRequest("librarian/edit_book", book);
         }
 
+        public static void AddInnerMaterial(InnerMaterial innerMaterial)
+        {
+            HttpHelper.MakePostRequest("librarian/add_inner_material", innerMaterial);
+        }
+
+        public static void EditInnerMaterial(InnerMaterial innerMaterial)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_inner_material", innerMaterial);
+        }
+
+        public static void AddJournal(Journal journal)
+        {
+            HttpHelper.MakePostRequest("librarian/add_journal", journal);
+        }
+
+        public static void EditJournal(Journal journal)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_journal", journal);
+        }
+
+        public static void ReturnDocument(long documentId, long userId)
+        {
+            HttpHelper.MakePostRequest("librarian/return_document", new { documentId, userId });
+        }
+        
+        public static void AddUser(User user, string login, string password)
+        {
+            HttpHelper.MakePostRequest("librarian/add_user", new { user, login, password });
+        }
+        
+        public static void DeleteUser(User user)
+        {
+            HttpHelper.MakeDeleteRequest("librarian/add_user", user);
+        }
+        
+        public static void EditUser(User newUser)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_user", newUser);
+        }
+        
+        public static void AddCopies(int n, Copy copy)
+        {
+            HttpHelper.MakePostRequest("librarian/add_copies", new { n, copy });
+        }
+        
         public static void DeleteCopy(Copy copy)
         {
-            DocumentsDataManager.DeleteCopy(copy);
+            HttpHelper.MakeDeleteRequest("librarian/delete_copies", copy);
         }
-
+        
         public static void DeleteCopyByDocId(Copy copy)
         {
-            DocumentsDataManager.DeleteCopyByDocId(copy);
+            HttpHelper.MakeDeleteRequest("librarian/delete_copy_by_id", copy);
         }
-
+        
         public static Copy[] GetAllCopiesList()
         {
-            return DocumentsDataManager.GetAllCopiesList();
+            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_all_copies", null).ToArray();  
         }
-
+        
         public static void ClearAll()
         {
-            DatabaseDataManager.ClearAll();
+            HttpHelper.MakeDeleteRequest("librarian/clear_all", null);
         }
-
+        
         public static Copy[] GetCheckedCopiesList()
         {
-            return DocumentsDataManager.GetCheckedCopiesList();
+            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_checked_copies", null).ToArray();
         }
-
-        public static IUser[] GetAllUsersList()
+        
+        public static User[] GetAllUsersList()
         {
-            return UsersDataManager.GetUsersList();
+            return HttpHelper.MakeGetRequest<List<User>>("librarian/get_all_users", null).ToArray();
         }
-
+        
         public static AVMaterial[] GetAllAVMaterialsList()
         {
-            return DocumentsDataManager.GetAllAVMaterialsList();
+            return HttpHelper.MakeGetRequest<List<AVMaterial>>("librarian/get_all_av_materials", null).ToArray();
         }
-
+        
         public static Book[] GetAllBooksList()
         {
-            return DocumentsDataManager.GetAllBooksList();
+            return HttpHelper.MakeGetRequest<List<Book>>("librarian/get_all_books", null).ToArray();
         }
-
+        
         public static int GetNumberOfDocuments()
         {
-            return DocumentsDataManager.GetNumberOfDocuments();
+            return HttpHelper.MakeGetRequest<int>("librarian/get_documents_number", null);
         }
-
+        
         public static int GetNumberOfUsers()
         {
-            return UsersDataManager.GetNumberOfUsers();
+            return HttpHelper.MakeGetRequest<int>("librarian/get_users_number", null);
         }
-
+        
         public static int GetNumberOfCopies()
         {
-            return DocumentsDataManager.GetNumberOfCopies();
+            return HttpHelper.MakeGetRequest<int>("librarian/get_copies_number", null);
         }
-
+        
         public static InnerMaterial[] GetAllInnerMaterialsList()
         {
-            return DocumentsDataManager.GetAllInnerMaterialsList();
+            return HttpHelper.MakeGetRequest<List<InnerMaterial>>("librarian/get_all_inner_materials", null).ToArray();
         }
-
+        
         public static Journal[] GetAllJournalsList()
         {
-            return DocumentsDataManager.GetAllJournalsList();
+            return HttpHelper.MakeGetRequest<List<Journal>>("librarian/get_all_journals", null).ToArray();
         }
-
-        public static Article[] GetAllJournalArticlesList()
+        public static Article[] GetAllArticlesList()
         {
-            return DocumentsDataManager.GetAllJournalArticlesList();
+            return HttpHelper.MakeGetRequest<List<Article>>("librarian/get_all_articles", null).ToArray();
         }
-
-        public static IUser GetUserById(long userId)
+        
+        public static User GetUserById(long userId)
         {
-            return CredentialsManager.GetUserByID(userId);
+            return HttpHelper.MakeGetRequest<User>("librarian/get_user", userId);
         }
-
+        
         public static Copy[] GetCheckedByUserCopiesList(long userId)
         {
-            return DocumentsDataManager.GetCheckedByUserCopiesList(userId);
+            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_copies_checked_by_user", userId).ToArray();
         }
     }
 }
