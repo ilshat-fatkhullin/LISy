@@ -64,7 +64,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID); 
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID); 
 
             Assert.IsTrue(flag);
         }
@@ -121,7 +121,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
 
             Assert.IsTrue(flag);
         }
@@ -155,7 +155,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
 
             Assert.IsTrue(flag);
         }
@@ -195,9 +195,9 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_3_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_3_ID);
 
             Assert.IsTrue(checked1 && checked2 && !checked3);
         }
@@ -224,7 +224,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
 
             Assert.IsTrue(count == 1);
         }
@@ -261,8 +261,8 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
 
             Assert.IsTrue(last && first && size == 2);
         }
@@ -295,7 +295,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
 
             Assert.IsTrue(flag);
         }
@@ -328,7 +328,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
 
             Assert.IsTrue(flag);
         }
@@ -358,7 +358,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);            
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);            
             Assert.IsTrue(flag);
         }        
     }

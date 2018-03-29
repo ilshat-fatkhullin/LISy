@@ -9,7 +9,7 @@ namespace LISy.Entities.Users
 	/// <summary>
 	/// Represents library workers.
 	/// </summary>
-	public class Librarian : User, ILibrarian
+	public class Librarian : User
 	{
 		/// <summary>
 		/// String Type.

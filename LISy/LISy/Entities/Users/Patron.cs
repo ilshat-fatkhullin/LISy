@@ -7,7 +7,7 @@ using LISy.Entities.Documents;
 
 namespace LISy.Entities.Users
 {
-    public abstract class Patron : User, IPatron
+    public abstract class Patron : User
     {
         //public List<Copy> TakenCopies { get; protected set; }
 

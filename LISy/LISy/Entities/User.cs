@@ -9,7 +9,7 @@ namespace LISy.Entities
     /// <summary>
     /// Represents the implementation of common properties of library users.
     /// </summary>
-    public abstract class User : IUser
+    public class User
     {
         public long CardNumber { get; set; }
 
@@ -37,6 +37,11 @@ namespace LISy.Entities
             Phone = phone ?? throw new ArgumentNullException("User must have a phone number!");
             Address = address ?? throw new ArgumentNullException("User must have an address!");
             Type = this.GetType().FullName.Split('.').Last();
+        }
+
+        public User()
+        {
+
         }
     }
 }
