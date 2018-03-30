@@ -69,9 +69,12 @@ namespace LISy
             av.KeyWords = av_key_words_text_box.Text;
             av.Price = Convert.ToInt32(av_price_text_box.Text);
             av.CoverURL = av_coverUrl_text_box.Text;
+
             LibrarianDataManager.EditAVMaterial(av);
+
             Copy copy = new Copy();
-            copy.DocumentID = LibrarianDataManager.GetDocumentId(av);
+            copy.DocumentID = av.Id;
+
             if (av_room_text_box.Text != "" &&
                 av_level_text_box.Text != "" &&
                 av_copy_text_box.Text != "")

@@ -185,7 +185,6 @@
     </Compile>
     <Compile Include="Entities\Documents\Article.cs" />
     <Compile Include="Entities\Users\Patrons\Guest.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="LibrarianWorkWindow.xaml.cs">
       <DependentUpon>LibrarianWorkWindow.xaml</DependentUpon>
     </Compile>

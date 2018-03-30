@@ -1,6 +1,7 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 
 namespace LISy.Managers
@@ -10,9 +11,9 @@ namespace LISy.Managers
     /// </summary>
     public static class LibrarianDataManager
     {
-        public static void AddArticle(Article article)
+        public static long AddArticle(Article article)
         {
-            HttpHelper.MakePostRequest("librarian/add_article", article);
+            return HttpHelper.MakePostRequest<long>("librarian/add_article", article);
         }
 
         public static void EditArticle(Article article)
@@ -20,9 +21,9 @@ namespace LISy.Managers
             HttpHelper.MakePutRequest("librarian/edit_article", article);
         }
 
-        public static void AddAVMaterial(AVMaterial avMaterial)
+        public static long AddAVMaterial(AVMaterial avMaterial)
         {
-            HttpHelper.MakePostRequest("librarian/add_av_material", avMaterial);
+            return HttpHelper.MakePostRequest<long>("librarian/add_av_material", avMaterial);
         }
 
         public static void EditAVMaterial(AVMaterial avMaterial)
@@ -30,9 +31,9 @@ namespace LISy.Managers
             HttpHelper.MakePutRequest("librarian/edit_av_material", avMaterial);
         }
 
-        public static void AddBook(Book book)
+        public static long AddBook(Book book)
         {
-            HttpHelper.MakePostRequest("librarian/add_book", book);
+            return HttpHelper.MakePostRequest<long>("librarian/add_book", book);
         }
 
         public static void EditBook(Book book)
@@ -40,9 +41,9 @@ namespace LISy.Managers
             HttpHelper.MakePutRequest("librarian/edit_book", book);
         }
 
-        public static void AddInnerMaterial(InnerMaterial innerMaterial)
+        public static long AddInnerMaterial(InnerMaterial innerMaterial)
         {
-            HttpHelper.MakePostRequest("librarian/add_inner_material", innerMaterial);
+            return HttpHelper.MakePostRequest<long>("librarian/add_inner_material", innerMaterial);
         }
 
         public static void EditInnerMaterial(InnerMaterial innerMaterial)
@@ -50,9 +51,9 @@ namespace LISy.Managers
             HttpHelper.MakePutRequest("librarian/edit_inner_material", innerMaterial);
         }
 
-        public static void AddJournal(Journal journal)
+        public static long AddJournal(Journal journal)
         {
-            HttpHelper.MakePostRequest("librarian/add_journal", journal);
+            return HttpHelper.MakePostRequest<long>("librarian/add_journal", journal);
         }
 
         public static void EditJournal(Journal journal)
@@ -62,12 +63,12 @@ namespace LISy.Managers
 
         public static void ReturnDocument(long documentId, long userId)
         {
-            HttpHelper.MakePostRequest("librarian/return_document", new { documentId, userId });
+            HttpHelper.MakePutRequest("librarian/return_document", new { documentId, userId });
         }
         
         public static bool AddUser(User user, string login, string password)
         {
-            return HttpHelper.MakeGetRequest<bool>("librarian/add_user", new { user, login, password });
+            return HttpHelper.MakePostRequest<bool>("librarian/add_user", new { user, login, password });
         }
         
         public static void DeleteUser(User user)
@@ -156,22 +157,26 @@ namespace LISy.Managers
         
         public static User GetUserById(long userId)
         {
-            return HttpHelper.MakeGetRequest<User>("librarian/get_user", userId);
+            return HttpHelper.MakeGetRequest<User>("librarian/get_user", new Tuple<string, string>[] {
+                    new Tuple<string, string>("userId", Convert.ToString(userId))                    
+                });
         }
         
         public static Copy[] GetCheckedByUserCopiesList(long userId)
         {
-            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_copies_checked_by_user", userId).ToArray();
-        }
-        
-        public static long GetDocumentId(Document document)
-        {
-            return HttpHelper.MakeGetRequest<long>("librarian/get_document_id", document);
-        }
+            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_copies_checked_by_user",
+                new Tuple<string, string>[] {
+                    new Tuple<string, string>("userId", Convert.ToString(userId))                    
+                }).ToArray();
+        }        
         
         public static bool IsAvailable(long documentId, long patronId)
         {
-            return HttpHelper.MakeGetRequest<bool>("librarian/is_available", new { documentId, patronId });            
+            return HttpHelper.MakeGetRequest<bool>("librarian/is_available",
+                new Tuple<string, string>[] {
+                    new Tuple<string, string>("documentId", Convert.ToString(documentId)),
+                    new Tuple<string, string>("patronId", Convert.ToString(patronId))
+                });
         }
 
         public static void DeleteDocument(long id)

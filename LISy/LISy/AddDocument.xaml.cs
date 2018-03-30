@@ -450,11 +450,11 @@ namespace LISy
                 book_cover_URL_text_box.Text != null)
             {
                 Book book = new Book(InputFieldsManager.ReturnStringFromTextBox(author_of_book), InputFieldsManager.ReturnStringFromTextBox(title_of_book), InputFieldsManager.ReturnStringFromTextBox(publisher_of_book), InputFieldsManager.ReturnStringFromTextBox(edition_of_book), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(year_of_book)), is_best_seller, InputFieldsManager.ReturnStringFromTextBox(keywords_of_book), InputFieldsManager.ReturnStringFromTextBox(book_cover_URL_text_box), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(price_of_book)));
-                LibrarianDataManager.AddBook(book);
+                long bookId = LibrarianDataManager.AddBook(book);
 
                 Copy copy = new Copy();
                 int n = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(copy_of_book));
-                copy.DocumentID = LibrarianDataManager.GetDocumentId(book);
+                copy.DocumentID = bookId;
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(room_of_book));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(level_of_book));
                 LibrarianDataManager.AddCopies(n, copy);
@@ -477,11 +477,11 @@ namespace LISy
                 av_coverURL_text_box.Text != null)
             {
                 AVMaterial av_material = new AVMaterial(InputFieldsManager.ReturnStringFromTextBox(authors_av_text_box), InputFieldsManager.ReturnStringFromTextBox(av_title_text_box), InputFieldsManager.ReturnStringFromTextBox(av_key_words_text_box),InputFieldsManager.ReturnStringFromTextBox(av_coverURL_text_box), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_price_text_box)));
-                LibrarianDataManager.AddAVMaterial(av_material);
+                long avMaterialId= LibrarianDataManager.AddAVMaterial(av_material);
 
                 Copy copy = new Copy();
                 int n = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_copy_text_box));
-                copy.DocumentID = LibrarianDataManager.GetDocumentId(av_material);
+                copy.DocumentID = avMaterialId;
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_level_text_box));
                 LibrarianDataManager.AddCopies(n, copy);
@@ -506,17 +506,17 @@ namespace LISy
                 ja_copies_text_box.Text != null)
             {
                 Journal journal = new Journal(InputFieldsManager.ReturnStringFromTextBox(ja_editors_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_title_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_publisher_text_box), Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_issue_text_box)) , InputFieldsManager.ReturnStringFromTextBox(ja_PD_text_box), InputFieldsManager.ReturnStringFromTextBox(ja_keywords_text_box),InputFieldsManager.ReturnStringFromTextBox(ja_coverURL_text_box),Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_price_text_box)));
-                LibrarianDataManager.AddJournal(journal);
+                long journalId = LibrarianDataManager.AddJournal(journal);
 
                 Copy copy = new Copy();
                 int n = Convert.ToInt32(ja_copies_text_box.Text);
-                copy.DocumentID = LibrarianDataManager.GetDocumentId(journal);
+                copy.DocumentID = journalId;
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_level_text_box));
 
                 LibrarianDataManager.AddCopies(n, copy);
 
-                AddJournalArticlesToJournal addJournalArticlesToJournal = new AddJournalArticlesToJournal(LibrarianDataManager.GetDocumentId(journal),this);
+                AddJournalArticlesToJournal addJournalArticlesToJournal = new AddJournalArticlesToJournal(journalId, this);
                 addJournalArticlesToJournal.Owner = this;
                 addJournalArticlesToJournal.Show();
             }

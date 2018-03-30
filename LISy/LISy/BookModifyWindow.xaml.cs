@@ -52,9 +52,12 @@ namespace LISy
             book.KeyWords = keywords_of_book.Text;
             book.Price = Convert.ToInt32(price_of_book.Text);
             book.IsBestseller = best_seller_of_book.IsEnabled;
+
             LibrarianDataManager.EditBook(book);
+
             Copy copy = new Copy();
-            copy.DocumentID = LibrarianDataManager.GetDocumentId(book);
+            copy.DocumentID = book.Id;
+
             if (room_of_book.Text != "" &&
                 level_of_book.Text != "" &&
                 copy_of_book.Text != "")
