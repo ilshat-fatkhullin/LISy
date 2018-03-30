@@ -28,21 +28,13 @@ namespace LISy.Managers
                 new Tuple<string, string>[] {
                     new Tuple<string, string>("userId", Convert.ToString (userId))
                 });
-        }
-        
-        public static long AddUserCredentials(string login, string password)
-        {
-            return HttpHelper.MakePostRequest<long>("credentials/add_user_credentials", new { login, password });
-        }
-        
-        public static void DeleteUserCredentials(long userId)
-        {
-            HttpHelper.MakeDeleteRequest("credentials/delete_user_credentials", new { userId });
-        }
+        }        
         
         public static void EditUserCredentials(long userId, string password)
         {
-            HttpHelper.MakePutRequest("credentials/edit_user_credentials", new { userId, password });
+            HttpHelper.MakePutRequest("credentials/edit_user_credentials", new {
+                UserId = userId,
+                Password = password });
         }
         
         public static User GetUserById(long userId)

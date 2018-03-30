@@ -38,30 +38,36 @@ namespace LISy
                 string password = InputFieldsManager.ReturnPasswordFromTextBox(passwordBox_registration);
                 string login = firstName.Substring(0, 1) + '.' + secondName;
 
-                Patron patron = null;
+                bool IsNewUserAdded = false;
+
                 if (professor_type.IsChecked == true)
                 {
-                    patron = new Faculty(firstName, secondName, phone, address, Faculty.PROFESSOR_SUBTYPE);
+                    IsNewUserAdded = LibrarianDataManager.AddFaculty(
+                        new Faculty(firstName, secondName, phone, address, Faculty.PROFESSOR_SUBTYPE), login, password);
                 }
                 else if (VP_professor_type.IsChecked == true)
                 {
-                    patron = new Guest(firstName, secondName, phone, address);
+                    IsNewUserAdded = LibrarianDataManager.AddGuest(
+                        new Guest(firstName, secondName, phone, address), login, password);
                 }
                 else if (TA_type.IsChecked == true)
                 {
-                    patron = new Faculty(firstName, secondName, phone, address, Faculty.TA_SUBTYPE);
+                    IsNewUserAdded = LibrarianDataManager.AddFaculty(
+                        new Faculty(firstName, secondName, phone, address, Faculty.TA_SUBTYPE), login, password);
                 }
                 else if (instructor_type.IsChecked == true)
                 {
-                    patron = new Faculty(firstName,secondName,phone,address, Faculty.INSTRUCTOR_SUBTYPE);
+                    IsNewUserAdded = LibrarianDataManager.AddFaculty(
+                        new Faculty(firstName, secondName, phone, address, Faculty.INSTRUCTOR_SUBTYPE), login, password);
                 }
                 else if (student_type.IsChecked == true)
                 {
-                    patron = new Student(firstName, secondName, phone, address);
+                    IsNewUserAdded = LibrarianDataManager.AddStudent(
+                        new Student(firstName, secondName, phone, address), login, password);                    
                 }                
 
                 //if all checks good so open window                
-                if (LibrarianDataManager.AddUser(patron, login, password))
+                if (IsNewUserAdded)
                 {                    
                     WorkWindow workWindow = new WorkWindow(CredentialsManager.GetUserById(CredentialsManager.Authorize(login, password)) as Patron);
                     GoToWork(workWindow);

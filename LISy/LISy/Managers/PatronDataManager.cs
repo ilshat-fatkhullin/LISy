@@ -6,7 +6,9 @@ namespace LISy.Managers
     {
         public static void CheckOutDocument(long documentId, long userId)
         {
-            HttpHelper.MakePutRequest("patron/check_out", new { documentId, userId });            
+            HttpHelper.MakePutRequest("patron/check_out", new {
+                DocumentId = documentId,
+                UserId = userId });
         }
     }
 }

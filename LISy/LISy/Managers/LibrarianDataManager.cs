@@ -1,6 +1,7 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
-using RestSharp;
+using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
 using System;
 using System.Collections.Generic;
 
@@ -16,19 +17,9 @@ namespace LISy.Managers
             return HttpHelper.MakePostRequest<long>("librarian/add_article", article);
         }
 
-        public static void EditArticle(Article article)
-        {
-            HttpHelper.MakePutRequest("librarian/edit_article", article);
-        }
-
         public static long AddAVMaterial(AVMaterial avMaterial)
         {
             return HttpHelper.MakePostRequest<long>("librarian/add_av_material", avMaterial);
-        }
-
-        public static void EditAVMaterial(AVMaterial avMaterial)
-        {
-            HttpHelper.MakePutRequest("librarian/edit_av_material", avMaterial);
         }
 
         public static long AddBook(Book book)
@@ -36,25 +27,35 @@ namespace LISy.Managers
             return HttpHelper.MakePostRequest<long>("librarian/add_book", book);
         }
 
-        public static void EditBook(Book book)
-        {
-            HttpHelper.MakePutRequest("librarian/edit_book", book);
-        }
-
         public static long AddInnerMaterial(InnerMaterial innerMaterial)
         {
             return HttpHelper.MakePostRequest<long>("librarian/add_inner_material", innerMaterial);
-        }
-
-        public static void EditInnerMaterial(InnerMaterial innerMaterial)
-        {
-            HttpHelper.MakePutRequest("librarian/edit_inner_material", innerMaterial);
         }
 
         public static long AddJournal(Journal journal)
         {
             return HttpHelper.MakePostRequest<long>("librarian/add_journal", journal);
         }
+
+        public static void EditArticle(Article article)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_article", article);
+        }        
+
+        public static void EditAVMaterial(AVMaterial avMaterial)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_av_material", avMaterial);
+        }        
+
+        public static void EditBook(Book book)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_book", book);
+        }        
+
+        public static void EditInnerMaterial(InnerMaterial innerMaterial)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_inner_material", innerMaterial);
+        }        
 
         public static void EditJournal(Journal journal)
         {
@@ -63,27 +64,80 @@ namespace LISy.Managers
 
         public static void ReturnDocument(long documentId, long userId)
         {
-            HttpHelper.MakePutRequest("librarian/return_document", new { documentId, userId });
+            HttpHelper.MakePutRequest("librarian/return_document", new {
+                DocumentId = documentId,
+                UserId = userId });
         }
         
-        public static bool AddUser(User user, string login, string password)
+        public static bool AddLibrarian(Librarian librarian, string login, string password)
         {
-            return HttpHelper.MakePostRequest<bool>("librarian/add_user", new { user, login, password });
+            return HttpHelper.MakePostRequest<bool>("librarian/add_librarian", new {
+                Librarian = librarian,
+                Login = login,
+                Password = password });
         }
-        
-        public static void DeleteUser(User user)
+
+        public static bool AddFaculty(Faculty faculty, string login, string password)
         {
-            HttpHelper.MakeDeleteRequest("librarian/add_user", user);
+            return HttpHelper.MakePostRequest<bool>("librarian/add_faculty", new
+            {
+                Faculty = faculty,
+                Login = login,
+                Password = password
+            });
         }
-        
-        public static void EditUser(User newUser)
+
+        public static bool AddStudent(Student student, string login, string password)
         {
-            HttpHelper.MakePutRequest("librarian/edit_user", newUser);
+            return HttpHelper.MakePostRequest<bool>("librarian/add_student", new
+            {
+                Student = student,
+                Login = login,
+                Password = password
+            });
         }
+
+        public static bool AddGuest(Guest guest, string login, string password)
+        {
+            return HttpHelper.MakePostRequest<bool>("librarian/add_guest", new
+            {
+                Guest = guest,
+                Login = login,
+                Password = password
+            });
+        }
+
+        public static void EditLibrarian(Librarian librarian)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_librarian", librarian);
+        }
+
+        public static void EditFaculty(Faculty faculty)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_faculty", faculty);
+        }
+
+        public static void EditStudent(Student student)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_student", student);
+        }
+
+        public static void EditGuest(Guest guest)
+        {
+            HttpHelper.MakePutRequest("librarian/edit_guest", guest);
+        }
+
+        public static void DeleteUser(long userId)
+        {
+            HttpHelper.MakeDeleteRequest("librarian/delete_user", new {
+                UserId = userId });
+        }                
         
         public static void AddCopies(int n, Copy copy)
         {
-            HttpHelper.MakePostRequest("librarian/add_copies", new { n, copy });
+            HttpHelper.MakePostRequest("librarian/add_copies", new {
+                N = n,
+                Copy = copy });
         }
         
         public static void DeleteCopy(Copy copy)

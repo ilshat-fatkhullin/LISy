@@ -49,7 +49,7 @@ namespace LISyTest.Integrated
             LibrarianDataManager.DeleteCopyByDocId(new Copy(3, 1, 3));
             Student student = new Student("StudentName", "StudentSurname", "80000000000", "Address")
                 { CardNumber = 3};
-            LibrarianDataManager.DeleteUser(student);
+            LibrarianDataManager.DeleteUser(student.CardNumber);
 
             int n = LibrarianDataManager.GetNumberOfCopies();
             int s = LibrarianDataManager.GetNumberOfUsers();

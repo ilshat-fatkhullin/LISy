@@ -75,30 +75,31 @@ namespace LISy
                                  InputFieldsManager.ReturnStringFromTextBox(flat_of_new_user) + ' ';
                 string password = InputFieldsManager.ReturnPasswordFromTextBox(user_new_password);
                 string login = firstName.Substring(0, 1) + '.' + secondName;
-
-                User user = null;
+                
+                bool IsNewUserAdded = false;
                 if (faculty_check.IsChecked == true)
                 {
-                    user = new Faculty(firstName, secondName, phone, address, "");
+                    IsNewUserAdded = LibrarianDataManager.AddFaculty(
+                        new Faculty(firstName, secondName, phone, address, ""), login, password);
                 }
                 else if (check_box_for_lib.IsChecked == true)
                 {
-                     user = new Librarian(firstName,secondName,phone,address);
-                
+                    IsNewUserAdded = LibrarianDataManager.AddLibrarian(
+                        new Librarian(firstName, secondName, phone, address), login, password);                
                 }
                 else
                 {
-                    user = new Student(firstName, secondName, phone, address);
+                    IsNewUserAdded = LibrarianDataManager.AddStudent(
+                        new Student(firstName, secondName, phone, address), login, password);                    
                 }
 
                 //if all checks good so open window                
-                if (LibrarianDataManager.AddUser(user, login, password))
+                if (IsNewUserAdded)
                 {
                     using (StreamWriter writer = new StreamWriter("id.txt"))
                     {
                         writer.Write(CredentialsManager.Authorize(login, password));
                     }
-
                 }
                 else
                 {

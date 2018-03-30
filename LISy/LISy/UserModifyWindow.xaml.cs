@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LISy.Entities;
+using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
 
@@ -37,13 +38,27 @@ namespace LISy
 			FacultyCheckBox.IsEnabled = user.Type == Faculty.TYPE;
 		}
 
-		private void Enter_Click(object sender, RoutedEventArgs e)
-		{
-			user.FirstName = FirstName.Text;
-			user.SecondName = SecondName.Text;
-			user.Phone = Phone.Text;
-			user.Address = Address.Text;
-			LibrarianDataManager.EditUser(user);
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            user.FirstName = FirstName.Text;
+            user.SecondName = SecondName.Text;
+            user.Phone = Phone.Text;
+            user.Address = Address.Text;
+            switch (user.Type)
+            {
+                case "Librarian":
+                    LibrarianDataManager.EditLibrarian(user as Librarian);
+                    break;
+                case "Faculty":
+                    LibrarianDataManager.EditFaculty(user as Faculty);
+                    break;
+                case "Student":
+                    LibrarianDataManager.EditStudent(user as Student);
+                    break;
+                case "Guest":
+                    LibrarianDataManager.EditGuest(user as Guest);
+                    break;
+            }
 			workWindow.UpdateUsersDataGrid();
 			this.Close();
 		}
@@ -75,7 +90,7 @@ namespace LISy
 
 		private void Delete_Click(object sender, RoutedEventArgs e)
 		{
-			LibrarianDataManager.DeleteUser(user);
+			LibrarianDataManager.DeleteUser(user.CardNumber);
 			workWindow.UpdateUsersDataGrid();
 			this.Close();
 		}
