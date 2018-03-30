@@ -25,13 +25,13 @@ namespace LISyTest.Integrated
         {
             LibrarianDataManager.ClearAll();
 
-            LibrarianDataManager.AddUser(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
                 "librarian_1", "12345");
-            LibrarianDataManager.AddUser(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address", ""),
+            LibrarianDataManager.AddFaculty(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address", ""),
                 "patron_1", "12345");
-            LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddStudent(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_2", "12345");
-            LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddStudent(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_3", "12345");
 
             LibrarianDataManager.AddBook(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));
