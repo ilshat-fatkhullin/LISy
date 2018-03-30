@@ -107,7 +107,7 @@ namespace LISy
             if (copy == null)
                 return;
 
-            ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentID, copy.PatronID, this);
+            ModifyChekedOutCopies window = new ModifyChekedOutCopies(copy.DocumentId, copy.PatronId, this);
             window.Owner = this;
             window.Show();
         }

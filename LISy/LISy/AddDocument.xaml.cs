@@ -454,7 +454,7 @@ namespace LISy
 
                 Copy copy = new Copy();
                 int n = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(copy_of_book));
-                copy.DocumentID = bookId;
+                copy.DocumentId = bookId;
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(room_of_book));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(level_of_book));
                 LibrarianDataManager.AddCopies(n, copy);
@@ -481,7 +481,7 @@ namespace LISy
 
                 Copy copy = new Copy();
                 int n = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_copy_text_box));
-                copy.DocumentID = avMaterialId;
+                copy.DocumentId = avMaterialId;
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_level_text_box));
                 LibrarianDataManager.AddCopies(n, copy);
@@ -510,7 +510,7 @@ namespace LISy
 
                 Copy copy = new Copy();
                 int n = Convert.ToInt32(ja_copies_text_box.Text);
-                copy.DocumentID = journalId;
+                copy.DocumentId = journalId;
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(ja_level_text_box));
 

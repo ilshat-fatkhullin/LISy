@@ -95,7 +95,7 @@ namespace LISyTest.Integrated
             PatronDataManager.CheckOutDocument(1, 3);
             foreach (var copy in LibrarianDataManager.GetAllCopiesList())
             {
-                if (copy.DocumentID == 1 && copy.PatronID == 3)
+                if (copy.DocumentId == 1 && copy.PatronId == 3)
                     Assert.Fail();
             }
         }
@@ -116,7 +116,7 @@ namespace LISyTest.Integrated
             Assert.AreEqual(faculty.Type, "Faculty");
             Assert.AreEqual(faculty.Address, "ViaMargutta, 3");
             Copy copy = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber)[0];
-            Assert.AreEqual(copy.DocumentID, 1);
+            Assert.AreEqual(copy.DocumentId, 1);
 
             faculty = LibrarianDataManager.GetUserById(4);
             Assert.AreEqual(faculty.FirstName, "Elvira");
@@ -126,7 +126,7 @@ namespace LISyTest.Integrated
             Assert.AreEqual(faculty.Address, "Via del Corso, 22");
             Copy[] copies = LibrarianDataManager.GetAllCopiesList();
             copy = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber)[0];
-            Assert.AreEqual(copy.DocumentID, 2);
+            Assert.AreEqual(copy.DocumentId, 2);
         }
 
         [TestMethod]
@@ -151,11 +151,11 @@ namespace LISyTest.Integrated
             Assert.AreEqual(faculty.Address, "ViaMargutta, 3");
             Copy[] copies = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber);
             int c = 0;
-            if (copies.Any(copy => copy.DocumentID == 1))
+            if (copies.Any(copy => copy.DocumentId == 1))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 2))
+            if (copies.Any(copy => copy.DocumentId == 2))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 4))            
+            if (copies.Any(copy => copy.DocumentId == 4))            
                 c++;            
             Assert.AreEqual(c, 3);
 
@@ -167,11 +167,11 @@ namespace LISyTest.Integrated
             Assert.AreEqual(faculty.Address, "Via Sacra, 13");
             copies = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber);
             c = 0;
-            if (copies.Any(copy => copy.DocumentID == 1))
+            if (copies.Any(copy => copy.DocumentId == 1))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 2))
+            if (copies.Any(copy => copy.DocumentId == 2))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 5))
+            if (copies.Any(copy => copy.DocumentId == 5))
                 c++;
             Assert.AreEqual(c, 3);
         }
@@ -194,9 +194,9 @@ namespace LISyTest.Integrated
         public void TestCase9()
         {
             TestCase1();            
-            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentID == 1), 3);
-            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentID == 2), 2);
-            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentID == 3), 1);
+            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 1), 3);
+            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 2), 2);
+            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 3), 1);
             Assert.AreEqual(LibrarianDataManager.GetAllAVMaterialsList().Length, 2);
             Assert.AreEqual(LibrarianDataManager.GetAllUsersList().Count(user => user.Type != "Librarian"), 3);
         }

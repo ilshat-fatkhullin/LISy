@@ -73,7 +73,7 @@ namespace LISy
             LibrarianDataManager.EditAVMaterial(av);
 
             Copy copy = new Copy();
-            copy.DocumentID = av.Id;
+            copy.DocumentId = av.Id;
 
             if (av_room_text_box.Text != "" &&
                 av_level_text_box.Text != "" &&
