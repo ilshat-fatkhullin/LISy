@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LISy.Entities.Users;
+using LISy.Entities.Users.Patrons;
+using LISy.Managers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using LISy.Managers;
-using LISy.Entities.Users;
-using LISy.Entities.Users.Patrons;
-using System.IO;
 
 namespace LISy
 {
@@ -50,7 +38,7 @@ namespace LISy
                 string password = InputFieldsManager.ReturnPasswordFromTextBox(passwordBox_registration);
                 string login = firstName.Substring(0, 1) + '.' + secondName;
 
-                IPatron patron = null;
+                Patron patron = null;
                 if (professor_type.IsChecked == true)
                 {
                     patron = new Faculty(firstName, secondName, phone, address, Faculty.PROFESSOR_SUBTYPE);
@@ -75,7 +63,7 @@ namespace LISy
                 //if all checks good so open window                
                 if (LibrarianDataManager.AddUser(patron, login, password))
                 {                    
-                    WorkWindow workWindow = new WorkWindow(CredentialsManager.GetUserByID(CredentialsManager.Authorize(login, password)) as IPatron);
+                    WorkWindow workWindow = new WorkWindow(CredentialsManager.GetUserById(CredentialsManager.Authorize(login, password)) as Patron);
                     GoToWork(workWindow);
                 }
                 else

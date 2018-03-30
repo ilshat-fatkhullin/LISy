@@ -43,7 +43,7 @@ namespace LISy
                 journalArticle.Title = InputFieldsManager.ReturnStringFromTextBox(article_title_text_box);
                 journalArticle.CoverURL = InputFieldsManager.ReturnStringFromTextBox(article_coverURL_text_box);
                 journalArticle.KeyWords = InputFieldsManager.ReturnStringFromTextBox(article_keywords_text_box);
-                LibrarianDataManager.AddDocument(journalArticle);
+                LibrarianDataManager.AddArticle(journalArticle);
             }
             article_title_text_box.Clear();
             article_keywords_text_box.Clear();

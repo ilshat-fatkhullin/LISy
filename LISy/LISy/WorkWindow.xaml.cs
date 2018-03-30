@@ -16,12 +16,12 @@ namespace LISy
     /// </summary>
     public partial class WorkWindow : Window
     {
-        private IPatron patron;
+        private Patron patron;
 
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
-        public WorkWindow(IPatron patron)
+        public WorkWindow(Patron patron)
         {
             InitializeComponent();
             this.patron = patron;

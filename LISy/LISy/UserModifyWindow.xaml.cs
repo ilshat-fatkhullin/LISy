@@ -22,10 +22,10 @@ namespace LISy
 	/// </summary>
 	public partial class UserModifyWindow : Window
 	{
-		private IUser user;
+		private User user;
 		private LibrarianWorkWindow workWindow;
 
-		public UserModifyWindow(IUser user, LibrarianWorkWindow workWindow)
+		public UserModifyWindow(User user, LibrarianWorkWindow workWindow)
 		{
 			InitializeComponent();
 			this.user = user;

@@ -65,9 +65,9 @@ namespace LISy.Managers
             HttpHelper.MakePostRequest("librarian/return_document", new { documentId, userId });
         }
         
-        public static void AddUser(User user, string login, string password)
+        public static bool AddUser(User user, string login, string password)
         {
-            HttpHelper.MakePostRequest("librarian/add_user", new { user, login, password });
+            return HttpHelper.MakeGetRequest<bool>("librarian/add_user", new { user, login, password });
         }
         
         public static void DeleteUser(User user)
@@ -162,6 +162,21 @@ namespace LISy.Managers
         public static Copy[] GetCheckedByUserCopiesList(long userId)
         {
             return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_copies_checked_by_user", userId).ToArray();
+        }
+        
+        public static long GetDocumentId(Document document)
+        {
+            return HttpHelper.MakeGetRequest<long>("librarian/get_document_id", document);
+        }
+        
+        public static bool IsAvailable(long documentId, long patronId)
+        {
+            return HttpHelper.MakeGetRequest<bool>("librarian/is_available", new { documentId, patronId });            
+        }
+
+        public static void DeleteDocument(long id)
+        {
+            HttpHelper.MakeDeleteRequest("librarian/delete_document", new { id });
         }
     }
 }

@@ -23,8 +23,9 @@ namespace LISy
     /// </summary>
     public partial class LibrarianWorkWindow : Window
     {
-        private IUser patron;
-        public LibrarianWorkWindow(IUser patron)
+        private User patron;
+
+        public LibrarianWorkWindow(User patron)
         {
             InitializeComponent();
             this.patron = patron;
@@ -65,7 +66,7 @@ namespace LISy
 
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            IUser user = DataGridInfoUser.SelectedItem as IUser;
+            User user = DataGridInfoUser.SelectedItem as User;
             if (user == null)
                 return;
 
@@ -158,9 +159,9 @@ namespace LISy
         }
         public void UpdateUsersDataGrid()
         {
-            List<IUser> result = new List<IUser>();
+            List<User> result = new List<User>();
             result.Clear();
-            foreach (IUser user in LibrarianDataManager.GetAllUsersList())
+            foreach (User user in LibrarianDataManager.GetAllUsersList())
             {
                 result.Add(user);
             }

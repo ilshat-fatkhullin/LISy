@@ -1,19 +1,8 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Users;
-using LISy.Managers.DataManagers;
-using System;
+using LISy.Managers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -22,14 +11,14 @@ namespace LISy
     /// </summary>
     public partial class BookingHistory : Window
     {
-        private IPatron patron;
-        public BookingHistory(IPatron patron)
+        private Patron patron;
+        public BookingHistory(Patron patron)
         {
             InitializeComponent();
             GetAllAboutUser(patron);
             this.patron = patron;
         }
-        public void GetAllAboutUser(IPatron patron)
+        public void GetAllAboutUser(Patron patron)
         {
             name_patron.Content = patron.FirstName;
             id_patron.Content = patron.CardNumber;
@@ -40,7 +29,7 @@ namespace LISy
         {
             List<Copy> result = new List<Copy>();
             result.Clear();
-            foreach (Copy doc in DocumentsDataManager.GetCheckedByUserCopiesList(patron.CardNumber))
+            foreach (Copy doc in LibrarianDataManager.GetCheckedByUserCopiesList(patron.CardNumber))
             {
                 result.Add(doc);
             }

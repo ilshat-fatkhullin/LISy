@@ -2,21 +2,9 @@
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
-using LISy.Managers.DataManagers;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -88,7 +76,7 @@ namespace LISy
                 string password = InputFieldsManager.ReturnPasswordFromTextBox(user_new_password);
                 string login = firstName.Substring(0, 1) + '.' + secondName;
 
-                IUser user = null;
+                User user = null;
                 if (faculty_check.IsChecked == true)
                 {
                     user = new Faculty(firstName, secondName, phone, address, "");

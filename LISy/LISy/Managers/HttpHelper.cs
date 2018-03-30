@@ -4,7 +4,8 @@ namespace LISy.Managers
 {
     public static class HttpHelper
     {
-        private const string MAIN_URL = "http://lisyrest.azurewebsites.net/api/";
+        //private const string MAIN_URL = "http://lisyrest.azurewebsites.net/api/";
+        private const string MAIN_URL = "http://localhost:53725/api/";        
 
         public static void MakePostRequest(string requestURL, object data)
         {
@@ -40,6 +41,15 @@ namespace LISy.Managers
             if (data != null)
                 request.AddJsonBody(data);
             return client.Execute<T>(request).Data;
+        }
+
+        public static string MakeGetRequest(string requestURL, object data)
+        {
+            RestClient client = new RestClient(MAIN_URL + requestURL);
+            var request = new RestRequest(Method.GET);
+            if (data != null)
+                request.AddJsonBody(data);
+            return client.Execute(request).Content;
         }
     }
 }
