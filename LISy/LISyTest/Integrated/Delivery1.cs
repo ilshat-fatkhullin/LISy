@@ -1,11 +1,10 @@
-﻿using System;
-using LISy.Entities;
+﻿using LISy.Entities;
 using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
-using LISy.Managers.DataManagers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace LISyTest.Integrated
 {
@@ -24,7 +23,7 @@ namespace LISyTest.Integrated
 
         public void Initialize()
         {
-            DatabaseDataManager.ClearAll();
+            LibrarianDataManager.ClearAll();
 
             LibrarianDataManager.AddUser(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
                 "librarian_1", "12345");
@@ -35,11 +34,11 @@ namespace LISyTest.Integrated
             LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_3", "12345");
 
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));            
-            LibrarianDataManager.AddCopy(1, new Copy(1, 1, 1));
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_2", "Publisher", "Edition", 2018, true, "Keys", "", 50));
-            LibrarianDataManager.AddCopy(2, new Copy(2, 1, 1));
-            LibrarianDataManager.AddDocument(new InnerMaterial("Authors", "Book_3", "Book", "Keys", 1, 1, "https://"));            
+            LibrarianDataManager.AddBook(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));
+            LibrarianDataManager.AddCopies(1, new Copy(1, 1, 1));
+            LibrarianDataManager.AddBook(new Book("Authors", "Book_2", "Publisher", "Edition", 2018, true, "Keys", "", 50));
+            LibrarianDataManager.AddCopies(2, new Copy(2, 1, 1));
+            LibrarianDataManager.AddInnerMaterial(new InnerMaterial("Authors", "Book_3", "Book", "Keys", 1, 1, "https://"));            
         }
 
         /// <summary>
