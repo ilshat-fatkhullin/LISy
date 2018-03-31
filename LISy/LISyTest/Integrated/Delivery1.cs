@@ -59,7 +59,7 @@ namespace LISyTest.Integrated
                 if (c.PatronId == PATRON_1_ID && c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID)
                 {
                     flag = true;
-                    break;                    
+                    break;          
                 }
             }
 

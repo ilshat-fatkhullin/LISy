@@ -140,14 +140,9 @@ namespace LISy.Managers
                 Copy = copy });
         }
         
-        public static void DeleteCopy(Copy copy)
+        public static void DeleteCopy(long id)
         {
-            HttpHelper.MakeDeleteRequest("librarian/delete_copies", copy);
-        }
-        
-        public static void DeleteCopyByDocId(Copy copy)
-        {
-            HttpHelper.MakeDeleteRequest("librarian/delete_copy_by_id", copy);
+            HttpHelper.MakeDeleteRequest("librarian/delete_copies", new { Id = id });
         }
         
         public static Copy[] GetAllCopiesList()

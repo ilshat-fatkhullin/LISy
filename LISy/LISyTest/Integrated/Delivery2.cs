@@ -5,6 +5,7 @@ using LISy.Entities.Users.Patrons;
 using LISy.Managers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LISyTest.Integrated
@@ -44,9 +45,15 @@ namespace LISyTest.Integrated
         public void TestCase2()
         {
             TestCase1();
-            LibrarianDataManager.DeleteCopyByDocId(new Copy(1, 1, 1));
-            LibrarianDataManager.DeleteCopyByDocId(new Copy(1, 1, 1));
-            LibrarianDataManager.DeleteCopyByDocId(new Copy(3, 1, 3));
+            List<Copy> copies = LibrarianDataManager.GetAllCopiesList().ToList();
+            Copy copy = copies.Where(c => c.DocumentId == 1 && c.Room == 1 && c.Level == 1).First();
+            LibrarianDataManager.DeleteCopy(copy.Id);
+            copies.Remove(copy);
+            copy = copies.Where(c => c.DocumentId == 1 && c.Room == 1 && c.Level == 1).First();            
+            LibrarianDataManager.DeleteCopy(copy.Id);
+            copies.Remove(copy);
+            copy = copies.Where(c => c.DocumentId == 3 && c.Room == 1 && c.Level == 3).First();
+            LibrarianDataManager.DeleteCopy(copy.Id);
             Student student = new Student("StudentName", "StudentSurname", "80000000000", "Address")
                 { CardNumber = 3};
             LibrarianDataManager.DeleteUser(student.CardNumber);
