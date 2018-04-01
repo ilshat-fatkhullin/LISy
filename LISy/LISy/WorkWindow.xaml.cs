@@ -17,7 +17,7 @@ namespace LISy
     public partial class WorkWindow : Window
     {
         private Patron patron;
-
+       
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
@@ -51,7 +51,9 @@ namespace LISy
 
         private void button_Info_Click(object sender, RoutedEventArgs e)
         {
-
+            InfoAndNotificationsWindow infoAndNotificationsWindow = new InfoAndNotificationsWindow(patron,this);
+            infoAndNotificationsWindow.Owner = this;
+            infoAndNotificationsWindow.Show();
         }
         /// <summary>
         /// loader to table grid book

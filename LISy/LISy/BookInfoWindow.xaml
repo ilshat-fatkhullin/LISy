@@ -10,12 +10,15 @@
         <ImageBrush ImageSource="Design/bookss.jpg"/>
     </Window.Background>
     <Grid Background="#66000000" Margin="0,0,0,-3">
-        <Button x:Name="BookButton" Content="Check out" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_book_Click"/>
+        <Button x:Name="BookButton" Content="Check out" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="15" Click="button_book_Click"/>
         <Label x:Name="TitleLabel" Content="" Margin="115,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.ColumnSpan="2"/>
         <Label x:Name="Authors" Content="" Margin="115,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.ColumnSpan="2"/>
-        <Label x:Name="BestSellerLabel" Content="" Margin="0,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.Column="1"/>
-        <Label x:Name="InStockLabel" Content="" Margin="0,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.Column="1"/>
-        <Label x:Name="ReturnDataLabel" Content="" HorizontalAlignment="Left" Margin="0,148,0,0" VerticalAlignment="Top" Width="393" Foreground="White" Height="30" FontSize="16" Grid.Column="1" />
+        <Label x:Name="BestSellerLabel" Content="" Margin="115,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393"/>
+        <Label x:Name="InStockLabel" Content="" Margin="115,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393"/>
+        <Label x:Name="ReturnDataLabel" Content="" HorizontalAlignment="Left" Margin="115,145,0,0" VerticalAlignment="Top" Width="176" Foreground="White" Height="30" FontSize="16" />
         <Image x:Name="imagesourse" HorizontalAlignment="Left" Height="133" Margin="10,10,0,0" VerticalAlignment="Top" Width="97"/>
+        <Button x:Name="GoToQueue" Content="Go to queue" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="97" Height="30" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="GoToQueue_Click"/>
+        <Label x:Name="FineLabel" Content="Fine:" HorizontalAlignment="Left" Margin="296,145,0,0" VerticalAlignment="Top" Width="50" Height="30" Foreground="White" FontSize="14" Visibility="Hidden"/>
+        <Label x:Name="finePriceLabel" Content="" HorizontalAlignment="Left" Margin="351,145,0,0" VerticalAlignment="Top" Width="157" Height="30" FontSize="14" Foreground="White" Visibility="Hidden"/>
     </Grid>
 </Window>

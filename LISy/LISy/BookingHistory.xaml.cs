@@ -35,5 +35,17 @@ namespace LISy
             }
             check_out_doc.ItemsSource = result;
         }
+
+        private void check_out_doc_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+            Copy copy = check_out_doc.SelectedItem as Copy;
+            if (copy == null)
+                return;
+
+            MakeRenew window = new MakeRenew(copy.DocumentId, copy.PatronId, this);
+            window.Owner = this;
+            window.Show();
+        }
     }
 }
