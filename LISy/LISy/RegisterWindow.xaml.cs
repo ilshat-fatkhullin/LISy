@@ -69,7 +69,7 @@ namespace LISy
                 //if all checks good so open window                
                 if (IsNewUserAdded)
                 {                    
-                    WorkWindow workWindow = new WorkWindow(CredentialsManager.GetUserById(CredentialsManager.Authorize(login, password)) as Patron);
+                    WorkWindow workWindow = new WorkWindow(CredentialsManager.Authorize(login, password));
                     GoToWork(workWindow);
                 }
                 else

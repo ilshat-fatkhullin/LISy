@@ -269,7 +269,6 @@
     <Compile Include="Entities\Documents\InnerMaterial.cs" />
     <Compile Include="Entities\Documents\Journal.cs" />
     <Compile Include="Entities\Documents\Takable.cs" />
-    <Compile Include="Entities\IDocument.cs" />
     <Compile Include="Entities\Users\Librarian.cs" />
     <Compile Include="Entities\Users\Patron.cs" />
     <Compile Include="Entities\User.cs" />

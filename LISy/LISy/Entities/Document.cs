@@ -9,7 +9,7 @@ namespace LISy.Entities
     /// <summary>
     /// Represents the implementatin of common properties of library documents.
     /// </summary>
-    public abstract class Document : IDocument
+    public class Document
     {
         #region MAIN_INFO
 

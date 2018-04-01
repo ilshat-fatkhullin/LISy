@@ -131,8 +131,22 @@ namespace LISy.Managers
         {
             HttpHelper.MakeDeleteRequest("librarian/delete_user", new {
                 UserId = userId });
-        }                
-        
+        }
+
+        public static User GetUserById(long userId)
+        {
+            return HttpHelper.MakeGetRequest<User>("librarian/get_user", new Tuple<string, string>[] {
+                    new Tuple<string, string>("userId", Convert.ToString(userId))
+                });
+        }
+
+        public static Patron GetPatronById(long patronId)
+        {
+            return HttpHelper.MakeGetRequest<Patron>("librarian/get_patron", new Tuple<string, string>[] {
+                    new Tuple<string, string>("patronId", Convert.ToString(patronId))
+                });
+        }
+
         public static void AddCopies(int n, Copy copy)
         {
             HttpHelper.MakePostRequest("librarian/add_copies", new {
@@ -147,7 +161,10 @@ namespace LISy.Managers
         
         public static Copy[] GetAllCopiesList()
         {
-            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_all_copies", null).ToArray();  
+            var output = HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_all_copies", null);
+            if (output == null)
+                return new Copy[] { };
+            return output.ToArray();
         }
         
         public static void ClearAll()
@@ -157,22 +174,34 @@ namespace LISy.Managers
         
         public static Copy[] GetCheckedCopiesList()
         {
-            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_checked_copies", null).ToArray();
+            var output = HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_checked_copies", null);
+            if (output == null)
+                return new Copy[] { };
+            return output.ToArray();
         }
         
         public static User[] GetAllUsersList()
         {
-            return HttpHelper.MakeGetRequest<List<User>>("librarian/get_all_users", null).ToArray();
+            var output = HttpHelper.MakeGetRequest<List<User>>("librarian/get_all_users", null);
+            if (output == null)
+                return new User[] { };
+            return output.ToArray();
         }
         
         public static AVMaterial[] GetAllAVMaterialsList()
         {
-            return HttpHelper.MakeGetRequest<List<AVMaterial>>("librarian/get_all_av_materials", null).ToArray();
+            var output = HttpHelper.MakeGetRequest<List<AVMaterial>>("librarian/get_all_av_materials", null);
+            if (output == null)
+                return new AVMaterial[] { };
+            return output.ToArray();
         }
         
         public static Book[] GetAllBooksList()
-        {
-            return HttpHelper.MakeGetRequest<List<Book>>("librarian/get_all_books", null).ToArray();
+        {           
+            var output = HttpHelper.MakeGetRequest<List<Book>>("librarian/get_all_books", null);
+            if (output == null)
+                return new Book[] { };
+            return output.ToArray();
         }
         
         public static int GetNumberOfDocuments()
@@ -192,31 +221,37 @@ namespace LISy.Managers
         
         public static InnerMaterial[] GetAllInnerMaterialsList()
         {
-            return HttpHelper.MakeGetRequest<List<InnerMaterial>>("librarian/get_all_inner_materials", null).ToArray();
+            var output = HttpHelper.MakeGetRequest<List<InnerMaterial>>("librarian/get_all_inner_materials", null);
+            if (output == null)
+                return new InnerMaterial[] { };
+            return output.ToArray();
         }
         
         public static Journal[] GetAllJournalsList()
         {
-            return HttpHelper.MakeGetRequest<List<Journal>>("librarian/get_all_journals", null).ToArray();
+            var output = HttpHelper.MakeGetRequest<List<Journal>>("librarian/get_all_journals", null);
+            if (output == null)
+                return new Journal[] { };
+            return output.ToArray();
         }
+
         public static Article[] GetAllArticlesList()
         {
-            return HttpHelper.MakeGetRequest<List<Article>>("librarian/get_all_articles", null).ToArray();
-        }
-        
-        public static User GetUserById(long userId)
-        {
-            return HttpHelper.MakeGetRequest<User>("librarian/get_user", new Tuple<string, string>[] {
-                    new Tuple<string, string>("userId", Convert.ToString(userId))                    
-                });
-        }
+            var output = HttpHelper.MakeGetRequest<List<Article>>("librarian/get_all_articles", null);
+            if (output == null)
+                return new Article[] { };
+            return output.ToArray();
+        }               
         
         public static Copy[] GetCheckedByUserCopiesList(long userId)
         {
-            return HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_copies_checked_by_user",
+            var output = HttpHelper.MakeGetRequest<List<Copy>>("librarian/get_copies_checked_by_user",
                 new Tuple<string, string>[] {
-                    new Tuple<string, string>("userId", Convert.ToString(userId))                    
-                }).ToArray();
+                    new Tuple<string, string>("userId", Convert.ToString(userId))
+                });
+            if (output == null)
+                return new Copy[] { };
+            return output.ToArray();
         }        
         
         public static bool IsAvailable(long documentId, long patronId)
@@ -231,6 +266,17 @@ namespace LISy.Managers
         public static void DeleteDocument(long id)
         {
             HttpHelper.MakeDeleteRequest("librarian/delete_document", new { id });
+        }
+
+        public static Patron[] GetQueueToDocument(long documentId)
+        {
+            var output = HttpHelper.MakeGetRequest<List<Patron>>("librarian/get_queue_to_document",
+                new Tuple<string, string>[] {
+                    new Tuple<string, string>("documentId", Convert.ToString(documentId))
+                });
+            if (output == null)
+                return new Patron[] { };
+            return output.ToArray();
         }
     }
 }

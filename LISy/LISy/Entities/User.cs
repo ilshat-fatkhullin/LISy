@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
@@ -35,8 +32,7 @@ namespace LISy.Entities
             FirstName = firstName ?? throw new ArgumentNullException("User must have a first name!");
             SecondName = secondName ?? throw new ArgumentNullException("User must have a second name!");
             Phone = phone ?? throw new ArgumentNullException("User must have a phone number!");
-            Address = address ?? throw new ArgumentNullException("User must have an address!");
-            Type = this.GetType().FullName.Split('.').Last();
+            Address = address ?? throw new ArgumentNullException("User must have an address!");            
         }
 
         public User()

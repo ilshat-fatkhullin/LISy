@@ -7,13 +7,8 @@ using LISy.Entities.Documents;
 
 namespace LISy.Entities.Users
 {
-    public abstract class Patron : User
+    public class Patron : User
     {
-        //public List<Copy> TakenCopies { get; protected set; }
-
-
-		//private Copy LastFoundCopy = null;
-
 		/// <summary>
 		/// Queue priority.
 		/// </summary>
@@ -30,6 +25,11 @@ namespace LISy.Entities.Users
 		{
 			//TakenCopies = new List<Copy>();
 		}
+
+        public Patron()
+        {
+
+        }
 
 		/*/// <summary>
         /// Determines whether the Patron has a copy of a document.

@@ -1,13 +1,8 @@
 ﻿using LISy.Entities.Documents;
-using LISy.Managers;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using LISy.Entities.Users;
+using LISy.Managers;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace LISy
 {
@@ -21,10 +16,10 @@ namespace LISy
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
-        public WorkWindow(Patron patron)
+        public WorkWindow(long patronId)
         {
             InitializeComponent();
-            this.patron = patron;
+            patron = LibrarianDataManager.GetPatronById(patronId);
         }
 
         ///<summary>
