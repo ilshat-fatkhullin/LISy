@@ -34,8 +34,6 @@ namespace LISy
             keyWordsTextBox.Text = journal.KeyWords;
             priceTextBox.Text = Convert.ToString(journal.Price);
             publicationDateBox.Text = journal.PublicationDate;
-
-            copy.DocumentID = journal.Id;
         }
 
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -85,7 +83,7 @@ namespace LISy
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            copy.DocumentID = journal.Id;
+            
             journal.Title = titleTextBox.Text;
             journal.Publisher = publisherTextBox.Text;
             journal.Issue = Convert.ToInt32(issueTextBox.Text);
