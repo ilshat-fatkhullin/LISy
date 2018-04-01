@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LISy.Entities.Users;
-using LISy.Entities.Users.Patrons;
+﻿using LISy.Entities.Users.Patrons;
+using System;
 
 namespace LISy.Entities.Documents
 {
-	/// <summary>
-	/// Represents a Book entity in the library.
-	/// </summary>
-	public class Book : Takable
+    /// <summary>
+    /// Represents a Book entity in the library.
+    /// </summary>
+    public class Book : Takable
 	{
-		public const int FACULTY_RETURN_TIME = 28;
+        public const int FACULTY_RETURN_TIME = 28;
 
-		public const int STUDENT_BESTSELLER_RETURN_TIME = 14;
+        public const int STUDENT_BESTSELLER_RETURN_TIME = 14;
 
-		public const int STUDENT_RETURN_TIME = 21;
+        public const int STUDENT_RETURN_TIME = 21;
 
-		public string Publisher { get; set; }
+        public string Publisher { get; set; }
 
 		public string Edition { get; set; }
 
@@ -86,19 +81,26 @@ namespace LISy.Entities.Documents
 			return IsBestseller;
 		}
 
-		/// <summary>
-		/// Evaluates return date.
-		/// </summary>
-		/// <param name="patronType">Type of borrowing patron.</param>
-		/// <returns>Evaluated date.</returns>
-		public override string EvaluateReturnDate(string patronType)
-		{
-			DateTime date = DateTime.Today;
-			if (patronType.Equals(Guest.TYPE)) date = date.AddDays(GUEST_RETURN_TIME);
-			else if (patronType.Equals(Faculty.TYPE)) date = date.AddDays(FACULTY_RETURN_TIME);
-			else if (IsBestseller) date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
-			else date = date.AddDays(STUDENT_RETURN_TIME);
-			return date.ToShortDateString();
-		}
-	}
+        public override string EvaluateReturnDate(string patronType)
+        {
+            DateTime date = DateTime.Today;
+            if (patronType.Equals(Guest.TYPE))
+            {
+                date = date.AddDays(GUEST_RETURN_TIME);
+            }
+            else if (patronType.Equals(Faculty.TYPE))
+            {
+                date = date.AddDays(FACULTY_RETURN_TIME);
+            }
+            else if (IsBestseller)
+            {
+                date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
+            }
+            else
+            {
+                date = date.AddDays(STUDENT_RETURN_TIME);
+            }
+            return date.ToShortDateString();
+        }
+    }
 }

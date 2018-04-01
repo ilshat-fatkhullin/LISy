@@ -56,7 +56,7 @@ namespace LISy
             LibrarianDataManager.EditBook(book);
 
             Copy copy = new Copy();
-            copy.DocumentID = book.Id;
+            copy.DocumentId = book.Id;
 
             if (room_of_book.Text != "" &&
                 level_of_book.Text != "" &&

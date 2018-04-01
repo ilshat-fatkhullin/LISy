@@ -56,10 +56,10 @@ namespace LISyTest.Integrated
 
             foreach (var c in copies)
             {
-                if (c.PatronID == PATRON_1_ID && c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID)
+                if (c.PatronId == PATRON_1_ID && c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID)
                 {
                     flag = true;
-                    break;                    
+                    break;          
                 }
             }
 
@@ -110,8 +110,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == FACULTY_ID &&
-                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == FACULTY_ID &&
+                        c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -144,8 +144,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == FACULTY_ID &&
-                        c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == FACULTY_ID &&
+                        c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -177,17 +177,17 @@ namespace LISyTest.Integrated
 
             foreach (Copy c in copies)
             {
-                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
-                    if (c.PatronID == PATRON_1_ID)
+                    if (c.PatronId == PATRON_1_ID)
                     {
                         checked1 = true;
                     }
-                    if (c.PatronID == PATRON_2_ID)
+                    if (c.PatronId == PATRON_2_ID)
                     {
                         checked2 = true;
                     }
-                    if (c.PatronID == PATRON_3_ID)
+                    if (c.PatronId == PATRON_3_ID)
                     {
                         checked3 = true;
                     }
@@ -216,8 +216,8 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
-                    c.PatronID == PATRON_1_ID)
+                if (c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
+                    c.PatronId == PATRON_1_ID)
                 {
                     count++;
                 }
@@ -244,17 +244,17 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
                     size++;
                 }
-                if (c.PatronID == PATRON_1_ID &&
-                    c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.PatronId == PATRON_1_ID &&
+                    c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
                     first = true;
                 }
-                if (c.PatronID == PATRON_2_ID &&
-                    c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.PatronId == PATRON_2_ID &&
+                    c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
                     last = true;
                 }
@@ -284,8 +284,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == STUDENT_ID &&
-                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == STUDENT_ID &&
+                        c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -317,8 +317,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == STUDENT_ID &&
-                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == STUDENT_ID &&
+                        c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -345,13 +345,13 @@ namespace LISyTest.Integrated
             bool flag = false;
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.DocumentID == BOOK_REFERENCE_ID && c.PatronID == STUDENT_ID)
+                if (c.DocumentId == BOOK_REFERENCE_ID && c.PatronId == STUDENT_ID)
                 {
                     Assert.IsTrue(false);
                 }
 
-                if (c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
-                    c.PatronID == STUDENT_ID)
+                if (c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    c.PatronId == STUDENT_ID)
                 {
                     flag = true;
                 }

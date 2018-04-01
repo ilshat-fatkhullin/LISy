@@ -32,7 +32,7 @@ namespace LISy
             }
             if (f)
             {
-                LibrarianDataManager.DeleteCopy(copy);
+                LibrarianDataManager.DeleteCopy(copy.Id);
             }
             this.Close();
         }
