@@ -37,7 +37,7 @@ namespace LISy
         }
         private void button_Profile_Click(object sender, RoutedEventArgs e)
         {
-            Profile profilelWindow = new Profile();
+            UserProfile profilelWindow = new UserProfile(patron);
             profilelWindow.Show();
         }
 
@@ -62,6 +62,7 @@ namespace LISy
         {
             UpdateDataGridBook();
         }
+        
         /// <summary>
         /// loader to table grid av material
         /// </summary>
@@ -80,15 +81,7 @@ namespace LISy
         {
             UpdateDataGridInnerMaterials();
         }
-        /// <summary>
-        /// loader to table grid journal article
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
-        {
-            UpdateDataGridJournal();
-        }
+        
         /// <summary>
         /// update table (data grid) Book
         /// </summary>
@@ -126,7 +119,7 @@ namespace LISy
             {
                 result.Add(journal);
             }
-            DataGridJournal_article.ItemsSource = result;
+            DataGridJournal.ItemsSource = result;
         }
         /// <summary>
         /// update table (data grid) AV material
@@ -158,12 +151,41 @@ namespace LISy
             };
             window.Show();
         }
-
+        /// <summary>
+        /// update data grid journal articles
+        /// </summary>
+        public void UpdateDataGridJournaArticles()
+        {
+            List<Article> result = new List<Article>();
+            result.Clear();
+            foreach (Article journalArticle in LibrarianDataManager.GetAllArticlesList())
+            {
+                result.Add(journalArticle);
+            }
+            DataGridJournalArticles.ItemsSource = result;
+        }
         private void log_out_button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+        
+        private void DataGridJournalArticles_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Article article = DataGridJournalArticles.SelectedItem as Article;
+            if (article == null)
+                return;
+        }
+
+        private void grid_LoaderJournalArticle(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridJournaArticles();
+        }
+
+        private void grid_LoaderJournal(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridJournal();
         }
     }
 }

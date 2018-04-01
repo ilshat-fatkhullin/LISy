@@ -77,20 +77,35 @@ namespace LISy
                 string login = firstName.Substring(0, 1) + '.' + secondName;
                 
                 bool IsNewUserAdded = false;
-                if (faculty_check.IsChecked == true)
+                if (InstructorCheckBoxType.IsChecked == true)
                 {
                     IsNewUserAdded = LibrarianDataManager.AddFaculty(
-                        new Faculty(firstName, secondName, phone, address, ""), login, password);
+                        new Faculty(firstName, secondName, phone, address, "Instructor"), login, password);
                 }
-                else if (check_box_for_lib.IsChecked == true)
+                else if (librarianCheckBoxType.IsChecked == true)
                 {
                     IsNewUserAdded = LibrarianDataManager.AddLibrarian(
-                        new Librarian(firstName, secondName, phone, address), login, password);                
+                        new Librarian(firstName, secondName, phone, address), login, password);
                 }
-                else
+                else if (studentCheckBoxType.IsChecked == true)
                 {
                     IsNewUserAdded = LibrarianDataManager.AddStudent(
-                        new Student(firstName, secondName, phone, address), login, password);                    
+                        new Student(firstName, secondName, phone, address), login, password);
+                }
+                else if (taCheckBoxType.IsChecked == true)
+                {
+                    IsNewUserAdded = LibrarianDataManager.AddFaculty(
+                        new Faculty(firstName, secondName, phone, address, "TA"), login, password);
+                }
+                else if (professorCheckBoxType.IsChecked == true)
+                {
+                    IsNewUserAdded = LibrarianDataManager.AddFaculty(
+                        new Faculty(firstName, secondName, phone, address, "Professor"), login, password);
+                }
+                else if (visitingProfessorCheckBoxType.IsChecked == true)
+                {
+                    IsNewUserAdded = LibrarianDataManager.AddGuest(
+                        new Guest(firstName, secondName, phone, address), login, password);
                 }
 
                 //if all checks good so open window                

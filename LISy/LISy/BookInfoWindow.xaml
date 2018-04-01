@@ -10,15 +10,12 @@
         <ImageBrush ImageSource="Design/bookss.jpg"/>
     </Window.Background>
     <Grid Background="#66000000" Margin="0,0,0,-3">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="117*"/>
-            <ColumnDefinition Width="401*"/>
-        </Grid.ColumnDefinitions>
         <Button x:Name="BookButton" Content="Check out" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_book_Click"/>
         <Label x:Name="TitleLabel" Content="" Margin="115,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.ColumnSpan="2"/>
         <Label x:Name="Authors" Content="" Margin="115,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.ColumnSpan="2"/>
         <Label x:Name="BestSellerLabel" Content="" Margin="0,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.Column="1"/>
         <Label x:Name="InStockLabel" Content="" Margin="0,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.14,-0.026" Height="30" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="393" Grid.Column="1"/>
         <Label x:Name="ReturnDataLabel" Content="" HorizontalAlignment="Left" Margin="0,148,0,0" VerticalAlignment="Top" Width="393" Foreground="White" Height="30" FontSize="16" Grid.Column="1" />
+        <Image x:Name="imagesourse" HorizontalAlignment="Left" Height="133" Margin="10,10,0,0" VerticalAlignment="Top" Width="97"/>
     </Grid>
 </Window>

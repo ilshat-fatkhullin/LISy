@@ -174,8 +174,8 @@
     <Compile Include="BookingHistory.xaml.cs">
       <DependentUpon>BookingHistory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BookingInfoWindow.xaml.cs">
-      <DependentUpon>BookingInfoWindow.xaml</DependentUpon>
+    <Compile Include="BookInfoWindow.xaml.cs">
+      <DependentUpon>BookInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BookModifyWindow.xaml.cs">
       <DependentUpon>BookModifyWindow.xaml</DependentUpon>
@@ -199,15 +199,21 @@
     <Compile Include="ModifyChekedOutCopies.xaml.cs">
       <DependentUpon>ModifyChekedOutCopies.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyUserTable.cs" />
-    <Compile Include="Profile.xaml.cs">
-      <DependentUpon>Profile.xaml</DependentUpon>
+    <Compile Include="ModifyInnerMaterial.xaml.cs">
+      <DependentUpon>ModifyInnerMaterial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModifyJournal.xaml.cs">
+      <DependentUpon>ModifyJournal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserTable.cs" />
     <Compile Include="RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserModifyWindow.xaml.cs">
       <DependentUpon>UserModifyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.xaml.cs">
+      <DependentUpon>UserProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
@@ -232,7 +238,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BookingInfoWindow.xaml">
+    <Page Include="BookInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -281,15 +287,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Profile.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="ModifyInnerMaterial.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModifyJournal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegisterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserModifyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

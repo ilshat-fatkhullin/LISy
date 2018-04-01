@@ -1,0 +1,28 @@
+﻿<Window x:Class="LISy.ModifyInnerMaterial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISy"
+        mc:Ignorable="d"
+        Title="ModifyInnerMaterial" Height="374.217" Width="450.405"
+        Name="InnerMaterialModify" Icon="Design/icon_logo100x100.ico">
+    <Grid x:Name="mainGrid">
+        <Label x:Name="innerMaterialTittle" Content="Title:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15"/>
+        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Height="30" Margin="95,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334" FontSize="16" TextChanged="titleTextBox_TextChanged" />
+        <Label x:Name="authorLabel" Content="Authors:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15"/>
+        <TextBox x:Name="authorTextBox" HorizontalAlignment="Left" Height="30" Margin="95,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="15" TextChanged="authorTextBox_TextChanged"/>
+        <Label x:Name="keyWordsLabel" Content="KeyWords:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15"/>
+        <TextBox x:Name="keyWordsTextBox" HorizontalAlignment="Left" Height="30" Margin="95,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="16" TextChanged="keyWordsTextBox_TextChanged"/>
+        <Label x:Name="roomLabel" Content="Room:" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15"/>
+        <TextBox x:Name="roomTextBox" HorizontalAlignment="Left" Height="30" Margin="95,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="15" TextChanged="roomTextBox_TextChanged"/>
+        <Label x:Name="levelLabel" Content="Level:" HorizontalAlignment="Left" Height="30" Margin="10,150,0,0" VerticalAlignment="Top" Width="80" FontSize="15"/>
+        <TextBox x:Name="levelTextBox" HorizontalAlignment="Left" Height="30" Margin="95,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="16" TextChanged="levelTextBox_TextChanged"/>
+        <Label x:Name="typeLabel" Content="Type:" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="70" Height="30" FontSize="15"/>
+        <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Height="30" Margin="95,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="16" TextChanged="typeTextBox_TextChanged"/>
+        <Label x:Name="coverUrlLabel" Content="CoverUrl:" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15"/>
+        <TextBox x:Name="coverUrlTextBox" HorizontalAlignment="Left" Height="30" Margin="95,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="337" FontSize="16" TextChanged="coverUrlTextBox_TextChanged"/>
+        <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="332,255,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="saveButton_Click"/>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="227,255,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="deleteButton_Click"/>
+    </Grid>
+</Window>

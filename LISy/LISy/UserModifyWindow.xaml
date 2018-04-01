@@ -18,10 +18,16 @@
         <TextBox x:Name="SecondName" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Second name" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="SecondName_TextChanged"/>
         <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="Phone_TextChanged"/>
         <TextBox x:Name="Address" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="Address_TextChanged"/>
-        <CheckBox x:Name="FacultyCheckBox" Content="Is Faculty" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Height="15" Width="68"/>
-        <Button x:Name="Enter" Content="Save" HorizontalAlignment="Left" Margin="90,154,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Enter_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Cancel_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="Delete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="177,154,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
-
+        <Button x:Name="Enter" Content="Save" HorizontalAlignment="Left" Margin="90,149,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Enter_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Cancel_Click"/>
+        <Button x:Name="Delete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="174,149,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Margin="10,122,0,0">
+            <CheckBox x:Name="librarianCheckBoxType" Content ="Librarian"/>
+            <CheckBox x:Name="studentCheckBoxType" Content="Student"/>
+            <CheckBox x:Name="taCheckBoxType" Content="TA"/>
+            <CheckBox x:Name="InstructorCheckBoxType" Content="Instructor"/>
+            <CheckBox x:Name="professorCheckBoxType" Content="Professor"/>
+            <CheckBox x:Name="visitingProfessorCheckBoxType" Content="Visiting Professor"/>
+        </ComboBox>
     </Grid>
 </Window>

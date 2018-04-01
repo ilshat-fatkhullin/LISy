@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using LISy.Entities;
-using LISy.Entities.Users;
+﻿using LISy.Entities;
 using LISy.Entities.Documents;
+using LISy.Entities.Users;
 using LISy.Managers;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
 
 namespace LISy
 {
@@ -33,8 +23,6 @@ namespace LISy
             librarian_status_fill.Content = patron.Type;
 
         }
-
-
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
             UpdateUsersDataGrid();
@@ -44,6 +32,7 @@ namespace LISy
             UpdatDataGridChekedOutCopies();
             UpdateDataGridInnerMaterials();
             UpdateDataGridJournal();
+            UptadeDataGridJournalArticles();
         }
 
         private void add_user_Click(object sender, RoutedEventArgs e)
@@ -59,11 +48,6 @@ namespace LISy
             addDocument.Owner = this;
             addDocument.Show();
         }
-
-
-
-
-
         private void grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
             User user = DataGridInfoUser.SelectedItem as User;
@@ -127,13 +111,7 @@ namespace LISy
         }
         private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
         {
-            // сюда нужны апдейты такие как для копий и книжек
             UpdateDataGridInnerMaterials();
-        }
-        private void grid_LoaderJournal_article(object sender, RoutedEventArgs e)
-        {
-            // сюда нужны апдейты такие как для копий и книжек
-            UpdateDataGridJournal();
         }
         private void grid_LoaderCopies(object sender, RoutedEventArgs e)
         {
@@ -208,7 +186,7 @@ namespace LISy
             {
                 result.Add(journal);
             }
-            DataGridJournal_article.ItemsSource = result;
+            DataGridJournal.ItemsSource = result;
         }
 
         public void UptadeDataGridAV_material()
@@ -239,6 +217,57 @@ namespace LISy
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void grid_LoaderJournal(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridJournal();
+        }
+
+        private void JournalArticleDataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            UptadeDataGridJournalArticles();
+        }
+        public void UptadeDataGridJournalArticles()
+        {
+            List<Article> result = new List<Article>();
+            result.Clear();
+            foreach (Article article in LibrarianDataManager.GetAllArticlesList())
+            {
+                result.Add(article);
+            }
+            JournalArticleDataGrid.ItemsSource = result;
+        }
+
+        private void reference_book_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            InnerMaterial inner = DataGridRefernce_book.SelectedItem as InnerMaterial;
+            if (inner == null)
+                return;
+
+            ModifyInnerMaterial window = new ModifyInnerMaterial(inner, this);
+            window.Owner = this;
+            window.Show();
+        }
+        private void journalArticles_Loaded(object sender, RoutedEventArgs e)
+        {
+            UptadeDataGridJournalArticles();
+        }
+        private void journalMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Journal journal = DataGridJournal.SelectedItem as Journal;
+            if (journal == null)
+                return;
+
+                ModifyJournal window = new ModifyJournal(journal, this);
+                window.Owner = this;
+                window.Show();
+            
+        }
+
+        private void journal_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateDataGridJournal();
         }
     }
 }

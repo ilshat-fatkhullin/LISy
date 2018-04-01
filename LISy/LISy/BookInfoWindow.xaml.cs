@@ -13,7 +13,12 @@ namespace LISy
         private Patron patron;
         private Book book;
         private WorkWindow workWindow;
-
+        /// <summary>
+        /// View info about book
+        /// </summary>
+        /// <param name="book"></param>
+        /// <param name="patron"></param>
+        /// <param name="workWindow"></param>
         public BookingInfoWindow(Book book, Patron patron, WorkWindow workWindow)
         {
             InitializeComponent();
