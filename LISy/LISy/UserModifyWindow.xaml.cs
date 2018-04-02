@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LISy.Entities;
+using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
 
@@ -22,10 +23,14 @@ namespace LISy
 	/// </summary>
 	public partial class UserModifyWindow : Window
 	{
-		private IUser user;
+		private User user;
 		private LibrarianWorkWindow workWindow;
-
-		public UserModifyWindow(IUser user, LibrarianWorkWindow workWindow)
+        /// <summary>
+        /// user modify window
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="workWindow"></param>
+		public UserModifyWindow(User user, LibrarianWorkWindow workWindow)
 		{
 			InitializeComponent();
 			this.user = user;
@@ -34,16 +39,36 @@ namespace LISy
 			SecondName.Text = user.SecondName;
 			Phone.Text = user.Phone;
 			Address.Text = user.Address;
-			FacultyCheckBox.IsEnabled = user.Type == Faculty.TYPE;
+			
 		}
 
-		private void Enter_Click(object sender, RoutedEventArgs e)
-		{
-			user.FirstName = FirstName.Text;
-			user.SecondName = SecondName.Text;
-			user.Phone = Phone.Text;
-			user.Address = Address.Text;
-			LibrarianDataManager.EditUser(user);
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            user.FirstName = FirstName.Text;
+            user.SecondName = SecondName.Text;
+            user.Phone = Phone.Text;
+            user.Address = Address.Text;
+
+            if (librarianCheckBoxType.IsChecked == true)
+            {
+                LibrarianDataManager.EditLibrarian(user as Librarian);
+            }
+            else if (InstructorCheckBoxType.IsChecked == true)
+            {
+                LibrarianDataManager.EditFaculty(user as Faculty);
+            }
+            else if (taCheckBoxType.IsChecked == true)
+            {
+                LibrarianDataManager.EditFaculty(user as Faculty);
+            }
+            else if (professorCheckBoxType.IsChecked == true)
+            {
+                LibrarianDataManager.EditFaculty(user as Faculty);
+            }
+            else if (visitingProfessorCheckBoxType.IsChecked == true)
+            {
+                LibrarianDataManager.EditGuest(user as Guest);
+            }
 			workWindow.UpdateUsersDataGrid();
 			this.Close();
 		}
@@ -75,7 +100,7 @@ namespace LISy
 
 		private void Delete_Click(object sender, RoutedEventArgs e)
 		{
-			LibrarianDataManager.DeleteUser(user);
+			LibrarianDataManager.DeleteUser(user.CardNumber);
 			workWindow.UpdateUsersDataGrid();
 			this.Close();
 		}

@@ -1,26 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LISy.Entities
 {
 	/// <summary>
 	/// Represents the implementation of common properties of library users.
 	/// </summary>
-	public abstract class User : IUser
+	public class User
 	{
-		public long CardNumber { get; set; }
-
+		/// <summary>
+		/// First name of a user.
+		/// </summary>
 		public string FirstName { get; set; }
 
+		/// <summary>
+		/// Last name of a user.
+		/// </summary>
 		public string SecondName { get; set; }
 
+		/// <summary>
+		/// Id of a user.
+		/// </summary>
+		public long CardNumber { get; set; }
+
+		/// <summary>
+		/// Phone number of a user.
+		/// </summary>
 		public string Phone { get; set; }
 
+		/// <summary>
+		/// Address of a user.
+		/// </summary>
 		public string Address { get; set; }
 
+		/// <summary>
+		/// Type of a user.
+		/// </summary>
 		public string Type { get; set; }
 
 		/// <summary>
@@ -37,6 +52,14 @@ namespace LISy.Entities
 			Phone = phone ?? throw new ArgumentNullException("User must have a phone number!");
 			Address = address ?? throw new ArgumentNullException("User must have an address!");
 			Type = this.GetType().FullName.Split('.').Last();
+		}
+
+		/// <summary>
+		/// Initializes a new instance of library user.
+		/// </summary>
+		public User()
+		{
+
 		}
 	}
 }

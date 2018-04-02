@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="ModifyChekedOutCopies" Height="102.631" Width="230.076" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="ModifyChekedOutCopies" Height="164.669" Width="359.437" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Grid>
-        <CheckBox x:Name="make_book_returned" Content="Make Returned" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="change_status_of_copy" Content="Save" HorizontalAlignment="Left" Margin="116,10,0,0" VerticalAlignment="Top" Width="90" Height="35" Click="Сhange_status_of_copy_Click"/>
+        <CheckBox x:Name="make_book_returned" Content="Make Returned" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="change_status_of_copy" Content="Save" HorizontalAlignment="Left" Margin="253,10,0,0" VerticalAlignment="Top" Width="90" Height="35" Click="Сhange_status_of_copy_Click" RenderTransformOrigin="0.524,0.591"/>
+        <CheckBox x:Name="setOutStandingRequestcheckBox" Content="Set Outstanding request" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="170"/>
+        <CheckBox x:Name="disableOutstandingRequest" Content="Disable Outstanding request" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="170"/>
 
     </Grid>
 </Window>

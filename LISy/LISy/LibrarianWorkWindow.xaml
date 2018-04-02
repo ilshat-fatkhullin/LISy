@@ -11,9 +11,9 @@
     </Window.Background>
     <Grid x:Name="work_lib_grid" Margin="0,0,4,-1">
         <Label x:Name="librarian_name" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" FontSize="16" Foreground="White"/>
-        <Label x:Name="librarian_name_fill" Content="" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Height="31" Width="305" FontSize="16"/>
+        <Label x:Name="librarian_name_fill" Content="" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Height="31" Width="305" FontSize="16" Foreground="White"/>
         <Label x:Name="librarian_status" Content="Status:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="60" FontSize="16" Foreground="White"/>
-        <Label x:Name="librarian_status_fill" Content="" HorizontalAlignment="Left" Margin="75,46,0,0" VerticalAlignment="Top" Width="305" FontSize="16"/>
+        <Label x:Name="librarian_status_fill" Content="" HorizontalAlignment="Left" Margin="75,46,0,0" VerticalAlignment="Top" Width="305" FontSize="16" Foreground="White"/>
         <Button x:Name="refresh" Content="Refresh" HorizontalAlignment="Left" Margin="260,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="refresh_Click"/>
         <Button x:Name="add_user" Content="Add User" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_user_Click"/>
         <Button x:Name="add_doc" Content="Add Document" HorizontalAlignment="Left" Margin="135,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_doc_Click"/>
@@ -33,14 +33,23 @@
                     <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderAV_material"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="reference_book" Header="Inner Materials">
+            <TabItem x:Name="reference_book" Header="Inner Materials" MouseUp="reference_book_MouseUp">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderReference_book"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="journal_article" Header="Journal\Articles">
+            <TabItem x:Name="journal" Header="Journal">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DataGridJournal_article" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="grid_LoaderJournal_article"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="344*"/>
+                        <ColumnDefinition Width="477*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="DataGridJournal" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801"  MouseUp="journalMouseUp" Loaded="journal_Loaded" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="journalArticles" Header="Journal articles">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="JournalArticleDataGrid" HorizontalAlignment="Left" Height="260" Margin="10,10,0,0" VerticalAlignment="Top" Width="801" Loaded="journalArticles_Loaded"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="copies" Header="Copies" Loaded="copies_Loaded" MouseUp="copies_MouseUp">
@@ -54,6 +63,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button x:Name="log_out_button" Content="Log out" HorizontalAlignment="Left" Margin="385,82,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="log_out_button_Click"/>
 
     </Grid>
 </Window>

@@ -1,12 +1,12 @@
-﻿<Window x:Class="LISy.RegisterWindow"
+﻿<Window x:Name="registerWindow" x:Class="LISy.RegisterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-       Title="Registration" Height="600" Width="325"
-        Icon="Design\icon_logo100x100.ico" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" >
+       Title="Registration" Height="642.833" Width="325"
+        Icon="Design\icon_logo100x100.ico" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" >
     <Window.Background>
         <ImageBrush/>
     </Window.Background>
@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="Design\sing_up_window_back.jpg"/>
         </Grid.Background>
         <Label x:Name="label_title_registration" Content="Registration in the system" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="297" Foreground="White" HorizontalContentAlignment="Center" FontSize="20"/>
-        <Grid Margin="50,52,50,0" Background="#19000000" Height="484" VerticalAlignment="Top">
+        <Grid Margin="50,52,50,0" Background="#19000000" Height="505" VerticalAlignment="Top">
             <Label x:Name="label_name" Content="Last Name*" Margin="10,68,10,0" Height="25" VerticalAlignment="Top" Foreground="White"/>
             <TextBox x:Name="textBox_last_name" Margin="10,98,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_last_name_TextChanged" />
             <Label x:Name="label_Address_town" Content="Address (Town)*" Margin="10,128,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
@@ -30,10 +30,22 @@
             <TextBox x:Name="textBox_phone_number" Margin="10,373,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_phone_number_TextChanged"/>
             <Label x:Name="label_passwors_register" Content="Password*" Margin="10,403,10,0" VerticalAlignment="Top" Foreground="White" Height="25"/>
             <PasswordBox x:Name="passwordBox_registration" Margin="10,428,10,0" RenderTransformOrigin="0.567,0.5" Background="#CC000000" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16" Height="30" VerticalAlignment="Top"/>
-            <CheckBox x:Name="checkBox_faculty" Content="Faculty" Margin="10,458,10,0" FontSize="12" Foreground="White" Height="16" VerticalAlignment="Top" />
             <Label x:Name="label_name1" Content="First Name*" Margin="10,13,10,0" Height="25" VerticalAlignment="Top" Foreground="White"/>
             <TextBox x:Name="textBox_name" Margin="10,38,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_name_TextChanged"/>
+            <ComboBox x:Name="choose_roll_box" HorizontalAlignment="Left" Margin="10,463,0,0" VerticalAlignment="Top" Width="205" Height="30">
+                <ComboBox.BorderBrush>
+                    <ImageBrush/>
+                </ComboBox.BorderBrush>
+                <ComboBox.Background>
+                    <ImageBrush/>
+                </ComboBox.Background>
+                <CheckBox x:Name="student_type" Content="Student" FontSize="14"/>
+                <CheckBox x:Name="instructor_type" Content="Instructor" FontSize="14"/>
+                <CheckBox x:Name="TA_type" Content="TA" FontSize="14"/>
+                <CheckBox x:Name="VP_professor_type" Content="Visiting Professor" FontSize="14"/>
+                <CheckBox x:Name="professor_type" Content="Professor" FontSize="14"/>
+            </ComboBox>
         </Grid>
-        <Button x:Name="button_register" Content="Sign Up" Margin="50,541,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_register_Click"/>
+        <Button x:Name="button_register" Content="Sign Up" Margin="50,562,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_register_Click"/>
     </Grid>
 </Window>

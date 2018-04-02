@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LISy.Entities.Users.Patrons
+﻿namespace LISy.Entities.Users.Patrons
 {
-	/// <summary>
-	/// Represents teachers of the university.
-	/// </summary>
-	public class Faculty : Patron
+    /// <summary>
+    /// Represents teachers of the university.
+    /// </summary>
+    public class Faculty : Patron
 	{
 		/// <summary>
 		/// String Type.
@@ -59,7 +53,7 @@ namespace LISy.Entities.Users.Patrons
 			if (subtype.Equals(INSTRUCTOR_SUBTYPE)) Priority = INSTRUCTOR_PRIORITY;
 			else if (subtype.Equals(TA_SUBTYPE)) Priority = TA_PRIORITY;
 			else if (subtype.Equals(PROFESSOR_SUBTYPE)) Priority = PROFESSOR_PRIORITY;
-			else throw new ArgumentException("Invalid vaculty type.");
+			//else throw new ArgumentException("Invalid faculty type.");
 		}
 	}
 }

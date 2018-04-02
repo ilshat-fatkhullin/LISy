@@ -1,20 +1,9 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
 using LISy.Managers;
-using LISy.Managers.DataManagers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -80,16 +69,19 @@ namespace LISy
             av.KeyWords = av_key_words_text_box.Text;
             av.Price = Convert.ToInt32(av_price_text_box.Text);
             av.CoverURL = av_coverUrl_text_box.Text;
-            LibrarianDataManager.EditDocument(av);
+
+            LibrarianDataManager.EditAVMaterial(av);
+
             Copy copy = new Copy();
-            copy.DocumentID = DocumentsDataManager.GetDocumentId(av);
+            copy.DocumentId = av.Id;
+
             if (av_room_text_box.Text != "" &&
                 av_level_text_box.Text != "" &&
                 av_copy_text_box.Text != "")
             {
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_room_text_box));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_level_text_box));
-                DocumentsDataManager.AddCopy(Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_copy_text_box)), copy);
+                LibrarianDataManager.AddCopies(Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_copy_text_box)), copy);
             }
             workWindow.UptadeDataGridAV_material();
             this.Close();
@@ -103,7 +95,7 @@ namespace LISy
 
         private void delete_db_Click(object sender, RoutedEventArgs e)
         {
-            LibrarianDataManager.DeleteDocument(av);
+            LibrarianDataManager.DeleteDocument(av.Id);
             workWindow.UptadeDataGridAV_material();
             this.Close();
         }

@@ -1,11 +1,10 @@
-﻿using System;
-using LISy.Entities;
+﻿using LISy.Entities;
 using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
-using LISy.Managers.DataManagers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace LISyTest.Integrated
 {
@@ -24,22 +23,22 @@ namespace LISyTest.Integrated
 
         public void Initialize()
         {
-            DatabaseDataManager.ClearAll();
+            LibrarianDataManager.ClearAll();
 
-            LibrarianDataManager.AddUser(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
                 "librarian_1", "12345");
-            LibrarianDataManager.AddUser(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address", ""),
+            LibrarianDataManager.AddFaculty(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address", ""),
                 "patron_1", "12345");
-            LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddStudent(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_2", "12345");
-            LibrarianDataManager.AddUser(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddStudent(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
                 "patron_3", "12345");
 
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));            
-            LibrarianDataManager.AddCopy(1, new Copy(1, 1, 1));
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_2", "Publisher", "Edition", 2018, true, "Keys", "", 50));
-            LibrarianDataManager.AddCopy(2, new Copy(2, 1, 1));
-            LibrarianDataManager.AddDocument(new InnerMaterial("Authors", "Book_3", "Book", "Keys", 1, 1, "https://"));            
+            LibrarianDataManager.AddBook(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));
+            LibrarianDataManager.AddCopies(1, new Copy(1, 1, 1));
+            LibrarianDataManager.AddBook(new Book("Authors", "Book_2", "Publisher", "Edition", 2018, true, "Keys", "", 50));
+            LibrarianDataManager.AddCopies(2, new Copy(2, 1, 1));
+            LibrarianDataManager.AddInnerMaterial(new InnerMaterial("Authors", "Book_3", "Book", "Keys", 1, 1, "https://"));            
         }
 
         /// <summary>
@@ -57,14 +56,14 @@ namespace LISyTest.Integrated
 
             foreach (var c in copies)
             {
-                if (c.PatronID == PATRON_1_ID && c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID)
+                if (c.PatronId == PATRON_1_ID && c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID)
                 {
                     flag = true;
-                    break;                    
+                    break;          
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID); 
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID); 
 
             Assert.IsTrue(flag);
         }
@@ -111,8 +110,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == FACULTY_ID &&
-                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == FACULTY_ID &&
+                        c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -121,7 +120,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
 
             Assert.IsTrue(flag);
         }
@@ -145,8 +144,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == FACULTY_ID &&
-                        c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == FACULTY_ID &&
+                        c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -155,7 +154,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
 
             Assert.IsTrue(flag);
         }
@@ -178,26 +177,26 @@ namespace LISyTest.Integrated
 
             foreach (Copy c in copies)
             {
-                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
-                    if (c.PatronID == PATRON_1_ID)
+                    if (c.PatronId == PATRON_1_ID)
                     {
                         checked1 = true;
                     }
-                    if (c.PatronID == PATRON_2_ID)
+                    if (c.PatronId == PATRON_2_ID)
                     {
                         checked2 = true;
                     }
-                    if (c.PatronID == PATRON_3_ID)
+                    if (c.PatronId == PATRON_3_ID)
                     {
                         checked3 = true;
                     }
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_3_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_3_ID);
 
             Assert.IsTrue(checked1 && checked2 && !checked3);
         }
@@ -217,14 +216,14 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
-                    c.PatronID == PATRON_1_ID)
+                if (c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
+                    c.PatronId == PATRON_1_ID)
                 {
                     count++;
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
 
             Assert.IsTrue(count == 1);
         }
@@ -245,24 +244,24 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
                     size++;
                 }
-                if (c.PatronID == PATRON_1_ID &&
-                    c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.PatronId == PATRON_1_ID &&
+                    c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
                     first = true;
                 }
-                if (c.PatronID == PATRON_2_ID &&
-                    c.DocumentID == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
+                if (c.PatronId == PATRON_2_ID &&
+                    c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID)
                 {
                     last = true;
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
-            PatronDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_2_ID);
 
             Assert.IsTrue(last && first && size == 2);
         }
@@ -285,8 +284,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == STUDENT_ID &&
-                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == STUDENT_ID &&
+                        c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -295,7 +294,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
 
             Assert.IsTrue(flag);
         }
@@ -318,8 +317,8 @@ namespace LISyTest.Integrated
                 {
                     double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
 
-                    if (c.PatronID == STUDENT_ID &&
-                        c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    if (c.PatronId == STUDENT_ID &&
+                        c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
                         Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
                     {
                         flag = true;
@@ -328,7 +327,7 @@ namespace LISyTest.Integrated
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
 
             Assert.IsTrue(flag);
         }
@@ -346,19 +345,19 @@ namespace LISyTest.Integrated
             bool flag = false;
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.DocumentID == BOOK_REFERENCE_ID && c.PatronID == STUDENT_ID)
+                if (c.DocumentId == BOOK_REFERENCE_ID && c.PatronId == STUDENT_ID)
                 {
                     Assert.IsTrue(false);
                 }
 
-                if (c.DocumentID == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
-                    c.PatronID == STUDENT_ID)
+                if (c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
+                    c.PatronId == STUDENT_ID)
                 {
                     flag = true;
                 }
             }
 
-            PatronDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);            
+            LibrarianDataManager.ReturnDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);            
             Assert.IsTrue(flag);
         }        
     }

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LISy.Entities.Users.Patrons
+﻿namespace LISy.Entities.Users.Patrons
 {
-	/// <summary>
-	/// Represents students of the university.
-	/// </summary>
-	public class Student : Patron
+    /// <summary>
+    /// Represents students of the university.
+    /// </summary>
+    public class Student : Patron
 	{
 		/// <summary>
 		/// String Type.

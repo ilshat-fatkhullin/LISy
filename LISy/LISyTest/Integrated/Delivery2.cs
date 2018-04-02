@@ -1,14 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Net.Mime;
-using LISy.Entities;
+﻿using LISy.Entities;
 using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
-using LISy.Managers.DataManagers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LISyTest.Integrated
 {
@@ -18,26 +16,26 @@ namespace LISyTest.Integrated
         [TestMethod]
         public void TestCase1()
         {
-            DatabaseDataManager.ClearAll();
-            LibrarianDataManager.AddUser(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
+            LibrarianDataManager.ClearAll();
+            LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
                 "librarian_1", "12345");
-            LibrarianDataManager.AddUser(new Faculty("Sergey", "Afonso", "30001", "ViaMargutta, 3", ""),
+            LibrarianDataManager.AddFaculty(new Faculty("Sergey", "Afonso", "30001", "ViaMargutta, 3", ""),
                 "patron_1", "12345");
-            LibrarianDataManager.AddUser(new Student("Nadia", "Teixeira", "30002", "Via Sacra, 13"),
+            LibrarianDataManager.AddStudent(new Student("Nadia", "Teixeira", "30002", "Via Sacra, 13"),
                 "patron_2", "12345");
-            LibrarianDataManager.AddUser(new Student("Elvira", "Espindola", "30003", "Via del Corso, 22"),
+            LibrarianDataManager.AddStudent(new Student("Elvira", "Espindola", "30003", "Via del Corso, 22"),
                 "patron_3", "12345");
 
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));
-            LibrarianDataManager.AddCopy(3, new Copy(1, 1, 1));
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_2", "Publisher", "Edition", 2018, false, "Keys", "", 100));
-            LibrarianDataManager.AddCopy(2, new Copy(2, 1, 2));
-            LibrarianDataManager.AddDocument(new Book("Authors", "Book_3", "Publisher", "Edition", 2018, false, "Keys", "", 100));
-            LibrarianDataManager.AddCopy(1, new Copy(3, 1, 3));
-            LibrarianDataManager.AddDocument(new AVMaterial("Authors", "AVMaterial_1", "Keys", "", 100));
-            LibrarianDataManager.AddCopy(1, new Copy(4, 1, 4));
-            LibrarianDataManager.AddDocument(new AVMaterial("Authors", "AVMaterial_2", "Keys", "", 100));
-            LibrarianDataManager.AddCopy(1, new Copy(5, 1, 5));            
+            LibrarianDataManager.AddBook(new Book("Authors", "Book_1", "Publisher", "Edition", 2018, false, "Keys", "", 100));
+            LibrarianDataManager.AddCopies(3, new Copy(1, 1, 1));
+            LibrarianDataManager.AddBook(new Book("Authors", "Book_2", "Publisher", "Edition", 2018, false, "Keys", "", 100));
+            LibrarianDataManager.AddCopies(2, new Copy(2, 1, 2));
+            LibrarianDataManager.AddBook(new Book("Authors", "Book_3", "Publisher", "Edition", 2018, false, "Keys", "", 100));
+            LibrarianDataManager.AddCopies(1, new Copy(3, 1, 3));
+            LibrarianDataManager.AddAVMaterial(new AVMaterial("Authors", "AVMaterial_1", "Keys", "", 100));
+            LibrarianDataManager.AddCopies(1, new Copy(4, 1, 4));
+            LibrarianDataManager.AddAVMaterial(new AVMaterial("Authors", "AVMaterial_2", "Keys", "", 100));
+            LibrarianDataManager.AddCopies(1, new Copy(5, 1, 5));            
 
             Assert.AreEqual(LibrarianDataManager.GetNumberOfCopies(), 8);
             Assert.AreEqual(LibrarianDataManager.GetNumberOfUsers(), 4);
@@ -47,12 +45,18 @@ namespace LISyTest.Integrated
         public void TestCase2()
         {
             TestCase1();
-            LibrarianDataManager.DeleteCopyByDocId(new Copy(1, 1, 1));
-            LibrarianDataManager.DeleteCopyByDocId(new Copy(1, 1, 1));
-            LibrarianDataManager.DeleteCopyByDocId(new Copy(3, 1, 3));
+            List<Copy> copies = LibrarianDataManager.GetAllCopiesList().ToList();
+            Copy copy = copies.Where(c => c.DocumentId == 1 && c.Room == 1 && c.Level == 1).First();
+            LibrarianDataManager.DeleteCopy(copy.Id);
+            copies.Remove(copy);
+            copy = copies.Where(c => c.DocumentId == 1 && c.Room == 1 && c.Level == 1).First();            
+            LibrarianDataManager.DeleteCopy(copy.Id);
+            copies.Remove(copy);
+            copy = copies.Where(c => c.DocumentId == 3 && c.Room == 1 && c.Level == 3).First();
+            LibrarianDataManager.DeleteCopy(copy.Id);
             Student student = new Student("StudentName", "StudentSurname", "80000000000", "Address")
                 { CardNumber = 3};
-            LibrarianDataManager.DeleteUser(student);
+            LibrarianDataManager.DeleteUser(student.CardNumber);
 
             int n = LibrarianDataManager.GetNumberOfCopies();
             int s = LibrarianDataManager.GetNumberOfUsers();
@@ -64,7 +68,7 @@ namespace LISyTest.Integrated
         public void TestCase3()
         {
             TestCase1();
-            IUser faculty = LibrarianDataManager.GetUserById(2);
+            User faculty = LibrarianDataManager.GetUserById(2);
             Assert.AreEqual(faculty.FirstName, "Sergey");
             Assert.AreEqual(faculty.SecondName, "Afonso");
             Assert.AreEqual(faculty.Phone, "30001");
@@ -72,8 +76,7 @@ namespace LISyTest.Integrated
             faculty = LibrarianDataManager.GetUserById(4);
             Assert.AreEqual(faculty.FirstName, "Elvira");
             Assert.AreEqual(faculty.SecondName, "Espindola");
-            Assert.AreEqual(faculty.Phone, "30003");
-            Assert.AreEqual(faculty.Type, "Student");
+            Assert.AreEqual(faculty.Phone, "30003");            
             Assert.AreEqual(faculty.Address, "Via del Corso, 22");
         }
 
@@ -81,13 +84,12 @@ namespace LISyTest.Integrated
         public void TestCase4()
         {
             TestCase2();
-            IUser faculty = LibrarianDataManager.GetUserById(3);
+            User faculty = LibrarianDataManager.GetUserById(3);
             Assert.IsNull(faculty);
             faculty = LibrarianDataManager.GetUserById(4);
             Assert.AreEqual(faculty.FirstName, "Elvira");
             Assert.AreEqual(faculty.SecondName, "Espindola");
-            Assert.AreEqual(faculty.Phone, "30003");
-            Assert.AreEqual(faculty.Type, "Student");
+            Assert.AreEqual(faculty.Phone, "30003");            
             Assert.AreEqual(faculty.Address, "Via del Corso, 22");            
         }
 
@@ -98,7 +100,7 @@ namespace LISyTest.Integrated
             PatronDataManager.CheckOutDocument(1, 3);
             foreach (var copy in LibrarianDataManager.GetAllCopiesList())
             {
-                if (copy.DocumentID == 1 && copy.PatronID == 3)
+                if (copy.DocumentId == 1 && copy.PatronId == 3)
                     Assert.Fail();
             }
         }
@@ -112,24 +114,22 @@ namespace LISyTest.Integrated
             PatronDataManager.CheckOutDocument(2, 4);
             PatronDataManager.CheckOutDocument(2, 2);
             
-            IUser faculty = LibrarianDataManager.GetUserById(2);
+            User faculty = LibrarianDataManager.GetUserById(2);
             Assert.AreEqual(faculty.FirstName, "Sergey");
             Assert.AreEqual(faculty.SecondName, "Afonso");
-            Assert.AreEqual(faculty.Phone, "30001");
-            Assert.AreEqual(faculty.Type, "Faculty");
+            Assert.AreEqual(faculty.Phone, "30001");            
             Assert.AreEqual(faculty.Address, "ViaMargutta, 3");
             Copy copy = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber)[0];
-            Assert.AreEqual(copy.DocumentID, 1);
+            Assert.AreEqual(copy.DocumentId, 1);
 
             faculty = LibrarianDataManager.GetUserById(4);
             Assert.AreEqual(faculty.FirstName, "Elvira");
             Assert.AreEqual(faculty.SecondName, "Espindola");
-            Assert.AreEqual(faculty.Phone, "30003");
-            Assert.AreEqual(faculty.Type, "Student");
+            Assert.AreEqual(faculty.Phone, "30003");            
             Assert.AreEqual(faculty.Address, "Via del Corso, 22");
             Copy[] copies = LibrarianDataManager.GetAllCopiesList();
             copy = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber)[0];
-            Assert.AreEqual(copy.DocumentID, 2);
+            Assert.AreEqual(copy.DocumentId, 2);
         }
 
         [TestMethod]
@@ -146,35 +146,33 @@ namespace LISyTest.Integrated
             PatronDataManager.CheckOutDocument(2, 3);
             PatronDataManager.CheckOutDocument(5, 3);
 
-            IUser faculty = LibrarianDataManager.GetUserById(2);
+            User faculty = LibrarianDataManager.GetUserById(2);
             Assert.AreEqual(faculty.FirstName, "Sergey");
             Assert.AreEqual(faculty.SecondName, "Afonso");
-            Assert.AreEqual(faculty.Phone, "30001");
-            Assert.AreEqual(faculty.Type, "Faculty");
+            Assert.AreEqual(faculty.Phone, "30001");            
             Assert.AreEqual(faculty.Address, "ViaMargutta, 3");
             Copy[] copies = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber);
             int c = 0;
-            if (copies.Any(copy => copy.DocumentID == 1))
+            if (copies.Any(copy => copy.DocumentId == 1))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 2))
+            if (copies.Any(copy => copy.DocumentId == 2))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 4))            
+            if (copies.Any(copy => copy.DocumentId == 4))            
                 c++;            
             Assert.AreEqual(c, 3);
 
             faculty = LibrarianDataManager.GetUserById(3);
             Assert.AreEqual(faculty.FirstName, "Nadia");
             Assert.AreEqual(faculty.SecondName, "Teixeira");
-            Assert.AreEqual(faculty.Phone, "30002");
-            Assert.AreEqual(faculty.Type, "Student");
+            Assert.AreEqual(faculty.Phone, "30002");            
             Assert.AreEqual(faculty.Address, "Via Sacra, 13");
             copies = LibrarianDataManager.GetCheckedByUserCopiesList(faculty.CardNumber);
             c = 0;
-            if (copies.Any(copy => copy.DocumentID == 1))
+            if (copies.Any(copy => copy.DocumentId == 1))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 2))
+            if (copies.Any(copy => copy.DocumentId == 2))
                 c++;
-            if (copies.Any(copy => copy.DocumentID == 5))
+            if (copies.Any(copy => copy.DocumentId == 5))
                 c++;
             Assert.AreEqual(c, 3);
         }
@@ -197,11 +195,10 @@ namespace LISyTest.Integrated
         public void TestCase9()
         {
             TestCase1();            
-            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentID == 1), 3);
-            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentID == 2), 2);
-            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentID == 3), 1);
+            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 1), 3);
+            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 2), 2);
+            Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 3), 1);
             Assert.AreEqual(LibrarianDataManager.GetAllAVMaterialsList().Length, 2);
-            Assert.AreEqual(LibrarianDataManager.GetAllUsersList().Count(user => user.Type != "Librarian"), 3);
         }
     }
 }

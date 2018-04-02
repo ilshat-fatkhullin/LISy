@@ -1,0 +1,15 @@
+﻿<Window x:Name="ProveNotification" x:Class="LISy.ProveNotificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LISy"
+        mc:Ignorable="d"
+        Title="ProveNotificationWindow" Height="158.824" Width="313.235" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="MainGrid">
+        <CheckBox x:Name="acceptedCheckBox" Content="Accepted" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ignorCheckBox" Content="Ignor" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="90" Height="35" Click="saveButton_Click"/>
+
+    </Grid>
+</Window>

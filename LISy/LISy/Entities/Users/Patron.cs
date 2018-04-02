@@ -7,12 +7,11 @@ using LISy.Entities.Documents;
 
 namespace LISy.Entities.Users
 {
-	public abstract class Patron : User, IPatron
+	/// <summary>
+	/// Represents patronf of the library.
+	/// </summary>
+	public class Patron : User
 	{
-		//public List<Copy> TakenCopies { get; protected set; }
-
-		//private Copy LastFoundCopy = null;
-
 		/// <summary>
 		/// Queue priority.
 		/// </summary>
@@ -28,6 +27,14 @@ namespace LISy.Entities.Users
 		public Patron(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
 		{
 			//TakenCopies = new List<Copy>();
+		}
+
+		/// <summary>
+		/// Initializes a new instance of library client.
+		/// </summary>
+		public Patron()
+		{
+
 		}
 
 		/*/// <summary>

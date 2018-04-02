@@ -21,12 +21,18 @@
         <TextBox x:Name="flat_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="flat_of_new_user_TextChanged"/>
         <Label x:Name="phone_label" Content="Phone Number:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="94" Height="29"/>
         <TextBox x:Name="phone_of_new_user" HorizontalAlignment="Left" Height="29" Margin="109,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="14" TextChanged="phone_of_new_user_TextChanged"/>
-        <Label x:Name="status_label" Content="Status:" HorizontalAlignment="Left" Margin="10,279,0,0" VerticalAlignment="Top" Width="50" Height="29"/>
-        <CheckBox x:Name="faculty_check" Content="Faculty" HorizontalAlignment="Left" Margin="65,285,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.528,2.386"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="status_label" Content="Status:" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Width="50" Height="29" RenderTransformOrigin="0.52,1.241"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="73" Height="29"/>
         <PasswordBox x:Name="user_new_password" HorizontalAlignment="Left" Margin="88,248,0,0" VerticalAlignment="Top" Width="241" Height="29" FontSize="14"/>
-        <Button x:Name="save_user" Content="Save" HorizontalAlignment="Left" Margin="250,282,0,0" VerticalAlignment="Top" Width="79" Click="save_user_Click"/>
-        <CheckBox x:Name="check_box_for_lib" Content="Librarian" HorizontalAlignment="Left" Margin="127,285,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="save_user" Content="Save" HorizontalAlignment="Left" Margin="250,282,0,0" VerticalAlignment="Top" Width="79" Click="save_user_Click" Height="29"/>
+        <ComboBox x:Name="chooseTypeComboBox" HorizontalAlignment="Left" Margin="88,282,0,0" VerticalAlignment="Top" Width="157" Height="29">
+            <CheckBox x:Name="librarianCheckBoxType" Content ="Librarian"/>
+            <CheckBox x:Name="studentCheckBoxType" Content="Student"/>
+            <CheckBox x:Name="taCheckBoxType" Content="TA"/>
+            <CheckBox x:Name="InstructorCheckBoxType" Content="Instructor"/>
+            <CheckBox x:Name="professorCheckBoxType" Content="Professor"/>
+            <CheckBox x:Name="visitingProfessorCheckBoxType" Content="Visiting Professor"/>
+        </ComboBox>
 
     </Grid>
 </Window>

@@ -10,17 +10,27 @@ namespace LISy.Entities.Documents
 	/// <summary>
 	/// Describes properties of a set of documents that can be checked out.
 	/// </summary>
-	public abstract class Takable : Document
+	public class Takable : Document
 	{
+		/// <summary>
+		/// Amount of days a non-guest patron can hold document.
+		/// </summary>
 		public const int BASIC_RETURN_TIME = 14;
 
+		/// <summary>
+		/// Amount of days a guest patron can hold document.
+		/// </summary>
 		public const int GUEST_RETURN_TIME = 7;
 
+		/// <summary>
+		/// Price of a document.
+		/// </summary>
 		public int Price { get; set; }
 
-		//public List<Copy> Copies { get; protected set; }
-
-		//private Copy LastAvailableCopy;
+        /// <summary>
+        /// Is document outstanding or not
+        /// </summary>
+        public bool IsOutstanding { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of library document that can be checked out.
@@ -62,82 +72,22 @@ namespace LISy.Entities.Documents
 		}
 
 		/// <summary>
-		/// Evaluates return date.
+		/// Evaluates return date of a document.
 		/// </summary>
-		/// <param name="patronType">Type of borrowing patron.</param>
-		/// <returns>Evaluated date.</returns>
+		/// <param name="patronType">Type of booking patron.</param>
+		/// <returns></returns>
 		public virtual string EvaluateReturnDate(string patronType)
 		{
 			DateTime date = DateTime.Today;
-			if (patronType.Equals(Guest.TYPE)) date = date.AddDays(GUEST_RETURN_TIME);
-			else date = date.AddDays(BASIC_RETURN_TIME);
+			if (patronType.Equals(Guest.TYPE))
+			{
+				date = date.AddDays(GUEST_RETURN_TIME);
+			}
+			else
+			{
+				date = date.AddDays(BASIC_RETURN_TIME);
+			}
 			return date.ToShortDateString();
-		}
-
-		/*/// <summary>
-        /// Evaluates amount of available copies of the document.
-        /// </summary>
-        /// <returns>integer of amount of available copies.</returns>
-        public int AvailableCopiesAmount()
-        {
-            int amount = 0;
-            foreach (Copy temp in Copies)
-            {
-                if (IsAvailable()) ++amount;
-            }
-            return amount;
-        }
-
-        /// <summary>
-        /// Determines whether the document is available.
-        /// </summary>
-        /// <returns>true if the document has at least 1 copy in the library, false otherwise.</returns>
-        public bool IsAvailable()
-        {
-            if (LastAvailableCopy != null && IsAvailable()) return true;
-            foreach (Copy temp in Copies)
-            {
-                if (IsAvailable())
-                {
-                    LastAvailableCopy = temp;
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Allocates a copy of the document for a Patron to check out.
-        /// </summary>
-        /// <param name="patron">Patron that is checking out a copy.</param>
-        /// <returns>a copy that was ckecked out.</returns>
-        public Copy CheckOutCopy(Patron patron)
-        {
-            if (patron == null) throw new ArgumentNullException("Copy must be checked out by a Patron!");
-            if (!IsAvailable()) throw new Exception("No availbale copies!");
-            LastAvailableCopy.CkeckOut(patron);
-            return LastAvailableCopy;
-        }
-
-        /// <summary>
-        /// Adds new copies of the document.
-        /// </summary>
-        /// <param name="n">Amount of new copies.</param>
-        public void AddCopies(int n)
-        {
-            if (n < 1) throw new ArgumentException("Ivalid amount of new copies!");
-            for (int i = 1; i <= n; ++i)
-                Copies.Add(new Copy(this));
-        }
-
-        /// <summary>
-        /// Removes one copy of the document.
-        /// </summary>
-        public void RemoveCopy()
-        {
-            if (!IsAvailable()) throw new Exception("No availbale copies!");
-            Copies.Remove(LastAvailableCopy);
-            LastAvailableCopy = null;
-        }*/
+		}        
 	}
 }

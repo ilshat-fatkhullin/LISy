@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LISy.Entities.Users;
-using LISy.Entities.Users.Patrons;
+﻿using LISy.Entities.Users.Patrons;
+using System;
 
 namespace LISy.Entities.Documents
 {
@@ -13,18 +8,39 @@ namespace LISy.Entities.Documents
 	/// </summary>
 	public class Book : Takable
 	{
+		/// <summary>
+		/// Amount of days a faculty patron can hold book.
+		/// </summary>
 		public const int FACULTY_RETURN_TIME = 28;
 
+		/// <summary>
+		/// Amount of days a student patron can hold bestseller book.
+		/// </summary>
 		public const int STUDENT_BESTSELLER_RETURN_TIME = 14;
 
+		/// <summary>
+		/// Amount of days a student patron can hold book.
+		/// </summary>
 		public const int STUDENT_RETURN_TIME = 21;
 
+		/// <summary>
+		/// Publisher of a book.
+		/// </summary>
 		public string Publisher { get; set; }
 
+		/// <summary>
+		/// Edition of a book.
+		/// </summary>
 		public string Edition { get; set; }
 
+		/// <summary>
+		/// Year of publication.
+		/// </summary>
 		public int Year { get; set; }
 
+		/// <summary>
+		/// Denotes if book is a bestseller.
+		/// </summary>
 		public bool IsBestseller { get; set; }
 
 		/// <summary>
@@ -87,17 +103,29 @@ namespace LISy.Entities.Documents
 		}
 
 		/// <summary>
-		/// Evaluates return date.
+		/// Evaluates return date of a document.
 		/// </summary>
-		/// <param name="patronType">Type of borrowing patron.</param>
-		/// <returns>Evaluated date.</returns>
+		/// <param name="patronType">Type of booking patron.</param>
+		/// <returns></returns>
 		public override string EvaluateReturnDate(string patronType)
 		{
 			DateTime date = DateTime.Today;
-			if (patronType.Equals(Guest.TYPE)) date = date.AddDays(GUEST_RETURN_TIME);
-			else if (patronType.Equals(Faculty.TYPE)) date = date.AddDays(FACULTY_RETURN_TIME);
-			else if (IsBestseller) date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
-			else date = date.AddDays(STUDENT_RETURN_TIME);
+			if (patronType.Equals(Guest.TYPE))
+			{
+				date = date.AddDays(GUEST_RETURN_TIME);
+			}
+			else if (patronType.Equals(Faculty.TYPE))
+			{
+				date = date.AddDays(FACULTY_RETURN_TIME);
+			}
+			else if (IsBestseller)
+			{
+				date = date.AddDays(STUDENT_BESTSELLER_RETURN_TIME);
+			}
+			else
+			{
+				date = date.AddDays(STUDENT_RETURN_TIME);
+			}
 			return date.ToShortDateString();
 		}
 	}

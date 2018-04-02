@@ -1,18 +1,6 @@
 ﻿using LISy.Entities;
-using LISy.Managers.DataManagers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LISy.Managers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -35,7 +23,7 @@ namespace LISy
         {
             deleteCopID = copy.Id;
             bool f = true;
-            foreach (Copy copy1 in DocumentsDataManager.GetCheckedCopiesList())
+            foreach (Copy copy1 in LibrarianDataManager.GetCheckedCopiesList())
             {
                 if (copy1.Id == deleteCopID)
                 {
@@ -44,7 +32,7 @@ namespace LISy
             }
             if (f)
             {
-                DocumentsDataManager.DeleteCopy(copy);
+                LibrarianDataManager.DeleteCopy(copy.Id);
             }
             this.Close();
         }

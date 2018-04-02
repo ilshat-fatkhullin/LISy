@@ -1,20 +1,9 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
 using LISy.Managers;
-using LISy.Managers.DataManagers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -43,7 +32,7 @@ namespace LISy
 
         private void delete_book_from_db_Click(object sender, RoutedEventArgs e)
         {
-            LibrarianDataManager.DeleteDocument(book);
+            LibrarianDataManager.DeleteDocument(book.Id);
             workWindow.UpdateDataGridBook();
             this.Close();
         }
@@ -63,16 +52,19 @@ namespace LISy
             book.KeyWords = keywords_of_book.Text;
             book.Price = Convert.ToInt32(price_of_book.Text);
             book.IsBestseller = best_seller_of_book.IsEnabled;
-            LibrarianDataManager.EditDocument(book);
+
+            LibrarianDataManager.EditBook(book);
+
             Copy copy = new Copy();
-            copy.DocumentID = DocumentsDataManager.GetDocumentId(book);
+            copy.DocumentId = book.Id;
+
             if (room_of_book.Text != "" &&
                 level_of_book.Text != "" &&
                 copy_of_book.Text != "")
             {
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(room_of_book));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(level_of_book));
-                DocumentsDataManager.AddCopy(Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(copy_of_book)), copy);
+                LibrarianDataManager.AddCopies(Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(copy_of_book)), copy);
             }
             workWindow.UpdateDataGridBook();
             this.Close();

@@ -1,27 +1,22 @@
+using LISy.Entities;
+using LISy.Entities.Users;
 using LISy.Managers;
-using LISy.Managers.DataManagers;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using LISy.Entities;
-using LISy.Entities.Users;
-using System.Data;
-using Dapper;
-using System.Linq;
 
 namespace LISy
 {
-	/// <summary>
-	/// Логика взаимодействия для MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
 	{
 		/// <summary>
 		/// Main window.
 		/// </summary>
 		public MainWindow()
-		{
-			DocumentsDataManager.GetAllCopiesList();
+		{			
 			InitializeComponent();
 		}
 		///<summary>
@@ -48,7 +43,7 @@ namespace LISy
 					{
 						writer.Write(userID);
 					}
-					GoToWork(CredentialsManager.GetUserByID(userID));
+					GoToWork(LibrarianDataManager.GetUserById(userID));
 				}
 				else
 				{
@@ -66,16 +61,16 @@ namespace LISy
 		///<summary>
 		///method that goes to another window
 		///</summary>
-		private void GoToWork(IUser user)
+		private void GoToWork(User user)
 		{
 			Window window;
 			switch (user.Type)
 			{
 				case Librarian.TYPE:
-					window = new LibrarianWorkWindow();
+					window = new LibrarianWorkWindow(user.CardNumber);
 					break;
 				default:
-					window = new WorkWindow(user as IPatron);
+					window = new WorkWindow(user.CardNumber);
 					break;
 			}
 			window.Show();
