@@ -255,10 +255,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-UserLogic.psd
-UserLogic.png
-LISy Documentation.docx
-[Originals]/UserLogic.png
-DocumentLogic.psd
-DocumentLogic.png
-LISy Contribution report.docx
+Other/
