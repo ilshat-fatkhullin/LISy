@@ -10,5 +10,14 @@ namespace LISy.Managers
                 DocumentId = documentId,
                 UserId = userId });
         }
+
+        public static void RenewDocument(long documentId, long patronId)
+        {
+            HttpHelper.MakePutRequest("patron/renew_copy", new
+            {
+                DocumentId = documentId,
+                PatronId = patronId
+            });
+        }
     }
 }

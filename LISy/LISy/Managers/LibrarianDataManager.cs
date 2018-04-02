@@ -265,7 +265,7 @@ namespace LISy.Managers
 
         public static void DeleteDocument(long id)
         {
-            HttpHelper.MakeDeleteRequest("librarian/delete_document", new { id });
+            HttpHelper.MakeDeleteRequest("librarian/delete_document", new { Id = id });
         }
 
         public static Patron[] GetQueueToDocument(long documentId)
@@ -277,6 +277,11 @@ namespace LISy.Managers
             if (output == null)
                 return new Patron[] { };
             return output.ToArray();
+        }
+
+        public static void SetOutstanding(bool state, long documentId)
+        {
+            HttpHelper.MakePutRequest("librarian/set_outstanding", new { State = state, DocumentId = documentId });
         }
     }
 }

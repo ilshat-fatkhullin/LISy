@@ -1,16 +1,11 @@
-﻿using Dapper;
-using LISy.Entities.Documents;
-using LISy.Entities.Users;
-using System;
-using System.Data;
-using System.Linq;
+﻿using System;
 
 namespace LISy.Entities
 {
-	/// <summary>
-	/// Represents physical copies of documents.
-	/// </summary>
-	public class Copy
+    /// <summary>
+    /// Represents physical copies of documents.
+    /// </summary>
+    public class Copy
 	{
 		/// <summary>
 		/// Id of a copy.
@@ -46,6 +41,11 @@ namespace LISy.Entities
 		/// Level of copy room.
 		/// </summary>
 		public int Level { get; set; }
+
+        /// <summary>
+        /// Is copy renewed or not.
+        /// </summary>
+        public bool IsRenewed { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of Copy.
