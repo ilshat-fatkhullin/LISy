@@ -74,7 +74,8 @@ namespace LISy
 
         private void GoToQueue_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: нажав, патрон встаёт в очередь
+            PatronDataManager.AddToQueue(book.Id, patron.CardNumber);
+            GoToQueue.IsEnabled = false;
         }
     }
 }

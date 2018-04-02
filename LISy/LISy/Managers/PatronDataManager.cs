@@ -19,5 +19,14 @@ namespace LISy.Managers
                 PatronId = patronId
             });
         }
+
+        public static void AddToQueue(long documentId, long patronId)
+        {
+            HttpHelper.MakePostRequest("patron/add_to_queue", new
+            {
+                DocumentId = documentId,
+                PatronId = patronId
+            });
+        }
     }
 }

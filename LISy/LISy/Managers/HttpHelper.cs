@@ -5,8 +5,8 @@ namespace LISy.Managers
 {
     public static class HttpHelper
     {
-        private const string MAIN_URL = "http://lisyrest.azurewebsites.net/api/";
-        //private const string MAIN_URL = "http://localhost:53725/api/";
+        //private const string MAIN_URL = "http://lisyrest.azurewebsites.net/api/";
+        private const string MAIN_URL = "http://localhost:53725/api/";
 
         public static void MakePostRequest(string requestURL, object data)
         {
