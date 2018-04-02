@@ -14,11 +14,8 @@
         <TabControl x:Name="grid_for_user" HorizontalAlignment="Left" Height="191" Margin="10,72,0,0" VerticalAlignment="Top" Width="457">
             <TabItem Header="Check out copies">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="check_out_doc" HorizontalAlignment="Left" Height="143" Margin="10,10,0,0" VerticalAlignment="Top" Width="431" Loaded="DataGridChekOutDoc" />
+                    <DataGrid x:Name="check_out_doc" HorizontalAlignment="Left" Height="143" Margin="10,10,0,0" VerticalAlignment="Top" Width="431" Loaded="DataGridChekOutDoc" MouseUp="check_out_doc_MouseUp" />
                 </Grid>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
 

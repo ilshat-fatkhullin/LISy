@@ -14,7 +14,7 @@ namespace LISy
     {
         private LibrarianWorkWindow window;
         private Journal journal;
-        private Copy copy;
+        
         /// <summary>
         /// window to modifay Journal information
         /// </summary>
@@ -95,7 +95,7 @@ namespace LISy
             journal.PublicationDate = publicationDateBox.Text;
 
             LibrarianDataManager.EditJournal(journal);
-
+            Copy copy = new Copy();
             if (roomTextBox.Text != "" &&
                 levelTextBox.Text != "" &&
                 copiesOfJournalTextBox.Text != "")

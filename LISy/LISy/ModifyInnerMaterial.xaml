@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
         Title="ModifyInnerMaterial" Height="374.217" Width="450.405"
-        Name="InnerMaterialModify" Icon="Design/icon_logo100x100.ico">
+        Name="InnerMaterialModify" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="mainGrid">
         <Label x:Name="innerMaterialTittle" Content="Title:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15"/>
         <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Height="30" Margin="95,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="334" FontSize="16" TextChanged="titleTextBox_TextChanged" />

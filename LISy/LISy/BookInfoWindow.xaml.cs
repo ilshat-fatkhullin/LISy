@@ -40,6 +40,28 @@ namespace LISy
                 InStockLabel.Content = "Not available.";
             }
             BestSellerLabel.Content = book.IsBestseller ? "Bestseller." : "";
+            
+            if (CountFine()>0)
+            {
+                FineLabel.Visibility = Visibility.Visible;
+                finePriceLabel.Content = CountFine(); 
+                finePriceLabel.Visibility = Visibility.Visible;
+            }
+
+            if (BookButton.IsEnabled == false)
+            {
+                GoToQueue.IsEnabled = true;
+            }
+            else
+            {
+                GoToQueue.IsEnabled = false;
+            }
+        }
+        public int CountFine()
+        {
+            //нужно подсчитать дату точнее разницу между датой сдачи и сегоднешним днем 
+            //если просрочено то умножить на кооэфицент 1000
+            return 1000;
         }
 
         private void button_book_Click(object sender, RoutedEventArgs e)
@@ -48,6 +70,11 @@ namespace LISy
             BookButton.IsEnabled = false;
             InStockLabel.Content = "Not available.";
             ReturnDataLabel.Content = book.EvaluateReturnDate(patron.Type);            
+        }
+
+        private void GoToQueue_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: нажав, патрон встаёт в очередь
         }
     }
 }
