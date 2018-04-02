@@ -188,6 +188,7 @@
       <DependentUpon>DeleteCopy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\Documents\Article.cs" />
+    <Compile Include="Entities\Notifications\Notification.cs" />
     <Compile Include="Entities\Users\Patrons\Guest.cs" />
     <Compile Include="InfoAndNotificationsWindow.xaml.cs">
       <DependentUpon>InfoAndNotificationsWindow.xaml</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
+using LISy.Entities.Notifications;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using System;
@@ -282,6 +283,6 @@ namespace LISy.Managers
         public static void SetOutstanding(bool state, long documentId)
         {
             HttpHelper.MakePutRequest("librarian/set_outstanding", new { State = state, DocumentId = documentId });
-        }
+        }        
     }
 }
