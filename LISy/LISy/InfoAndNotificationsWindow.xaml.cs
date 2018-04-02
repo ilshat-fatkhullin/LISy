@@ -1,4 +1,7 @@
-﻿using LISy.Entities.Users;
+﻿using LISy.Entities.Notifications;
+using LISy.Entities.Users;
+using LISy.Managers;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace LISy
@@ -24,7 +27,13 @@ namespace LISy
 
         private void NotificationDataGrid_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            Notification notification = notificationDataGrid.SelectedItem as Notification;
+            if (notification == null)
+                return;
 
+            ProveNotificationWindow window = new ProveNotificationWindow(patron, this,notification);
+            window.Owner = this;
+            window.Show();
         }
 
         private void NotificationDataGrid_Loaded(object sender, RoutedEventArgs e)
@@ -33,7 +42,13 @@ namespace LISy
         }
         public void UpdateNotificationDataGrid()
         {
-
+            List<Notification> result = new List<Notification>();
+            result.Clear();
+            foreach (Notification note in PatronDataManager.GetNotifications(patron.CardNumber))
+            {
+                result.Add(note);
+            }
+            notificationDataGrid.ItemsSource = result;
         }
     }
 }
