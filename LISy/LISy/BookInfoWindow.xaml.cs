@@ -1,6 +1,7 @@
 ﻿using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Managers;
+using System;
 using System.Windows;
 
 namespace LISy
@@ -13,6 +14,7 @@ namespace LISy
         private Patron patron;
         private Book book;
         private WorkWindow workWindow;
+        private int diff = 0;
         /// <summary>
         /// View info about book
         /// </summary>
@@ -59,9 +61,13 @@ namespace LISy
         }
         public int CountFine()
         {
-            //нужно подсчитать дату точнее разницу между датой сдачи и сегоднешним днем 
-            //если просрочено то умножить на кооэфицент 1000
-            return 1000;
+            int count = Convert.ToInt32(book.EvaluateReturnDate(patron.Type)) * diff + 2;
+            if (count * 1000 < book.Price)
+            {
+                return count * 1000;
+            }
+
+            return book.Price;
         }
 
         private void button_book_Click(object sender, RoutedEventArgs e)

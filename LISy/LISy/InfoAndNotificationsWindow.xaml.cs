@@ -15,7 +15,7 @@ namespace LISy
         private Patron patron;
         /// <summary>
         /// window for patron to see all info and notification for it
-        /// </summary>
+        /// </summary>  
         /// <param name="patron"></param>
         /// <param name="window"></param>
         public InfoAndNotificationsWindow(Patron patron, WorkWindow window)
