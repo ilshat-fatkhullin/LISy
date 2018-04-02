@@ -36,8 +36,7 @@ namespace LISy
             this.documentId = documentId;
             this.userId= userId;
             this.workWindow = workWindow;
-
-
+            
         }
 
         private void Сhange_status_of_copy_Click(object sender, RoutedEventArgs e)
@@ -45,6 +44,14 @@ namespace LISy
             if (make_book_returned.IsChecked == true)
             {
                 LibrarianDataManager.ReturnDocument(documentId,userId);
+            }
+            if (setOutStandingRequestcheckBox.IsChecked == true)
+            {
+                LibrarianDataManager.SetOutstanding(true,documentId);
+            }
+            if (disableOutstandingRequest.IsChecked == true)
+            {
+                LibrarianDataManager.SetOutstanding(false,documentId);
             }
             workWindow.UpdatDataGridChekedOutCopies();
             this.Close();
