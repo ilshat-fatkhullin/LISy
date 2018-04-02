@@ -34,16 +34,19 @@ namespace LISy
 			id_patron.Content = patron.CardNumber;
 
 		}
-
+        public void UpdateDataGrid()
+        {
+            List<Copy> result = new List<Copy>();
+            result.Clear();
+            foreach (Copy doc in LibrarianDataManager.GetCheckedByUserCopiesList(patron.CardNumber))
+            {
+                result.Add(doc);
+            }
+            check_out_doc.ItemsSource = result;
+        }
 		private void DataGridChekOutDoc(object sender, RoutedEventArgs e)
 		{
-			List<Copy> result = new List<Copy>();
-			result.Clear();
-			foreach (Copy doc in LibrarianDataManager.GetCheckedByUserCopiesList(patron.CardNumber))
-			{
-				result.Add(doc);
-			}
-			check_out_doc.ItemsSource = result;
+            UpdateDataGrid();
 		}
 	
         private void check_out_doc_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -53,7 +56,7 @@ namespace LISy
             if (copy == null)
                 return;
 
-            MakeRenew window = new MakeRenew(copy.DocumentId, copy.PatronId, this);
+            MakeRenew window = new MakeRenew(patron.CardNumber,copy.DocumentId, copy.PatronId, this);
             window.Owner = this;
             window.Show();
         }

@@ -1,4 +1,5 @@
 ﻿using LISy.Entities;
+using LISy.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,28 +23,29 @@ namespace LISy
     {
         private long copyID;
         private long documentID;
+        private long patronID;
         private BookingHistory bookingHistoryWindow;
-        public MakeRenew(long documentID, long copyID,BookingHistory bookingHistoryWindow)
+        public MakeRenew(long patronID,long documentID, long copyID,BookingHistory bookingHistoryWindow)
         {
             InitializeComponent();
             this.copyID = copyID;
             this.documentID = documentID;
+            this.patronID = patronID;
             this.bookingHistoryWindow = bookingHistoryWindow;
         }
         public void CheckRenewStatus() {
-            if (checkRenewStatusBox.IsChecked == true && /*не оутсандинг реквест*/ true)
+
+            if (checkRenewStatusBox.IsChecked == true)
             {
-                //make a renew document
-            }
-            else
-            {
-                //if with doc patron don't do anything
+                PatronDataManager.RenewDocument(documentID, patronID);
             }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             CheckRenewStatus();
+            bookingHistoryWindow.UpdateDataGrid();
+            this.Close();
         }
     }
 }
