@@ -7,9 +7,12 @@ using LISy.Entities.Documents;
 
 namespace LISy.Entities.Users
 {
-    public abstract class Patron : User
-    {
-        //public List<Copy> TakenCopies { get; protected set; }
+	/// <summary>
+	/// Represents patronf of the library.
+	/// </summary>
+	public abstract class Patron : User
+	{
+		//public List<Copy> TakenCopies { get; protected set; }
 
 
 		//private Copy LastFoundCopy = null;

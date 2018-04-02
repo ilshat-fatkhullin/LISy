@@ -12,11 +12,20 @@ namespace LISy.Entities.Documents
 	/// </summary>
 	public abstract class Takable : Document
 	{
-        public const int BASIC_RETURN_TIME = 14;
+		/// <summary>
+		/// Amount of days a non-guest patron can hold document.
+		/// </summary>
+		public const int BASIC_RETURN_TIME = 14;
 
-        public const int GUEST_RETURN_TIME = 7;
+		/// <summary>
+		/// Amount of days a guest patron can hold document.
+		/// </summary>
+		public const int GUEST_RETURN_TIME = 7;
 
-        public int Price { get; set; }
+		/// <summary>
+		/// Price of a document.
+		/// </summary>
+		public int Price { get; set; }
 
 		//public List<Copy> Copies { get; protected set; }
 
@@ -61,21 +70,26 @@ namespace LISy.Entities.Documents
 			Price = price >= 0 ? price : throw new ArgumentException("Price cannot be negative!");
 		}
 
-        public virtual string EvaluateReturnDate(string patronType)
-        {
-            DateTime date = DateTime.Today;
-            if (patronType.Equals(Guest.TYPE))
-            {
-                date = date.AddDays(GUEST_RETURN_TIME);
-            }
-            else
-            {
-                date = date.AddDays(BASIC_RETURN_TIME);
-            }
-            return date.ToShortDateString();
-        }
+		/// <summary>
+		/// Evaluates return date of a document.
+		/// </summary>
+		/// <param name="patronType">Type of booking patron.</param>
+		/// <returns></returns>
+		public virtual string EvaluateReturnDate(string patronType)
+		{
+			DateTime date = DateTime.Today;
+			if (patronType.Equals(Guest.TYPE))
+			{
+				date = date.AddDays(GUEST_RETURN_TIME);
+			}
+			else
+			{
+				date = date.AddDays(BASIC_RETURN_TIME);
+			}
+			return date.ToShortDateString();
+		}
 
-        /*/// <summary>
+		/*/// <summary>
         /// Evaluates amount of available copies of the document.
         /// </summary>
         /// <returns>integer of amount of available copies.</returns>
@@ -140,5 +154,5 @@ namespace LISy.Entities.Documents
             Copies.Remove(LastAvailableCopy);
             LastAvailableCopy = null;
         }*/
-    }
+	}
 }
