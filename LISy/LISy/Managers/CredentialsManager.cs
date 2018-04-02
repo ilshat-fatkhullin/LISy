@@ -20,14 +20,6 @@ namespace LISy.Managers
                     new Tuple<string, string>("login", login),
                     new Tuple<string, string>("password", password)
                 });
-        }
-        
-        public static string GetUserType(long userId)
-        {
-            return HttpHelper.MakeGetRequest("credentials/get_user_type",
-                new Tuple<string, string>[] {
-                    new Tuple<string, string>("userId", Convert.ToString (userId))
-                });
         }        
         
         public static void EditUserCredentials(long userId, string password)
@@ -35,14 +27,6 @@ namespace LISy.Managers
             HttpHelper.MakePutRequest("credentials/edit_user_credentials", new {
                 UserId = userId,
                 Password = password });
-        }
-        
-        public static User GetUserById(long userId)
-        {
-            return HttpHelper.MakeGetRequest<User>("credentials/get_user_by_id",
-                new Tuple<string, string>[] {
-                    new Tuple<string, string>("userId", Convert.ToString(userId))
-                });
-        }
+        }                
     }
 }

@@ -9,7 +9,7 @@ namespace LISy.Entities
 	/// <summary>
 	/// Represents the implementatin of common properties of library documents.
 	/// </summary>
-	public abstract class Document : IDocument
+	public class Document
 	{
 		#region MAIN_INFO
 
@@ -81,6 +81,66 @@ namespace LISy.Entities
 		}
 
 		/*#region SETTER_FUNCTIONS
+    /// <summary>
+    /// Represents the implementatin of common properties of library documents.
+    /// </summary>
+    public class Document
+    {
+        #region MAIN_INFO
+
+        public long Id { get; set; }
+
+        public string Authors { get; set; }
+
+        public string Title { get; set; }
+
+        public string KeyWords { get; set; }
+
+        public string CoverURL { get; set; }
+
+        #endregion
+
+        /// <summary>
+        /// Initializes a new instance of library document with common properties.
+        /// </summary>
+        public Document()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance of library document with common properties.
+        /// </summary>
+        /// <param name="authors">Authors or editors of the document.</param>
+        /// <param name="title">Title of the document.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
+        /// <param name="coverURL">Cover of the document.</param>
+        public Document(string authors, string title, string keys, string coverURL)
+        {
+            Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
+            Title = title ?? throw new ArgumentNullException("Document must have a title!");
+            KeyWords = keys ?? throw new ArgumentNullException("Document must have a title!");
+            CoverURL = coverURL ?? throw new ArgumentNullException("Document must have a cover!");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of library document with common properties.
+        /// </summary>
+        /// <param name="id">Id of the document.</param>
+        /// <param name="authors">Authors or editors of the document.</param>
+        /// <param name="title">Title of the document.</param>
+        /// <param name="keys">KeyWords using which the document can be found.</param>
+        /// <param name="coverURL">Cover of the document.</param>
+        public Document(long id, string authors, string title, string keys, string coverURL)
+        {
+            Id = id >= 0 ? id : throw new ArgumentException("Invalid Id!");
+            Authors = authors ?? throw new ArgumentNullException("Document must have authors!");
+            Title = title ?? throw new ArgumentNullException("Document must have a title!");
+            KeyWords = keys ?? throw new ArgumentNullException("Document must have a title!");
+            CoverURL = coverURL ?? throw new ArgumentNullException("Document must have a cover!");
+        }
+
+        /*#region SETTER_FUNCTIONS
 
         /// <summary>
         /// Adds a keyword to the list of document's keywords.

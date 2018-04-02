@@ -43,7 +43,7 @@ namespace LISy
 					{
 						writer.Write(userID);
 					}
-					GoToWork(CredentialsManager.GetUserById(userID));
+					GoToWork(LibrarianDataManager.GetUserById(userID));
 				}
 				else
 				{
@@ -67,10 +67,10 @@ namespace LISy
 			switch (user.Type)
 			{
 				case Librarian.TYPE:
-					window = new LibrarianWorkWindow(user);
+					window = new LibrarianWorkWindow(user.CardNumber);
 					break;
 				default:
-					window = new WorkWindow(user as Patron);
+					window = new WorkWindow(user.CardNumber);
 					break;
 			}
 			window.Show();

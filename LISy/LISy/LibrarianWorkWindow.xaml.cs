@@ -13,14 +13,14 @@ namespace LISy
     /// </summary>
     public partial class LibrarianWorkWindow : Window
     {
-        private User patron;
+        private User user;
 
-        public LibrarianWorkWindow(User patron)
+        public LibrarianWorkWindow(long userId)
         {
             InitializeComponent();
-            this.patron = patron;
-            librarian_name_fill.Content = patron.FirstName;
-            librarian_status_fill.Content = patron.Type;
+            user = LibrarianDataManager.GetUserById(userId);
+            librarian_name_fill.Content = user.FirstName;
+            librarian_status_fill.Content = user.Type;
 
         }
         private void refresh_Click(object sender, RoutedEventArgs e)
