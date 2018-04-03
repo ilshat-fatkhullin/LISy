@@ -1,18 +1,6 @@
 ﻿using LISy.Entities;
 using LISy.Managers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -40,16 +28,71 @@ namespace LISy
             this.documentID = documentID;
             this.patronID = patronID;
             this.bookingHistoryWindow = bookingHistoryWindow;
-            fineShowLabel.Content = copy.CountFine();
+            
         }
 
 		/// <summary>
 		/// Checks renew status.
 		/// </summary>
         public void CheckRenewStatus() {
-            if (checkRenewStatusBox.IsChecked == true)
+            if (checkRenewStatusBox.IsChecked == true && LibrarianDataManager.GetTakableById(copy.Id).IsOutstanding == false && LibrarianDataManager.GetPatronById(patronID).Type == "Student")
             {
                 PatronDataManager.RenewDocument(documentID, patronID);
+                if (copy.IsRenewed == true)
+                {
+                    checkRenewStatusBox.IsEnabled = false;
+                }
+                else
+                {
+                    checkRenewStatusBox.IsEnabled = true;
+                }
+            }
+            else if (checkRenewStatusBox.IsChecked == true && LibrarianDataManager.GetTakableById(copy.Id).IsOutstanding == false && LibrarianDataManager.GetPatronById(patronID).Type == "Professor")
+            {
+                    PatronDataManager.RenewDocument(documentID, patronID);
+                if (copy.IsRenewed == true)
+                {
+                    checkRenewStatusBox.IsEnabled = false;
+                }
+                else
+                {
+                    checkRenewStatusBox.IsEnabled = true;
+                }
+
+            }
+            else if (checkRenewStatusBox.IsChecked == true && LibrarianDataManager.GetTakableById(copy.Id).IsOutstanding == false && LibrarianDataManager.GetPatronById(patronID).Type == "TA")
+            {
+                PatronDataManager.RenewDocument(documentID, patronID);
+                if (copy.IsRenewed == true)
+                {
+                    checkRenewStatusBox.IsEnabled = false;
+                }
+                else
+                {
+                    checkRenewStatusBox.IsEnabled = true;
+                }
+
+            }
+            else if (checkRenewStatusBox.IsChecked == true && LibrarianDataManager.GetTakableById(copy.Id).IsOutstanding == false && LibrarianDataManager.GetPatronById(patronID).Type == "Instructor")
+            {
+                PatronDataManager.RenewDocument(documentID, patronID);
+                if (copy.IsRenewed == true)
+                {
+                    checkRenewStatusBox.IsEnabled = false;
+                }
+                else
+                {
+                    checkRenewStatusBox.IsEnabled = true;
+                }
+
+            }
+            else if (checkRenewStatusBox.IsChecked == true && LibrarianDataManager.GetTakableById(copy.Id).IsOutstanding == false && LibrarianDataManager.GetPatronById(patronID).Type == "Guest")
+            {
+                PatronDataManager.RenewDocument(documentID, patronID);
+            }
+            else
+            {
+                MessageBox.Show("This document in outstanding request");
             }
         }
 

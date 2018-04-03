@@ -50,5 +50,13 @@ namespace LISy
             }
             notificationDataGrid.ItemsSource = result;
         }
+        public void UpdateFinesDataGrid()
+        {
+
+        }
+        private void FinesDataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateFinesDataGrid();
+        }
     }
 }

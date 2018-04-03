@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="InfoAndNotificationsWindow" Height="270.194" Width="640.064" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="InfoAndNotificationsWindow" Height="270.194" Width="1003.276" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="mainGrid">
-        <DataGrid x:Name="notificationDataGrid" HorizontalAlignment="Left" Height="214" Margin="10,10,0,0" VerticalAlignment="Top" Width="513" MouseUp="NotificationDataGrid_MouseUp" Loaded="NotificationDataGrid_Loaded"/>
-        <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="528,10,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+        <DataGrid x:Name="notificationDataGrid" HorizontalAlignment="Left" Height="221" Margin="125,10,0,0" VerticalAlignment="Top" Width="360" MouseUp="NotificationDataGrid_MouseUp" Loaded="NotificationDataGrid_Loaded"/>
+        <DataGrid x:Name="FinesDataGrid" HorizontalAlignment="Left" Height="221" Margin="605,10,0,0" VerticalAlignment="Top" Width="382" Loaded="FinesDataGrid_Loaded"/>
+        <Label x:Name="notificationsLabel" Content="My Notifications:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label Content="My Fines:" HorizontalAlignment="Left" Margin="490,10,0,0" VerticalAlignment="Top" Width="110"/>
     </Grid>
 </Window>
