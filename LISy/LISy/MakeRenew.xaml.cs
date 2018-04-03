@@ -34,8 +34,11 @@ namespace LISy
             this.bookingHistoryWindow = bookingHistoryWindow;
             fineShowLabel.Content = copy.CountFine();
         }
-        public void CheckRenewStatus() {
 
+		/// <summary>
+		/// Checks renew status.
+		/// </summary>
+        public void CheckRenewStatus() {
             if (checkRenewStatusBox.IsChecked == true)
             {
                 PatronDataManager.RenewDocument(documentID, patronID);

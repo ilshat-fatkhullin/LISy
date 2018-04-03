@@ -1,6 +1,5 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
-using LISy.Entities.Notifications;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using System;
@@ -145,6 +144,13 @@ namespace LISy.Managers
         {
             return HttpHelper.MakeGetRequest<Patron>("librarian/get_patron", new Tuple<string, string>[] {
                     new Tuple<string, string>("patronId", Convert.ToString(patronId))
+                });
+        }
+
+        public static Takable GetTakableById(long takableId)
+        {
+            return HttpHelper.MakeGetRequest<Takable>("librarian/get_takable", new Tuple<string, string>[] {
+                    new Tuple<string, string>("takableId", Convert.ToString(takableId))
                 });
         }
 
