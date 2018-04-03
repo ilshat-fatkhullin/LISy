@@ -46,7 +46,7 @@ namespace LISyTest.Integrated
         /// Effect: Librarians can see that Patron p has one copy of book b and there is one copy of book b in the library.
         /// </summary>
         [TestMethod]
-        public void TestCase1()
+        public void D1TC1()
         {      
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
@@ -73,7 +73,7 @@ namespace LISyTest.Integrated
         /// Effect: The system does not change its state. Maybe a message notifying the patron can read: the library does not have book 'b'
         /// </summary>
         [TestMethod]
-        public void TestCase2()
+        public void D1TC2()
         {
             Initialize();
             Copy[] oldCopies = LibrarianDataManager.GetAllCopiesList();
@@ -96,7 +96,7 @@ namespace LISyTest.Integrated
         /// Effect: The book is checked out by 'f' with returning time of 4 weeks(from the day it was checked out)
         /// </summary>
         [TestMethod]
-        public void TestCase3()
+        public void D1TC3()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
@@ -130,7 +130,7 @@ namespace LISyTest.Integrated
         /// Effect: The book is checked out by 'f' with returning time of 4 weeks(from the day it was checked out)
         /// </summary>
         [TestMethod]
-        public void TestCase4()
+        public void D1TC4()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, FACULTY_ID);
@@ -164,7 +164,7 @@ namespace LISyTest.Integrated
         /// Effect: Only first two patrons can check out the copy of book A.The third patron sees an empty list of books.
         /// </summary>        
         [TestMethod]
-        public void TestCase5()
+        public void D1TC5()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
@@ -206,7 +206,7 @@ namespace LISyTest.Integrated
         /// Effect: None. In particular, librarians can check that Patron p has the same copy c of book b as before and copy c' is still in the library.
         /// </summary>
         [TestMethod]
-        public void TestCase6()
+        public void D1TC6()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
@@ -233,7 +233,7 @@ namespace LISyTest.Integrated
         /// Effect: The system should track both bookings
         /// </summary>
         [TestMethod]
-        public void TestCase7()
+        public void D1TC7()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID, PATRON_1_ID);
@@ -271,7 +271,7 @@ namespace LISyTest.Integrated
         /// Effect: The book is checked out by 's' with returning time of 3 weeks(from the day it was checked out)
         /// </summary>
         [TestMethod]
-        public void TestCase8()
+        public void D1TC8()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
@@ -304,7 +304,7 @@ namespace LISyTest.Integrated
         /// Effect: The book is checked out by 's' with returning time of 2 weeks(from the day it was checked out)
         /// </summary>        
         [TestMethod]
-        public void TestCase9()
+        public void D1TC9()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);
@@ -336,7 +336,7 @@ namespace LISyTest.Integrated
         /// 
         /// </summary>
         [TestMethod]
-        public void TestCase10()
+        public void D1TC10()
         {
             Initialize();
             PatronDataManager.CheckOutDocument(BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID, STUDENT_ID);

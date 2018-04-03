@@ -14,7 +14,7 @@ namespace LISyTest.Integrated
     public class Delivery2
     {
         [TestMethod]
-        public void TestCase1()
+        public void D2TC1()
         {
             LibrarianDataManager.ClearAll();
             LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
@@ -42,9 +42,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase2()
+        public void D2TC2()
         {
-            TestCase1();
+            D2TC1();
             List<Copy> copies = LibrarianDataManager.GetAllCopiesList().ToList();
             Copy copy = copies.Where(c => c.DocumentId == 1 && c.Room == 1 && c.Level == 1).First();
             LibrarianDataManager.DeleteCopy(copy.Id);
@@ -65,9 +65,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase3()
+        public void D2TC3()
         {
-            TestCase1();
+            D2TC1();
             User faculty = LibrarianDataManager.GetUserById(2);
             Assert.AreEqual(faculty.FirstName, "Sergey");
             Assert.AreEqual(faculty.SecondName, "Afonso");
@@ -81,9 +81,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase4()
+        public void D2TC4()
         {
-            TestCase2();
+            D2TC2();
             User faculty = LibrarianDataManager.GetUserById(3);
             Assert.IsNull(faculty);
             faculty = LibrarianDataManager.GetUserById(4);
@@ -94,9 +94,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase5()
+        public void D2TC5()
         {
-            TestCase2();
+            D2TC2();
             PatronDataManager.CheckOutDocument(1, 3);
             foreach (var copy in LibrarianDataManager.GetAllCopiesList())
             {
@@ -106,9 +106,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase6()
+        public void D2TC6()
         {
-            TestCase2();            
+            D2TC2();            
 
             PatronDataManager.CheckOutDocument(1, 2);
             PatronDataManager.CheckOutDocument(2, 4);
@@ -133,9 +133,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase7()
+        public void D2TC7()
         {
-            TestCase1();
+            D2TC1();
 
             PatronDataManager.CheckOutDocument(1, 2);
             PatronDataManager.CheckOutDocument(2, 2);
@@ -178,9 +178,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase8()
+        public void D2TC8()
         {
-            TestCase1();
+            D2TC1();
             PatronDataManager.CheckOutDocument(1, 2);
             PatronDataManager.CheckOutDocument(2, 2);
             PatronDataManager.CheckOutDocument(1, 3);
@@ -192,9 +192,9 @@ namespace LISyTest.Integrated
         }
 
         [TestMethod]
-        public void TestCase9()
+        public void D2TC9()
         {
-            TestCase1();            
+            D2TC1();            
             Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 1), 3);
             Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 2), 2);
             Assert.AreEqual(LibrarianDataManager.GetAllCopiesList().Count(copy => copy.DocumentId == 3), 1);
