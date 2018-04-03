@@ -25,7 +25,6 @@ namespace LISy
         private long documentID;
         private long patronID;
         private BookingHistory bookingHistoryWindow;
-<<<<<<< HEAD
 
 		/// <summary>
 		/// Initializes MakeRenew window.
@@ -34,10 +33,7 @@ namespace LISy
 		/// <param name="documentID">Id of looking document.</param>
 		/// <param name="copyID">Id of looking copy.</param>
 		/// <param name="bookingHistoryWindow">Previous window.</param>
-        public MakeRenew(long patronID, long documentID, long copyID, BookingHistory bookingHistoryWindow)
-=======
-        public MakeRenew(long patronID,long documentID, Copy copy,BookingHistory bookingHistoryWindow)
->>>>>>> b76d11f5ef42d47af8ca917be3af57cb91010f36
+        public MakeRenew(long patronID,long documentID, Copy copy, BookingHistory bookingHistoryWindow)
         {
             InitializeComponent();
             this.copy = copy;
