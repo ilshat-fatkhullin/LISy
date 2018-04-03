@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="AddLibrarian" Height="186.397" Width="311.765" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label x:Name="lib_name_label" Content="Name:" Margin="10,10,246,121"/>
-        <Label x:Name="lib_status_label" Content="Status:" Margin="10,41,246,90"/>
-        <TextBox x:Name="lib_name_box" Margin="65,10,22,121" TextWrapping="Wrap" FontSize="16" TextChanged="lib_name_box_TextChanged"/>
-        <TextBox x:Name="lib_status_box" Margin="65,41,22,90" TextWrapping="Wrap" FontSize="16" TextChanged="lib_status_box_TextChanged"/>
+        <Label x:Name="lib_name_label" Content="Name:" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
+        <Label x:Name="lib_status_label" Content="Status:" Margin="10,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50"/>
+        <TextBox x:Name="lib_name_box" Margin="65,10,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="lib_name_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="lib_status_box" Margin="65,41,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="lib_status_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
         <Label x:Name="lib_password_label" Content="Password:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="65"/>
-        <PasswordBox x:Name="lib_password_box" Margin="75,72,22,59" FontSize="16"/>
-        <Button x:Name="add_new_lib_to_system" Content="Add" Margin="184,103,22,24" Click="add_new_lib_to_system_Click"/>
+        <PasswordBox x:Name="lib_password_box" Margin="80,72,0,0" FontSize="16" HorizontalAlignment="Left" Width="204" Height="26" VerticalAlignment="Top"/>
+        <Button x:Name="add_new_lib_to_system" Content="Add" Margin="184,103,0,0" Click="add_new_lib_to_system_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

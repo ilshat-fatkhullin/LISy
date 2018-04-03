@@ -43,12 +43,6 @@ namespace LISy
             }
             BestSellerLabel.Content = book.IsBestseller ? "Bestseller." : "";
             
-            if (CountFine()>0)
-            {
-                FineLabel.Visibility = Visibility.Visible;
-                finePriceLabel.Content = CountFine(); 
-                finePriceLabel.Visibility = Visibility.Visible;
-            }
 
             if (BookButton.IsEnabled == false)
             {
@@ -59,17 +53,6 @@ namespace LISy
                 GoToQueue.IsEnabled = false;
             }
         }
-        public int CountFine()
-        {
-            int count = Convert.ToInt32(book.EvaluateReturnDate(patron.Type)) * diff + 2;
-            if (count * 1000 < book.Price)
-            {
-                return count * 1000;
-            }
-
-            return book.Price;
-        }
-
         private void button_book_Click(object sender, RoutedEventArgs e)
         {
             PatronDataManager.CheckOutDocument(book.Id, patron.CardNumber);

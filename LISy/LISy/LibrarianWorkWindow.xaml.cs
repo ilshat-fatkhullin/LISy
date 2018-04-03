@@ -223,11 +223,6 @@ namespace LISy
         {
             UpdateDataGridJournal();
         }
-
-        private void JournalArticleDataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            UptadeDataGridJournalArticles();
-        }
         public void UptadeDataGridJournalArticles()
         {
             List<Article> result = new List<Article>();

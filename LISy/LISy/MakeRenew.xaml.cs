@@ -21,17 +21,18 @@ namespace LISy
     /// </summary>
     public partial class MakeRenew : Window
     {
-        private long copyID;
+        private Copy copy;
         private long documentID;
         private long patronID;
         private BookingHistory bookingHistoryWindow;
-        public MakeRenew(long patronID,long documentID, long copyID,BookingHistory bookingHistoryWindow)
+        public MakeRenew(long patronID,long documentID, Copy copy,BookingHistory bookingHistoryWindow)
         {
             InitializeComponent();
-            this.copyID = copyID;
+            this.copy = copy;
             this.documentID = documentID;
             this.patronID = patronID;
             this.bookingHistoryWindow = bookingHistoryWindow;
+            fineShowLabel.Content = copy.CountFine();
         }
         public void CheckRenewStatus() {
 

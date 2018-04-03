@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="InfoAndNotificationsWindow" Height="330.882" Width="641.913" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="InfoAndNotificationsWindow" Height="270.194" Width="640.064" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="mainGrid">
-        <DataGrid x:Name="notificationDataGrid" HorizontalAlignment="Left" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" Width="471" MouseUp="NotificationDataGrid_MouseUp" Loaded="NotificationDataGrid_Loaded"/>
-        <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="486,10,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
+        <DataGrid x:Name="notificationDataGrid" HorizontalAlignment="Left" Height="214" Margin="10,10,0,0" VerticalAlignment="Top" Width="513" MouseUp="NotificationDataGrid_MouseUp" Loaded="NotificationDataGrid_Loaded"/>
+        <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="528,10,0,0" VerticalAlignment="Top" Width="60" Height="30"/>
     </Grid>
 </Window>

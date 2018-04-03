@@ -5,15 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="User modify" Height="248.328" Width="415.085" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,-255,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40*"/>
-            <ColumnDefinition Width="107*"/>
-            <ColumnDefinition Width="42*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="31*"/>
-        </Grid.ColumnDefinitions>
+        Title="User modify" Height="261.328" Width="872.085" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
         <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="First name" VerticalAlignment="Top" Width="360" RenderTransformOrigin="0.415,0.265" Grid.ColumnSpan="2" TextChanged="FirstName_TextChanged"/>
         <TextBox x:Name="SecondName" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Second name" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="SecondName_TextChanged"/>
         <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2" TextChanged="Phone_TextChanged"/>
@@ -29,5 +22,6 @@
             <CheckBox x:Name="professorCheckBoxType" Content="Professor"/>
             <CheckBox x:Name="visitingProfessorCheckBoxType" Content="Visiting Professor"/>
         </ComboBox>
+        <DataGrid x:Name="UsersNotificationDataGrid" HorizontalAlignment="Left" Height="212" Margin="375,10,0,0" VerticalAlignment="Top" Width="481" Loaded="UsersNotificationDataGrid_Loaded"/>
     </Grid>
 </Window>
