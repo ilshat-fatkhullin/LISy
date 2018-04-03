@@ -27,10 +27,10 @@ namespace LISy.Entities.Documents
 		/// </summary>
 		public int Price { get; set; }
 
-        /// <summary>
-        /// Is document outstanding or not
-        /// </summary>
-        public bool IsOutstanding { get; set; }
+		/// <summary>
+		/// Is document outstanding or not
+		/// </summary>
+		public bool IsOutstanding { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of library document that can be checked out.
@@ -88,6 +88,6 @@ namespace LISy.Entities.Documents
 				date = date.AddDays(BASIC_RETURN_TIME);
 			}
 			return date.ToShortDateString();
-		}        
+		}
 	}
 }
