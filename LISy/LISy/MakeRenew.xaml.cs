@@ -40,7 +40,7 @@ namespace LISy
             this.documentID = documentID;
             this.patronID = patronID;
             this.bookingHistoryWindow = bookingHistoryWindow;
-            fineShowLabel.Content = copy.CountFine();
+            //fineShowLabel.Content = copy.CountFine();
         }
 
 		/// <summary>

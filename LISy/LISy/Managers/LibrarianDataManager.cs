@@ -1,5 +1,6 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
+using LISy.Entities.Fine;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using System;
@@ -289,6 +290,17 @@ namespace LISy.Managers
         public static void SetOutstanding(bool state, long documentId)
         {
             HttpHelper.MakePutRequest("librarian/set_outstanding", new { State = state, DocumentId = documentId });
-        }        
+        }
+
+        public static Fine[] GetFinesByPatronId(long patronId)
+        {
+            var output = HttpHelper.MakeGetRequest<List<Fine>>("librarian/get_fines_by_patron",
+                new Tuple<string, string>[] {
+                    new Tuple<string, string>("patronId", Convert.ToString(patronId))
+                });
+            if (output == null)
+                return new Fine[] { };
+            return output.ToArray();
+        }
     }
 }
