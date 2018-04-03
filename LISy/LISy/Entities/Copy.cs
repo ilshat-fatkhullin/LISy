@@ -112,7 +112,7 @@ namespace LISy.Entities
 		public int CountFine()
 		{
 			DateTime date = DateTime.Today;
-			DateTime returnDate = new DateTime(Convert.ToInt32(ReturningDate.Substring(3, 2)), Convert.ToInt32(ReturningDate.Substring(0, 2)), Convert.ToInt32(ReturningDate.Substring(6, 4)));
+			DateTime returnDate = DateTime.Parse(ReturningDate);
 			int days = date.Subtract(returnDate).Days;
 			if (days > 0)
 			{
