@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LISy.Entities.Documents
+﻿namespace LISy.Entities.Documents
 {
-	/// <summary>
-	/// Represents a part of Journal.
-	/// </summary>
-	public class Article : Document
+    /// <summary>
+    /// Represents a part of Journal.
+    /// </summary>
+    public class Article : Document
 	{
 		/// <summary>
 		/// Id of a journal to which an article belongs.

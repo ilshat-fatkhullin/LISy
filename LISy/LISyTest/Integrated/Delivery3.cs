@@ -189,7 +189,36 @@ namespace LISyTest.Integrated
         public void D3TC8()
         {
             D3TC6();
-            PatronDataManager.CheckOutDocument(3, 2);
+            LibrarianDataManager.ReturnDocument(3, 2);
+            Assert.AreEqual(PatronDataManager.GetNotifications(4).Length, 1);
+            Assert.AreEqual(LibrarianDataManager.GetCheckedByUserCopiesList(2).Length, 0);
+            Patron[] patrons = LibrarianDataManager.GetQueueToDocument(3);
+            Assert.AreEqual(patrons[0].CardNumber, 4);
+            Assert.AreEqual(patrons[1].CardNumber, 5);
+            Assert.AreEqual(patrons[2].CardNumber, 3);
+        }
+
+        [TestMethod]
+        public void D3TC9()
+        {
+            D3TC6();
+            PatronDataManager.RenewDocument(3, 1);
+            string date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
+            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToShortDateString());
+        }
+
+        [TestMethod]
+        public void D3TC10()
+        {
+            Initialization();
+            PatronDataManager.CheckOutDocument(1, 1);
+            PatronDataManager.RenewDocument(1, 1);
+            PatronDataManager.CheckOutDocument(1, 5);
+            PatronDataManager.RenewDocument(1, 5);
+            string date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
+            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToShortDateString());
+            date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
+            Assert.AreEqual(date, DateTime.Today.AddDays(14).ToShortDateString());
         }
     }
 }
