@@ -21,10 +21,11 @@ namespace LISy
     /// </summary>
     public partial class MakeRenew : Window
     {
-        private long copyID;
+        private Copy copy;
         private long documentID;
         private long patronID;
         private BookingHistory bookingHistoryWindow;
+<<<<<<< HEAD
 
 		/// <summary>
 		/// Initializes MakeRenew window.
@@ -34,12 +35,16 @@ namespace LISy
 		/// <param name="copyID">Id of looking copy.</param>
 		/// <param name="bookingHistoryWindow">Previous window.</param>
         public MakeRenew(long patronID, long documentID, long copyID, BookingHistory bookingHistoryWindow)
+=======
+        public MakeRenew(long patronID,long documentID, Copy copy,BookingHistory bookingHistoryWindow)
+>>>>>>> b76d11f5ef42d47af8ca917be3af57cb91010f36
         {
             InitializeComponent();
-            this.copyID = copyID;
+            this.copy = copy;
             this.documentID = documentID;
             this.patronID = patronID;
             this.bookingHistoryWindow = bookingHistoryWindow;
+            fineShowLabel.Content = copy.CountFine();
         }
 
 		/// <summary>

@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using LISy.Entities;
+﻿using LISy.Entities;
+using LISy.Entities.Notifications;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace LISy
 {
-	/// <summary>
-	/// Interaction logic for UserModifyWindow.xaml
-	/// </summary>
-	public partial class UserModifyWindow : Window
+    /// <summary>
+    /// Interaction logic for UserModifyWindow.xaml
+    /// </summary>
+    public partial class UserModifyWindow : Window
 	{
 		private User user;
 		private LibrarianWorkWindow workWindow;
@@ -104,5 +95,21 @@ namespace LISy
 			workWindow.UpdateUsersDataGrid();
 			this.Close();
 		}
-	}
+        public void UpdateNotificationDataGrid()
+        {
+            Patron newPatron;
+            newPatron = LibrarianDataManager.GetPatronById(user.CardNumber);
+            List<Notification> result = new List<Notification>();
+            result.Clear();
+            foreach(Notification notification in PatronDataManager.GetNotifications(newPatron.CardNumber))
+            {
+                result.Add(notification);
+            }
+            UsersNotificationDataGrid.ItemsSource = result;
+        }
+        private void UsersNotificationDataGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateNotificationDataGrid();
+        }
+    }
 }

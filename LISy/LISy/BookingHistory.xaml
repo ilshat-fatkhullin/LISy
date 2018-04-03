@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="BookingHistory" Height="304.412" Width="485.294">
+        Title="BookingHistory" Height="315.604" Width="495.366">
     <Grid>
         <Label x:Name="name" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80"/>
         <Label x:Name="id" Content="ID:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="80"/>

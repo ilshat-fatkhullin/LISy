@@ -46,7 +46,7 @@ namespace LISy
             {
                 result.Add(doc);
             }
-            check_out_doc.ItemsSource = result;
+            check_out_doc.ItemsSource = result;   
         }
 
 		private void DataGridChekOutDoc(object sender, RoutedEventArgs e)
@@ -61,7 +61,7 @@ namespace LISy
             if (copy == null)
                 return;
 
-            MakeRenew window = new MakeRenew(patron.CardNumber,copy.DocumentId, copy.PatronId, this);
+            MakeRenew window = new MakeRenew(patron.CardNumber,copy.DocumentId, copy, this);
             window.Owner = this;
             window.Show();
         }

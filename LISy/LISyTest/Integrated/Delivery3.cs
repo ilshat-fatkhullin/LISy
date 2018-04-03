@@ -97,6 +97,20 @@ namespace LISyTest.Integrated
             Copy copy = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0];
             Assert.AreEqual(copy.DocumentId, 1);
             Assert.AreEqual(copy.ReturningDate, DateTime.Today.AddDays(28).ToShortDateString());
+            Assert.AreEqual(copy.CountFine(), 0);
+        }
+
+        [TestMethod]
+        public void D3TC2()
+        {
+            PatronDataManager.CheckOutDocument(1, 1);
+            PatronDataManager.CheckOutDocument(2, 4);
+            PatronDataManager.CheckOutDocument(2, 5);
+            LibrarianDataManager.SetOutstanding(true, 2);
+            PatronDataManager.RenewDocument(1, 1);
+            PatronDataManager.RenewDocument(2, 4);
+            PatronDataManager.RenewDocument(2, 5);
+
         }
     }
 }

@@ -16,11 +16,11 @@
         <Grid.Background>
             <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
         </Grid.Background>
-        <Label x:Name="label_main" Content="Choose the type of a document:" Margin="10,10,419,306" Foreground="White"/>
-        <Button x:Name="add_book" Content="Book" Margin="233,10,339,306" Click="add_book_Click"/>
-        <Button x:Name="add_reference_book" Content="Inner material" Margin="313,10,234,306" Click="add_reference_book_Click"/>
-        <Button x:Name="add_journal" Content="Journal" Margin="418,10,154,306" Click="add_journal_Click"/>
-        <Button x:Name="add_av" Content="AV material" Margin="498,10,64,306" Click="add_av_Click"/>
+        <Label x:Name="label_main" Content="Choose the type of a document:" Margin="10,10,0,0" Foreground="White" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218"/>
+        <Button x:Name="add_book" Content="Book" Margin="233,10,0,0" Click="add_book_Click" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="add_reference_book" Content="Inner material" Margin="313,10,0,0" Click="add_reference_book_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top"/>
+        <Button x:Name="add_journal" Content="Journal" Margin="418,10,0,0" Click="add_journal_Click" HorizontalAlignment="Left" Width="75" Height="30" VerticalAlignment="Top"/>
+        <Button x:Name="add_av" Content="AV material" Margin="498,10,0,0" Click="add_av_Click" HorizontalAlignment="Left" Width="85" Height="30" VerticalAlignment="Top"/>
         <Label x:Name="title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
         <TextBox x:Name="title_of_book" HorizontalAlignment="Left" Height="26" Margin="85,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" TextChanged="TextBox_titleChanged" FontSize="16" Visibility="Hidden"/>
         <Label x:Name="author_of_book_label" Content="Authors:" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>

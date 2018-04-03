@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="Adding" Height="360.914" Width="365.413" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="Adding" Height="366.914" Width="373.413" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grid_adding" HorizontalAlignment="Left" Width="355" Height="332" VerticalAlignment="Top">
         <Label x:Name="name_label" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="29" Width="73"/>
         <TextBox x:Name="name_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="name_of_new_user_TextChanged"/>

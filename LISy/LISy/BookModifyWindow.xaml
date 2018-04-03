@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="BookModifyWindow" Height="360.902" Width="662.03" ResizeMode="NoResize" Name="book_modify_window" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
+        Title="BookModifyWindow" Height="345.902" Width="676.03" ResizeMode="NoResize" Name="book_modify_window" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
     <Grid>
         <Label x:Name="title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
         <TextBox x:Name="title_of_book" HorizontalAlignment="Left" Height="26" Margin="85,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" TextChanged="TextBox_titleChanged" FontSize="16" Visibility="Visible"/>

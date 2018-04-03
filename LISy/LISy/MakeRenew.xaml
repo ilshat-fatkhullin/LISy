@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
-        mc:Ignorable="d"
-        Title="MakeRenew" Height="121.027" Width="227.448" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
+        mc:Ignorable="d"    
+        Title="MakeRenew" Height="111.097" Width="298.602" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
     <Grid>
-        <CheckBox x:Name="checkRenewStatusBox" Content="Make renew" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="20"/>
-        <Button x:Name="SaveButton" Content="Save" Margin="115,10,0,0" HorizontalAlignment="Left" Width="100" Height="20" VerticalAlignment="Top" Click="SaveButton_Click"/>
-        <Label x:Name="fineLabel" Content="" Width="100" Margin="10,35,111,27"/>
+        <CheckBox x:Name="checkRenewStatusBox" Content="Make renew" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="100" Height="20"/>
+        <Button x:Name="SaveButton" Content="Save" Margin="170,35,0,0" HorizontalAlignment="Left" Width="100" Height="20" VerticalAlignment="Top" Click="SaveButton_Click"/>
+        <Label x:Name="fineLabel" Content="Fine:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label x:Name="fineShowLabel" Content="" HorizontalAlignment="Left" Margin="65,10,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>
