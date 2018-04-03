@@ -6,12 +6,7 @@ namespace LISy.Entities
 	/// Represents physical copies of documents.
 	/// </summary>
 	public class Copy
-	{
-		/// <summary>
-		/// Fine per day.
-		/// </summary>
-		public const int FINE_PER_DAY = 100;
-
+	{		
 		/// <summary>
 		/// Id of a copy.
 		/// </summary>
@@ -103,30 +98,6 @@ namespace LISy.Entities
 		{
 			Room = room > 0 ? room : throw new ArgumentException("Invalid room number!");
 			Level = level > 0 ? level : throw new ArgumentException("Invalid level number!");
-		}
-
-		/// <summary>
-		/// Counts fine for user.
-		/// </summary>
-		/// <returns></returns>
-		public int CountFine()
-		{
-			DateTime date = DateTime.Today;
-			DateTime returnDate = DateTime.Parse(ReturningDate);
-			int days = date.Subtract(returnDate).Days;
-			if (days > 0)
-			{
-				days *= FINE_PER_DAY;
-				//if (days > spCopies_GetPriceByDocumentId)
-				//{
-				//	days = price;
-				//}
-			}
-			else
-			{
-				days = 0;
-			}
-			return days;
 		}
 	}
 }

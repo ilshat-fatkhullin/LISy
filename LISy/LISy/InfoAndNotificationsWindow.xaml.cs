@@ -1,4 +1,5 @@
-﻿using LISy.Entities.Notifications;
+﻿using LISy.Entities.Fine;
+using LISy.Entities.Notifications;
 using LISy.Entities.Users;
 using LISy.Managers;
 using System.Collections.Generic;
@@ -52,6 +53,13 @@ namespace LISy
         }
         public void UpdateFinesDataGrid()
         {
+            List<Fine> result = new List<Fine>();
+            result.Clear();
+            foreach (Fine fine in LibrarianDataManager.GetFinesByPatronId(patron.CardNumber))
+            {
+                result.Add(fine);
+            }
+            FinesDataGrid.ItemsSource = result;
 
         }
         private void FinesDataGrid_Loaded(object sender, RoutedEventArgs e)

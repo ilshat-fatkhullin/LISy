@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="InfoAndNotificationsWindow" Height="270.194" Width="1003.276" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="InfoAndNotificationsWindow" Height="290.194" Width="1019.276" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="995*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
         <DataGrid x:Name="notificationDataGrid" HorizontalAlignment="Left" Height="221" Margin="125,10,0,0" VerticalAlignment="Top" Width="360" MouseUp="NotificationDataGrid_MouseUp" Loaded="NotificationDataGrid_Loaded"/>
         <DataGrid x:Name="FinesDataGrid" HorizontalAlignment="Left" Height="221" Margin="605,10,0,0" VerticalAlignment="Top" Width="382" Loaded="FinesDataGrid_Loaded"/>
         <Label x:Name="notificationsLabel" Content="My Notifications:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="110"/>

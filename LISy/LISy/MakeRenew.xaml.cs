@@ -28,7 +28,6 @@ namespace LISy
             this.documentID = documentID;
             this.patronID = patronID;
             this.bookingHistoryWindow = bookingHistoryWindow;
-            
         }
 
 		/// <summary>
