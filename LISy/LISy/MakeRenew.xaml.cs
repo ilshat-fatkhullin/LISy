@@ -33,7 +33,7 @@ namespace LISy
 		/// <param name="documentID">Id of looking document.</param>
 		/// <param name="copyID">Id of looking copy.</param>
 		/// <param name="bookingHistoryWindow">Previous window.</param>
-        public MakeRenew(long patronID, long documentID, long copyID,BookingHistory bookingHistoryWindow)
+        public MakeRenew(long patronID, long documentID, long copyID, BookingHistory bookingHistoryWindow)
         {
             InitializeComponent();
             this.copyID = copyID;

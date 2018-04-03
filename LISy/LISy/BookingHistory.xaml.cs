@@ -34,6 +34,10 @@ namespace LISy
 			id_patron.Content = patron.CardNumber;
 
 		}
+
+		/// <summary>
+		/// Updates data grid.
+		/// </summary>
         public void UpdateDataGrid()
         {
             List<Copy> result = new List<Copy>();
@@ -44,6 +48,7 @@ namespace LISy
             }
             check_out_doc.ItemsSource = result;
         }
+
 		private void DataGridChekOutDoc(object sender, RoutedEventArgs e)
 		{
             UpdateDataGrid();
