@@ -17,6 +17,7 @@ namespace LISy
         {
             InitializeComponent();
             this.patron = patron;
+            InitilizePatron(patron);
         }
         /// <summary>
         /// Initilization info about Patron
