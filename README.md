@@ -1,4 +1,4 @@
-# LibraryManagementSystem
+# LISy
 
 LISy (Library Innopolis System) is a client-server desktop application
 for libraries.
