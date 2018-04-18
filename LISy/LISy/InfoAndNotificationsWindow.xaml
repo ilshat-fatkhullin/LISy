@@ -5,15 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="InfoAndNotificationsWindow" Height="290.194" Width="1019.276" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Info and Notifications" Height="346.194" Width="563.276" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
+    </Window.Background>
     <Grid x:Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="995*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="notificationDataGrid" HorizontalAlignment="Left" Height="221" Margin="125,10,0,0" VerticalAlignment="Top" Width="360" MouseUp="NotificationDataGrid_MouseUp" Loaded="NotificationDataGrid_Loaded"/>
-        <DataGrid x:Name="FinesDataGrid" HorizontalAlignment="Left" Height="221" Margin="605,10,0,0" VerticalAlignment="Top" Width="382" Loaded="FinesDataGrid_Loaded"/>
-        <Label x:Name="notificationsLabel" Content="My Notifications:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="110"/>
-        <Label Content="My Fines:" HorizontalAlignment="Left" Margin="490,10,0,0" VerticalAlignment="Top" Width="110"/>
+        <TabControl x:Name="fines_nofications_tc" Margin="10,10,10,0" Height="297" VerticalAlignment="Top">
+            <TabItem Header="My Fines">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="FinesDataGrid" HorizontalAlignment="Left" Height="249" Margin="10,10,0,0" VerticalAlignment="Top" Width="510" Loaded="FinesDataGrid_Loaded"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="My Notifications">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="notificationDataGrid" Margin="10" MouseUp="NotificationDataGrid_MouseUp" Loaded="NotificationDataGrid_Loaded"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

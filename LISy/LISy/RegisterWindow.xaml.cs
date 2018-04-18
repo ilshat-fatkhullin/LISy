@@ -10,7 +10,10 @@ namespace LISy
     /// Логика взаимодействия для RegisterWindow.xaml
     /// </summary>
     public partial class RegisterWindow : Window
-    {
+    {   
+        /// <summary>
+        /// Regestration window
+        /// </summary>
         public RegisterWindow()
         {
             InitializeComponent();
@@ -115,6 +118,13 @@ namespace LISy
         private void textBox_last_name_TextChanged(object sender, TextChangedEventArgs e)
         {
             InputFieldsManager.CheckLiteralValidity(textBox_last_name);
+        }
+
+        private void button_back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
     }
 }
