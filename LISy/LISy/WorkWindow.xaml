@@ -1,4 +1,4 @@
-﻿<Window x:Class="LISy.WorkWindow"
+﻿<Window x:Name="patronWindow" x:Class="LISy.WorkWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -38,31 +38,31 @@
         <Button x:Name="button_Profile" Content="My Profile" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="145" Height="30"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Profile_Click"/>
         <Button x:Name="button_Booking" Content="Booking Story" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Booking_Click"/>
         <Button x:Name="button_Info" Content="Info" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Info_Click"/>
-        <Grid HorizontalAlignment="Left" Height="299" Margin="160,100,0,0" VerticalAlignment="Top" Width="542">
-            <TabControl x:Name="docInfoTab" HorizontalAlignment="Left" Height="289" Margin="0,10,0,0" VerticalAlignment="Top" Width="532">
+        <Grid HorizontalAlignment="Left" Height="299" Margin="160,100,0,0" VerticalAlignment="Top" Width="632">
+            <TabControl x:Name="docInfoTab" HorizontalAlignment="Left" Height="289" Margin="0,10,0,0" VerticalAlignment="Top" Width="622">
                 <TabItem x:Name="tab_item_books" Header="Books">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderBook" MouseUp="DataGridBook_MouseUp_book"/>
+                        <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderBook" MouseUp="DataGridBook_MouseUp_book"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="av_material" Header="AV materials">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderAV_material"/>
+                        <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderAV_material"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="reference_book" Header="Inner Materials">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderReference_book"/>
+                        <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderReference_book"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="journal" Header="Journals">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridJournal" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" Loaded="grid_LoaderJournal"/>
+                        <DataGrid x:Name="DataGridJournal" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderJournal"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="Journal_article" Header="Journal articles">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="DataGridJournalArticles" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" MouseUp="DataGridJournalArticles_MouseUp" Loaded ="grid_LoaderJournalArticle"/>
+                        <DataGrid x:Name="DataGridJournalArticles" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" MouseUp="DataGridJournalArticles_MouseUp" Loaded ="grid_LoaderJournalArticle"/>
                     </Grid>
                 </TabItem>
             </TabControl>

@@ -5,20 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="UserProfile" Height="303.114" Width="462.976" Icon="Design/icon_logo100x100.ico">
+        Title="My Profile" Height="264.114" Width="462.976" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books.jpg"/>
+    </Window.Background>
     <Grid x:Name="UserProfileGrid">
-        <Label x:Name="nameLabel" Content="Name:" Margin="10,10,345,232" FontSize="15"/>
-        <Label x:Name="nameLabeloutput" Content="" Margin="115,10,10,232" FontSize="15"/>
-        <Label x:Name="lastNameLabel" Content="Last name:" Margin="10,45,345,197" FontSize="15"/>
-        <Label x:Name="lastNameLabeloutput" Content="" Margin="115,45,10,197" FontSize="15"/>
-        <Label x:Name="addressLabel" Content="Address:" Margin="10,80,345,162" FontSize="15"/>
-        <Label x:Name="addressLabeloutput" Content="" Margin="115,80,10,162" FontSize="15"/>
-        <Label x:Name="phoneLabel" Content="Phone:" Margin="10,115,345,127" FontSize="15"/>
-        <Label x:Name="phoneLabeloutput" Content="" Margin="115,115,10,127" FontSize="15"/>
-        <Label x:Name="typeLabel" Content="Type:" Margin="10,150,345,92" FontSize="15"/>
-        <Label x:Name="typeLabeloutput" Content="" Margin="115,150,10,92" FontSize="15"/>
-        <Label x:Name="amountOfCopiesLabel" Content="Check out docs:" Margin="10,185,310,57" FontSize="15"/>
-        <Label x:Name="amountOfCopiesLabeloutput" Content="" Margin="150,185,10,57" FontSize="15"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#4CFFFFFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.OpacityMask>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF231515" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.OpacityMask>
+        <Label x:Name="nameLabel" Content="Name:" Margin="10,10,0,0" FontSize="15" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Foreground="White"/>
+        <Label x:Name="nameLabeloutput" Content="" Margin="115,10,0,0" FontSize="15" HorizontalAlignment="Left" Width="330" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="lastNameLabel" Content="Last name:" Margin="10,45,0,0" FontSize="15" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="lastNameLabeloutput" Content="" Margin="115,45,0,0" FontSize="15" HorizontalAlignment="Left" Width="330" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="addressLabel" Content="Address:" Margin="10,80,0,0" FontSize="15" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="addressLabeloutput" Content="" Margin="115,80,0,0" FontSize="15" HorizontalAlignment="Left" Width="330" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="phoneLabel" Content="Phone:" Margin="10,115,0,0" FontSize="15" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="phoneLabeloutput" Content="" Margin="115,115,0,0" FontSize="15" HorizontalAlignment="Left" Width="330" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="typeLabel" Content="Type:" Margin="10,150,0,0" FontSize="15" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="typeLabeloutput" Content="" Margin="115,150,0,0" FontSize="15" HorizontalAlignment="Left" Width="330" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="amountOfCopiesLabel" Content="Check out docs:" Margin="10,185,0,0" FontSize="15" HorizontalAlignment="Left" Width="135" Height="30" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="amountOfCopiesLabeloutput" Content="" Margin="150,185,0,0" FontSize="15" HorizontalAlignment="Left" Width="295" Height="30" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>

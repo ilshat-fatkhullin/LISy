@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-       Title="Registration" Height="642.833" Width="325"
+       Title="Registration" Height="685" Width="325"
         Icon="Design\icon_logo100x100.ico" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" >
     <Window.Background>
         <ImageBrush/>
@@ -32,13 +32,7 @@
             <PasswordBox x:Name="passwordBox_registration" Margin="10,428,10,0" RenderTransformOrigin="0.567,0.5" Background="#CC000000" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" FontSize="16" Height="30" VerticalAlignment="Top"/>
             <Label x:Name="label_name1" Content="First Name*" Margin="10,13,10,0" Height="25" VerticalAlignment="Top" Foreground="White"/>
             <TextBox x:Name="textBox_name" Margin="10,38,10,0" TextWrapping="Wrap" Foreground="White" Background="#CC000000" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Height="30" VerticalAlignment="Top" FontSize="16" TextChanged="textBox_name_TextChanged"/>
-            <ComboBox x:Name="choose_roll_box" HorizontalAlignment="Left" Margin="10,463,0,0" VerticalAlignment="Top" Width="205" Height="30">
-                <ComboBox.BorderBrush>
-                    <ImageBrush/>
-                </ComboBox.BorderBrush>
-                <ComboBox.Background>
-                    <ImageBrush/>
-                </ComboBox.Background>
+            <ComboBox x:Name="choose_roll_box" Margin="10,463,10,0" VerticalAlignment="Top" Height="30" BorderBrush="{x:Null}" Foreground="Black" IsEditable="True" Background="{x:Null}" FontSize="16">
                 <CheckBox x:Name="student_type" Content="Student" FontSize="14"/>
                 <CheckBox x:Name="instructor_type" Content="Instructor" FontSize="14"/>
                 <CheckBox x:Name="TA_type" Content="TA" FontSize="14"/>
@@ -47,5 +41,6 @@
             </ComboBox>
         </Grid>
         <Button x:Name="button_register" Content="Sign Up" Margin="50,562,50,0" VerticalAlignment="Top" Height="35" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_register_Click"/>
+        <Button x:Name="button_back" Content="Back" Margin="50,602,50,0" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="button_back_Click" Height="35" VerticalAlignment="Top"/>
     </Grid>
 </Window>
