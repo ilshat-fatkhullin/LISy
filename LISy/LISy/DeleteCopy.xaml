@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="DeleteCopy" Height="86.461" Width="306.946" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="DeleteCopy" Height="90.461" Width="306.946" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg" Stretch="None"/>
     </Window.Background>

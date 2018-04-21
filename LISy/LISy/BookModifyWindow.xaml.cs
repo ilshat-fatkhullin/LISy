@@ -26,7 +26,7 @@ namespace LISy
             year_of_book.Text = Convert.ToString(book.Year);
             keywords_of_book.Text = book.KeyWords;
             price_of_book.Text = Convert.ToString(book.Price);
-            best_seller_of_book.IsChecked = book.IsBestseller;
+            
 
         }
 
@@ -51,7 +51,7 @@ namespace LISy
             book.Year = Convert.ToInt32(year_of_book.Text);
             book.KeyWords = keywords_of_book.Text;
             book.Price = Convert.ToInt32(price_of_book.Text);
-            book.IsBestseller = best_seller_of_book.IsEnabled;
+            book.IsBestseller = best_seller_of_book.IsChecked.Value;
 
             LibrarianDataManager.EditBook(book);
 
