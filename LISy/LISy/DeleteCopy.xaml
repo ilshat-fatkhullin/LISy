@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="DeleteCopy" Height="147.794" Width="292.279" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="DeleteCopy" Height="90.461" Width="306.946" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg" Stretch="None"/>
+    </Window.Background>
     <Grid>
-        <Button x:Name="delete_copy" Content="Delete" Margin="10" FontSize="20" Click="delete_copy_Click"/>
+        <Button x:Name="delete_copy" Content="Delete" Margin="10,10,10,0" FontSize="20" Click="delete_copy_Click" Height="35" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
     </Grid>
 </Window>

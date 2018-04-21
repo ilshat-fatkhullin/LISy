@@ -12,6 +12,7 @@ namespace LISy
     /// </summary>
     public partial class AddDocument : Window
     {
+
         /// <summary>
         /// Initializes window for adding document.
         /// </summary>
@@ -166,12 +167,12 @@ namespace LISy
 
         private void inner_room_text_box_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //InputFieldsManager.CheckNumericValidity(inner_room_text_box);
+            InputFieldsManager.CheckNumericValidity(inner_room_text_box);
         }
 
         private void inner_level_text_box_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //InputFieldsManager.CheckNumericValidity(inner_level_text_box);
+            InputFieldsManager.CheckNumericValidity(inner_level_text_box);
         }
 
         private void inner_type_text_box_TextChanged(object sender, TextChangedEventArgs e)
@@ -351,18 +352,18 @@ namespace LISy
             //add label to screen
             inner_title_label.Visibility = Visibility.Visible;
             inner_type_label.Visibility = Visibility.Visible;
-            //inner_room_label.Visibility = Visibility.Visible;
+            inner_room_label.Visibility = Visibility.Visible;
             inner_author_label.Visibility = Visibility.Visible;
-            //inner_level_label.Visibility = Visibility.Visible;
+            inner_level_label.Visibility = Visibility.Visible;
             inner_coverUrl_label.Visibility = Visibility.Visible;
             inner_keywords_label.Visibility = Visibility.Visible;
 
             //add text_box to screen
             inner_title_box.Visibility = Visibility.Visible;
             inner_type_text_box.Visibility = Visibility.Visible;
-            //inner_room_text_box.Visibility = Visibility.Visible;
+            inner_room_text_box.Visibility = Visibility.Visible;
             inner_author_box.Visibility = Visibility.Visible;
-            //inner_level_text_box.Visibility = Visibility.Visible;
+            inner_level_text_box.Visibility = Visibility.Visible;
             inner_cover_url_box.Visibility = Visibility.Visible;
             inner_keywords_text_box.Visibility = Visibility.Visible;
             add_inner_to_db.Visibility = Visibility.Visible;
@@ -531,7 +532,7 @@ namespace LISy
             if (inner_title_box.Text != null &&
                 inner_author_box.Text != null &&
                 inner_level_text_box.Text != null &&
-				inner_room_text_box.Text != null &&
+                inner_room_text_box.Text != null &&
                 inner_type_text_box.Text != null &&
                 inner_cover_url_box.Text != null &&
                 inner_keywords_text_box.Text != null)
@@ -541,7 +542,5 @@ namespace LISy
                 this.Close();
             }
         }
-
-
     }
 }

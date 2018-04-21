@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="My Booking History" Height="315.604" Width="495.366" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
+        Title="My Booking History" Height="319.085" Width="497.687" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
     </Window.Background>

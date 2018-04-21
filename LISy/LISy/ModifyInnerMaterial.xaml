@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="ModifyInnerMaterial" Height="338.217" Width="450.405"
+        Title="ModifyInnerMaterial" Height="338.217" Width="460.405"
         Name="InnerMaterialModify" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>

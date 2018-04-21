@@ -5,31 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="BookModifyWindow" Height="345.902" Width="676.03" ResizeMode="NoResize" Name="book_modify_window" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
+        Title="BookModifyWindow" Height="292.902" Width="642.03" ResizeMode="NoResize" Name="book_modify_window" WindowStartupLocation="CenterScreen" Icon="Design/icon_logo100x100.ico">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
+    </Window.Background>
     <Grid>
-        <Label x:Name="title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="title_of_book" HorizontalAlignment="Left" Height="26" Margin="85,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" TextChanged="TextBox_titleChanged" FontSize="16" Visibility="Visible"/>
-        <Label x:Name="author_of_book_label" Content="Authors:" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="author_of_book_label" Content="Authors:" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="author_of_book" HorizontalAlignment="Left" Height="26" Margin="85,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="author_of_book_TextChanged" Visibility="Visible"/>
-        <Label x:Name="publisher_label" Content="Publisher:" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="publisher_label" Content="Publisher:" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="publisher_of_book" HorizontalAlignment="Left" Height="26" Margin="85,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="publisher_of_book_TextChanged" Visibility="Visible"/>
-        <Label x:Name="edition_of_book_label" Content="Edition:" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="edition_of_book_label" Content="Edition:" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="edition_of_book" HorizontalAlignment="Left" Height="26" Margin="85,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="TextBox_Edition_Changed" Visibility="Visible"/>
-        <Label x:Name="year_label" Content="Year:" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="year_label" Content="Year:" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="year_of_book" HorizontalAlignment="Left" Height="26" Margin="85,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="year_of_book_TextChanged" Visibility="Visible"/>
-        <Label x:Name="keywords_label" Content="KeyWords:" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.5,0.231" Visibility="Visible"/>
+        <Label x:Name="keywords_label" Content="KeyWords:" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.5,0.231" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="keywords_of_book" HorizontalAlignment="Left" Height="26" Margin="85,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="keywords_of_book_TextChanged" Visibility="Visible"/>
-        <Label x:Name="price_label" Content="Price:" HorizontalAlignment="Left" Margin="313,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="price_label" Content="Price:" HorizontalAlignment="Left" Margin="313,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="price_of_book" HorizontalAlignment="Left" Height="26" Margin="388,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="price_of_book_TextChanged" Visibility="Visible"/>
-        <Label x:Name="copy_label" Content="Copies:" HorizontalAlignment="Left" Margin="313,76,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="copy_label" Content="Copies:" HorizontalAlignment="Left" Margin="313,76,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="copy_of_book" HorizontalAlignment="Left" Height="26" Margin="388,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="copy_of_book_TextChanged" Visibility="Visible"/>
-        <CheckBox x:Name="best_seller_of_book" Content="Best Seller" HorizontalAlignment="Left" Margin="388,113,0,0" VerticalAlignment="Top" Visibility="Visible"/>
-        <Label x:Name="room_label" Content="Room:" HorizontalAlignment="Left" Margin="313,138,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <CheckBox x:Name="best_seller_of_book" Content="Best Seller" HorizontalAlignment="Left" Margin="388,113,0,0" VerticalAlignment="Top" Visibility="Visible" Foreground="White"/>
+        <Label x:Name="room_label" Content="Room:" HorizontalAlignment="Left" Margin="313,138,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="room_of_book" HorizontalAlignment="Left" Height="26" Margin="388,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="room_of_book_TextChanged" Visibility="Visible"/>
-        <Label x:Name="book_label_level" Content="Level:" HorizontalAlignment="Left" Margin="313,169,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="book_label_level" Content="Level:" HorizontalAlignment="Left" Margin="313,169,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="level_of_book" HorizontalAlignment="Left" Height="26" Margin="388,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="level_of_book_TextChanged" Visibility="Visible"/>
-        <Button x:Name="delete_book_from_db" Content="Delete" HorizontalAlignment="Left" Margin="388,200,0,0" VerticalAlignment="Top" Width="73" Height="26" Click="delete_book_from_db_Click"/>
-        <Button x:Name="cancel_for_book" Content="Cancel" HorizontalAlignment="Left" Margin="466,200,0,0" VerticalAlignment="Top" Width="70" Height="26" Click="cancel_for_book_Click"/>
-        <Button x:Name="save_changes_in_db" Content="Save" HorizontalAlignment="Left" Margin="541,200,0,0" VerticalAlignment="Top" Width="70" Height="26" Click="save_changes_in_db_Click"/>
+        <Button x:Name="delete_book_from_db" Content="Delete" HorizontalAlignment="Left" Margin="388,200,0,0" VerticalAlignment="Top" Width="73" Height="26" Click="delete_book_from_db_Click" Foreground="White" BorderBrush="White" Background="{x:Null}"/>
+        <Button x:Name="cancel_for_book" Content="Cancel" HorizontalAlignment="Left" Margin="466,200,0,0" VerticalAlignment="Top" Width="70" Height="26" Click="cancel_for_book_Click" Foreground="White" BorderBrush="White" Background="{x:Null}"/>
+        <Button x:Name="save_changes_in_db" Content="Save" HorizontalAlignment="Left" Margin="541,200,0,0" VerticalAlignment="Top" Width="70" Height="26" Click="save_changes_in_db_Click" Foreground="White" BorderBrush="White" Background="{x:Null}"/>
     </Grid>
 </Window>

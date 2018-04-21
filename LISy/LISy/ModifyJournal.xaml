@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="ModifyJournal" Height="508.241" Width="592.986"
+        Title="ModifyJournal" Height="481.241" Width="612.486"
         Name="ModifyWindow" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
@@ -27,8 +27,8 @@
         <TextBox x:Name="priceTextBox" HorizontalAlignment="Left" Height="30" Margin="95,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="481" FontSize="15" TextChanged="priceTextBox_TextChanged"/>
         <Label x:Name="publicationDateLabel" Content="Publication Date:" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Width="125" Height="30" FontSize="15" Foreground="White"/>
         <TextBox x:Name="publicationDateBox" HorizontalAlignment="Left" Height="30" Margin="140,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="436" FontSize="15" TextChanged="publicationDateBox_TextChanged"/>
-        <Label x:Name="copiesOfJournalLabel" Content="Copies Of Journal:" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15" Foreground="White"/>
-        <TextBox x:Name="copiesOfJournalTextBox" HorizontalAlignment="Left" Height="30" Margin="95,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="481" FontSize="15" TextChanged="copiesOfJournalTextBox_TextChanged"/>
+        <Label x:Name="copiesOfJournalLabel" Content="Copies Of Journal:" HorizontalAlignment="Left" Margin="10,291,0,0" VerticalAlignment="Top" Width="142" Height="30" FontSize="15" Foreground="White"/>
+        <TextBox x:Name="copiesOfJournalTextBox" HorizontalAlignment="Left" Height="30" Margin="157,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="419" FontSize="15" TextChanged="copiesOfJournalTextBox_TextChanged"/>
         <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="501,396,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="saveButton_Click" BorderBrush="White" Foreground="White" Background="{x:Null}"/>
         <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="421,396,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="deleteButton_Click" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
         <Label x:Name="roomLabel" Content="Room:" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top" Width="80" Height="30" FontSize="15" Foreground="White"/>

@@ -14,9 +14,9 @@
         <Label x:Name="librarian_name_fill" Content="" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Height="30" Width="305" FontSize="16" Foreground="White"/>
         <Label x:Name="librarian_status" Content="Status:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="60" FontSize="16" Foreground="White" Height="30"/>
         <Label x:Name="librarian_status_fill" Content="" Margin="75,45,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" HorizontalAlignment="Left" Width="305" Height="30"/>
-        <Button x:Name="refresh" Content="Refresh" HorizontalAlignment="Left" Margin="260,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="refresh_Click"/>
-        <Button x:Name="add_user" Content="Add User" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_user_Click"/>
-        <Button x:Name="add_doc" Content="Add Document" HorizontalAlignment="Left" Margin="135,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_doc_Click"/>
+        <Button x:Name="refresh" Content="Refresh" HorizontalAlignment="Left" Margin="260,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="refresh_Click" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <Button x:Name="add_user" Content="Add User" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_user_Click" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <Button x:Name="add_doc" Content="Add Document" HorizontalAlignment="Left" Margin="135,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="add_doc_Click" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
         <TabControl x:Name="tab_control_grid" HorizontalAlignment="Left" Margin="14,131,0,0" Width="827" Height="308" VerticalAlignment="Top">
             <TabItem x:Name="tab_item_users" Header="Users">
                 <Grid Background="#FFE5E5E5">
@@ -63,8 +63,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="log_out_button" Content="Log out" HorizontalAlignment="Left" Margin="510,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="log_out_button_Click"/>
-        <Button x:Name="librarianLevel" Content="Librarian level" HorizontalAlignment="Left" Margin="385,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="librarianLevel_Click"/>
+        <Button x:Name="log_out_button" Content="Log out" HorizontalAlignment="Left" Margin="510,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="log_out_button_Click" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <Button x:Name="librarianLevel" Content="Librarian level" HorizontalAlignment="Left" Margin="385,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="librarianLevel_Click" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
 
     </Grid>
 </Window>
