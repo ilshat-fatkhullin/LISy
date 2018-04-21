@@ -59,6 +59,9 @@ namespace LISy
 			Window window;
 			switch (user.Type)
 			{
+                case "Admin":
+                    window = new AdminWindow();
+                    break;
 				case Librarian.TYPE:
 					window = new LibrarianWorkWindow(user.CardNumber);
 					break;

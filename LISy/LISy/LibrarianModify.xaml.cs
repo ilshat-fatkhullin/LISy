@@ -20,9 +20,9 @@ namespace LISy
     /// <summary>
     /// Логика взаимодействия для LibrarianModify.xaml
     /// </summary>
-    public partial class LibrarianModify : Window
+    public partial class ModifyLibrarian : Window
     {
-        public LibrarianModify()
+        public ModifyLibrarian()
         {
             InitializeComponent();
         }

@@ -169,11 +169,14 @@
     <Compile Include="AddJournalArticlesToJournal.xaml.cs">
       <DependentUpon>AddJournalArticlesToJournal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddLibrarian.xaml.cs">
-      <DependentUpon>AddLibrarian.xaml</DependentUpon>
+    <Compile Include="ModifyLibrarian.xaml.cs">
+      <DependentUpon>ModifyLibrarian.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddUserCard.xaml.cs">
       <DependentUpon>AddUserCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BookingHistory.xaml.cs">
       <DependentUpon>BookingHistory.xaml</DependentUpon>
@@ -246,11 +249,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddLibrarian.xaml">
+    <Page Include="ModifyLibrarian.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddUserCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

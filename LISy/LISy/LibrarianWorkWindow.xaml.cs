@@ -267,7 +267,7 @@ namespace LISy
 
         private void librarianLevel_Click(object sender, RoutedEventArgs e)
         {
-            LibrarianModify librarianModify = new LibrarianModify();
+            ModifyLibrarian librarianModify = new ModifyLibrarian();
             librarianModify.Owner = this;
             librarianModify.Show();
         }
