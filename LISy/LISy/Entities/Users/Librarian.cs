@@ -10,6 +10,9 @@
         /// </summary>
         public const string TYPE = "Librarian";
 
+        /// <summary>
+        /// Previlegues of the librarian
+        /// </summary>
         public int Authority { get; set; }
 
         /// <summary>
