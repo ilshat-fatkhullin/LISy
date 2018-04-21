@@ -83,7 +83,8 @@ namespace LISyTest.Integrated
                 "LibrarianName",
                 "LibrarianSurname",
                 "30006",
-                "LibrarianAddress"
+                "LibrarianAddress",
+                3
                 ), "librarian_1", "12345");
         }
 

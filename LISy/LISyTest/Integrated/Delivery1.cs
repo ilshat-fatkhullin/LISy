@@ -25,7 +25,7 @@ namespace LISyTest.Integrated
         {
             LibrarianDataManager.ClearAll();
 
-            LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address", 3),
                 "librarian_1", "12345");
             LibrarianDataManager.AddFaculty(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address", ""),
                 "patron_1", "12345");

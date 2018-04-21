@@ -17,7 +17,7 @@ namespace LISyTest.Integrated
         public void D2TC1()
         {
             LibrarianDataManager.ClearAll();
-            LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address"),
+            LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address", 3),
                 "librarian_1", "12345");
             LibrarianDataManager.AddFaculty(new Faculty("Sergey", "Afonso", "30001", "ViaMargutta, 3", ""),
                 "patron_1", "12345");
