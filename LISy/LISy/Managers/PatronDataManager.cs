@@ -6,6 +6,8 @@ namespace LISy.Managers
 {
     public static class PatronDataManager
     {
+        public static long PatronId { get; set; }
+
         public static void CheckOutDocument(long documentId, long userId)
         {
             HttpHelper.MakePutRequest("patron/check_out", new {
@@ -42,11 +44,11 @@ namespace LISy.Managers
             return output.ToArray();
         }
 
-        public static void ReadNotification(long patronId, long notificationId)
+        public static void ReadNotification(long notificationId)
         {
             HttpHelper.MakePutRequest("patron/read_notification", new
             {
-                PatronId = patronId,
+                PatronId,
                 Id = notificationId,                
             });
         }
