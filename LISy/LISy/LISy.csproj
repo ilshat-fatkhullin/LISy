@@ -209,6 +209,7 @@
     <Compile Include="Managers\PatronDataManager.cs" />
     <Compile Include="Managers\InputFieldsManager.cs" />
     <Compile Include="Managers\LibrarianDataManager.cs" />
+    <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="ModifyAVMaterials.xaml.cs">
       <DependentUpon>ModifyAVMaterials.xaml</DependentUpon>
     </Compile>
