@@ -85,6 +85,18 @@ namespace LISy.Entities.Documents
 			Publisher = publisher ?? throw new ArgumentNullException("Journal must have a publisher!");
 			Issue = issue > 0 ? issue : throw new ArgumentNullException("Invalid issue!");
 			PublicationDate = date ?? throw new ArgumentNullException("Journal must have a publication date!");
-		}
-	}
+        }
+
+        /// <summary>
+        /// Evaluates return date of a journal.
+        /// </summary>
+        /// <param name="patronType">Type of booking patron.</param>
+        /// <returns></returns>
+        public override string EvaluateReturnDate(string patronType)
+        {
+            DateTime date = DateTime.Today;
+            date = date.AddDays(BASIC_RETURN_TIME);
+            return date.ToShortDateString();
+        }
+    }
 }
