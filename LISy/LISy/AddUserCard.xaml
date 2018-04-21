@@ -5,27 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="Adding" Height="366.914" Width="373.413" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="grid_adding" HorizontalAlignment="Left" Width="355" Height="332" VerticalAlignment="Top">
-        <Label x:Name="name_label" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="29" Width="73"/>
+        Title="Add new user" Height="399.914" Width="373.413" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
+    </Window.Background>
+    <Grid x:Name="grid_adding" HorizontalAlignment="Left" Width="353" Height="390" VerticalAlignment="Top" Margin="10,0,0,-19">
+        <Label x:Name="name_label" Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="29" Width="73" Foreground="White"/>
         <TextBox x:Name="name_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="name_of_new_user_TextChanged"/>
-        <Label x:Name="last_name_label" Content="Last Name:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="73" Height="29"/>
+        <Label x:Name="last_name_label" Content="Last Name:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="73" Height="29" Foreground="White"/>
         <TextBox x:Name ="lastname_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="lastname_of_new_user_TextChanged"/>
-        <Label x:Name="label_town" Content="Town:" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="73" Height="29"/>
+        <Label x:Name="label_town" Content="Town:" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="73" Height="29" Foreground="White"/>
         <TextBox x:Name="town_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="town_of_new_user_TextChanged"/>
-        <Label x:Name="label_street" Content="Street:" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="73" Height="29"/>
+        <Label x:Name="label_street" Content="Street:" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="73" Height="29" Foreground="White"/>
         <TextBox x:Name="street_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="street_of_new_user_TextChanged"/>
-        <Label x:Name="house_label" Content="Building:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="73" Height="29"/>
+        <Label x:Name="house_label" Content="Building:" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="73" Height="29" Foreground="White"/>
         <TextBox x:Name="house_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="house_of_new_user_TextChanged"/>
-        <Label x:Name="flat_label" Content="Flat:" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="73" Height="29"/>
+        <Label x:Name="flat_label" Content="Flat:" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="73" Height="29" Foreground="White"/>
         <TextBox x:Name="flat_of_new_user" HorizontalAlignment="Left" Height="29" Margin="88,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="14" TextChanged="flat_of_new_user_TextChanged"/>
-        <Label x:Name="phone_label" Content="Phone Number:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="94" Height="29"/>
+        <Label x:Name="phone_label" Content="Phone Number:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="94" Height="29" Foreground="White"/>
         <TextBox x:Name="phone_of_new_user" HorizontalAlignment="Left" Height="29" Margin="109,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontSize="14" TextChanged="phone_of_new_user_TextChanged"/>
-        <Label x:Name="status_label" Content="Status:" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Width="50" Height="29" RenderTransformOrigin="0.52,1.241"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="73" Height="29"/>
+        <Label x:Name="status_label" Content="Status:" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" Width="50" Height="29" RenderTransformOrigin="0.52,1.241" Foreground="White"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="73" Height="29" Foreground="White"/>
         <PasswordBox x:Name="user_new_password" HorizontalAlignment="Left" Margin="88,248,0,0" VerticalAlignment="Top" Width="241" Height="29" FontSize="14"/>
-        <Button x:Name="save_user" Content="Save" HorizontalAlignment="Left" Margin="250,282,0,0" VerticalAlignment="Top" Width="79" Click="save_user_Click" Height="29"/>
-        <ComboBox x:Name="chooseTypeComboBox" HorizontalAlignment="Left" Margin="88,282,0,0" VerticalAlignment="Top" Width="157" Height="29">
+        <Button x:Name="save_user" Content="Save" HorizontalAlignment="Left" Margin="250,316,0,0" VerticalAlignment="Top" Width="79" Click="save_user_Click" Height="29" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <ComboBox x:Name="chooseTypeComboBox" HorizontalAlignment="Left" Margin="88,282,0,0" VerticalAlignment="Top" Width="157" Height="29" Background="{x:Null}" BorderBrush="White">
             <CheckBox x:Name="librarianCheckBoxType" Content ="Librarian"/>
             <CheckBox x:Name="studentCheckBoxType" Content="Student"/>
             <CheckBox x:Name="taCheckBoxType" Content="TA"/>
@@ -33,6 +36,11 @@
             <CheckBox x:Name="professorCheckBoxType" Content="Professor"/>
             <CheckBox x:Name="visitingProfessorCheckBoxType" Content="Visiting Professor"/>
         </ComboBox>
+        <CheckBox x:Name="level_1_librarian" Content="1" HorizontalAlignment="Left" Margin="131,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
+        <CheckBox x:Name="level_2_librarian" Content="2" HorizontalAlignment="Left" Margin="162,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
+        <CheckBox x:Name="level_3_librarian" Content="3" HorizontalAlignment="Left" Margin="193,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
+        <Label Content="Librarian level:" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="94" Foreground="White"/>
+        <Button x:Name="chooseButton" Content="Choose" HorizontalAlignment="Left" Margin="250,282,0,0" VerticalAlignment="Top" Width="79" Height="29" Background="{x:Null}" BorderBrush="White" Foreground="White" Click="chooseButton_Click"/>
 
     </Grid>
 </Window>

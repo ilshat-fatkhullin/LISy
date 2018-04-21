@@ -178,7 +178,7 @@ namespace LISy
         }
 
 
-        public  void UpdateDataGridJournal()
+        public void UpdateDataGridJournal()
         {
             List<Journal> result = new List<Journal>();
             result.Clear();
@@ -199,7 +199,6 @@ namespace LISy
             }
             DataGridAV_material.ItemsSource = result;
         }
-
 
         private void copies_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -254,15 +253,22 @@ namespace LISy
             if (journal == null)
                 return;
 
-                ModifyJournal window = new ModifyJournal(journal, this);
-                window.Owner = this;
-                window.Show();
-            
+            ModifyJournal window = new ModifyJournal(journal, this);
+            window.Owner = this;
+            window.Show();
+
         }
 
         private void journal_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateDataGridJournal();
+        }
+
+        private void librarianLevel_Click(object sender, RoutedEventArgs e)
+        {
+            LibrarianModify librarianModify = new LibrarianModify();
+            librarianModify.Owner = this;
+            librarianModify.Show();
         }
     }
 }

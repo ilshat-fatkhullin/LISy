@@ -194,6 +194,9 @@
     <Compile Include="InfoAndNotificationsWindow.xaml.cs">
       <DependentUpon>InfoAndNotificationsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LibrarianModify.xaml.cs">
+      <DependentUpon>LibrarianModify.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LibrarianWorkWindow.xaml.cs">
       <DependentUpon>LibrarianWorkWindow.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InfoAndNotificationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianModify.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

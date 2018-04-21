@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="LibrarianWorkWindow" Height="476.648" Width="860.948" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="LibrarianWorkWindow" Height="496.148" Width="860.948" Icon="Design/icon_logo100x100.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
     </Window.Background>
@@ -63,7 +63,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="log_out_button" Content="Log out" HorizontalAlignment="Left" Margin="385,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="log_out_button_Click"/>
+        <Button x:Name="log_out_button" Content="Log out" HorizontalAlignment="Left" Margin="510,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="log_out_button_Click"/>
+        <Button x:Name="librarianLevel" Content="Librarian level" HorizontalAlignment="Left" Margin="385,88,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="librarianLevel_Click"/>
 
     </Grid>
 </Window>

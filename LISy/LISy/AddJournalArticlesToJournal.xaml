@@ -6,17 +6,20 @@
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
         Title="AddJournalArticlesToJournal" Height="261.429" Width="315.201" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Button x:Name="save_all" Content="Save" Margin="150,10,0,0" Click="save_all_Click" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="138"/>
-        <Label x:Name="article_adding_label" Content="Authors:" Margin="10,45,0,0" HorizontalAlignment="Left" Width="60" Height="26" VerticalAlignment="Top"/>
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
+    </Window.Background>
+    <Grid x:Name="mainGrid">
+        <Button x:Name="save_all" Content="Save" Margin="150,10,0,0" Click="save_all_Click" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="138" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <Label x:Name="article_adding_label" Content="Authors:" Margin="10,45,0,0" HorizontalAlignment="Left" Width="60" Height="26" VerticalAlignment="Top" Foreground="White"/>
         <TextBox x:Name="article_authors_text_box" Margin="75,45,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="article_authors_text_box_TextChanged" HorizontalAlignment="Left" Width="213" Height="26" VerticalAlignment="Top"/>
-        <Label x:Name="article_tittle_label" Content="Tittle:" Margin="10,76,0,0" HorizontalAlignment="Left" Width="60" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="article_tittle_label" Content="Tittle:" Margin="10,76,0,0" HorizontalAlignment="Left" Width="60" Height="26" VerticalAlignment="Top" Foreground="White"/>
         <TextBox x:Name="article_title_text_box" Margin="75,76,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="article_title_text_box_TextChanged" HorizontalAlignment="Left" Width="213" Height="26" VerticalAlignment="Top"/>
-        <Label x:Name="article_keywords_label" Content="Key words:" Margin="10,107,0,0" HorizontalAlignment="Left" Width="75" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="article_keywords_label" Content="Key words:" Margin="10,107,0,0" HorizontalAlignment="Left" Width="75" Height="26" VerticalAlignment="Top" Foreground="White"/>
         <TextBox x:Name="article_keywords_text_box" Margin="90,107,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="article_keywords_text_box_TextChanged" HorizontalAlignment="Left" Width="198" Height="26" VerticalAlignment="Top"/>
-        <Label x:Name="article_coverURL_title" Content="Cover URL:" Margin="10,138,0,0" HorizontalAlignment="Left" Width="75" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="article_coverURL_title" Content="Cover URL:" Margin="10,138,0,0" HorizontalAlignment="Left" Width="75" Height="26" VerticalAlignment="Top" Foreground="White"/>
         <TextBox x:Name="article_coverURL_text_box" Margin="90,138,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="article_coverURL_text_box_TextChanged" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="198"/>
-        <Button x:Name="save_and_exit" Content="Save and Exit" Margin="150,169,0,0" Click="save_and_exit_Click" HorizontalAlignment="Left" Width="138" Height="30" VerticalAlignment="Top"/>
+        <Button x:Name="save_and_exit" Content="Save and Exit" Margin="150,169,0,0" Click="save_and_exit_Click" HorizontalAlignment="Left" Width="138" Height="30" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="White"/>
 
     </Grid>
 </Window>
