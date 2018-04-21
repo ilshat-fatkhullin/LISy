@@ -138,7 +138,7 @@ namespace LISyTest.Integrated
             string date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
             Assert.AreEqual(date, DateTime.Today.AddDays(56).ToShortDateString());
             date = LibrarianDataManager.GetCheckedByUserCopiesList(4)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(21).ToShortDateString());
+            Assert.AreEqual(date, DateTime.Today.AddDays(21).ToShortDateString());            
             date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
             Assert.AreEqual(date, DateTime.Today.AddDays(7).ToShortDateString());
         }

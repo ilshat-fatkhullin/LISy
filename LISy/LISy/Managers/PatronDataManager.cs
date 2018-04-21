@@ -42,10 +42,11 @@ namespace LISy.Managers
             return output.ToArray();
         }
 
-        public static void ReadNotification(long notificationId)
+        public static void ReadNotification(long patronId, long notificationId)
         {
             HttpHelper.MakePutRequest("patron/read_notification", new
             {
+                PatronId = patronId,
                 Id = notificationId,                
             });
         }
