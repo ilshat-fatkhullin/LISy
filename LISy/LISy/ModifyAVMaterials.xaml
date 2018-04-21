@@ -5,24 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="ModifyAVMaterials" Height="343.985" Width="640.601" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="ModifyAVMaterials" Height="213.485" Width="640.601" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg" Stretch="None"/>
+    </Window.Background>
     <Grid>
-        <Label x:Name="av_title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="av_title_label" Content="Title:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="av_title_text_box" HorizontalAlignment="Left" Height="26" Margin="85,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_title_text_box_TextChanged" Visibility="Visible"/>
-        <Label x:Name="authors_av_label" Content="Authors:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="authors_av_label" Content="Authors:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="authors_av_text_box" HorizontalAlignment="Left" Height="26" Margin="85,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="authors_av_text_box_TextChanged" Visibility="Visible"/>
-        <Label x:Name="av_copy_label" Content="Copies:" HorizontalAlignment="Left" Margin="313,10,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="av_copy_label" Content="Copies:" HorizontalAlignment="Left" Margin="313,10,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="av_copy_text_box" HorizontalAlignment="Left" Height="26" Margin="388,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_copy_text_box_TextChanged" Visibility="Visible"/>
-        <Label x:Name="av_room_label" Content="Room:" HorizontalAlignment="Left" Margin="313,41,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="av_room_label" Content="Room:" HorizontalAlignment="Left" Margin="313,41,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="av_room_text_box" HorizontalAlignment="Left" Height="26" Margin="388,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_room_text_box_TextChanged" Visibility="Visible"/>
-        <Label x:Name="av_level_label" Content="Level:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="av_level_label" Content="Level:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="av_level_text_box" HorizontalAlignment="Left" Height="26" Margin="85,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_level_text_box_TextChanged" Visibility="Visible"/>
         <Button x:Name="av_add_to_db" Content="Save" HorizontalAlignment="Left" Margin="521,140,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="save_to_db" Visibility="Visible"/>
-        <Label x:Name="av_price_label" Content="Price:" HorizontalAlignment="Left" Margin="313,72,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="av_price_label" Content="Price:" HorizontalAlignment="Left" Margin="313,72,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="av_price_text_box" HorizontalAlignment="Left" Height="26" Margin="388,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="Av_price_text_box" Visibility="Visible"/>
-        <Label x:Name="av_keywords_label" Content="KeyWords:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible"/>
+        <Label x:Name="av_keywords_label" Content="KeyWords:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="70" Visibility="Visible" Foreground="White"/>
         <TextBox x:Name="av_key_words_text_box" HorizontalAlignment="Left" Height="26" Margin="85,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_key_words_text_box_TextChanged" Visibility="Visible"/>
-        <Label Content="CoverUrl:" HorizontalAlignment="Left" Margin="313,103,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="CoverUrl:" HorizontalAlignment="Left" Margin="313,103,0,0" VerticalAlignment="Top" Width="70" Foreground="White"/>
         <TextBox x:Name="av_coverUrl_text_box" HorizontalAlignment="Left" Height="26" Margin="388,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="av_coverUrl_text_box_TextChanged"/>
         <Button x:Name="delete_db" Content="Delete" HorizontalAlignment="Left" Margin="426,140,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="delete_db_Click"/>
     </Grid>
