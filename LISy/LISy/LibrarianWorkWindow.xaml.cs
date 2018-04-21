@@ -14,7 +14,10 @@ namespace LISy
     public partial class LibrarianWorkWindow : Window
     {
         private User user;
-
+        /// <summary>
+        /// Window for work window
+        /// </summary>
+        /// <param name="userId"></param>
         public LibrarianWorkWindow(long userId)
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace LISy
             user = LibrarianDataManager.GetUserById(userId);
             librarian_name_fill.Content = user.FirstName;
             librarian_status_fill.Content = user.Type;
+            librarianLevel.IsEnabled = false;
 
         }
         private void refresh_Click(object sender, RoutedEventArgs e)
@@ -267,9 +271,7 @@ namespace LISy
 
         private void librarianLevel_Click(object sender, RoutedEventArgs e)
         {
-            ModifyLibrarian librarianModify = new ModifyLibrarian();
-            librarianModify.Owner = this;
-            librarianModify.Show();
+
         }
     }
 }

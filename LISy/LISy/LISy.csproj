@@ -169,8 +169,8 @@
     <Compile Include="AddJournalArticlesToJournal.xaml.cs">
       <DependentUpon>AddJournalArticlesToJournal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModifyLibrarian.xaml.cs">
-      <DependentUpon>ModifyLibrarian.xaml</DependentUpon>
+    <Compile Include="LibAdminModify.xaml.cs">
+      <DependentUpon>LibAdminModify.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddUserCard.xaml.cs">
       <DependentUpon>AddUserCard.xaml</DependentUpon>
@@ -197,9 +197,6 @@
     <Compile Include="Entities\Users\Patrons\Guest.cs" />
     <Compile Include="InfoAndNotificationsWindow.xaml.cs">
       <DependentUpon>InfoAndNotificationsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LibrarianModify.xaml.cs">
-      <DependentUpon>LibrarianModify.xaml</DependentUpon>
     </Compile>
     <Compile Include="LibrarianWorkWindow.xaml.cs">
       <DependentUpon>LibrarianWorkWindow.xaml</DependentUpon>
@@ -249,7 +246,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ModifyLibrarian.xaml">
+    <Page Include="LibAdminModify.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,10 +275,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InfoAndNotificationsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LibrarianModify.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

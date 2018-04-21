@@ -28,7 +28,19 @@ namespace LISy
             }
             LogDataGrid.ItemsSource = result;
         }
-
+        /// <summary>
+        /// update librarians list
+        /// </summary>
+        public void UpdateLibrariansDataGrid()
+        {
+            List<Librarian> result = new List<Librarian>();
+            result.Clear();
+            foreach (Librarian librarian in LibrarianDataManager.GetAllLibrarians())
+            {
+                result.Add(librarian);
+            }
+            LibrariansDataGrid.ItemsSource = result;
+        }
         private void LogDataGrid_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateLogDataGrid();
@@ -36,7 +48,7 @@ namespace LISy
 
         private void LibrariansDataGrid_Loaded(object sender, RoutedEventArgs e)
         {
-
+            UpdateLibrariansDataGrid();
         }
 
         private void LibrariansDataGrid_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -45,7 +57,7 @@ namespace LISy
             if (librarian == null)
                 return;
 
-            ModifyLibrarian window = new ModifyLibrarian();
+            LibAdminModify window = new LibAdminModify(librarian, this);
             window.Owner = this;
             window.Show();
         }
