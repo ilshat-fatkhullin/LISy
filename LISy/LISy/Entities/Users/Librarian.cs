@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LISy.Entities.Users
+﻿namespace LISy.Entities.Users
 {
-	/// <summary>
-	/// Represents library workers.
-	/// </summary>
-	public class Librarian : User
-	{
-		/// <summary>
-		/// String Type.
-		/// </summary>
-		public const string TYPE = "Librarian";
+    /// <summary>
+    /// Represents library workers.
+    /// </summary>
+    public class Librarian : User
+    {
+        /// <summary>
+        /// String Type.
+        /// </summary>
+        public const string TYPE = "Librarian";
+
+        public int Authority { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of library worker.
@@ -23,9 +19,9 @@ namespace LISy.Entities.Users
 		/// <param name="secondName">Second name of the worker.</param>
 		/// <param name="phone">Phone number of the worker.</param>
 		/// <param name="address">Address of the worker.</param>
-		public Librarian(string firstName, string secondName, string phone, string address) : base(firstName, secondName, phone, address)
+		public Librarian(string firstName, string secondName, string phone, string address, int authority) : base(firstName, secondName, phone, address)
 		{
-
+            Authority = authority;
 		}
 	}
 }
