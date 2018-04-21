@@ -19,7 +19,7 @@ namespace LISy
 		/// </summary>
 		/// <param name="patronID">Id of watching patron.</param>
 		/// <param name="documentID">Id of looking document.</param>
-		/// <param name="copyID">Id of looking copy.</param>
+		/// <param name="copy">Looking copy.</param>
 		/// <param name="bookingHistoryWindow">Previous window.</param>
         public MakeRenew(long patronID,long documentID, Copy copy, BookingHistory bookingHistoryWindow)
         {
