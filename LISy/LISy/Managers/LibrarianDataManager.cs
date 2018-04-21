@@ -321,6 +321,14 @@ namespace LISy.Managers
             return output.ToArray();
         }
 
+        public static Librarian[] GetAllLibrarians()
+        {
+            var output = HttpHelper.MakeGetRequest<List<Librarian>>("librarian/get_all_librarians", null);
+            if (output == null)
+                return new Librarian[] { };
+            return output.ToArray();
+        }
+
         public static int GetNumberOfDocuments()
         {
             return HttpHelper.MakeGetRequest<int>("librarian/get_documents_number", null);
