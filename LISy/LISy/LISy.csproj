@@ -189,6 +189,7 @@
     </Compile>
     <Compile Include="Entities\Documents\Article.cs" />
     <Compile Include="Entities\Fine\Fine.cs" />
+    <Compile Include="Entities\Notifications\LogContent.cs" />
     <Compile Include="Entities\Notifications\Notification.cs" />
     <Compile Include="Entities\Users\Patrons\Guest.cs" />
     <Compile Include="InfoAndNotificationsWindow.xaml.cs">
