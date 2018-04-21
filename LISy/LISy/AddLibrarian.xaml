@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="AddLibrarian" Height="210.977" Width="326.103" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="AddLibrarian" Height="208.929" Width="314.837" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
     </Window.Background>
@@ -14,9 +14,9 @@
         <Label x:Name="lib_status_label" Content="Status:" Margin="10,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Foreground="White"/>
         <TextBox x:Name="lib_name_box" Margin="65,10,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="lib_name_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
         <TextBox x:Name="lib_status_box" Margin="65,41,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="lib_status_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
-        <Label x:Name="lib_password_label" Content="Password:" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
-        <PasswordBox x:Name="lib_password_box" Margin="80,94,0,0" FontSize="16" HorizontalAlignment="Left" Width="204" Height="26" VerticalAlignment="Top"/>
-        <Button x:Name="add_new_lib_to_system" Content="Add" Margin="184,125,0,0" Click="add_new_lib_to_system_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top"/>
+        <Label x:Name="lib_password_label" Content="Password:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
+        <PasswordBox x:Name="lib_password_box" Margin="80,72,0,0" FontSize="16" HorizontalAlignment="Left" Width="204" Height="26" VerticalAlignment="Top"/>
+        <Button x:Name="add_new_lib_to_system" Content="Add" Margin="184,103,0,0" Click="add_new_lib_to_system_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
 
     </Grid>
 </Window>

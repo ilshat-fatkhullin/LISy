@@ -15,16 +15,8 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Image x:Name="image_background" Margin="11,10,11,235" Source="Design\image_title_white.png"/>
-        <Button x:Name="button_sign_in" Content="Sign In" Margin="193,257,193,0" Background="{x:Null}" Foreground="White" Click="button_sign_in_Click" Height="30" VerticalAlignment="Top" Cursor="Arrow">
-            <Button.BorderBrush>
-                <ImageBrush/>
-            </Button.BorderBrush>
-        </Button>
-        <Button x:Name="button_sign_up" Content="Sign Up" Margin="193,292,193,0" Foreground="White" Background="{x:Null}" Click="button_sign_up_Click" Height="27" VerticalAlignment="Top" Cursor="Arrow">
-            <Button.BorderBrush>
-                <ImageBrush/>
-            </Button.BorderBrush>
-        </Button>
+        <Button x:Name="button_sign_in" Content="Sign In" Margin="193,257,193,0" Background="{x:Null}" Foreground="White" Click="button_sign_in_Click" Height="30" VerticalAlignment="Top" Cursor="Arrow" BorderBrush="White"/>
+        <Button x:Name="button_sign_up" Content="Sign Up" Margin="193,292,193,0" Foreground="White" Background="{x:Null}" Click="button_sign_up_Click" Height="27" VerticalAlignment="Top" Cursor="Arrow" BorderBrush="White"/>
         <Grid x:Name="enter_field" Margin="193,115,193,0" Background="#66000000" Height="137" VerticalAlignment="Top">
             <Label x:Name="label_login" Content="Login" Margin="10,10,10,0" Foreground="White" Height="26" VerticalAlignment="Top" FontSize="12"/>
             <TextBox x:Name="textBox_login" Margin="10,36,10,0" TextWrapping="Wrap" Foreground="White" Background="#99000000" SpellCheck.IsEnabled="True" SelectionOpacity="0.3" Cursor="Arrow" UndoLimit="16" TextChanged="textBox_login_TextChanged" Height="30" VerticalAlignment="Top" FontSize="18">

@@ -12,6 +12,7 @@ namespace LISy
     /// </summary>
     public partial class AddDocument : Window
     {
+       
         /// <summary>
         /// Initializes window for adding document.
         /// </summary>

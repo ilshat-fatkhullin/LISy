@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
         Title="LibrarianModify" Height="295.588" Width="456.618" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
+    </Window.Background>
     <Grid>
         <DataGrid x:Name="librarianDataGrid" HorizontalAlignment="Left" Height="245" Margin="10,10,0,0" VerticalAlignment="Top" Width="429" Loaded="librarianDataGrid_Loaded" MouseUp="librarianDataGrid_MouseUp"/>
     </Grid>
