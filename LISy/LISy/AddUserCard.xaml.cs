@@ -2,6 +2,7 @@
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,16 +13,13 @@ namespace LISy
     /// </summary>
     public partial class AddUserCard : Window
     {
+
         /// <summary>
         /// Initializes window for adding user.
         /// </summary>
         public AddUserCard()
         {
             InitializeComponent();
-
-            level_1_librarian.IsEnabled = false;
-            level_2_librarian.IsEnabled = false;
-            level_3_librarian.IsEnabled = false;
         }
 
         private void name_of_new_user_TextChanged(object sender, TextChangedEventArgs e)
@@ -89,11 +87,22 @@ namespace LISy
                 }
                 else if (librarianCheckBoxType.IsChecked == true)
                 {
-
-                    if ((level_1_librarian.IsChecked == true && level_2_librarian.IsChecked == false && level_3_librarian.IsChecked == false) || (level_1_librarian.IsChecked == false && level_2_librarian.IsChecked == true && level_3_librarian.IsChecked == false) || (level_1_librarian.IsChecked == false && level_2_librarian.IsChecked == false && level_3_librarian.IsChecked == true))
+                    if (level_1_librarian.IsChecked == true && level_2_librarian.IsChecked == false && level_3_librarian.IsChecked == false)
                     {
                         IsNewUserAdded = LibrarianDataManager.AddLibrarian(
-                            new Librarian(firstName, secondName, phone, address), login, password);
+                           new Librarian(firstName, secondName, phone, address, 1), login, password);
+
+                    }
+                    else if (level_1_librarian.IsChecked == false && level_2_librarian.IsChecked == true && level_3_librarian.IsChecked == false)
+                    {
+                        IsNewUserAdded = LibrarianDataManager.AddLibrarian(
+                           new Librarian(firstName, secondName, phone, address, 2), login, password);
+
+                    }
+                    else if (level_1_librarian.IsChecked == false && level_2_librarian.IsChecked == false && level_3_librarian.IsChecked == true)
+                    {
+                        IsNewUserAdded = LibrarianDataManager.AddLibrarian(
+                            new Librarian(firstName, secondName, phone, address, 3), login, password);
                     }
 
                 }
@@ -138,11 +147,5 @@ namespace LISy
             this.Close();
         }
 
-        private void chooseButton_Click(object sender, RoutedEventArgs e)
-        {
-            level_1_librarian.IsEnabled = true;
-            level_2_librarian.IsEnabled = true;
-            level_3_librarian.IsEnabled = true;
-        }
     }
 }

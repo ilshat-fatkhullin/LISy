@@ -12,13 +12,14 @@ namespace LISy
     public partial class WorkWindow : Window
     {
         private Patron patron;
-       
+
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
         public WorkWindow(long patronId)
         {
             InitializeComponent();
+            PatronDataManager.PatronId = patronId;
             patron = LibrarianDataManager.GetPatronById(patronId);
         }
 
@@ -46,7 +47,7 @@ namespace LISy
 
         private void button_Info_Click(object sender, RoutedEventArgs e)
         {
-            InfoAndNotificationsWindow infoAndNotificationsWindow = new InfoAndNotificationsWindow(patron,this);
+            InfoAndNotificationsWindow infoAndNotificationsWindow = new InfoAndNotificationsWindow(patron, this);
             infoAndNotificationsWindow.Owner = this;
             infoAndNotificationsWindow.Show();
         }
@@ -59,7 +60,7 @@ namespace LISy
         {
             UpdateDataGridBook();
         }
-        
+
         /// <summary>
         /// loader to table grid av material
         /// </summary>
@@ -78,7 +79,7 @@ namespace LISy
         {
             UpdateDataGridInnerMaterials();
         }
-        
+
         /// <summary>
         /// update table (data grid) Book
         /// </summary>
@@ -167,7 +168,7 @@ namespace LISy
             mainWindow.Show();
             this.Close();
         }
-        
+
         private void DataGridJournalArticles_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Article article = DataGridJournalArticles.SelectedItem as Article;

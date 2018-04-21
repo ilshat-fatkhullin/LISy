@@ -18,6 +18,7 @@ namespace LISy
         public LibrarianWorkWindow(long userId)
         {
             InitializeComponent();
+            LibrarianDataManager.LibrarianId = userId;
             user = LibrarianDataManager.GetUserById(userId);
             librarian_name_fill.Content = user.FirstName;
             librarian_status_fill.Content = user.Type;

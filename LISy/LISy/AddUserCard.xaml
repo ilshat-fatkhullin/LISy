@@ -28,7 +28,7 @@
         <Label Content="Password:" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="73" Height="29" Foreground="White"/>
         <PasswordBox x:Name="user_new_password" HorizontalAlignment="Left" Margin="88,248,0,0" VerticalAlignment="Top" Width="241" Height="29" FontSize="14"/>
         <Button x:Name="save_user" Content="Save" HorizontalAlignment="Left" Margin="250,316,0,0" VerticalAlignment="Top" Width="79" Click="save_user_Click" Height="29" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
-        <ComboBox x:Name="chooseTypeComboBox" HorizontalAlignment="Left" Margin="88,282,0,0" VerticalAlignment="Top" Width="157" Height="29" Background="{x:Null}" BorderBrush="White">
+        <ComboBox x:Name="chooseTypeComboBox" HorizontalAlignment="Left" Margin="88,282,0,0" VerticalAlignment="Top" Width="241" Height="29" Background="{x:Null}" BorderBrush="White">
             <CheckBox x:Name="librarianCheckBoxType" Content ="Librarian"/>
             <CheckBox x:Name="studentCheckBoxType" Content="Student"/>
             <CheckBox x:Name="taCheckBoxType" Content="TA"/>
@@ -40,7 +40,6 @@
         <CheckBox x:Name="level_2_librarian" Content="2" HorizontalAlignment="Left" Margin="162,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
         <CheckBox x:Name="level_3_librarian" Content="3" HorizontalAlignment="Left" Margin="193,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
         <Label Content="Librarian level:" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="94" Foreground="White"/>
-        <Button x:Name="chooseButton" Content="Choose" HorizontalAlignment="Left" Margin="250,282,0,0" VerticalAlignment="Top" Width="79" Height="29" Background="{x:Null}" BorderBrush="White" Foreground="White" Click="chooseButton_Click"/>
 
     </Grid>
 </Window>

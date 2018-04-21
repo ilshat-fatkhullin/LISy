@@ -73,10 +73,15 @@
         <TextBox x:Name="inner_author_box" HorizontalAlignment="Left" Height="26" Margin="85,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="inner_author_TextChanged" Visibility="Hidden"/>
         <Label x:Name="inner_keywords_label" Content="KeyWords:" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
         <TextBox x:Name="inner_keywords_text_box" HorizontalAlignment="Left" Height="26" Margin="85,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="inner_keywords_text_box_TextChanged" Visibility="Hidden"/>
+        <Label x:Name="inner_room_label" Content="Room:" HorizontalAlignment="Left" Margin="313,45,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
+        <TextBox x:Name="inner_room_text_box" HorizontalAlignment="Left" Height="26" Margin="388,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="inner_room_text_box_TextChanged" Visibility="Hidden"/>
+        <Label x:Name="inner_level_label" Content="Level:" HorizontalAlignment="Left" Margin="313,76,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
+        <TextBox x:Name="inner_level_text_box" HorizontalAlignment="Left" Height="26" Margin="388,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="inner_level_text_box_TextChanged" Visibility="Hidden"/>
         <Label x:Name="inner_type_label" Content="Type:" HorizontalAlignment="Left" Margin="313,107,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
         <TextBox x:Name="inner_type_text_box" HorizontalAlignment="Left" Height="26" Margin="388,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="inner_type_text_box_TextChanged" Visibility="Hidden"/>
         <Label x:Name="inner_coverUrl_label" Content="CoverUrl:" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="70" Visibility="Hidden" Foreground="White"/>
         <TextBox x:Name="inner_cover_url_box" HorizontalAlignment="Left" Height="26" Margin="85,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" FontSize="16" TextChanged="inner_cover_url_box_TextChanged" Visibility="Hidden"/>
+        
         <Button x:Name="add_inner_to_db" Content="Add" HorizontalAlignment="Left" Margin="521,138,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="add_inner_to_db_Click" Visibility="Hidden"/>
        
         <Label x:Name="av_coverURL_label" Content="Cover URL:" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Visibility="Hidden"/>
