@@ -1,6 +1,7 @@
 ﻿using LISy.Entities;
 using LISy.Entities.Documents;
 using LISy.Entities.Fine;
+using LISy.Entities.Notifications;
 using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using System;
@@ -333,6 +334,14 @@ namespace LISy.Managers
         public static int GetNumberOfCopies()
         {
             return HttpHelper.MakeGetRequest<int>("librarian/get_copies_number", null);
+        }
+
+        public static LogContent[] GetAllLogs()
+        {
+            var output = HttpHelper.MakeGetRequest<List<LogContent>>("librarian/get_all_logs", null);
+            if (output == null)
+                return new LogContent[] { };
+            return output.ToArray();
         }
     }
 }
