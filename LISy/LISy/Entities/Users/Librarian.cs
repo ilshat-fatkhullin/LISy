@@ -27,5 +27,10 @@
 		{
             Authority = authority;
 		}
+
+        public Librarian()
+        {
+
+        }
 	}
 }
