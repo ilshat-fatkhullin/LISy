@@ -259,6 +259,15 @@ namespace LISy.Managers
             });
         }
 
+        public static void SetLibrarianAuthority(int authority)
+        {
+            HttpHelper.MakePutRequest("librarian/set_librarian_authority", new
+            {
+                LibrarianId,
+                Authority = authority
+            });
+        }
+
         public static Fine[] GetFinesByPatronId(long patronId)
         {
             var output = HttpHelper.MakeGetRequest<List<Fine>>("librarian/get_fines_by_patron",
