@@ -160,6 +160,13 @@ namespace LISy.Managers
                 });
         }
 
+        public static Librarian GetLibrarianById(long librarianId)
+        {
+            return HttpHelper.MakeGetRequest<Librarian>("librarian/get_librarian", new Tuple<string, string>[] {
+                    new Tuple<string, string>("librarianId", Convert.ToString(librarianId))
+                });
+        }
+
         public static Patron GetPatronById(long patronId)
         {
             return HttpHelper.MakeGetRequest<Patron>("librarian/get_patron", new Tuple<string, string>[] {
