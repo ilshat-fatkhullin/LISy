@@ -259,11 +259,11 @@ namespace LISy.Managers
             });
         }
 
-        public static void SetLibrarianAuthority(int authority)
+        public static void SetLibrarianAuthority(long librarianId, int authority)
         {
             HttpHelper.MakePutRequest("librarian/set_librarian_authority", new
             {
-                LibrarianId,
+                LibrarianId = librarianId,
                 Authority = authority
             });
         }
