@@ -1,18 +1,8 @@
 ﻿using LISy.Entities.Users;
 using LISy.Managers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -23,11 +13,22 @@ namespace LISy
     {
         private Librarian librarian;
         private AdminWindow adminWindow;
+        /// <summary>
+        /// admin's window for editing librarians
+        /// </summary>
+        /// <param name="librarian"></param>
+        /// <param name="adminWindow"></param>
         public LibAdminModify(Librarian librarian, AdminWindow adminWindow)
         {
             InitializeComponent();
             this.librarian = librarian;
             this.adminWindow = adminWindow;
+            lib_name_box.Text = librarian.FirstName;
+            SecondNameTextBox.Text = librarian.SecondName;
+            AddressTextBox.Text = librarian.Address;
+            PhoneTextBox.Text = librarian.Phone;
+            AuthorityTextBox.Text = Convert.ToString(librarian.Authority);
+
         }
 
         private void lib_name_box_TextChanged(object sender, TextChangedEventArgs e)
@@ -35,18 +36,46 @@ namespace LISy
             InputFieldsManager.CheckLiteralValidity(lib_name_box);
         }
 
-        private void lib_status_box_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            InputFieldsManager.CheckLiteralValidity(lib_status_box);
-        }
-
         private void add_new_lib_to_system_Click(object sender, RoutedEventArgs e)
         {
-            if (InputFieldsManager.CheckPasswordValidity(lib_password_box) && lib_status_box.Text != null && lib_name_box.Text != null)
+            librarian.FirstName = lib_name_box.Text;
+            librarian.SecondName = SecondNameTextBox.Text;
+            librarian.Address = AddressTextBox.Text;
+            librarian.Phone = PhoneTextBox.Text;
+            librarian.Authority = Convert.ToInt32(AuthorityTextBox.Text);
+
+            if (librarian.FirstName != null &&
+                librarian.SecondName != null &&
+                librarian.Address != null &&
+                librarian.Phone != null &&
+                (librarian.Authority > 0 && librarian.Authority < 4))
             {
-                //add new lib to the system
-                this.Close();
+                LibrarianDataManager.EditLibrarian(librarian);
             }
+            adminWindow.UpdateLibrariansDataGrid();
+            adminWindow.Show();
+            this.Close();
+
+        }
+
+        private void AddressTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //InputFieldsManager.CheckLiteralValidity(AddressTextBox);
+        }
+
+        private void SecondNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckLiteralValidity(SecondNameTextBox);
+        }
+
+        private void PhoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(PhoneTextBox);
+        }
+
+        private void AuthorityTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFieldsManager.CheckNumericValidity(AuthorityTextBox);
         }
     }
 }

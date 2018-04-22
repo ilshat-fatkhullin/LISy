@@ -1,4 +1,5 @@
-﻿using LISy.Entities.Notifications;
+﻿using LISy.Entities;
+using LISy.Entities.Notifications;
 using LISy.Entities.Users;
 using LISy.Managers;
 using System.Collections.Generic;
@@ -11,6 +12,9 @@ namespace LISy
     /// </summary>
     public partial class AdminWindow : Window
     {
+        /// <summary>
+        /// window controll for all admin issues
+        /// </summary>
         public AdminWindow()
         {
             InitializeComponent();
@@ -60,6 +64,13 @@ namespace LISy
             LibAdminModify window = new LibAdminModify(librarian, this);
             window.Owner = this;
             window.Show();
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow workWindow = new MainWindow();
+            workWindow.Show();
+            this.Close();
         }
     }
 }
