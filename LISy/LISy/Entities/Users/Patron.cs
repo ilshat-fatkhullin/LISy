@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LISy.Entities.Documents;
-
-namespace LISy.Entities.Users
+﻿namespace LISy.Entities.Users
 {
-	/// <summary>
-	/// Represents patronf of the library.
-	/// </summary>
-	public class Patron : User
+    /// <summary>
+    /// Represents patronf of the library.
+    /// </summary>
+    public class Patron : User
 	{
 		/// <summary>
 		/// Queue priority.
