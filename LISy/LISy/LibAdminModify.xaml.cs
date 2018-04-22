@@ -27,8 +27,6 @@ namespace LISy
             SecondNameTextBox.Text = librarian.SecondName;
             AddressTextBox.Text = librarian.Address;
             PhoneTextBox.Text = librarian.Phone;
-            AuthorityTextBox.Text = Convert.ToString(librarian.Authority);
-
         }
 
         private void lib_name_box_TextChanged(object sender, TextChangedEventArgs e)
@@ -42,16 +40,27 @@ namespace LISy
             librarian.SecondName = SecondNameTextBox.Text;
             librarian.Address = AddressTextBox.Text;
             librarian.Phone = PhoneTextBox.Text;
-            librarian.Authority = Convert.ToInt32(AuthorityTextBox.Text);
+            if (firstLevel.IsChecked == true)
+            {
+                librarian.Authority = 1;
+            }
+            else if (secondLevel.IsChecked == true)
+            {
+                librarian.Authority = 2;
+            }
+            else if (thirdLevel.IsChecked == true)
+            {
+                librarian.Authority = 3;
+            }
 
-            if (librarian.FirstName != null &&
+            /*if (librarian.FirstName != null &&
                 librarian.SecondName != null &&
                 librarian.Address != null &&
                 librarian.Phone != null &&
                 (librarian.Authority > 0 && librarian.Authority < 4))
-            {
-                LibrarianDataManager.EditLibrarian(librarian);
-            }
+            {*/
+            LibrarianDataManager.EditLibrarian(librarian);
+            
             adminWindow.UpdateLibrariansDataGrid();
             adminWindow.Show();
             this.Close();
@@ -73,9 +82,9 @@ namespace LISy
             InputFieldsManager.CheckNumericValidity(PhoneTextBox);
         }
 
-        private void AuthorityTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void DeleteLibrarian_Click(object sender, RoutedEventArgs e)
         {
-            InputFieldsManager.CheckNumericValidity(AuthorityTextBox);
+            LibrarianDataManager.DeleteUser(librarian.CardNumber);
         }
     }
 }

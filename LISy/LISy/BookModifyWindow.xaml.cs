@@ -14,11 +14,13 @@ namespace LISy
     {
         private Book book;
         private LibrarianWorkWindow workWindow;
-        public BookModifyWindow(Book book, LibrarianWorkWindow workWindow)
+        private int accessLevel;
+        public BookModifyWindow(Book book, LibrarianWorkWindow workWindow, int accessLevel)
         {
             InitializeComponent();
             this.book = book;
             this.workWindow = workWindow;
+            this.accessLevel = accessLevel;
             title_of_book.Text = book.Title;
             author_of_book.Text = book.Authors;
             publisher_of_book.Text = book.Publisher;
@@ -26,7 +28,14 @@ namespace LISy
             year_of_book.Text = Convert.ToString(book.Year);
             keywords_of_book.Text = book.KeyWords;
             price_of_book.Text = Convert.ToString(book.Price);
-            
+            if (accessLevel == 1)
+            {
+                delete_book_from_db.IsEnabled = false;
+
+            } else if (accessLevel == 2)
+            {
+                delete_book_from_db.IsEnabled = false;
+            }
 
         }
 

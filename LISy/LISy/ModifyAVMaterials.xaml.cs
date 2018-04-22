@@ -14,17 +14,34 @@ namespace LISy
     {
         private AVMaterial av;
         private LibrarianWorkWindow workWindow;
-        public ModifyAVMaterials(AVMaterial av, LibrarianWorkWindow workWindow)
+        private int accessLevel;
+        /// <summary>
+        /// modify av material
+        /// </summary>
+        /// <param name="av"></param>
+        /// <param name="workWindow"></param>
+        /// <param name="accessLevel"></param>
+        public ModifyAVMaterials(AVMaterial av, LibrarianWorkWindow workWindow, int accessLevel)
         {
             InitializeComponent();
             this.av = av;
             this.workWindow = workWindow;
+            this.accessLevel = accessLevel;
             av_title_text_box.Text = av.Title;
             authors_av_text_box.Text = av.Authors;
             av_coverUrl_text_box.Text = av.CoverURL;
             av_key_words_text_box.Text = av.KeyWords;
             av_price_text_box.Text = Convert.ToString(av.Price);
-           
+
+            if (accessLevel == 1)
+            {
+                delete_db.IsEnabled = false;
+
+            }
+            else if (accessLevel == 2)
+            {
+                delete_db.IsEnabled = false;
+            }
         }
 
         private void av_title_text_box_TextChanged(object sender, TextChangedEventArgs e)
