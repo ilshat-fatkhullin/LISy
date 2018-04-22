@@ -27,7 +27,8 @@ namespace LISy
             user = LibrarianDataManager.GetUserById(userId);
             librarian_name_fill.Content = user.FirstName;
             librarian_status_fill.Content = user.Type;
-            
+            librarian = LibrarianDataManager.GetLibrarianById(userId);
+            accesLevel = librarian.Authority;
             librarianLevel.IsEnabled = false;
             if (accesLevel == 1)
             {
