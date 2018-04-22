@@ -1,6 +1,8 @@
-﻿using LISy.Entities.Documents;
+﻿using LISy.Entities;
+using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Managers;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -28,8 +30,39 @@ namespace LISy
         ///</summary>
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
+            string searchRequest = SearchTextBox.Text;
+            Type type;
+            Document[] allDocuments;
+            if (tab_item_books.IsSelected)
+            {
+                type = typeof(Book);
+                allDocuments = LibrarianDataManager.GetAllBooksList();
+            }
+            else if (av_material.IsSelected)
+            {
+                type = typeof(AVMaterial);
+                allDocuments = LibrarianDataManager.GetAllAVMaterialsList();
+            }
+            else if (reference_book.IsSelected)
+            {
+                type = typeof(InnerMaterial);
+                allDocuments = LibrarianDataManager.GetAllInnerMaterialsList();
+            }
+            else if (journal.IsSelected)
+            {
+                type = typeof(Journal);
+                allDocuments = LibrarianDataManager.GetAllJournalsList();
+            }
+            else
+            {
+                type = typeof(Article);
+                allDocuments = LibrarianDataManager.GetAllArticlesList();
+            }
 
-
+            bool searchByAuthor = true;
+            bool searchByTitle = true;
+            bool searchByKeyWords = true;
+            Document[] filteredDocuments = SearchManager.search(allDocuments, searchRequest, type, searchByAuthor, searchByTitle, searchByKeyWords);
         }
         private void button_Profile_Click(object sender, RoutedEventArgs e)
         {

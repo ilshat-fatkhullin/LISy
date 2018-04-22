@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LISy.Entities;
+using LISy.Entities.Documents;
 
 namespace LISy.Managers
 {
     public class SearchManager
     {
-        private IDictionary<Document, int> filterByAuthor
+        private static IDictionary<Document, int> filterByAuthor
             (
-            List<Document> allDocuments, 
-            string searchRequest, 
-            string type, 
+            Document[] allDocuments,
+            string searchRequest,
+            Type searchType,
             IDictionary<Document, int> rankedFilteredDocuments
             )
         {
@@ -22,7 +23,8 @@ namespace LISy.Managers
             foreach (Document document in allDocuments) {
                 foreach (string author in authorsToSearch)
                 {
-                    if (document.GetType().ToString().Equals(type) && document.Authors.ToLower().Contains(author))
+                    var documentType = document.GetType();
+                    if (searchType == documentType && document.Authors.ToLower().Contains(author))
                     {
                         if (rankedFilteredDocuments.TryGetValue(document, out int rank))
                         {
@@ -39,11 +41,11 @@ namespace LISy.Managers
             return rankedFilteredDocuments;
         }
 
-        private IDictionary<Document, int> filterByTitle
+        private static IDictionary<Document, int> filterByTitle
             (
-            List<Document> allDocuments,
+            Document[] allDocuments,
             string searchRequest,
-            string type,
+            Type searchType,
             IDictionary<Document, int> rankedFilteredDocuments
             )
         {
@@ -53,7 +55,8 @@ namespace LISy.Managers
             {
                 foreach (string title in titleToSearch)
                 {
-                    if (document.GetType().ToString().Equals(type) && document.Title.ToLower().Contains(title))
+                    var documentType = document.GetType();
+                    if (searchType == documentType && document.Title.ToLower().Contains(title))
                     {
                         if (rankedFilteredDocuments.TryGetValue(document, out int rank))
                         {
@@ -70,11 +73,11 @@ namespace LISy.Managers
             return rankedFilteredDocuments;
         }
 
-        private IDictionary<Document, int> filterByKeyWords
+        private static IDictionary<Document, int> filterByKeyWords
             (
-            List<Document> allDocuments,
+            Document[] allDocuments,
             string searchRequest,
-            string type,
+            Type searchType,
             IDictionary<Document, int> rankedFilteredDocuments
             )
         {
@@ -84,7 +87,8 @@ namespace LISy.Managers
             {
                 foreach (string keyWord in keyWordsToSearch)
                 {
-                    if (document.GetType().ToString().Equals(type) && document.KeyWords.ToLower().Contains(keyWord))
+                    var documentType = document.GetType();
+                    if (searchType == documentType && document.KeyWords.ToLower().Contains(keyWord))
                     {
                         if (rankedFilteredDocuments.TryGetValue(document, out int rank))
                         {
@@ -101,11 +105,11 @@ namespace LISy.Managers
             return rankedFilteredDocuments;
         }
 
-        public List<Document> search
+        public static Document[] search
             (
-            List<Document> allDocuments,
+            Document[] allDocuments,
             string searchRequest,
-            string type,
+            Type type,
             bool searchByAuthor,
             bool searchByTitle,
             bool searchByKeyWords
@@ -125,11 +129,11 @@ namespace LISy.Managers
                 rankedFilteredDocuments = filterByKeyWords(allDocuments, searchRequest, type, rankedFilteredDocuments);
             }
             List <Document> filteredDocuments = new List<Document>();
-            foreach (KeyValuePair<Document, int> item in rankedFilteredDocuments.OrderBy(document => document.Value))
+            foreach (KeyValuePair<Document, int> item in rankedFilteredDocuments.OrderByDescending(document => document.Value))
             {
                 filteredDocuments.Add(item.Key);
             }
-            return filteredDocuments;
+            return filteredDocuments.ToArray();
         }
 
 
