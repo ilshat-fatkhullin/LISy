@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="AddLibrarian" Height="208.929" Width="314.837" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="AddLibrarian" Height="323.929" Width="324.837" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
     </Window.Background>
     <Grid>
         <Label x:Name="lib_name_label" Content="Name:" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Foreground="White"/>
-        <Label x:Name="lib_status_label" Content="Status:" Margin="10,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Foreground="White"/>
-        <TextBox x:Name="lib_name_box" Margin="65,10,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="lib_name_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
-        <TextBox x:Name="lib_status_box" Margin="65,41,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="lib_status_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
-        <Label x:Name="lib_password_label" Content="Password:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
-        <PasswordBox x:Name="lib_password_box" Margin="80,72,0,0" FontSize="16" HorizontalAlignment="Left" Width="204" Height="26" VerticalAlignment="Top"/>
-        <Button x:Name="add_new_lib_to_system" Content="Add" Margin="184,140,0,0" Click="add_new_lib_to_system_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <TextBox x:Name="lib_name_box" Margin="65,10,0,0" TextWrapping="Wrap" FontSize="14" TextChanged="lib_name_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
+        <Button x:Name="add_new_lib_to_system" Content="Save" Margin="184,165,0,0" Click="add_new_lib_to_system_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <Label x:Name="AddressLabel" Content="Address:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
+        <TextBox x:Name="AddressTextBox" HorizontalAlignment="Left" Height="26" Margin="80,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TextChanged="AddressTextBox_TextChanged" FontSize="14"/>
+        <Label x:Name="SecondNameLabel" Content="Second name:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="85" Foreground="White"/>
+        <TextBox x:Name="SecondNameTextBox" HorizontalAlignment="Left" Height="26" Margin="100,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="14" TextChanged="SecondNameTextBox_TextChanged"/>
+        <Label x:Name="PhoneLabel" Content="Phone:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
+        <TextBox x:Name="PhoneTextBox" HorizontalAlignment="Left" Height="26" Margin="80,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="14" TextChanged="PhoneTextBox_TextChanged"/>
+        <Label x:Name="AuthorityLabel" Content="Authority:" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
+        <TextBox x:Name="AuthorityTextBox" HorizontalAlignment="Left" Height="26" Margin="80,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" FontSize="14" TextChanged="AuthorityTextBox_TextChanged"/>
 
     </Grid>
 </Window>

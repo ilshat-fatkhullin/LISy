@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="294.919" Width="501.291" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
+        Title="AdminWindow" Height="346.964" Width="511.049" ResizeMode="NoResize" Icon="Design/icon_logo100x100.ico" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="Design/books_shelf_back.jpg"/>
     </Window.Background>
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="232" Margin="10,10,0,0" VerticalAlignment="Top" Width="464">
+        <TabControl HorizontalAlignment="Left" Height="232" Margin="21,10,0,0" VerticalAlignment="Top" Width="464">
             <TabItem Header="Logs">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="LogDataGrid" HorizontalAlignment="Left" Height="184" Margin="10,10,0,0" VerticalAlignment="Top" Width="438" Loaded="LogDataGrid_Loaded"/>
@@ -22,6 +22,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button x:Name="LogOutButton" Content="Log Out" HorizontalAlignment="Left" Margin="385,247,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="{x:Null}" BorderBrush="White" Foreground="White" Click="LogOutButton_Click"/>
 
     </Grid>
 </Window>
