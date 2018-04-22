@@ -38,6 +38,10 @@ namespace LISy
                 Check_out_Copies.IsEnabled = false;
 
             }
+            else if (accesLevel == 3)
+            {
+                Check_out_Copies.IsEnabled = false;
+            }
 
         }
         private void refresh_Click(object sender, RoutedEventArgs e)

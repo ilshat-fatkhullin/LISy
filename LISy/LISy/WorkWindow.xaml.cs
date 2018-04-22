@@ -185,5 +185,31 @@ namespace LISy
         {
             UpdateDataGridJournal();
         }
+
+        private void av_material_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            AVMaterial avMaterial = DataGridAV_material.SelectedItem as AVMaterial;
+            if (avMaterial == null)
+                return;
+
+            AVMaterialInfoWindow window = new AVMaterialInfoWindow(avMaterial, patron, this)
+            {
+                Owner = this
+            };
+            window.Show();
+        }
+
+        private void journal_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Journal journal = DataGridJournal.SelectedItem as Journal;
+            if (journal == null)
+                return;
+
+            JournalModifyWindow window = new JournalModifyWindow(journal, patron, this)
+            {
+                Owner = this
+            };
+            window.Show();
+        }
     }
 }

@@ -169,6 +169,12 @@
     <Compile Include="AddJournalArticlesToJournal.xaml.cs">
       <DependentUpon>AddJournalArticlesToJournal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AVMaterialInfoWindow.xaml.cs">
+      <DependentUpon>AVMaterialInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JournalModifyWindow.xaml.cs">
+      <DependentUpon>JournalModifyWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LibAdminModify.xaml.cs">
       <DependentUpon>LibAdminModify.xaml</DependentUpon>
     </Compile>
@@ -243,6 +249,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddJournalArticlesToJournal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AVMaterialInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JournalModifyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,5 +1,4 @@
-﻿using LISy.Entities;
-using LISy.Entities.Documents;
+﻿using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Managers;
 using System;
@@ -9,10 +8,10 @@ using System.Windows.Media.Imaging;
 
 namespace LISy
 {
-	/// <summary>
-	/// Логика взаимодействия для BookingInfoWindow.xaml
-	/// </summary>
-	public partial class BookingInfoWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для BookingInfoWindow.xaml
+    /// </summary>
+    public partial class BookingInfoWindow : Window
 	{
 		private Patron patron;
 		private Book book;
