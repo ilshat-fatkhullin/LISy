@@ -16,7 +16,7 @@
         <TextBox x:Name="lib_status_box" Margin="65,41,0,0" TextWrapping="Wrap" FontSize="16" TextChanged="lib_status_box_TextChanged" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top"/>
         <Label x:Name="lib_password_label" Content="Password:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
         <PasswordBox x:Name="lib_password_box" Margin="80,72,0,0" FontSize="16" HorizontalAlignment="Left" Width="204" Height="26" VerticalAlignment="Top"/>
-        <Button x:Name="add_new_lib_to_system" Content="Add" Margin="184,103,0,0" Click="add_new_lib_to_system_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
+        <Button x:Name="add_new_lib_to_system" Content="Add" Margin="184,140,0,0" Click="add_new_lib_to_system_Click" HorizontalAlignment="Left" Width="100" Height="30" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White" Foreground="White"/>
 
     </Grid>
 </Window>
