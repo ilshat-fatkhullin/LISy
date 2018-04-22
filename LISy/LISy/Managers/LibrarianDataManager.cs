@@ -322,7 +322,7 @@ namespace LISy.Managers
         }
 
         public static Librarian[] GetAllLibrarians()
-        {
+        {            
             var output = HttpHelper.MakeGetRequest<List<Librarian>>("librarian/get_all_librarians", null);
             if (output == null)
                 return new Librarian[] { };
