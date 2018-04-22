@@ -14,17 +14,20 @@ namespace LISy
     {
         private LibrarianWorkWindow window;
         private Journal journal;
-        
+        private int accessLevel;
+
         /// <summary>
         /// window to modifay Journal information
         /// </summary>
         /// <param name="journal"></param>
         /// <param name="window"></param>
-        public ModifyJournal(Journal journal, LibrarianWorkWindow window)
+        /// <param name="accessLevel"></param>
+        public ModifyJournal(Journal journal, LibrarianWorkWindow window, int accessLevel)
         {
             InitializeComponent();
             this.window = window;
             this.journal = journal;
+            this.accessLevel = accessLevel;
             titleTextBox.Text = journal.Title;
             publisherTextBox.Text = journal.Publisher;
             issueTextBox.Text = Convert.ToString(journal.Issue);
@@ -34,6 +37,15 @@ namespace LISy
             keyWordsTextBox.Text = journal.KeyWords;
             priceTextBox.Text = Convert.ToString(journal.Price);
             publicationDateBox.Text = journal.PublicationDate;
+            if (accessLevel == 1)
+            {
+                deleteButton.IsEnabled = false;
+
+            }
+            else if (accessLevel == 2)
+            {
+                deleteButton.IsEnabled = false;
+            }
         }
 
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -83,7 +95,7 @@ namespace LISy
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             journal.Title = titleTextBox.Text;
             journal.Publisher = publisherTextBox.Text;
             journal.Issue = Convert.ToInt32(issueTextBox.Text);

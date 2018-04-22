@@ -16,21 +16,34 @@ namespace LISy
     {
         private User user;
         private LibrarianWorkWindow workWindow;
+        private int accessLevel;
         /// <summary>
         /// user modify window
         /// </summary>
         /// <param name="user"></param>
         /// <param name="workWindow"></param>
-		public UserModifyWindow(User user, LibrarianWorkWindow workWindow)
+        /// <param name="accessLevel"></param>
+        public UserModifyWindow(User user, LibrarianWorkWindow workWindow, int accessLevel)
         {
             InitializeComponent();
             this.user = user;
             this.workWindow = workWindow;
+            this.accessLevel = accessLevel;
             FirstName.Text = user.FirstName;
             SecondName.Text = user.SecondName;
             Phone.Text = user.Phone;
             Address.Text = user.Address;
 
+            if (accessLevel == 1)
+            {
+                Delete.IsEnabled = false;
+
+            }
+            else if (accessLevel == 2)
+            {
+                Delete.IsEnabled = false;
+            }
+            
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)

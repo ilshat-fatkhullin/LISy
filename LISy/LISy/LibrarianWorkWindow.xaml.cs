@@ -14,6 +14,8 @@ namespace LISy
     public partial class LibrarianWorkWindow : Window
     {
         private User user;
+        private int accesLevel;
+        private Librarian librarian;
         /// <summary>
         /// Window for work window
         /// </summary>
@@ -25,7 +27,16 @@ namespace LISy
             user = LibrarianDataManager.GetUserById(userId);
             librarian_name_fill.Content = user.FirstName;
             librarian_status_fill.Content = user.Type;
+            
             librarianLevel.IsEnabled = false;
+            if (accesLevel == 1)
+            {
+                add_user.IsEnabled = false;
+                add_doc.IsEnabled = false;
+                copies.IsEnabled = false;
+                Check_out_Copies.IsEnabled = false;
+
+            }
 
         }
         private void refresh_Click(object sender, RoutedEventArgs e)
@@ -61,7 +72,7 @@ namespace LISy
 
             if (user.Type != Librarian.TYPE)
             {
-                UserModifyWindow window = new UserModifyWindow(user, this);
+                UserModifyWindow window = new UserModifyWindow(user, this, accesLevel);
                 window.Owner = this;
                 window.Show();
             }
@@ -73,7 +84,7 @@ namespace LISy
             if (book == null)
                 return;
 
-            BookModifyWindow window = new BookModifyWindow(book, this);
+            BookModifyWindow window = new BookModifyWindow(book, this, accesLevel);
             window.Owner = this;
             window.Show();
 
@@ -84,7 +95,7 @@ namespace LISy
             if (AVmaterial == null)
                 return;
 
-            ModifyAVMaterials window = new ModifyAVMaterials(AVmaterial, this);
+            ModifyAVMaterials window = new ModifyAVMaterials(AVmaterial, this, accesLevel);
             window.Owner = this;
             window.Show();
 
@@ -244,7 +255,7 @@ namespace LISy
             if (inner == null)
                 return;
 
-            ModifyInnerMaterial window = new ModifyInnerMaterial(inner, this);
+            ModifyInnerMaterial window = new ModifyInnerMaterial(inner, this, accesLevel);
             window.Owner = this;
             window.Show();
         }
@@ -258,7 +269,7 @@ namespace LISy
             if (journal == null)
                 return;
 
-            ModifyJournal window = new ModifyJournal(journal, this);
+            ModifyJournal window = new ModifyJournal(journal, this, accesLevel);
             window.Owner = this;
             window.Show();
 

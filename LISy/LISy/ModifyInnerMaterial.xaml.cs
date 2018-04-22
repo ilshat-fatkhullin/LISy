@@ -1,18 +1,8 @@
 ﻿using LISy.Entities.Documents;
 using LISy.Managers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LISy
 {
@@ -23,11 +13,19 @@ namespace LISy
     {
         private InnerMaterial inner;
         private LibrarianWorkWindow window;
-        public ModifyInnerMaterial(InnerMaterial inner, LibrarianWorkWindow window)
+        private int accessLevel;
+        /// <summary>
+        /// modify inner material
+        /// </summary>
+        /// <param name="inner"></param>
+        /// <param name="window"></param>
+        /// <param name="accessLevel"></param>
+        public ModifyInnerMaterial(InnerMaterial inner, LibrarianWorkWindow window, int accessLevel)
         {
             InitializeComponent();
             this.inner = inner;
             this.window = window;
+            this.accessLevel = accessLevel;
             titleTextBox.Text = inner.Title;
             authorTextBox.Text = inner.Authors;
             keyWordsTextBox.Text = inner.KeyWords;
@@ -35,6 +33,16 @@ namespace LISy
             levelTextBox.Text = Convert.ToString(inner.Level);
             typeTextBox.Text = inner.Type;
             coverUrlTextBox.Text = inner.CoverURL;
+            if (accessLevel == 1)
+            {
+                deleteButton.IsEnabled = false;
+
+            }
+            else if (accessLevel == 2)
+            {
+                deleteButton.IsEnabled = false;
+            }
+
         }
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
