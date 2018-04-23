@@ -14,7 +14,7 @@ namespace LISy
     public partial class WorkWindow : Window
     {
         private Patron patron;
-
+        private Document[] filteredDocuments;
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
@@ -62,7 +62,42 @@ namespace LISy
             bool searchByAuthor = true;
             bool searchByTitle = true;
             bool searchByKeyWords = true;
-            Document[] filteredDocuments = SearchManager.search(allDocuments, searchRequest, type, searchByAuthor, searchByTitle, searchByKeyWords);
+
+            if (ByAuthor.IsChecked == true)
+            {
+                searchByAuthor = true;
+            }
+            else
+            {
+                searchByAuthor = false;
+            }
+            //------------------
+            if (ByTitle.IsChecked == true)
+            {
+                searchByTitle = true;
+            }
+            else
+            {
+                searchByTitle = false;
+            }
+            //------------------
+            if (ByKeyWords.IsChecked == true)
+            {
+                searchByKeyWords = true;
+            }
+            else
+            {
+                searchByKeyWords = false;
+            }
+
+
+
+            filteredDocuments = SearchManager.search(allDocuments, searchRequest, type, searchByAuthor, searchByTitle, searchByKeyWords);
+            UpdateDataBookSearchGrid();
+            UpdateDataAVSearchGrid();
+            UpdateDataJournalSearchGrid();
+            UpdateDataJournalArticleSearchGrid();
+            UpdateDataInnerSearchGrid();
         }
         private void button_Profile_Click(object sender, RoutedEventArgs e)
         {
@@ -93,7 +128,56 @@ namespace LISy
         {
             UpdateDataGridBook();
         }
-
+        public void UpdateDataBookSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridBook.ItemsSource = result;
+        }
+        public void UpdateDataAVSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridAV_material.ItemsSource = result;
+        }
+        public void UpdateDataInnerSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridRefernce_book.ItemsSource = result;
+        }
+        public void UpdateDataJournalSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridJournal.ItemsSource = result;
+        }
+        public void UpdateDataJournalArticleSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridJournalArticles.ItemsSource = result;
+        }
         /// <summary>
         /// loader to table grid av material
         /// </summary>

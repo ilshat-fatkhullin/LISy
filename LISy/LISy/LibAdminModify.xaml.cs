@@ -86,6 +86,8 @@ namespace LISy
         private void DeleteLibrarian_Click(object sender, RoutedEventArgs e)
         {
             LibrarianDataManager.DeleteUser(librarian.CardNumber);
+            this.Close();
+            adminWindow.UpdateLibrariansDataGrid();
         }
     }
 }

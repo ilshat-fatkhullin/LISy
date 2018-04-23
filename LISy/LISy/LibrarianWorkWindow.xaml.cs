@@ -75,7 +75,7 @@ namespace LISy
             if (user == null)
                 return;
 
-            if (user.Type != Librarian.TYPE)
+            if (user.Type != Librarian.TYPE && user.Type != "Admin")
             {
                 UserModifyWindow window = new UserModifyWindow(user, this, accesLevel);
                 window.Owner = this;

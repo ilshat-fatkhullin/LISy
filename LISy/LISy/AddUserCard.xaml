@@ -36,10 +36,10 @@
             <CheckBox x:Name="professorCheckBoxType" Content="Professor"/>
             <CheckBox x:Name="visitingProfessorCheckBoxType" Content="Visiting Professor"/>
         </ComboBox>
-        <CheckBox x:Name="level_1_librarian" Content="1" HorizontalAlignment="Left" Margin="131,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
-        <CheckBox x:Name="level_2_librarian" Content="2" HorizontalAlignment="Left" Margin="162,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
-        <CheckBox x:Name="level_3_librarian" Content="3" HorizontalAlignment="Left" Margin="193,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Focusable="False"/>
         <Label Content="Librarian level:" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="94" Foreground="White"/>
+        <RadioButton x:Name="level_1_librarian" Content="1" HorizontalAlignment="Left" Margin="109,322,0,0" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}"/>
+        <RadioButton x:Name="level_2_librarian" Content="2" HorizontalAlignment="Left" Margin="139,322,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
+        <RadioButton x:Name="level_3_librarian" Content="3" HorizontalAlignment="Left" Margin="169,322,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
 
     </Grid>
 </Window>

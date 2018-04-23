@@ -16,7 +16,6 @@
                 <GradientStop Color="#66FFFFFF" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView ItemsSource="{Binding View}" IsSynchronizedWithCurrentItem="False" Margin="160,70,0,358" HorizontalAlignment="Left" Width="530"/>
         <TextBox x:Name="SearchTextBox" Margin="160,70,0,0" HorizontalAlignment="Left" Width="530" Height="25" VerticalAlignment="Top" FontSize="14">
             <TextBox.BorderBrush>
                 <ImageBrush/>
@@ -69,10 +68,10 @@
 
         </Grid>
         <Button x:Name="log_out_button" Content="Log Out" HorizontalAlignment="Left" Margin="15,251,0,0" VerticalAlignment="Top" Width="140" Height="30" Background="{x:Null}" Foreground="White" FontSize="16" BorderBrush="{x:Null}" Click="log_out_button_Click"/>
-        <RadioButton x:Name="ByAuthor" Content="Author" HorizontalAlignment="Left" Margin="220,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
         <Label Content="Filter by:" HorizontalAlignment="Left" Margin="160,100,0,0" VerticalAlignment="Top" Width="55" Height="27" Foreground="White"/>
-        <RadioButton x:Name="ByTitle" Content="Title" HorizontalAlignment="Left" Margin="281,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
-        <RadioButton x:Name="ByKeyWords" Content="Key Words" HorizontalAlignment="Left" Margin="327,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
+        <CheckBox x:Name="ByAuthor" Content="Author" HorizontalAlignment="Left" Margin="220,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
+        <CheckBox x:Name="ByTitle" Content="Title" HorizontalAlignment="Left" Margin="282,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
+        <CheckBox x:Name="ByKeyWords" Content="Key words" HorizontalAlignment="Left" Margin="329,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
 
     </Grid>
 </Window>

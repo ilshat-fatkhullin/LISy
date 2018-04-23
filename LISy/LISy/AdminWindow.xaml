@@ -23,6 +23,7 @@
             </TabItem>
         </TabControl>
         <Button x:Name="LogOutButton" Content="Log Out" HorizontalAlignment="Left" Margin="385,247,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="{x:Null}" BorderBrush="White" Foreground="White" Click="LogOutButton_Click"/>
+        <Button x:Name="AddLibrarian" Content="Add" HorizontalAlignment="Left" Margin="279,247,0,0" VerticalAlignment="Top" Width="101" Height="30" BorderBrush="White" Background="{x:Null}" Foreground="White" Click="AddLibrarian_Click"/>
 
     </Grid>
 </Window>
