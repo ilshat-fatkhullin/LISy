@@ -76,7 +76,7 @@ namespace LISy.Entities.Documents
 		/// </summary>
 		/// <param name="patronType">Type of booking patron.</param>
 		/// <returns></returns>
-		public virtual string EvaluateReturnDate(string patronType)
+		public virtual long EvaluateReturnDate(string patronType)
 		{
 			DateTime date = DateTime.Today;
 			if (patronType.Equals(Guest.TYPE))
@@ -87,7 +87,7 @@ namespace LISy.Entities.Documents
 			{
 				date = date.AddDays(BASIC_RETURN_TIME);
 			}
-			return date.ToShortDateString();
+			return date.ToFileTimeUtc();
 		}
 	}
 }

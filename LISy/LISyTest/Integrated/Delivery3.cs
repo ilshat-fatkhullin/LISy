@@ -117,12 +117,12 @@ namespace LISyTest.Integrated
             PatronDataManager.RenewDocument(1, 1);
             PatronDataManager.RenewDocument(2, 4);
             PatronDataManager.RenewDocument(2, 5);
-            string date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToShortDateString());            
+            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
+            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());            
             date = LibrarianDataManager.GetCheckedByUserCopiesList(4)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(42).ToShortDateString());            
+            Assert.AreEqual(date, DateTime.Today.AddDays(42).ToFileTimeUtc());            
             date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(14).ToShortDateString());
+            Assert.AreEqual(date, DateTime.Today.AddDays(14).ToFileTimeUtc());
         }
 
         [TestMethod]
@@ -136,12 +136,12 @@ namespace LISyTest.Integrated
             PatronDataManager.RenewDocument(1, 1);
             PatronDataManager.RenewDocument(2, 4);
             PatronDataManager.RenewDocument(2, 5);
-            string date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToShortDateString());
+            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
+            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());
             date = LibrarianDataManager.GetCheckedByUserCopiesList(4)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(21).ToShortDateString());            
+            Assert.AreEqual(date, DateTime.Today.AddDays(21).ToFileTimeUtc());            
             date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(7).ToShortDateString());
+            Assert.AreEqual(date, DateTime.Today.AddDays(7).ToFileTimeUtc());
         }
 
         [TestMethod]
@@ -204,8 +204,8 @@ namespace LISyTest.Integrated
         {
             D3TC6();
             PatronDataManager.RenewDocument(3, 1);
-            string date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToShortDateString());
+            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
+            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());
         }
 
         [TestMethod]
@@ -216,10 +216,10 @@ namespace LISyTest.Integrated
             PatronDataManager.RenewDocument(1, 1);
             PatronDataManager.CheckOutDocument(1, 5);
             PatronDataManager.RenewDocument(1, 5);
-            string date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToShortDateString());
+            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
+            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());
             date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(14).ToShortDateString());
+            Assert.AreEqual(date, DateTime.Today.AddDays(14).ToFileTimeUtc());
         }
     }
 }

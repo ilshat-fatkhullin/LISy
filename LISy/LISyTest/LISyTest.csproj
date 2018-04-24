@@ -136,6 +136,7 @@
     <Compile Include="Integrated\Delivery1.cs" />
     <Compile Include="Integrated\Delivery2.cs" />
     <Compile Include="Integrated\Delivery3.cs" />
+    <Compile Include="Integrated\Delivery4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
