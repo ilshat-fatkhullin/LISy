@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LISy"
         mc:Ignorable="d"
-        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="480" Width="808.5" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="WorkWindow" Icon="Design/icon_logo100x100.ico" Height="480" Width="832.5" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="Design/books.jpg"/>
     </Window.Background>
@@ -16,8 +16,7 @@
                 <GradientStop Color="#66FFFFFF" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView ItemsSource="{Binding View}" IsSynchronizedWithCurrentItem="False" Margin="160,70,0,358" HorizontalAlignment="Left" Width="530"/>
-        <TextBox Margin="160,70,0,0" HorizontalAlignment="Left" Width="530" Height="25" VerticalAlignment="Top" FontSize="14">
+        <TextBox x:Name="SearchTextBox" Margin="160,70,0,0" HorizontalAlignment="Left" Width="530" Height="25" VerticalAlignment="Top" FontSize="14">
             <TextBox.BorderBrush>
                 <ImageBrush/>
             </TextBox.BorderBrush>
@@ -38,14 +37,14 @@
         <Button x:Name="button_Profile" Content="My Profile" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="145" Height="30"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Profile_Click"/>
         <Button x:Name="button_Booking" Content="Booking Story" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Booking_Click"/>
         <Button x:Name="button_Info" Content="Info" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="145" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="button_Info_Click"/>
-        <Grid HorizontalAlignment="Left" Height="299" Margin="160,100,0,0" VerticalAlignment="Top" Width="632">
+        <Grid HorizontalAlignment="Left" Height="299" Margin="160,126,0,0" VerticalAlignment="Top" Width="632">
             <TabControl x:Name="docInfoTab" HorizontalAlignment="Left" Height="289" Margin="0,10,0,0" VerticalAlignment="Top" Width="622">
                 <TabItem x:Name="tab_item_books" Header="Books">
                     <Grid Background="#FFE5E5E5">
                         <DataGrid x:Name="DataGridBook" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderBook" MouseUp="DataGridBook_MouseUp_book"/>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="av_material" Header="AV materials">
+                <TabItem x:Name="av_material" Header="AV materials" MouseUp="av_material_MouseUp">
                     <Grid Background="#FFE5E5E5">
                         <DataGrid x:Name="DataGridAV_material" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderAV_material"/>
                     </Grid>
@@ -55,7 +54,7 @@
                         <DataGrid x:Name="DataGridRefernce_book" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderReference_book"/>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="journal" Header="Journals">
+                <TabItem x:Name="journal" Header="Journals" MouseUp="journal_MouseUp">
                     <Grid Background="#FFE5E5E5">
                         <DataGrid x:Name="DataGridJournal" HorizontalAlignment="Left" Height="241" Margin="10,10,0,0" VerticalAlignment="Top" Width="596" Loaded="grid_LoaderJournal"/>
                     </Grid>
@@ -69,6 +68,10 @@
 
         </Grid>
         <Button x:Name="log_out_button" Content="Log Out" HorizontalAlignment="Left" Margin="15,251,0,0" VerticalAlignment="Top" Width="140" Height="30" Background="{x:Null}" Foreground="White" FontSize="16" BorderBrush="{x:Null}" Click="log_out_button_Click"/>
+        <Label Content="Filter by:" HorizontalAlignment="Left" Margin="160,100,0,0" VerticalAlignment="Top" Width="55" Height="27" Foreground="White"/>
+        <CheckBox x:Name="ByAuthor" Content="Author" HorizontalAlignment="Left" Margin="220,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
+        <CheckBox x:Name="ByTitle" Content="Title" HorizontalAlignment="Left" Margin="282,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
+        <CheckBox x:Name="ByKeyWords" Content="Key words" HorizontalAlignment="Left" Margin="329,106,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="White"/>
 
     </Grid>
 </Window>

@@ -1,6 +1,8 @@
-﻿using LISy.Entities.Documents;
+﻿using LISy.Entities;
+using LISy.Entities.Documents;
 using LISy.Entities.Users;
 using LISy.Managers;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -12,7 +14,7 @@ namespace LISy
     public partial class WorkWindow : Window
     {
         private Patron patron;
-
+        private Document[] filteredDocuments;
         /// <summary>
         /// Give info to profile paatron will can see info about him and in future will can to make reference to labrarian to change info
         /// </summary>
@@ -28,8 +30,74 @@ namespace LISy
         ///</summary>
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
+            string searchRequest = SearchTextBox.Text;
+            Type type;
+            Document[] allDocuments;
+            if (tab_item_books.IsSelected)
+            {
+                type = typeof(Book);
+                allDocuments = LibrarianDataManager.GetAllBooksList();
+            }
+            else if (av_material.IsSelected)
+            {
+                type = typeof(AVMaterial);
+                allDocuments = LibrarianDataManager.GetAllAVMaterialsList();
+            }
+            else if (reference_book.IsSelected)
+            {
+                type = typeof(InnerMaterial);
+                allDocuments = LibrarianDataManager.GetAllInnerMaterialsList();
+            }
+            else if (journal.IsSelected)
+            {
+                type = typeof(Journal);
+                allDocuments = LibrarianDataManager.GetAllJournalsList();
+            }
+            else
+            {
+                type = typeof(Article);
+                allDocuments = LibrarianDataManager.GetAllArticlesList();
+            }
+
+            bool searchByAuthor = true;
+            bool searchByTitle = true;
+            bool searchByKeyWords = true;
+
+            if (ByAuthor.IsChecked == true)
+            {
+                searchByAuthor = true;
+            }
+            else
+            {
+                searchByAuthor = false;
+            }
+            //------------------
+            if (ByTitle.IsChecked == true)
+            {
+                searchByTitle = true;
+            }
+            else
+            {
+                searchByTitle = false;
+            }
+            //------------------
+            if (ByKeyWords.IsChecked == true)
+            {
+                searchByKeyWords = true;
+            }
+            else
+            {
+                searchByKeyWords = false;
+            }
 
 
+
+            filteredDocuments = SearchManager.search(allDocuments, searchRequest, type, searchByAuthor, searchByTitle, searchByKeyWords);
+            UpdateDataBookSearchGrid();
+            UpdateDataAVSearchGrid();
+            UpdateDataJournalSearchGrid();
+            UpdateDataJournalArticleSearchGrid();
+            UpdateDataInnerSearchGrid();
         }
         private void button_Profile_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +128,56 @@ namespace LISy
         {
             UpdateDataGridBook();
         }
-
+        public void UpdateDataBookSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridBook.ItemsSource = result;
+        }
+        public void UpdateDataAVSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridAV_material.ItemsSource = result;
+        }
+        public void UpdateDataInnerSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridRefernce_book.ItemsSource = result;
+        }
+        public void UpdateDataJournalSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridJournal.ItemsSource = result;
+        }
+        public void UpdateDataJournalArticleSearchGrid()
+        {
+            List<Document> result = new List<Document>();
+            result.Clear();
+            foreach (Document doc in filteredDocuments)
+            {
+                result.Add(doc);
+            }
+            DataGridJournalArticles.ItemsSource = result;
+        }
         /// <summary>
         /// loader to table grid av material
         /// </summary>
@@ -184,6 +301,32 @@ namespace LISy
         private void grid_LoaderJournal(object sender, RoutedEventArgs e)
         {
             UpdateDataGridJournal();
+        }
+
+        private void av_material_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            AVMaterial avMaterial = DataGridAV_material.SelectedItem as AVMaterial;
+            if (avMaterial == null)
+                return;
+
+            AVMaterialInfoWindow window = new AVMaterialInfoWindow(avMaterial, patron, this)
+            {
+                Owner = this
+            };
+            window.Show();
+        }
+
+        private void journal_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Journal journal = DataGridJournal.SelectedItem as Journal;
+            if (journal == null)
+                return;
+
+            JournalModifyWindow window = new JournalModifyWindow(journal, patron, this)
+            {
+                Owner = this
+            };
+            window.Show();
         }
     }
 }

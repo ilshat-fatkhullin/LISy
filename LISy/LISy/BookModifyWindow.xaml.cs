@@ -15,6 +15,12 @@ namespace LISy
         private Book book;
         private LibrarianWorkWindow workWindow;
         private int accessLevel;
+        /// <summary>
+        /// book modify window
+        /// </summary>
+        /// <param name="book"></param>
+        /// <param name="workWindow"></param>
+        /// <param name="accessLevel"></param>
         public BookModifyWindow(Book book, LibrarianWorkWindow workWindow, int accessLevel)
         {
             InitializeComponent();
@@ -31,8 +37,12 @@ namespace LISy
             if (accessLevel == 1)
             {
                 delete_book_from_db.IsEnabled = false;
+                copy_of_book.IsEnabled = false;
+                room_of_book.IsEnabled = false;
+                level_of_book.IsEnabled = false;
 
-            } else if (accessLevel == 2)
+            }
+            else if (accessLevel == 2)
             {
                 delete_book_from_db.IsEnabled = false;
             }
@@ -69,12 +79,13 @@ namespace LISy
 
             if (room_of_book.Text != "" &&
                 level_of_book.Text != "" &&
-                copy_of_book.Text != "")
+                copy_of_book.Text != "" && accessLevel != 1)
             {
                 copy.Room = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(room_of_book));
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(level_of_book));
                 LibrarianDataManager.AddCopies(Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(copy_of_book)), copy);
             }
+
             workWindow.UpdateDataGridBook();
             this.Close();
 

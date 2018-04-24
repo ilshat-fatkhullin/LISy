@@ -38,6 +38,10 @@ namespace LISy
                 Check_out_Copies.IsEnabled = false;
 
             }
+            else if (accesLevel == 3)
+            {
+                Check_out_Copies.IsEnabled = false;
+            }
 
         }
         private void refresh_Click(object sender, RoutedEventArgs e)
@@ -71,7 +75,7 @@ namespace LISy
             if (user == null)
                 return;
 
-            if (user.Type != Librarian.TYPE)
+            if (user.Type != Librarian.TYPE && user.Type != "Admin")
             {
                 UserModifyWindow window = new UserModifyWindow(user, this, accesLevel);
                 window.Owner = this;

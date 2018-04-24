@@ -72,5 +72,13 @@ namespace LISy
             workWindow.Show();
             this.Close();
         }
+
+        private void AddLibrarian_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserCard addUserCard = new AddUserCard();
+            addUserCard.Owner = this;
+            addUserCard.Show();
+
+        }
     }
 }

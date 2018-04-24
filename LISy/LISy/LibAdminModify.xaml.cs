@@ -40,17 +40,18 @@ namespace LISy
             librarian.SecondName = SecondNameTextBox.Text;
             librarian.Address = AddressTextBox.Text;
             librarian.Phone = PhoneTextBox.Text;
+            int accessLevel = 0;
             if (firstLevel.IsChecked == true)
             {
-                librarian.Authority = 1;
+                accessLevel = 1;
             }
             else if (secondLevel.IsChecked == true)
             {
-                librarian.Authority = 2;
+                accessLevel = 2;
             }
             else if (thirdLevel.IsChecked == true)
             {
-                librarian.Authority = 3;
+                accessLevel = 3;
             }
 
             /*if (librarian.FirstName != null &&
@@ -60,7 +61,7 @@ namespace LISy
                 (librarian.Authority > 0 && librarian.Authority < 4))
             {*/
             LibrarianDataManager.EditLibrarian(librarian);
-            
+            LibrarianDataManager.SetLibrarianAuthority(librarian.CardNumber, accessLevel);
             adminWindow.UpdateLibrariansDataGrid();
             adminWindow.Show();
             this.Close();
@@ -85,6 +86,8 @@ namespace LISy
         private void DeleteLibrarian_Click(object sender, RoutedEventArgs e)
         {
             LibrarianDataManager.DeleteUser(librarian.CardNumber);
+            this.Close();
+            adminWindow.UpdateLibrariansDataGrid();
         }
     }
 }
