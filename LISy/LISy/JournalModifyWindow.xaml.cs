@@ -80,7 +80,7 @@ namespace LISy
             PatronDataManager.CheckOutDocument(journal.Id, patron.CardNumber);
             BookButton.IsEnabled = false;
             InStockLabel.Content = "Not available.";
-            ReturnDataLabel.Content = journal.EvaluateReturnDate(patron.Type);
+            ReturnDataLabel.Content = DateManager.GetDate(journal.EvaluateReturnDate(patron.Type)).ToShortDateString();
         }
         private void GoToQueue_Click(object sender, RoutedEventArgs e)
         {
