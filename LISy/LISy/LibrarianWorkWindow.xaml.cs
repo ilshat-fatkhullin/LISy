@@ -58,7 +58,7 @@ namespace LISy
 
         private void add_user_Click(object sender, RoutedEventArgs e)
         {
-            AddUserCard addUserCard = new AddUserCard();
+            AddUserCard addUserCard = new AddUserCard("Librarian");
             addUserCard.Owner = this;
             addUserCard.Show();
         }
