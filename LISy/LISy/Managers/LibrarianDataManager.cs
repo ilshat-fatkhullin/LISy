@@ -263,7 +263,7 @@ namespace LISy.Managers
         {
             HttpHelper.MakePutRequest("librarian/set_librarian_authority", new
             {
-                LibrarianId = librarianId,
+                Id = librarianId,
                 Authority = authority
             });
         }
