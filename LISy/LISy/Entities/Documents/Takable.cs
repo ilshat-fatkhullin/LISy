@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LISy.Entities.Users.Patrons;
+﻿using LISy.Entities.Users.Patrons;
 using LISy.Managers;
+using System;
 
 namespace LISy.Entities.Documents
 {
-	/// <summary>
-	/// Describes properties of a set of documents that can be checked out.
-	/// </summary>
-	public class Takable : Document
+    /// <summary>
+    /// Describes properties of a set of documents that can be checked out.
+    /// </summary>
+    public class Takable : Document
 	{
 		/// <summary>
 		/// Amount of days a non-guest patron can hold document.

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LISy.Entities.Documents
+﻿namespace LISy.Entities.Documents
 {
-	/// <summary>
-	/// Represents an AV entity in the library.
-	/// </summary>
-	public class AVMaterial : Takable
+    /// <summary>
+    /// Represents an AV entity in the library.
+    /// </summary>
+    public class AVMaterial : Takable
 	{
 		/// <summary>
 		/// Initializes a new instance of an AV material.

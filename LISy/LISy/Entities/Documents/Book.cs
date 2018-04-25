@@ -1,4 +1,5 @@
 ﻿using LISy.Entities.Users.Patrons;
+using LISy.Managers;
 using System;
 
 namespace LISy.Entities.Documents
@@ -126,7 +127,7 @@ namespace LISy.Entities.Documents
 			{
 				date = date.AddDays(STUDENT_RETURN_TIME);
 			}
-			return date.ToFileTimeUtc();
-		}
+            return DateManager.GetLong(date);
+        }
 	}
 }
