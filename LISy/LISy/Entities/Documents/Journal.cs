@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LISy.Managers;
+using System;
 
 namespace LISy.Entities.Documents
 {
@@ -92,7 +93,7 @@ namespace LISy.Entities.Documents
         {
             DateTime date = DateTime.Today;
             date = date.AddDays(BASIC_RETURN_TIME);
-            return date.ToFileTimeUtc();
+            return DateManager.GetLong(date);
         }
     }
 }
