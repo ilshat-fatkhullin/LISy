@@ -92,7 +92,7 @@ namespace LISy
 
 
 
-            filteredDocuments = SearchManager.search(allDocuments, searchRequest, type, searchByAuthor, searchByTitle, searchByKeyWords);
+            filteredDocuments = SearchManager.Search(allDocuments, searchRequest, type, searchByAuthor, searchByTitle, searchByKeyWords);
             UpdateDataBookSearchGrid();
             UpdateDataAVSearchGrid();
             UpdateDataJournalSearchGrid();

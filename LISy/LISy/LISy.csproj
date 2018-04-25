@@ -211,6 +211,7 @@
       <DependentUpon>MakeRenew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Managers\CredentialsManager.cs" />
+    <Compile Include="Managers\DateManager.cs" />
     <Compile Include="Managers\HttpHelper.cs" />
     <Compile Include="Managers\PatronDataManager.cs" />
     <Compile Include="Managers\InputFieldsManager.cs" />

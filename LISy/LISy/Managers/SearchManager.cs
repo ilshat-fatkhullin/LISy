@@ -105,7 +105,7 @@ namespace LISy.Managers
             return rankedFilteredDocuments;
         }
 
-        public static Document[] search
+        public static Document[] Search
             (
             Document[] allDocuments,
             string searchRequest,

@@ -14,6 +14,17 @@ namespace LISyTest.Integrated
         public void Initialization()
         {
             LibrarianDataManager.ClearAll();
+
+            LibrarianDataManager.AddLibrarian(new Librarian(
+                "LibrarianName",
+                "LibrarianSurname",
+                "30006",
+                "LibrarianAddress",
+                3
+                ), "librarian_1", "12345");
+
+            LibrarianDataManager.LibrarianId = 2;
+
             LibrarianDataManager.AddBook(new Book(
                 "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein",
                 "Introduction to Algorithms",
@@ -25,6 +36,7 @@ namespace LISyTest.Integrated
                 "",
                 5000
                 ));
+
             LibrarianDataManager.AddBook(new Book(
                 "Erich Gamma, Ralph Johnson, John Vlissides, Richard Helm",
                 "Design Patterns: Elements of Reusable Object-Oriented Software",
@@ -36,12 +48,14 @@ namespace LISyTest.Integrated
                 "",
                 1700
                 ));
+
             LibrarianDataManager.AddAVMaterial(new AVMaterial(
                 "Tony Hoare",
                 "Null References: The Billion DollarMistake",
                 "",
                 "",
                 700));
+
             LibrarianDataManager.AddCopies(3, new Copy(1, 1, 1));
             LibrarianDataManager.AddCopies(3, new Copy(2, 1, 1));
             LibrarianDataManager.AddCopies(2, new Copy(3, 1, 1));
@@ -78,27 +92,20 @@ namespace LISyTest.Integrated
                 "Rama",
                 "30005",
                 "Stret Atocha, 27"
-                ), "patron_5", "12345");
-            LibrarianDataManager.AddLibrarian(new Librarian(
-                "LibrarianName",
-                "LibrarianSurname",
-                "30006",
-                "LibrarianAddress",
-                3
-                ), "librarian_1", "12345");
+                ), "patron_5", "12345");            
         }
 
         [TestMethod]
         public void D3TC1()
         {
             Initialization();
-            PatronDataManager.CheckOutDocument(1, 1);
-            PatronDataManager.CheckOutDocument(2, 1);
-            LibrarianDataManager.ReturnDocument(2, 1);
-            Copy copy = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0];
-            Assert.AreEqual(copy.DocumentId, 1);
-            Assert.AreEqual(copy.ReturningDate, DateTime.Today.AddDays(28).ToShortDateString());
-            Assert.AreEqual(LibrarianDataManager.GetFinesByPatronId(1).GetLength(0), 0);
+            PatronDataManager.CheckOutDocument(1, 3);
+            PatronDataManager.CheckOutDocument(2, 3);
+            LibrarianDataManager.ReturnDocument(2, 3);
+            Copy copy = LibrarianDataManager.GetCheckedByUserCopiesList(3)[0];
+            Assert.AreEqual(copy.DocumentId, 1);       
+            Assert.AreEqual(DateManager.GetDate(copy.ReturningDate), DateTime.Today.AddDays(28));
+            Assert.AreEqual(LibrarianDataManager.GetFinesByPatronId(3).GetLength(0), 0);
         }
 
         [TestMethod]
@@ -111,66 +118,66 @@ namespace LISyTest.Integrated
         public void D3TC3()
         {
             Initialization();
-            PatronDataManager.CheckOutDocument(1, 1);
-            PatronDataManager.CheckOutDocument(2, 4);
-            PatronDataManager.CheckOutDocument(2, 5);
-            PatronDataManager.RenewDocument(1, 1);
-            PatronDataManager.RenewDocument(2, 4);
-            PatronDataManager.RenewDocument(2, 5);
-            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());            
-            date = LibrarianDataManager.GetCheckedByUserCopiesList(4)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(42).ToFileTimeUtc());            
-            date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(14).ToFileTimeUtc());
+            PatronDataManager.CheckOutDocument(1, 3);
+            PatronDataManager.CheckOutDocument(2, 6);
+            PatronDataManager.CheckOutDocument(2, 7);
+            PatronDataManager.RenewDocument(1, 3);
+            PatronDataManager.RenewDocument(2, 6);
+            PatronDataManager.RenewDocument(2, 7);
+            DateTime date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(3)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(56));
+            date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(6)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(42));            
+            date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(7)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(14));
         }
 
         [TestMethod]
         public void D3TC4()
         {
             Initialization();
-            PatronDataManager.CheckOutDocument(1, 1);
-            PatronDataManager.CheckOutDocument(2, 4);
-            PatronDataManager.CheckOutDocument(2, 5);
+            PatronDataManager.CheckOutDocument(1, 3);
+            PatronDataManager.CheckOutDocument(2, 6);
+            PatronDataManager.CheckOutDocument(2, 7);
             LibrarianDataManager.SetOutstanding(true, 2);
-            PatronDataManager.RenewDocument(1, 1);
-            PatronDataManager.RenewDocument(2, 4);
-            PatronDataManager.RenewDocument(2, 5);
-            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());
-            date = LibrarianDataManager.GetCheckedByUserCopiesList(4)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(21).ToFileTimeUtc());            
-            date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(7).ToFileTimeUtc());
+            PatronDataManager.RenewDocument(1, 3);
+            PatronDataManager.RenewDocument(2, 6);
+            PatronDataManager.RenewDocument(2, 7);
+            DateTime date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(3)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(56));
+            date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(6)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(21));            
+            date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(7)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(7));
         }
 
         [TestMethod]
         public void D3TC5()
         {
             Initialization();
-            PatronDataManager.CheckOutDocument(3, 1);
-            PatronDataManager.CheckOutDocument(3, 4);
-            PatronDataManager.CheckOutDocument(3, 5);
-            PatronDataManager.AddToQueue(3, 5);
-            Assert.AreEqual(LibrarianDataManager.GetQueueToDocument(3)[0].CardNumber, 5);
+            PatronDataManager.CheckOutDocument(3, 3);
+            PatronDataManager.CheckOutDocument(3, 6);
+            PatronDataManager.CheckOutDocument(3, 7);
+            PatronDataManager.AddToQueue(3, 7);
+            Assert.AreEqual(LibrarianDataManager.GetQueueToDocument(3)[0].CardNumber, 7);
         }
 
         [TestMethod]
         public void D3TC6()
         {
             Initialization();
-            PatronDataManager.CheckOutDocument(3, 1);
-            PatronDataManager.CheckOutDocument(3, 2);
+            PatronDataManager.CheckOutDocument(3, 3);
             PatronDataManager.CheckOutDocument(3, 4);
-            PatronDataManager.AddToQueue(3, 4);
-            PatronDataManager.CheckOutDocument(3, 5);
+            PatronDataManager.CheckOutDocument(3, 6);
+            PatronDataManager.AddToQueue(3, 6);
+            PatronDataManager.CheckOutDocument(3, 7);
+            PatronDataManager.AddToQueue(3, 7);
+            PatronDataManager.CheckOutDocument(3, 6);
             PatronDataManager.AddToQueue(3, 5);
-            PatronDataManager.CheckOutDocument(3, 4);
-            PatronDataManager.AddToQueue(3, 3);
             Patron[] patrons = LibrarianDataManager.GetQueueToDocument(3);
-            Assert.AreEqual(patrons[0].CardNumber, 4);
-            Assert.AreEqual(patrons[1].CardNumber, 5);
-            Assert.AreEqual(patrons[2].CardNumber, 3);
+            Assert.AreEqual(patrons[0].CardNumber, 6);
+            Assert.AreEqual(patrons[1].CardNumber, 7);
+            Assert.AreEqual(patrons[2].CardNumber, 5);
         }
 
         [TestMethod]
@@ -179,47 +186,47 @@ namespace LISyTest.Integrated
             D3TC6();
             LibrarianDataManager.SetOutstanding(true, 3);
             Assert.AreEqual(LibrarianDataManager.GetQueueToDocument(3).Length, 0);
-            Assert.AreEqual(PatronDataManager.GetNotifications(1).Length, 1);
-            Assert.AreEqual(PatronDataManager.GetNotifications(2).Length, 1);
             Assert.AreEqual(PatronDataManager.GetNotifications(3).Length, 1);
             Assert.AreEqual(PatronDataManager.GetNotifications(4).Length, 1);
             Assert.AreEqual(PatronDataManager.GetNotifications(5).Length, 1);
+            Assert.AreEqual(PatronDataManager.GetNotifications(6).Length, 1);
+            Assert.AreEqual(PatronDataManager.GetNotifications(7).Length, 1);
         }
 
         [TestMethod]
         public void D3TC8()
         {
             D3TC6();
-            LibrarianDataManager.ReturnDocument(3, 2);
-            Assert.AreEqual(PatronDataManager.GetNotifications(4).Length, 1);
-            Assert.AreEqual(LibrarianDataManager.GetCheckedByUserCopiesList(2).Length, 0);
+            LibrarianDataManager.ReturnDocument(3, 4);
+            Assert.AreEqual(PatronDataManager.GetNotifications(6).Length, 1);
+            Assert.AreEqual(LibrarianDataManager.GetCheckedByUserCopiesList(4).Length, 0);
             Patron[] patrons = LibrarianDataManager.GetQueueToDocument(3);
-            Assert.AreEqual(patrons[0].CardNumber, 4);
-            Assert.AreEqual(patrons[1].CardNumber, 5);
-            Assert.AreEqual(patrons[2].CardNumber, 3);
+            Assert.AreEqual(patrons[0].CardNumber, 6);
+            Assert.AreEqual(patrons[1].CardNumber, 7);
+            Assert.AreEqual(patrons[2].CardNumber, 5);
         }
 
         [TestMethod]
         public void D3TC9()
         {
             D3TC6();
-            PatronDataManager.RenewDocument(3, 1);
-            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());
+            PatronDataManager.RenewDocument(3, 3);
+            DateTime date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(3)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(56));
         }
 
         [TestMethod]
         public void D3TC10()
         {
             Initialization();
-            PatronDataManager.CheckOutDocument(1, 1);
-            PatronDataManager.RenewDocument(1, 1);
-            PatronDataManager.CheckOutDocument(1, 5);
-            PatronDataManager.RenewDocument(1, 5);
-            long date = LibrarianDataManager.GetCheckedByUserCopiesList(1)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(56).ToFileTimeUtc());
-            date = LibrarianDataManager.GetCheckedByUserCopiesList(5)[0].ReturningDate;
-            Assert.AreEqual(date, DateTime.Today.AddDays(14).ToFileTimeUtc());
+            PatronDataManager.CheckOutDocument(1, 3);
+            PatronDataManager.RenewDocument(1, 3);
+            PatronDataManager.CheckOutDocument(1, 7);
+            PatronDataManager.RenewDocument(1, 7);
+            DateTime date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(3)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(56));
+            date = DateManager.GetDate(LibrarianDataManager.GetCheckedByUserCopiesList(7)[0].ReturningDate);
+            Assert.AreEqual(date, DateTime.Today.AddDays(14));
         }
     }
 }

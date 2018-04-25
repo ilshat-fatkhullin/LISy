@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LISy.Entities.Users.Patrons;
+using LISy.Managers;
 
 namespace LISy.Entities.Documents
 {
@@ -87,7 +88,7 @@ namespace LISy.Entities.Documents
 			{
 				date = date.AddDays(BASIC_RETURN_TIME);
 			}
-			return date.ToFileTimeUtc();
+			return DateManager.GetLong(date);
 		}
 	}
 }
