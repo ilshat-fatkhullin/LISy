@@ -30,7 +30,7 @@ namespace LISy.Entities
 		/// <summary>
 		/// Date when copy must be returned.
 		/// </summary>
-		public string ReturningDate { get; set; }
+		public long ReturningDate { get; set; }
 
 		/// <summary>
 		/// Room where copy is placed.
@@ -65,7 +65,7 @@ namespace LISy.Entities
 		/// <param name="time">Date when copy must be returned.</param>
 		/// <param name="room">Room where copy is placed.</param>
 		/// <param name="level">Level of copy room.</param>
-		public Copy(long id, long documentid, long patronid, bool check, string time, int room, int level)
+		public Copy(long id, long documentid, long patronid, bool check, long time, int room, int level)
 		{
 			Id = id >= 0 ? id : throw new ArgumentException("Invalid Id!");
 			DocumentId = documentid >= 0 ? documentid : throw new ArgumentException("Invalid document Id!");

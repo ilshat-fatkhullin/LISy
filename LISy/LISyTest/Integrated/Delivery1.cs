@@ -11,11 +11,11 @@ namespace LISyTest.Integrated
     [TestClass]
     public class Delivery1
     {        
-        private const long PATRON_1_ID = 2,
-            PATRON_2_ID = 3,
-            PATRON_3_ID = 4,
-            FACULTY_ID = 2,
-            STUDENT_ID = 3,
+        private const long PATRON_1_ID = 3,
+            PATRON_2_ID = 4,
+            PATRON_3_ID = 5,
+            FACULTY_ID = 3,
+            STUDENT_ID = 4,
             BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID = 1,
             BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID = 2,
             BOOK_REFERENCE_ID = 3;
@@ -27,6 +27,8 @@ namespace LISyTest.Integrated
 
             LibrarianDataManager.AddLibrarian(new Librarian("LibrarianName", "LibrarianSurname", "80000000000", "Address", 3),
                 "librarian_1", "12345");
+            LibrarianDataManager.LibrarianId = 2;
+            PatronDataManager.PatronId = 3;
             LibrarianDataManager.AddFaculty(new Faculty("FacultyName", "FacultySurname", "80000000000", "Address", ""),
                 "patron_1", "12345");
             LibrarianDataManager.AddStudent(new Student("StudentName", "StudentSurname", "80000000000", "Address"),
@@ -106,13 +108,13 @@ namespace LISyTest.Integrated
 
             foreach (var c in copies)
             {
-                if (c.ReturningDate != null)
+                if (c.ReturningDate != 0)
                 {
-                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
+                    double days = (DateManager.GetDate(c.ReturningDate) - DateTime.Today).TotalDays;
 
                     if (c.PatronId == FACULTY_ID &&
                         c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
-                        Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
+                        Math.Abs(days - Book.FACULTY_RETURN_TIME) <= 1)
                     {
                         flag = true;
                         break;                        
@@ -140,13 +142,13 @@ namespace LISyTest.Integrated
 
             foreach (var c in copies)
             {
-                if (c.ReturningDate != null)
+                if (c.ReturningDate != 0)
                 {
-                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
+                    double days = (DateManager.GetDate(c.ReturningDate) - DateTime.Today).TotalDays;
 
                     if (c.PatronId == FACULTY_ID &&
                         c.DocumentId == BOOK_TWO_COPY_BESTSELLER_NO_REFERENCE_ID &&
-                        Math.Abs(days - Book.FACULTY_RETURN_TIME) < 1)
+                        Math.Abs(days - Book.FACULTY_RETURN_TIME) <= 1)
                     {
                         flag = true;
                         break;                        
@@ -280,13 +282,13 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.ReturningDate != null)
+                if (c.ReturningDate != 0)
                 {
-                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
+                    double days = (DateManager.GetDate(c.ReturningDate) - DateTime.Today).TotalDays;
 
                     if (c.PatronId == STUDENT_ID &&
                         c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
-                        Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
+                        Math.Abs(days - Book.STUDENT_RETURN_TIME) <= 1)
                     {
                         flag = true;
                         return;
@@ -313,13 +315,13 @@ namespace LISyTest.Integrated
 
             foreach (var c in LibrarianDataManager.GetAllCopiesList())
             {
-                if (c.ReturningDate != null)
+                if (c.ReturningDate != 0)
                 {
-                    double days = (DateTime.Parse(c.ReturningDate) - DateTime.Now).TotalDays;
+                    double days = (DateManager.GetDate(c.ReturningDate) - DateTime.Today).TotalDays;
 
                     if (c.PatronId == STUDENT_ID &&
                         c.DocumentId == BOOK_ONE_COPY_NOT_BESTSELLER_NO_REFERENCE_ID &&
-                        Math.Abs(days - Book.STUDENT_RETURN_TIME) < 1)
+                        Math.Abs(days - Book.STUDENT_RETURN_TIME) <= 1)
                     {
                         flag = true;
                         return;

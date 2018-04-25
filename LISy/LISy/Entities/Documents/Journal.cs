@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LISy.Entities.Documents
 {
-	/// <summary>
-	/// Represents a journal entity in the library.
-	/// </summary>
-	public class Journal : Takable
+    /// <summary>
+    /// Represents a journal entity in the library.
+    /// </summary>
+    public class Journal : Takable
 	{
 		/// <summary>
 		/// Publisher of a journal.
@@ -92,11 +88,11 @@ namespace LISy.Entities.Documents
         /// </summary>
         /// <param name="patronType">Type of booking patron.</param>
         /// <returns></returns>
-        public override string EvaluateReturnDate(string patronType)
+        public override long EvaluateReturnDate(string patronType)
         {
             DateTime date = DateTime.Today;
             date = date.AddDays(BASIC_RETURN_TIME);
-            return date.ToShortDateString();
+            return date.ToFileTimeUtc();
         }
     }
 }

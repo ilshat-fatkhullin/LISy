@@ -107,7 +107,7 @@ namespace LISy.Entities.Documents
 		/// </summary>
 		/// <param name="patronType">Type of booking patron.</param>
 		/// <returns></returns>
-		public override string EvaluateReturnDate(string patronType)
+		public override long EvaluateReturnDate(string patronType)
 		{
 			DateTime date = DateTime.Today;
 			if (patronType.Equals(Guest.TYPE))
@@ -126,7 +126,7 @@ namespace LISy.Entities.Documents
 			{
 				date = date.AddDays(STUDENT_RETURN_TIME);
 			}
-			return date.ToShortDateString();
+			return date.ToFileTimeUtc();
 		}
 	}
 }
