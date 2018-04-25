@@ -75,7 +75,7 @@ namespace LISy
 
         private void AddLibrarian_Click(object sender, RoutedEventArgs e)
         {
-            AddUserCard addUserCard = new AddUserCard();
+            AddUserCard addUserCard = new AddUserCard("Admin");
             addUserCard.Owner = this;
             addUserCard.Show();
 

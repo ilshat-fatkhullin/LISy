@@ -1,6 +1,7 @@
 ﻿using LISy.Entities.Users;
 using LISy.Entities.Users.Patrons;
 using LISy.Managers;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -13,13 +14,23 @@ namespace LISy
     /// </summary>
     public partial class AddUserCard : Window
     {
-
+        private String owner;
         /// <summary>
         /// Initializes window for adding user.
         /// </summary>
-        public AddUserCard()
+        public AddUserCard(String owner)
         {
             InitializeComponent();
+            this.owner = owner;
+
+            if (owner == "Admin")
+            {
+                studentCheckBoxType.IsEnabled = false;
+                taCheckBoxType.IsEnabled = false;
+                InstructorCheckBoxType.IsEnabled = false;
+                professorCheckBoxType.IsEnabled = false;
+                visitingProfessorCheckBoxType.IsEnabled = false;
+            }
         }
 
         private void name_of_new_user_TextChanged(object sender, TextChangedEventArgs e)
