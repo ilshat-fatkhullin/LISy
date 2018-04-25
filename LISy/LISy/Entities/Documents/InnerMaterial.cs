@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LISy.Entities.Documents
 {
-	/// <summary>
-	/// Represents a set of documents which cannot be checked out.
-	/// </summary>
-	public class InnerMaterial : Document
+    /// <summary>
+    /// Represents a set of documents which cannot be checked out.
+    /// </summary>
+    public class InnerMaterial : Document
 	{
 		/// <summary>
 		/// Room where document is placed.
