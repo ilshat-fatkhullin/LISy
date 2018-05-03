@@ -29,7 +29,6 @@ namespace LISy
             librarian_status_fill.Content = user.Type;
             librarian = LibrarianDataManager.GetLibrarianById(userId);
             accesLevel = librarian.Authority;
-            librarianLevel.IsEnabled = false;
             if (accesLevel == 1)
             {
                 add_user.IsEnabled = false;
@@ -38,9 +37,9 @@ namespace LISy
                 Check_out_Copies.IsEnabled = false;
 
             }
-            else if (accesLevel == 3)
+            else if (accesLevel == 2)
             {
-                Check_out_Copies.IsEnabled = false;
+                copies.IsEnabled = false;
             }
 
         }
@@ -49,11 +48,11 @@ namespace LISy
             UpdateUsersDataGrid();
             UpdateDataGridBook();
             UpdateDataGridCopies();
-            UptadeDataGridAV_material();
-            UpdatDataGridChekedOutCopies();
+            UpdateDataGridAV_material();
+            UpdateDataGridChekedOutCopies();
             UpdateDataGridInnerMaterials();
             UpdateDataGridJournal();
-            UptadeDataGridJournalArticles();
+            UpdateDataGridJournalArticles();
         }
 
         private void add_user_Click(object sender, RoutedEventArgs e)
@@ -128,7 +127,7 @@ namespace LISy
         }
         private void grid_LoaderAV_material(object sender, RoutedEventArgs e)
         {
-            UptadeDataGridAV_material();
+            UpdateDataGridAV_material();
         }
         private void grid_LoaderReference_book(object sender, RoutedEventArgs e)
         {
@@ -140,13 +139,13 @@ namespace LISy
         }
         private void grid_LoaderCheckedOutCopies(object sender, RoutedEventArgs e)
         {
-            UpdatDataGridChekedOutCopies();
+            UpdateDataGridChekedOutCopies();
         }
         private void copies_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateDataGridCopies();
         }
-        public void UpdatDataGridChekedOutCopies()
+        public void UpdateDataGridChekedOutCopies()
         {
             List<Copy> result = new List<Copy>();
             result.Clear();
@@ -210,7 +209,7 @@ namespace LISy
             DataGridJournal.ItemsSource = result;
         }
 
-        public void UptadeDataGridAV_material()
+        public void UpdateDataGridAV_material()
         {
             List<AVMaterial> result = new List<AVMaterial>();
             result.Clear();
@@ -243,7 +242,7 @@ namespace LISy
         {
             UpdateDataGridJournal();
         }
-        public void UptadeDataGridJournalArticles()
+        public void UpdateDataGridJournalArticles()
         {
             List<Article> result = new List<Article>();
             result.Clear();
@@ -266,7 +265,7 @@ namespace LISy
         }
         private void journalArticles_Loaded(object sender, RoutedEventArgs e)
         {
-            UptadeDataGridJournalArticles();
+            UpdateDataGridJournalArticles();
         }
         private void journalMouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -287,7 +286,7 @@ namespace LISy
 
         private void librarianLevel_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("This window in developed study..." + "Please wait!");
         }
     }
 }

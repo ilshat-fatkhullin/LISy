@@ -100,7 +100,7 @@ namespace LISy
                 copy.Level = Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_level_text_box));
                 LibrarianDataManager.AddCopies(Convert.ToInt32(InputFieldsManager.ReturnStringFromTextBox(av_copy_text_box)), copy);
             }
-            workWindow.UptadeDataGridAV_material();
+            workWindow.UpdateDataGridAV_material();
             this.Close();
 
         }
@@ -113,7 +113,7 @@ namespace LISy
         private void delete_db_Click(object sender, RoutedEventArgs e)
         {
             LibrarianDataManager.DeleteDocument(av.Id);
-            workWindow.UptadeDataGridAV_material();
+            workWindow.UpdateDataGridAV_material();
             this.Close();
         }
     }

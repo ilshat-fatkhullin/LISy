@@ -30,30 +30,30 @@ namespace LISy
         /// <param name="documentId"></param>
         /// <param name="userId"></param>
         /// <param name="workWindow"></param>
-        public ModifyChekedOutCopies(long documentId,long userId, LibrarianWorkWindow workWindow)
+        public ModifyChekedOutCopies(long documentId, long userId, LibrarianWorkWindow workWindow)
         {
             InitializeComponent();
             this.documentId = documentId;
-            this.userId= userId;
+            this.userId = userId;
             this.workWindow = workWindow;
-            
+
         }
 
         private void Сhange_status_of_copy_Click(object sender, RoutedEventArgs e)
         {
             if (make_book_returned.IsChecked == true)
             {
-                LibrarianDataManager.ReturnDocument(documentId,userId);
+                LibrarianDataManager.ReturnDocument(documentId, userId);
             }
             if (setOutStandingRequestcheckBox.IsChecked == true)
             {
-                LibrarianDataManager.SetOutstanding(true,documentId);
+                LibrarianDataManager.SetOutstanding(true, documentId);
             }
             if (disableOutstandingRequest.IsChecked == true)
             {
-                LibrarianDataManager.SetOutstanding(false,documentId);
+                LibrarianDataManager.SetOutstanding(false, documentId);
             }
-            workWindow.UpdatDataGridChekedOutCopies();
+            workWindow.UpdateDataGridChekedOutCopies();
             this.Close();
         }
     }
